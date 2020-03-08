@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>Hello World · occo&#39;s blog</title>
+    <title>Going Dutch BAPC（ 状态转移DP） · occo&#39;s blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/" >occo&#39;s blog.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Hello World</a>
+                <a href="#" class="post-name">Going Dutch BAPC（ 状态转移DP）</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Hello World
+            Going Dutch BAPC（ 状态转移DP）
             <!-- 404 -->
             
         </h1>
@@ -266,18 +266,18 @@ height:50vh;
                 
                     <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "hexo">hexo</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "DP">DP</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">73</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                        <span>Word count: <span class="post-count word-count">461</span>Reading time: <span class="post-count reading-time">2 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2019/03/07</span>
+                    <span class="post-intro-time">2018/04/09</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -401,25 +401,18 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<a id="more"></a>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><h3 id="You-and-your-friends-have-just-returned-from-a-beautiful-vacation-in-the-mountains-of-the-Netherlands-When-on-vacation-it’s-annoying-to-split-the-bill-on-every-expense-every-time-so-you-just-kept-all-the-receipts-from-the-vacation-and-wrote-down-who-paid-how-much-for-who-Now-it-is-time-to-settle-the-bill"><a href="#You-and-your-friends-have-just-returned-from-a-beautiful-vacation-in-the-mountains-of-the-Netherlands-When-on-vacation-it’s-annoying-to-split-the-bill-on-every-expense-every-time-so-you-just-kept-all-the-receipts-from-the-vacation-and-wrote-down-who-paid-how-much-for-who-Now-it-is-time-to-settle-the-bill" class="headerlink" title="You and your friends have just returned from a beautiful vacation in the mountains of the Netherlands. When on vacation, it’s annoying to split the bill on every expense every time, so you just kept all the receipts from the vacation, and wrote down who paid how much for who. Now, it is time to settle the bill."></a>You and your friends have just returned from a beautiful vacation in the mountains of the Netherlands. When on vacation, it’s annoying to split the bill on every expense every time, so you just kept all the receipts from the vacation, and wrote down who paid how much for who. Now, it is time to settle the bill.</h3><h3 id="You-could-each-take-all-the-receipts-showing-that-someone-paid-something-for-you-and-then-pay-that-person-back-But-then-you-would-need-a-lot-of-transactions-and-you-want-to-keep-up-the-lazy-spirit-from-your-trip-In-the-end-it-does-not-matter-who-transfers-money-to-whom-as-long-as-in-the-end-everyone’s-balance-is-0"><a href="#You-could-each-take-all-the-receipts-showing-that-someone-paid-something-for-you-and-then-pay-that-person-back-But-then-you-would-need-a-lot-of-transactions-and-you-want-to-keep-up-the-lazy-spirit-from-your-trip-In-the-end-it-does-not-matter-who-transfers-money-to-whom-as-long-as-in-the-end-everyone’s-balance-is-0" class="headerlink" title="You could each take all the receipts showing that someone paid something for you, and then pay that person back. But then you would need a lot of transactions, and you want to keep up the lazy spirit from your trip. In the end, it does not matter who transfers money to whom; as long as in the end, everyone’s balance is 0."></a>You could each take all the receipts showing that someone paid something for you, and then pay that person back. But then you would need a lot of transactions, and you want to keep up the lazy spirit from your trip. In the end, it does not matter who transfers money to whom; as long as in the end, everyone’s balance is 0.</h3><h3 id="Can-you-figure-out-the-least-number-of-transactions-needed-to-settle-the-score-Assume-everyone-has-enough-spare-cash-to-transfer-an-arbitrary-amount-of-money-to-another-person"><a href="#Can-you-figure-out-the-least-number-of-transactions-needed-to-settle-the-score-Assume-everyone-has-enough-spare-cash-to-transfer-an-arbitrary-amount-of-money-to-another-person" class="headerlink" title="Can you figure out the least number of transactions needed to settle the score? Assume everyone has enough spare cash to transfer an arbitrary amount of money to another person."></a>Can you figure out the least number of transactions needed to settle the score? Assume everyone has enough spare cash to transfer an arbitrary amount of money to another person.</h3><h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><h3 id="Input-consists-of"><a href="#Input-consists-of" class="headerlink" title="Input consists of"></a>Input consists of</h3><h3 id="•-A-line-containing-two-integers-M-the-number-of-people-in-the-group-with-1-≤-M-≤-20-and-N-the-number-of-receipts-from-the-trip-with-0-≤-N-≤-1000"><a href="#•-A-line-containing-two-integers-M-the-number-of-people-in-the-group-with-1-≤-M-≤-20-and-N-the-number-of-receipts-from-the-trip-with-0-≤-N-≤-1000" class="headerlink" title="• A line containing two integers M, the number of people in the group, with 1 ≤ M ≤ 20,and N, the number of receipts from the trip, with 0 ≤ N ≤ 1000."></a>• A line containing two integers M, the number of people in the group, with 1 ≤ M ≤ 20,and N, the number of receipts from the trip, with 0 ≤ N ≤ 1000.</h3><h3 id="•-N-lines-each-with-three-integers-a-b-p-where-0-≤-a-b-lt-M-and-1-≤-p-≤-1000-signifying-a-receipt-showing-that-person-a-paid-p-euros-for-person-b"><a href="#•-N-lines-each-with-three-integers-a-b-p-where-0-≤-a-b-lt-M-and-1-≤-p-≤-1000-signifying-a-receipt-showing-that-person-a-paid-p-euros-for-person-b" class="headerlink" title="• N lines, each with three integers a, b, p, where 0 ≤ a, b &lt; M, and 1 ≤ p ≤ 1000,signifying a receipt showing that person a paid p euros for person b."></a>• N lines, each with three integers a, b, p, where 0 ≤ a, b &lt; M, and 1 ≤ p ≤ 1000,signifying a receipt showing that person a paid p euros for person b.</h3><h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><h3 id="Output-a-single-line-containing-a-single-integer-the-least-number-of-transactions-necessary-to-settle-all-bills"><a href="#Output-a-single-line-containing-a-single-integer-the-least-number-of-transactions-necessary-to-settle-all-bills" class="headerlink" title="Output a single line containing a single integer, the least number of transactions necessary to settle all bills."></a>Output a single line containing a single integer, the least number of transactions necessary to settle all bills.</h3><h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">4 2</span><br><span class="line">0 1 1</span><br><span class="line">2 3 1</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll long long</span><br><span class="line">const int maxn&#x3D;1&lt;&lt;20;</span><br><span class="line">int sum[20],a[maxn],b[maxn];</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int i,j,k,m,n;</span><br><span class="line">    cin&gt;&gt;m&gt;&gt;n;</span><br><span class="line">    memset(a,0,sizeof(a));</span><br><span class="line">    memset(b,0,sizeof(b));</span><br><span class="line">    memset(sum,0,sizeof(sum));</span><br><span class="line">    while(n--)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;i&gt;&gt;j&gt;&gt;k;</span><br><span class="line">        sum[i]+&#x3D;k;</span><br><span class="line">        sum[j]-&#x3D;k;</span><br><span class="line">    &#125;</span><br><span class="line">    for(i&#x3D;0; i&lt;(1&lt;&lt;m); i++)</span><br><span class="line">        for(j&#x3D;0; j&lt;m; j++)</span><br><span class="line">            if(i&amp;(1&lt;&lt;j))</span><br><span class="line">                b[i]+&#x3D;sum[j];</span><br><span class="line">    for(i&#x3D;0; i&lt;(1&lt;&lt;m); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(j&#x3D;0; j&lt;m; j++)</span><br><span class="line">            if(!(i&amp;(1&lt;&lt;j)))</span><br><span class="line">            &#123;</span><br><span class="line">                if(!b[i|(1&lt;&lt;j)])</span><br><span class="line">                    a[i|(1&lt;&lt;j)]&#x3D;max(a[i|(1&lt;&lt;j)],a[i]+1);</span><br><span class="line">                else</span><br><span class="line">                    a[i|(1&lt;&lt;j)]&#x3D;max(a[i|(1&lt;&lt;j)],a[i]);</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;m-a[(1&lt;&lt;m)-1]&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </article>
     <!-- license  -->
     
         <div class="license-wrapper">
             <p>Author：<a href="http://occo.ink">occo</a>
-            <p>原文链接：<a href="http://occo.ink/2019/03/07/hello-world/">http://occo.ink/2019/03/07/hello-world/</a>
-            <p>发表日期：<a href="http://occo.ink/2019/03/07/hello-world/">March 7th 2019, 12:00:00 am</a>
-            <p>更新日期：<a href="http://occo.ink/2019/03/07/hello-world/">March 8th 2020, 10:18:03 pm</a>
+            <p>原文链接：<a href="http://occo.ink/2018/04/09/Going%20Dutch%20BAPC/">http://occo.ink/2018/04/09/Going%20Dutch%20BAPC/</a>
+            <p>发表日期：<a href="http://occo.ink/2018/04/09/Going%20Dutch%20BAPC/">April 9th 2018, 12:00:00 am</a>
+            <p>更新日期：<a href="http://occo.ink/2018/04/09/Going%20Dutch%20BAPC/">March 8th 2020, 10:33:17 pm</a>
             <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -428,16 +421,16 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href= "/2019/03/08/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D/" title= "正则表达式匹配">
-                    <div class="nextTitle">正则表达式匹配</div>
+                <a href= "/2019/03/07/hello-world/" title= "Hello World">
+                    <div class="nextTitle">Hello World</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2018/04/09/Going%20Dutch%20BAPC/" title= "Going Dutch BAPC（ 状态转移DP）">
-                    <div class="prevTitle">Going Dutch BAPC（ 状态转移DP）</div>
+                <a href= "/2018/04/08/%E5%9B%BD%E7%8E%8B/" title= "国王">
+                    <div class="prevTitle">国王</div>
                 </a>
             
         </li>
@@ -560,7 +553,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目描述"><span class="toc-number">1.</span> <span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#You-and-your-friends-have-just-returned-from-a-beautiful-vacation-in-the-mountains-of-the-Netherlands-When-on-vacation-it’s-annoying-to-split-the-bill-on-every-expense-every-time-so-you-just-kept-all-the-receipts-from-the-vacation-and-wrote-down-who-paid-how-much-for-who-Now-it-is-time-to-settle-the-bill"><span class="toc-number">1.0.1.</span> <span class="toc-text">You and your friends have just returned from a beautiful vacation in the mountains of the Netherlands. When on vacation, it’s annoying to split the bill on every expense every time, so you just kept all the receipts from the vacation, and wrote down who paid how much for who. Now, it is time to settle the bill.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#You-could-each-take-all-the-receipts-showing-that-someone-paid-something-for-you-and-then-pay-that-person-back-But-then-you-would-need-a-lot-of-transactions-and-you-want-to-keep-up-the-lazy-spirit-from-your-trip-In-the-end-it-does-not-matter-who-transfers-money-to-whom-as-long-as-in-the-end-everyone’s-balance-is-0"><span class="toc-number">1.0.2.</span> <span class="toc-text">You could each take all the receipts showing that someone paid something for you, and then pay that person back. But then you would need a lot of transactions, and you want to keep up the lazy spirit from your trip. In the end, it does not matter who transfers money to whom; as long as in the end, everyone’s balance is 0.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Can-you-figure-out-the-least-number-of-transactions-needed-to-settle-the-score-Assume-everyone-has-enough-spare-cash-to-transfer-an-arbitrary-amount-of-money-to-another-person"><span class="toc-number">1.0.3.</span> <span class="toc-text">Can you figure out the least number of transactions needed to settle the score? Assume everyone has enough spare cash to transfer an arbitrary amount of money to another person.</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输入"><span class="toc-number">1.1.</span> <span class="toc-text">输入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Input-consists-of"><span class="toc-number">1.1.1.</span> <span class="toc-text">Input consists of</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#•-A-line-containing-two-integers-M-the-number-of-people-in-the-group-with-1-≤-M-≤-20-and-N-the-number-of-receipts-from-the-trip-with-0-≤-N-≤-1000"><span class="toc-number">1.1.2.</span> <span class="toc-text">• A line containing two integers M, the number of people in the group, with 1 ≤ M ≤ 20,and N, the number of receipts from the trip, with 0 ≤ N ≤ 1000.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#•-N-lines-each-with-three-integers-a-b-p-where-0-≤-a-b-lt-M-and-1-≤-p-≤-1000-signifying-a-receipt-showing-that-person-a-paid-p-euros-for-person-b"><span class="toc-number">1.1.3.</span> <span class="toc-text">• N lines, each with three integers a, b, p, where 0 ≤ a, b &lt; M, and 1 ≤ p ≤ 1000,signifying a receipt showing that person a paid p euros for person b.</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出"><span class="toc-number">1.2.</span> <span class="toc-text">输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Output-a-single-line-containing-a-single-integer-the-least-number-of-transactions-necessary-to-settle-all-bills"><span class="toc-number">1.2.1.</span> <span class="toc-text">Output a single line containing a single integer, the least number of transactions necessary to settle all bills.</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例输入"><span class="toc-number">1.3.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例输出"><span class="toc-number">1.4.</span> <span class="toc-text">样例输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码"><span class="toc-number">1.4.1.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
