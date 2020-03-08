@@ -1,6 +1,11 @@
 ---
 title: Hello World
+tags: hexo
+cover: https://i.loli.net/2019/07/21/5d33d5dc1531213134.png
+coverWidth: 1200
+coverHeight: 750
 ---
+
 Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
 
 <!--more-->
