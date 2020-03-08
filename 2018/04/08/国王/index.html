@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>occo&#39;s blog</title>
+    <title>国王 · occo&#39;s blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -203,12 +203,23 @@
 <meta name="generator" content="Hexo 4.2.0"></head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >occo&#39;s blog.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">国王</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>occo's blog.</a>
 </header>
@@ -220,24 +231,74 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            国王
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "瞎搞">瞎搞</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">332</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2018/04/08</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -338,99 +399,55 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/03/08/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D/" >
-            
-                <span>正则表达式匹配</span>
-        </a>
-        <div class="abstract-content">
-            <p>正则表达式匹配</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/08</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "瞎搞">瞎搞</a>
-    
-</div>
-            
-        </div>
+            <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><h5 id="很久很久以前，有个王国。王国里有个国王。这一天，国王在给他的将军们分发奖金。将军们站成一排，依次编号为1～N，N为将军的个数。但是国王发奖的方法很可爱，每次发奖都是给连续的一些将军同样的金币。具体来说，国王共发了M次，其中第i次给Ai到Bi的人每人发了Ci枚金币。现在国王发完了钱，想让你计算最后每位将军分别得到了多少金币"><a href="#很久很久以前，有个王国。王国里有个国王。这一天，国王在给他的将军们分发奖金。将军们站成一排，依次编号为1～N，N为将军的个数。但是国王发奖的方法很可爱，每次发奖都是给连续的一些将军同样的金币。具体来说，国王共发了M次，其中第i次给Ai到Bi的人每人发了Ci枚金币。现在国王发完了钱，想让你计算最后每位将军分别得到了多少金币" class="headerlink" title="很久很久以前，有个王国。王国里有个国王。这一天，国王在给他的将军们分发奖金。将军们站成一排，依次编号为1～N，N为将军的个数。但是国王发奖的方法很可爱，每次发奖都是给连续的一些将军同样的金币。具体来说，国王共发了M次，其中第i次给Ai到Bi的人每人发了Ci枚金币。现在国王发完了钱，想让你计算最后每位将军分别得到了多少金币"></a>很久很久以前，有个王国。王国里有个国王。这一天，国王在给他的将军们分发奖金。将军们站成一排，依次编号为1～N，N为将军的个数。但是国王发奖的方法很可爱，每次发奖都是给连续的一些将军同样的金币。具体来说，国王共发了M次，其中第i次给Ai到Bi的人每人发了Ci枚金币。现在国王发完了钱，想让你计算最后每位将军分别得到了多少金币</h5><h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><h5 id="第一行四个整数N，M，下面M行每行三个整数Ai，Bi和Ci，其定义如上。"><a href="#第一行四个整数N，M，下面M行每行三个整数Ai，Bi和Ci，其定义如上。" class="headerlink" title="第一行四个整数N，M，下面M行每行三个整数Ai，Bi和Ci，其定义如上。"></a>第一行四个整数N，M，下面M行每行三个整数Ai，Bi和Ci，其定义如上。</h5><h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><h5 id="一行N个数，第i个数为将军i最终得到的金币个数。"><a href="#一行N个数，第i个数为将军i最终得到的金币个数。" class="headerlink" title="一行N个数，第i个数为将军i最终得到的金币个数。"></a>一行N个数，第i个数为将军i最终得到的金币个数。</h5><h4 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">3 2</span><br><span class="line">1 2 2</span><br><span class="line">2 3 5</span><br></pre></td></tr></table></figure>
+<h4 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 7 5</span><br></pre></td></tr></table></figure>
+<h5 id="对30-的数据有1-≤-N-≤-10000-1-≤-M-≤-1000。"><a href="#对30-的数据有1-≤-N-≤-10000-1-≤-M-≤-1000。" class="headerlink" title="对30%的数据有1 ≤ N ≤ 10000, 1 ≤ M ≤ 1000。"></a>对30%的数据有1 ≤ N ≤ 10000, 1 ≤ M ≤ 1000。</h5><h5 id="对100-的数据有1-≤-N-≤-100000-1-≤-M-≤-100000-1-≤-Ai-≤-Bi-≤-N-1-≤-Ci-≤-500。"><a href="#对100-的数据有1-≤-N-≤-100000-1-≤-M-≤-100000-1-≤-Ai-≤-Bi-≤-N-1-≤-Ci-≤-500。" class="headerlink" title="对100%的数据有1 ≤ N ≤ 100000, 1 ≤ M ≤ 100000, 1 ≤ Ai ≤ Bi ≤ N, 1 ≤ Ci ≤ 500。"></a>对100%的数据有1 ≤ N ≤ 100000, 1 ≤ M ≤ 100000, 1 ≤ Ai ≤ Bi ≤ N, 1 ≤ Ci ≤ 500。</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,m,l,r,x,temp=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">int</span> a[n+<span class="number">1</span>];</span><br><span class="line">    <span class="built_in">memset</span>(a,<span class="number">0</span>,<span class="keyword">sizeof</span>(a));</span><br><span class="line">    <span class="keyword">while</span>(m--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>,&amp;l,&amp;r,&amp;x);</span><br><span class="line">        a[l]+=x;</span><br><span class="line">        a[r+<span class="number">1</span>]-=x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        temp+=a[i];<span class="comment">//避免了超时</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>,temp);</span><br><span class="line">    &#125;</span><br><span class="line">    temp+=a[n];</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,temp);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
     </article>
+    <!-- license  -->
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/03/07/hello-world/" >
-            
-                <span>Hello World</span>
-        </a>
-        <div class="abstract-content">
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+        <div class="license-wrapper">
+            <p>Author：<a href="http://occo.ink">occo</a>
+            <p>原文链接：<a href="http://occo.ink/2018/04/08/%E5%9B%BD%E7%8E%8B/">http://occo.ink/2018/04/08/%E5%9B%BD%E7%8E%8B/</a>
+            <p>发表日期：<a href="http://occo.ink/2018/04/08/%E5%9B%BD%E7%8E%8B/">April 8th 2018, 12:00:00 am</a>
+            <p>更新日期：<a href="http://occo.ink/2018/04/08/%E5%9B%BD%E7%8E%8B/">March 8th 2020, 10:17:45 pm</a>
+            <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/07</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "hexo">hexo</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/04/08/%E5%9B%BD%E7%8E%8B/" >
-            
-                <span>国王</span>
-        </a>
-        <div class="abstract-content">
-            题目描述很久很久以前，有个王国。王国里有个国王。这一天，国王在给他的将军们分发奖金。将军们站成一排，依次编号为1～N，N为将军的个数。但是国王发奖的方法很可爱，每次发奖都是给连续的一些将军同样的金币。具体来说，国王共发了M次，其中第i次给Ai到Bi的人每人发了Ci枚金币。现在国王发完了钱，想让你计算最后每位将军分别得到了多少金币输入第一行四个整数N，M，下面M行每行三个整数Ai，Bi和Ci，其定义如上。输出一行N个数，第i个数为将军i最终得到的金币个数。样例输入1233 21 2 22 3 5
-样例输出12 7 5
-对30%的数据有1 ≤ N ≤ 10000, 1 ≤ M ≤ 1000。...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/08</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "瞎搞">瞎搞</a>
-    
-</div>
-            
-        </div>
-    </article>
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2019/03/07/hello-world/" title= "Hello World">
+                    <div class="nextTitle">Hello World</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
+    
+    <!-- gitalk评论 -->
+
+    <!-- utteranc评论 -->
+
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -515,6 +532,24 @@
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述"><span class="toc-number">1.</span> <span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#很久很久以前，有个王国。王国里有个国王。这一天，国王在给他的将军们分发奖金。将军们站成一排，依次编号为1～N，N为将军的个数。但是国王发奖的方法很可爱，每次发奖都是给连续的一些将军同样的金币。具体来说，国王共发了M次，其中第i次给Ai到Bi的人每人发了Ci枚金币。现在国王发完了钱，想让你计算最后每位将军分别得到了多少金币"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">很久很久以前，有个王国。王国里有个国王。这一天，国王在给他的将军们分发奖金。将军们站成一排，依次编号为1～N，N为将军的个数。但是国王发奖的方法很可爱，每次发奖都是给连续的一些将军同样的金币。具体来说，国王共发了M次，其中第i次给Ai到Bi的人每人发了Ci枚金币。现在国王发完了钱，想让你计算最后每位将军分别得到了多少金币</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#输入"><span class="toc-number">1.0.1.</span> <span class="toc-text">输入</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#第一行四个整数N，M，下面M行每行三个整数Ai，Bi和Ci，其定义如上。"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">第一行四个整数N，M，下面M行每行三个整数Ai，Bi和Ci，其定义如上。</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#输出"><span class="toc-number">1.0.2.</span> <span class="toc-text">输出</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#一行N个数，第i个数为将军i最终得到的金币个数。"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">一行N个数，第i个数为将军i最终得到的金币个数。</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#样例输入"><span class="toc-number">1.0.3.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#样例输出"><span class="toc-number">1.0.4.</span> <span class="toc-text">样例输出</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#对30-的数据有1-≤-N-≤-10000-1-≤-M-≤-1000。"><span class="toc-number">1.0.4.1.</span> <span class="toc-text">对30%的数据有1 ≤ N ≤ 10000, 1 ≤ M ≤ 1000。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#对100-的数据有1-≤-N-≤-100000-1-≤-M-≤-100000-1-≤-Ai-≤-Bi-≤-N-1-≤-Ci-≤-500。"><span class="toc-number">1.0.4.2.</span> <span class="toc-text">对100%的数据有1 ≤ N ≤ 100000, 1 ≤ M ≤ 100000, 1 ≤ Ai ≤ Bi ≤ N, 1 ≤ Ci ≤ 500。</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -673,6 +708,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>
