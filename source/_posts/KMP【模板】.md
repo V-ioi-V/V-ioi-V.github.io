@@ -1,6 +1,6 @@
 ---
 title: KMP【模板】
-tags: 字符串
+tags: [字符串,模板]
 category: 算法
 date: 2018-08-01 18:51 
 ---
