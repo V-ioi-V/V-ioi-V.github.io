@@ -359,33 +359,35 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2018/07/25/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C/" >
+        <a class="abstract-title" href = "/2019/10/04/%E5%B9%B3%E9%9D%A2%E6%9C%80%E8%BF%91%E7%82%B9%E5%AF%B9%EF%BC%88%E5%8A%A0%E5%BC%BA%E7%89%88%EF%BC%89/" >
             
-                <span>最大子序和</span>
+                <span>平面最近点对（加强版）</span>
         </a>
         <div class="abstract-content">
              
 
-题目描述输入一个长度为n的整数序列，从中找出一段不超过m的连续子序列，使得整个序列的和最大。
-例如 1，-3,5,1，-2,3
-当m=4时，S=5+1-2+3=7当m=2或m=3时，S=5+1=6
-输入第一行两个数n,m（n,m&lt;=300000）第二行有n个数，要求在n个数找到最大子序和
-输出一个数，数出他们的最大子序和
-样例输入126 41 -3 5 1 -2 3
-样例输出17
-思路一道清新宜人的单调队列模板题。。。 
-代码123456789101112131415161718192021222324252627282930313233#include &lt;bits/s...
+题目描述给定平面上n个点，找出其中的一对点的距离，使得在这n个点的所有点对中，该距离为所有点对中最小的
+输入第一行：n；2≤n≤200000
+接下来n行：每行两个实数：x y，表示一个点的行坐标和列坐标，中间用一个空格隔开。
+输出仅一行，一个实数，表示最短距离，精确到小数点后面4位。
+样例输入123431 11 22 2
+0&lt;=x,y&lt;=10^9
+样例输出11.0000
+思路运用分治思想，对于n个点，可以分成T(n/2)+T(n/2)的规模，分界线是x坐标的中位数，
+假设左边点集合为s1, 右边点集合为s2，那么最小值存在于以下三种情况中。
+
+s1中任意两点距离的最小距...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/07/25</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/04</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "数据结构">数据结构</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
     
 </div>
             
@@ -398,25 +400,35 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2018/07/18/%E3%80%90%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E3%80%91%E5%90%88%E5%B9%B6%E6%9E%9C%E5%AD%90/" >
+        <a class="abstract-title" href = "/2019/10/03/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%9C%80%E5%B0%8F%E5%9C%86%E8%A6%86%E7%9B%96%20/" >
             
-                <span>【单调队列】合并果子</span>
+                <span>【模板】最小圆覆盖</span>
         </a>
         <div class="abstract-content">
              
 
-题目描述在一个果园里，多多已经将所有的果子打了下来，而且按果子的不同种类分成了不同的堆。多多决定把所有的果子合成一堆。  每一次合并，多多可以把两堆果子合并到一起，消耗的体力等于两堆果子的重量之和。可以看出，所有的果子经过n-1次合并之后，就只剩下一堆了。多多在合并果子时总共消耗的体力等于每次合并所耗体力之和。  因为还要花大力气把这些果子搬回家，所以多多在合并果子时要尽可能地节省体力。假定每个果子重量都为1，并且已知果子的种类数和每种果子的数目，你的任务是设计出合并的次序方案，使多多耗费的体力最少，并输出这个最小的体力耗费值。  例如有3种果子，数目依次为1，2，9。可以先将1、...
+题目描述给出N个点，让你画一个最小的包含所有点的圆。
+输入先给出点的个数N,2&lt;=N&lt;=100000，再给出坐标Xi,Yi.(-10000.0&lt;=xi,yi&lt;=10000.0)
+输出输出圆的半径，及圆心的坐标，保留10位小数
+样例输入123456768.0 9.04.0 7.51.0 2.05.1 8.79.0 2.04.5 1.0
+样例输出125.00000000005.0000000000 5.0000000000
+思路随机数处理复杂度为O（n）
+第一个点定为圆心；
+第二个点和第一个点的连线的中点定位圆心，距离为直径；
+第三个点要和前两个点进行三点定圆；...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/07/18</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/03</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "数据结构">数据结构</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "模板">模板</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
     
 </div>
             
@@ -429,26 +441,29 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2018/07/12/%E3%80%90%E6%8E%92%E5%BA%8F%E3%80%91%E7%B4%A7%E6%80%A5%E9%9B%86%E5%90%88/" >
+        <a class="abstract-title" href = "/2019/10/03/%E6%9E%81%E8%A7%92%E6%8E%92%E5%BA%8F%20/" >
             
-                <span>【排序】紧急集合</span>
+                <span>极角排序</span>
         </a>
         <div class="abstract-content">
              
 
-题目描述史上著名的大魔导师列别捷夫曾经说过：“平静的湖面，锻炼不出精悍的水手；安逸的生活打造不出时代的伟人。”这句话用在监狱的狱警身上实在是再恰当不过，由于监狱一千年来从未出过任何差错，因此几乎所有的狱警都或多或少的有些懒散，我们可以将之量化为一个数值即懒散值。所以当典狱长决定集合n个狱警以围捕修罗王和邪狼时，他所花费的体力是可观的。
-典狱长一次可以将两群人集合在一起，所花费的体力是这两堆人的懒散值之和。可以看出，经过n－1次集合，所有的狱警就集合在一起了。例如有3个狱警，懒散值依次为1，2，9。可以先将懒散值为1、2的狱警合并为一群，新群数目为3，耗费体力为3。接着，将新群与懒散...
+题目描述所谓极角，指的就是以x轴正半轴为始边，逆时针转过的角，这个角的范围是[0,2π][0,2π]。
+利用atan2函数atan2(y,x)，表示(x,y)这个点与原点连线，这条线与x轴正半轴的夹角，这里的这个极角的范围是[−π,π][−π,π]的，一二象限为正，三四象限为负。所以我们从小到大排完序后，实际上是第三象限→→第四象限→→第一象限→→第二象限。
+12345678910111213141516struct node &#123;    int x, y;    double angle;    bool operator&lt;(const node &amp;a) c...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/07/12</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/03</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "排序">排序</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "模板">模板</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
     
 </div>
             
@@ -461,25 +476,30 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2018/07/11/Tallest%20Cow(%E7%BA%BF%E6%AE%B5%E6%A0%91%E8%BE%83%E6%98%93%EF%BC%89/" >
+        <a class="abstract-title" href = "/2019/10/02/%E5%9C%88%E5%A5%B6%E7%89%9BFencing%20the%20Cows/" >
             
-                <span>Tallest Cow(线段树较易）</span>
+                <span>圈奶牛Fencing the Cows</span>
         </a>
         <div class="abstract-content">
              
 
-题目描述FJ’s N (1 ≤ N ≤ 10,000) cows conveniently indexed 1..N are standing in a line. Each cow has a positive integer height (which is a bit of secret). You are told only the height H (1 ≤ H ≤ 1,000,000) of the tallest cow along with the index I of that cow.FJ has made a list of R (0 ≤ R ≤ 10,000...
+题目描述农夫约翰想要建造一个围栏用来围住他的奶牛，可是他资金匮乏。他建造的围栏必须包括他的奶牛喜欢吃草的所有地点。对于给出的这些地点的坐标，计算最短的能够围住这些点的围栏的长度。
+输入输入数据的第一行包括一个整数 N。N（0 &lt;= N &lt;= 10,000）表示农夫约翰想要围住的放牧点的数目。接下来 N 行，每行由两个实数组成，Xi 和 Yi,对应平面上的放牧点坐标（-1,000,000 &lt;= Xi,Yi &lt;= 1,000,000）。数字用小数表示。
+输出输出必须包括一个实数，表示必须的围栏的长度。答案保留两位小数。
+样例输入1234544 84 125 9....
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/07/11</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/02</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "数据结构">数据结构</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "模板">模板</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
     
 </div>
             
@@ -492,23 +512,25 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2018/07/10/%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0%E6%8E%92%E5%88%97%E5%9E%8B%E6%9E%9A%E4%B8%BE/" >
+        <a class="abstract-title" href = "/2019/10/02/%E6%9C%80%E5%A4%A7%E7%A9%BA%E5%87%B8%E5%8C%85/" >
             
-                <span>递归实现排列型枚举</span>
+                <span>最大空凸包</span>
         </a>
         <div class="abstract-content">
-            <p>排列组合问题</p>
+            <p>来源于红书</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/07/10</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/02</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "瞎搞">瞎搞</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "模板">模板</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
     
 </div>
             
@@ -521,30 +543,25 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2018/07/10/%E5%B8%B8%E7%94%A8%E6%8E%92%E5%BA%8F%E6%B3%95(%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F%EF%BC%89/" >
+        <a class="abstract-title" href = "/2019/08/30/%E6%9C%80%E5%B0%8F%E8%B4%B9%E7%94%A8%E6%9C%80%E5%A4%A7%E6%B5%81%EF%BC%88%E6%A8%A1%E6%9D%BF%EF%BC%89/" >
             
-                <span>常用排序法(希尔排序）</span>
+                <span>最小费用最大流（模板）</span>
         </a>
         <div class="abstract-content">
-             
-
-题目描述排序
-输入共两行，第一行为一个数N(N≤100000)，即排队的总人数，第二行为N个数，即每个人的编号，每个编号均不超过int类型的最大值。
-输出输出排好序的数列，每个数以空格间隙。行尾有空格
-样例输入12102 1 76 11 4 765 32 56 3 23
-样例输出11 2 3 4 11 23 32 56 76 765
-代码1234567891011121314151617181920212223242526272829303132333435363738394041#include &lt;bits/stdc++.h&gt;#define ll long longc...
+            <p>感谢phy（好像是）</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/07/10</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/08/30</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "排序">排序</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "模板">模板</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "网络流">网络流</a>
     
 </div>
             
@@ -557,26 +574,25 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2018/07/09/%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6/" >
+        <a class="abstract-title" href = "/2019/08/27/%E4%B8%BB%E5%B8%AD%E6%A0%91%E5%AD%A6%E4%B9%A0/" >
             
-                <span>文件输入输出文件</span>
+                <span>主席树学习</span>
         </a>
         <div class="abstract-content">
-             
-
-12freopen("D:\\可删除\\jfijff\\in.txt","r",stdin);   freopen("D:\\可删除\\jfijff\\out.txt","w",stdout);
-
+            <p>主席树学习笔记</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/07/09</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/08/27</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "常识">常识</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "模板">模板</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "数据机构">数据机构</a>
     
 </div>
             
@@ -589,23 +605,25 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2018/07/08/c++%E8%AE%BE%E7%BD%AE%E8%BE%93%E5%87%BA%E5%B7%A6%E5%8F%B3%E5%AF%B9%E9%BD%90%E3%80%81%E4%BF%9D%E7%95%99%E5%B0%8F%E6%95%B0%E5%92%8C%E5%8F%96%E6%95%B4/" >
+        <a class="abstract-title" href = "/2019/08/02/BM%E9%80%92%E6%8E%A8%E7%AE%97%E6%B3%95%E6%9D%BF%E5%AD%90%EF%BC%88%E7%94%A8%E4%BA%8E%E7%BA%BF%E6%80%A7%E9%80%92%E6%8E%A8%EF%BC%89%20/" >
             
-                <span>c++设置输出左右对齐、保留小数和取整</span>
+                <span>BM递推算法板子（用于线性递推）</span>
         </a>
         <div class="abstract-content">
-            <p>基本常识</p>
+            <p>感谢dls</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/07/08</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/08/02</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "常识">常识</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "数论">数论</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "模板">模板</a>
     
 </div>
             
@@ -618,37 +636,23 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2018/07/08/%E3%80%90%E5%88%86%E6%B2%BB%E3%80%91%E9%80%83%E4%BA%A1/" >
+        <a class="abstract-title" href = "/2019/07/07/%E9%AB%98%E7%B2%BE%E5%BA%A6%E6%A8%A1%E6%9D%BF(2)/" >
             
-                <span>【分治】逃亡</span>
+                <span>高精度模板(2)</span>
         </a>
         <div class="abstract-content">
-             
-
-题目描述
-邪狼紧张地说：“老大，警察快追过来了，我们快逃跑吧！”
-修罗王傲然道：“在我的字典里没有逃跑。。。”
-邪狼内心崇敬地想：“老大实在是太有领袖范了……”
-修罗王接着说：“只有战略转移。”
-邪狼：“……”
-现在，修罗王和邪狼两人需要从A地出发尽快到达B地。出发时A地有一辆可带一人的自动驾驶悬浮车。又知两人步行速度相同。问怎样利用小车才能使两人尽快同时到达B地。
-
-输入有三个int类型整数，分别表示A、B两地的距离，步行速度和车速。
-输出有一个小数位数为2的浮点数，即最短时间。
-样例输入1100 5 10
-样例输出114.00
-思路就是很水的二分，要注意车是自动的会自己回去接人...
+            <p>感谢zdl</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/07/08</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/07</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "分治">分治</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "模板">模板</a>
     
 </div>
             
@@ -661,25 +665,25 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2018/07/07/%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE%E6%B3%95(%E4%BA%8C%E5%88%86%EF%BC%89/" >
+        <a class="abstract-title" href = "/2019/04/27/Game%20of%20Stones/" >
             
-                <span>折半查找法(二分）</span>
+                <span>Game of Stones</span>
         </a>
         <div class="abstract-content">
              
 
-题目描述大魔导师培根曾经说过：“读书使人明智，读诗使人聪慧，演算使人精密，哲理使人深刻，伦理学使人有修养，逻辑修辞使人善辩。”由此可见书籍的重要性是不言而喻的。而与书籍天天打交道的图书管理员，更是夺天地之造化，吸日月之精华的“神之职业”。据史料记载，魔法世界从古至今诞生的众多不平凡的人物中，有不少人都曾经做过“图书管理员”，如道家学派创始人老子，威软公司创始人比耳、少林藏经阁的扫地神僧等等。所以，作为以马虎自负出名的楚继光，在魔法学院的社会实践活动中又怎么会放过这“天将降大任于斯人也”的必经锻炼呢。但想成为一个合格的图书管理员并不容易，他必须能够在一排（10000以内）已按编号大小...
+题目描述Two players, Petyr and Varys, play a game in which players remove stones from N piles in alternating turns. Petyr, in his turn, can remove at most A stones from any pile. Varys, in his turn, can remove at most B stones from any pile. Each player has to remove at least one stone in his turn...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/07/07</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/04/27</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "分治">分治</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "博弈论">博弈论</a>
     
 </div>
             
@@ -689,7 +693,7 @@ height:50vh;
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">NEXT &gt;</a>
+        <a class="extend prev" rel="prev" href="/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">NEXT &gt;</a>
     </nav>
     
 </main>
@@ -1312,9 +1316,490 @@ height:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 34
+        Total : 63
         </div>
         <!-- search  -->
         
@@ -1327,6 +1812,11 @@ height:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/09</span><a class="archive-post-title" href= "/2020/03/09/%E6%A8%A1%E6%9D%BF%E5%A4%A7%20(17th%20copy)/" >ubutun 启动/停止/重启MySQL数据库</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1344,8 +1834,157 @@ height:50vh;
     
         </ul>
     
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/10</span><a class="archive-post-title" href= "/2019/12/10/SPJ%20%E5%86%99%E6%B3%95/" >SPJ 写法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/29</span><a class="archive-post-title" href= "/2019/10/29/Beauty%20Contest%EF%BC%88%E6%B1%82%E5%87%B8%E5%8C%85%E6%9C%80%E5%A4%A7%E7%9B%B4%E5%BE%84%EF%BC%89%20/" >Beauty Contest（求凸包最大直径）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/28</span><a class="archive-post-title" href= "/2019/10/28/Smallest%20Bounding%20Rectangle(%E6%9C%80%E5%B0%8F%E9%9D%A2%E7%A7%AF%E5%A4%96%E6%8E%A5%E7%9F%A9%E5%BD%A2)/" >Smallest Bounding Rectangle(最小面积外接矩形)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/28</span><a class="archive-post-title" href= "/2019/10/28/Triangle%EF%BC%88%E6%B1%82%E5%87%B8%E5%8C%85%E6%9C%80%E5%A4%A7%E5%86%85%E6%8E%A5%E4%B8%89%E8%A7%92%E5%BD%A2%EF%BC%89/" >Triangle（求凸包最大内接三角形）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/25</span><a class="archive-post-title" href= "/2019/10/25/%5BCQOI2006%5D%E5%87%B8%E5%A4%9A%E8%BE%B9%E5%BD%A2%20%20/" >凸多边形</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/10</span><a class="archive-post-title" href= "/2019/10/10/%E7%9E%AD%E6%9C%9B%E5%A1%94%E3%80%90%E5%8D%8A%E5%B9%B3%E9%9D%A2%E4%BA%A4%E3%80%91/" >瞭望塔【半平面交】</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/04</span><a class="archive-post-title" href= "/2019/10/04/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E5%8D%8A%E5%B9%B3%E9%9D%A2%E4%BA%A4/" >【模板】半平面交</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/04</span><a class="archive-post-title" href= "/2019/10/04/%E5%B9%B3%E9%9D%A2%E6%9C%80%E8%BF%91%E7%82%B9%E5%AF%B9%EF%BC%88%E5%8A%A0%E5%BC%BA%E7%89%88%EF%BC%89/" >平面最近点对（加强版）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/03</span><a class="archive-post-title" href= "/2019/10/03/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%9C%80%E5%B0%8F%E5%9C%86%E8%A6%86%E7%9B%96%20/" >【模板】最小圆覆盖</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/03</span><a class="archive-post-title" href= "/2019/10/03/%E6%9E%81%E8%A7%92%E6%8E%92%E5%BA%8F%20/" >极角排序</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/02</span><a class="archive-post-title" href= "/2019/10/02/%E5%9C%88%E5%A5%B6%E7%89%9BFencing%20the%20Cows/" >圈奶牛Fencing the Cows</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/02</span><a class="archive-post-title" href= "/2019/10/02/%E6%9C%80%E5%A4%A7%E7%A9%BA%E5%87%B8%E5%8C%85/" >最大空凸包</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/30</span><a class="archive-post-title" href= "/2019/08/30/%E6%9C%80%E5%B0%8F%E8%B4%B9%E7%94%A8%E6%9C%80%E5%A4%A7%E6%B5%81%EF%BC%88%E6%A8%A1%E6%9D%BF%EF%BC%89/" >最小费用最大流（模板）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/27</span><a class="archive-post-title" href= "/2019/08/27/%E4%B8%BB%E5%B8%AD%E6%A0%91%E5%AD%A6%E4%B9%A0/" >主席树学习</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/02</span><a class="archive-post-title" href= "/2019/08/02/BM%E9%80%92%E6%8E%A8%E7%AE%97%E6%B3%95%E6%9D%BF%E5%AD%90%EF%BC%88%E7%94%A8%E4%BA%8E%E7%BA%BF%E6%80%A7%E9%80%92%E6%8E%A8%EF%BC%89%20/" >BM递推算法板子（用于线性递推）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/07</span><a class="archive-post-title" href= "/2019/07/07/%E9%AB%98%E7%B2%BE%E5%BA%A6%E6%A8%A1%E6%9D%BF(2)/" >高精度模板(2)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/27</span><a class="archive-post-title" href= "/2019/04/27/Game%20of%20Stones/" >Game of Stones</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/2019/04/02/%E9%98%B6%E6%A2%AFNim%E9%97%AE%E9%A2%98%20/" >阶梯Nim问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2019/04/01/SG%E5%87%BD%E6%95%B0/" >SG函数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/27</span><a class="archive-post-title" href= "/2019/03/27/RGB%20Coloring(%E7%BB%84%E5%90%88%E6%95%B0%E6%A8%A1%E6%9D%BF%EF%BC%89/" >RGB Coloring(组合数模板）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/07</span><a class="archive-post-title" href= "/2019/03/07/STL%E7%AE%97%E6%B3%95:next_permutation%E6%B1%82%E5%85%A8%E6%8E%92%E5%88%97%20/" >STL算法:next_permutation求全排列</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/01</span><a class="archive-post-title" href= "/2019/03/01/%E7%BA%BF%E6%AE%B5%E6%A0%91%E6%A8%A1%E6%9D%BF/" >线段树模板</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/24</span><a class="archive-post-title" href= "/2019/01/24/%E7%BD%91%E7%BB%9C%E6%B5%81%E6%A8%A1%E6%9D%BF/" >网络流模板</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/22</span><a class="archive-post-title" href= "/2019/01/22/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E5%AD%A6%E4%B9%A0%E4%BE%8B%E9%A2%98%EF%BC%88Sorting%20It%20All%20Out%EF%BC%89/" >拓扑排序学习例题（Sorting It All Out）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/18</span><a class="archive-post-title" href= "/2019/01/18/%E6%A0%91%E7%9A%84%E5%9F%BA%E7%A1%80%EF%BC%88%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86%EF%BC%89/" >树的基础（图的遍历）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/16</span><a class="archive-post-title" href= "/2019/01/16/%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97/" >括号序列</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/15</span><a class="archive-post-title" href= "/2019/01/15/You%20Like%20Cake(%E8%83%8C%E5%8C%85%E5%AE%B9%E9%87%8F%E8%BF%87%E4%BA%8E%E5%A4%A7%E7%9A%84%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2%E6%B3%95)/" >You Like Cake(背包容量过于大的折半搜索法)</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
     <div class="archive-year"> 2018 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/07</span><a class="archive-post-title" href= "/2018/10/07/Princess%20Principal%EF%BC%88%E6%80%9D%E7%BB%B4%E9%A2%98%EF%BC%89/" >Princess Principal（思维题）</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1514,29 +2153,39 @@ height:50vh;
     
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
+        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
+    
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
         <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
+        <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
+    
+        <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
+    
+        <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
+    
+        <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
+    
         <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
         <span class="sidebar-tag-name" data-tags="图论"><span class="iconfont-archer">&#xe606;</span>图论</span>
     
-        <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
+        <span class="sidebar-tag-name" data-tags="分治"><span class="iconfont-archer">&#xe606;</span>分治</span>
     
         <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
     
-        <span class="sidebar-tag-name" data-tags="分治"><span class="iconfont-archer">&#xe606;</span>分治</span>
-    
-        <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
-    
         <span class="sidebar-tag-name" data-tags="排序"><span class="iconfont-archer">&#xe606;</span>排序</span>
     
-        <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
+        <span class="sidebar-tag-name" data-tags="数据机构"><span class="iconfont-archer">&#xe606;</span>数据机构</span>
     
-        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
+        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
+    
+        <span class="sidebar-tag-name" data-tags="网络流"><span class="iconfont-archer">&#xe606;</span>网络流</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
