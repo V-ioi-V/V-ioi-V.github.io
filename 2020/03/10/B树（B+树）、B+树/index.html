@@ -445,27 +445,27 @@ height:50vh;
 </li>
 </ul>
 <h3 id="B-树的插入操作"><a href="#B-树的插入操作" class="headerlink" title="B+树的插入操作"></a>B+树的插入操作</h3><p>B+树的插入必须保证插入后叶节点中的记录依然排序，同时需要考虑插入B+树的三种情况，每种情况都可能会导致不同的插入算法，如表5-1所示。 </p>
-<p><img src="https://images2015.cnblogs.com/blog/990532/201701/990532-20170117134458755-1356536820.png" alt="img"></p>
+<p><img src="https://i.loli.net/2020/03/10/T4rz2o7Qgu5aVNk.png" alt="1.png"></p>
 <p>我们用实例来分析B+树的插入，我们插入28这个键值，发现当前Leaf Page和Index Page都没有满，我们直接插入就可以了。</p>
-<p><img src="https://images2015.cnblogs.com/blog/990532/201701/990532-20170117134602864-1401463251.png" alt="img"></p>
+<p><img src="https://i.loli.net/2020/03/10/1l76vxQewYhSPg2.png" alt="2.png"></p>
 <p>这次我们再插入一条70这个键值，这时原先的Leaf Page已经满了，但是Index Page还没有满，符合表5-1的第二种情况，这时插入Leaf Page后的情况为50、55、60、65、70。我们根据中间的值60拆分叶节点。</p>
-<p><img src="https://images2015.cnblogs.com/blog/990532/201701/990532-20170117134652286-620013872.png" alt="img"></p>
+<p><img src="https://i.loli.net/2020/03/10/itmFSBUC7ATjJxz.png" alt="4.png"></p>
 <p>因为图片显示的关系，这次我没有能在各叶节点加上双向链表指针。最后我们来插入记录95，这时符合表5-1讨论的第三种情况，即Leaf Page和Index Page都满了，这时需要做两次拆分。</p>
-<p><img src="https://images2015.cnblogs.com/blog/990532/201701/990532-20170117134820692-680638285.png" alt="img"></p>
+<p><img src="https://i.loli.net/2020/03/10/aCx1kRVJYDZsIrz.png" alt="5.png"></p>
 <p>可以看到，不管怎么变化，B+树总是会保持平衡。但是为了保持平衡，对于新插入的键值可能需要做大量的拆分页（split）操作，而B+树主要用于磁盘，因此页的拆分意味着磁盘的操作，应该在可能的情况下尽量减少页的拆分。因此，B+树提供了旋转（rotation）的功能。</p>
 <p><em>旋转发生在Leaf Page已经满了、但是其左右兄弟节点没有满的情况下。</em>这时B+树并不会急于去做拆分页的操作，而是将记录移到所在页的兄弟节点上。通常情况下，左兄弟被首先检查用来做旋转操作，这时我们插入键值70，其实B+树并不会急于去拆分叶节点，而是做旋转50，55旋转。</p>
-<p> <img src="https://images2015.cnblogs.com/blog/990532/201701/990532-20170117135001442-1547516540.png" alt="img"></p>
+<p><img src="https://i.loli.net/2020/03/10/7ZxohQlCzUVacHr.png" alt="6.png"></p>
 <p>可以看到，采用旋转操作使B+树减少了一次页的拆分操作，而这时B+树的高度依然还是2。</p>
 <h3 id="B-树的删除操作"><a href="#B-树的删除操作" class="headerlink" title="B+树的删除操作"></a>B+树的删除操作</h3><p>B+树使用填充因子（fill factor）来控制树的删除变化，50%是填充因子可设的最小值。B+树的删除操作同样必须保证删除后叶节点中的记录依然排序，同插入一样，B+树的删除操作同样需要考虑如表5-2所示的三种情况，与插入不同的是，删除根据填充因子的变化来衡量。 </p>
-<p><img src="https://images2015.cnblogs.com/blog/990532/201701/990532-20170117135329114-221553173.png" alt="img"></p>
+<p><img src="https://i.loli.net/2020/03/10/R3YilsqErS1aMnK.png" alt="7.png"></p>
 <p>首先，删除键值为70的这条记录，该记录符合表5-2讨论的第一种情况，删除后。</p>
-<p><img src="https://images2015.cnblogs.com/blog/990532/201701/990532-20170117135415692-75775186.png" alt="img"></p>
+<p><img src="https://i.loli.net/2020/03/10/MNG54mWaf3gQu7C.png" alt="8.png"></p>
 <p>接着我们删除键值为25的记录，这也是表5-2讨论的第一种情况，但是该值还是Index Page中的值，因此在删除Leaf Page中25的值后，还应将25的右兄弟节点的28更新到Page Index中，最后可得到图。</p>
-<p><img src="https://images2015.cnblogs.com/blog/990532/201701/990532-20170117135518630-1367658523.png" alt="img"></p>
+<p><img src="https://i.loli.net/2020/03/10/OI67SZvkEYFz9J1.png" alt="9.png"></p>
 <font color="red">图片错误，应该为28</font>
 
 <p>最后我们来看删除键值为60的情况，删除Leaf Page中键值为60的记录后，填充因子小于50%，这时需要做合并操作，同样，在删除Index Page中相关记录后需要做Index Page的合并操作，最后得到图。</p>
-<p><img src="https://images2015.cnblogs.com/blog/990532/201701/990532-20170117135548927-1999158500.png" alt="img"></p>
+<p><img src="https://i.loli.net/2020/03/10/zKJRir7qfNPOvGL.png" alt="10.png"></p>
 <p>本文转自《MySQL 技术内幕  InnoDB存储引擎》</p>
 <h1 id="B-树比B树的优势"><a href="#B-树比B树的优势" class="headerlink" title="B+树比B树的优势"></a>B+树比B树的优势</h1><p><img src="https://img-blog.csdn.net/20170328211229032?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzU2NDQyMzQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
 <p><strong>为什么说B+-tree比B 树更适合实际应用中操作系统的文件索引和数据库索引？</strong></p>
@@ -507,7 +507,7 @@ height:50vh;
             <p>Author：<a href="http://occo.ink">occo</a>
             <p>原文链接：<a href="http://occo.ink/2020/03/10/B%E6%A0%91%EF%BC%88B+%E6%A0%91%EF%BC%89%E3%80%81B+%E6%A0%91/">http://occo.ink/2020/03/10/B%E6%A0%91%EF%BC%88B+%E6%A0%91%EF%BC%89%E3%80%81B+%E6%A0%91/</a>
             <p>发表日期：<a href="http://occo.ink/2020/03/10/B%E6%A0%91%EF%BC%88B+%E6%A0%91%EF%BC%89%E3%80%81B+%E6%A0%91/">March 10th 2020, 3:15:42 pm</a>
-            <p>更新日期：<a href="http://occo.ink/2020/03/10/B%E6%A0%91%EF%BC%88B+%E6%A0%91%EF%BC%89%E3%80%81B+%E6%A0%91/">March 10th 2020, 5:12:27 pm</a>
+            <p>更新日期：<a href="http://occo.ink/2020/03/10/B%E6%A0%91%EF%BC%88B+%E6%A0%91%EF%BC%89%E3%80%81B+%E6%A0%91/">March 10th 2020, 5:32:10 pm</a>
             <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -1941,9 +1941,9 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
-        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
-    
         <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
+    
+        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
     
