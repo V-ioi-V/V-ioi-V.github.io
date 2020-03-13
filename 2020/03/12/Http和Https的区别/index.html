@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>Tallest Cow(线段树较易） · occo&#39;s blog</title>
+    <title>Http和Https的区别 · occo&#39;s blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/" >occo&#39;s blog.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Tallest Cow(线段树较易）</a>
+                <a href="#" class="post-name">Http和Https的区别</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Tallest Cow(线段树较易）
+            Http和Https的区别
             <!-- 404 -->
             
         </h1>
@@ -266,18 +266,18 @@ height:50vh;
                 
                     <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "数据结构">数据结构</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">592</span>Reading time: <span class="post-count reading-time">3 min</span></span>
+                        <span>Word count: <span class="post-count word-count">800</span>Reading time: <span class="post-count reading-time">2 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2018/07/11</span>
+                    <span class="post-intro-time">2020/03/12</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -401,18 +401,31 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <font size=5> 
-
-<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>FJ’s N (1 ≤ N ≤ 10,000) cows conveniently indexed 1..N are standing in a line. Each cow has a positive integer height (which is a bit of secret). You are told only the height H (1 ≤ H ≤ 1,000,000) of the tallest cow along with the index I of that cow.<br>FJ has made a list of R (0 ≤ R ≤ 10,000) lines of the form “cow 17 sees cow 34”. This means that cow 34 is at least as tall as cow 17, and that every cow between 17 and 34 has a height that is strictly smaller than that of cow 17.<br>For each cow from 1..N, determine its maximum possible height, such that all of the information given is still correct. It is guaranteed that it is possible to satisfy all the constraints.</p>
-<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><ul>
-<li>Line 1: Four space-separated integers: N, I, H and R </li>
-<li>Lines 2..R+1: Two distinct space-separated integers A and B (1 ≤ A, B ≤ N), indicating that cow A can see cow B.</li>
+        <p>HTTP（超文本传输协议）是应用层上的一种客户端/服务端模型的通信协议,它由请求和响应构成，且是无状态的。</p>
+<ul>
+<li>协议</li>
 </ul>
-<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>Lines 1..N: Line i contains the maximum possible height of cow i.</p>
-<h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">9 3 5 5</span><br><span class="line">1 3</span><br><span class="line">5 3</span><br><span class="line">4 3</span><br><span class="line">3 7</span><br><span class="line">9 8</span><br></pre></td></tr></table></figure>
-<h2 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">5</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>区间覆盖并且不会有相交的区间。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> M=<span class="number">10100</span>;</span><br><span class="line"><span class="keyword">int</span> le[M],ri[M];</span><br><span class="line">ll N,H,I;</span><br><span class="line">ll s[M&lt;&lt;<span class="number">2</span>],ans[M];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> l,r;</span><br><span class="line">    <span class="keyword">int</span> sum;</span><br><span class="line">&#125; t[M&lt;&lt;<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> rs)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(s[rs])</span><br><span class="line">    &#123;</span><br><span class="line">        s[rs*<span class="number">2</span>]+=s[rs];</span><br><span class="line">        s[rs*<span class="number">2</span>+<span class="number">1</span>]+=s[rs];</span><br><span class="line">        s[rs]=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> rs)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    t[rs].l=l;</span><br><span class="line">    t[rs].r=r;</span><br><span class="line">    s[rs]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(l==r)</span><br><span class="line">    &#123;</span><br><span class="line">        t[rs].sum=H;</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">    build(l,mid,rs*<span class="number">2</span>);</span><br><span class="line">    build(mid+<span class="number">1</span>,r,rs*<span class="number">2</span>+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> rs)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(t[rs].l&gt;=l&amp;&amp;t[rs].r&lt;=r)</span><br><span class="line">    &#123;</span><br><span class="line">        s[rs]+=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    pushdown(rs);</span><br><span class="line">    <span class="keyword">int</span> mid=(t[rs].l+t[rs].r)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(l&lt;=mid)</span><br><span class="line">        update(l,r,rs*<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">if</span>(r&gt;mid)</span><br><span class="line">        update(l,r,rs*<span class="number">2</span>+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> k,<span class="keyword">int</span> rs)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(t[rs].l==t[rs].r)</span><br><span class="line">        <span class="keyword">return</span> t[rs].sum-=s[rs];</span><br><span class="line">    pushdown(rs);</span><br><span class="line">    <span class="keyword">int</span> mid=(t[rs].l+t[rs].r)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(k&lt;=mid)</span><br><span class="line">        <span class="keyword">return</span> query(k,rs*<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> query(k,rs*<span class="number">2</span>+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">int</span> i,j,k=<span class="number">0</span>,m,n;</span><br><span class="line">    <span class="keyword">int</span> x,y,T,flag;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;N&gt;&gt;I&gt;&gt;H&gt;&gt;T;</span><br><span class="line">    build(<span class="number">1</span>,N,<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">while</span>(T--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;x&gt;&gt;y;</span><br><span class="line">        <span class="keyword">if</span>(x&gt;y)</span><br><span class="line">            swap(x,y);</span><br><span class="line">        flag=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;k; i++)</span><br><span class="line">            <span class="keyword">if</span>(x==le[i]&amp;&amp;y==ri[i])</span><br><span class="line">            &#123;</span><br><span class="line">                flag=<span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag==<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        le[k]=x,ri[k++]=y;</span><br><span class="line">        <span class="keyword">if</span>(y-x==<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        update(x+<span class="number">1</span>,y<span class="number">-1</span>,<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=N; i++)</span><br><span class="line">        ans[i]=query(i,<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=N; i++)</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;ans[i]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>协议规定了通信双方必须遵循的数据传输格式，这样通信双方按照约定的格式才能准确的通信。</p>
+<ul>
+<li>无状态</li>
+</ul>
+<p>无状态是指两次连接通信之间是没有任何关系的，每次都是一个新的连接，服务端不会记录前后的请求信息。</p>
+<a id="more"></a>
+<h1 id="Http与Https的区别"><a href="#Http与Https的区别" class="headerlink" title="Http与Https的区别"></a>Http与Https的区别</h1><p>1、https协议需要到CA  （Certificate Authority，证书颁发机构）申请证书，一般免费证书较少，因而需要一定费用。(原来网易官网是http，而网易邮箱是https。)</p>
+<p>2、http是超文本传输协议，信息是明文传输，https则是具有安全性的SSL加密传输协议。</p>
+<p>3、http和https使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。</p>
+<p>4、http的连接很简单，是无状态的。Https协议是由SSL+Http协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。(无状态的意思是其数据包的发送、传输和接收都是相互独立的。无连接的意思是指通信双方都不长久的维持对方的任何信息。) </p>
+<h1 id="HTTP的缺点"><a href="#HTTP的缺点" class="headerlink" title="HTTP的缺点"></a>HTTP的缺点</h1><p>1、通信使用明文不加密，内容可能被窃听<br>2、不验证通信方身份，可能遭到伪装<br>3、无法验证报文完整性，可能被篡改</p>
+<h1 id="Https的优点"><a href="#Https的优点" class="headerlink" title="Https的优点"></a>Https的优点</h1><p>1、使用Https协议可认证用户和服务器，确保数据发送到正确的客户机和服务器。</p>
+<p>2、Https协议是由SSL+Http协议构建的可进行加密传输、身份认证的网络协议，要比http协议安全，可防止数据在传输过程中不被窃取、修改，确保数据的完整性。</p>
+<p>3、Https是现行架构下最安全的解决方案，虽然不是绝对安全，但它大幅增加了中间人攻击的成本。</p>
+<h1 id="Https的缺点（对比优点）"><a href="#Https的缺点（对比优点）" class="headerlink" title="Https的缺点（对比优点）"></a>Https的缺点（对比优点）</h1><p>1、Https协议握手阶段比较费时，会使页面的加载时间延长近。</p>
+<p>2、Https连接缓存不如Http高效，会增加数据开销，甚至已有的安全措施也会因此而受到影响。</p>
+<p>3、Https协议的安全是有范围的，在黑客攻击、拒绝服务攻击和服务器劫持等方面几乎起不到什么作用。</p>
+<p>4、SSL证书通常需要绑定IP，不能在同一IP上绑定多个域名，IPv4资源不可能支撑这个消耗。</p>
+<p>5、成本增加。部署 Https后，因为 Https协议的工作要增加额外的计算资源消耗，例如 SSL 协议加密算法和 SSL 交互次数将占用一定的计算资源和服务器成本。</p>
+<p>6、Https协议的加密范围也比较有限。最关键的，SSL证书的信用链体系并不安全，特别是在某些国家可以控制CA根证书的情况下，中间人攻击一样可行。</p>
+<p><del>待补充</del></p>
 
     </article>
     <!-- license  -->
@@ -421,17 +434,12 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2018/07/12/%E3%80%90%E6%8E%92%E5%BA%8F%E3%80%91%E7%B4%A7%E6%80%A5%E9%9B%86%E5%90%88/" title= "【排序】紧急集合">
-                    <div class="nextTitle">【排序】紧急集合</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2018/07/10/%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0%E6%8E%92%E5%88%97%E5%9E%8B%E6%9E%9A%E4%B8%BE/" title= "递归实现排列型枚举">
-                    <div class="prevTitle">递归实现排列型枚举</div>
+                <a href= "/2020/03/12/%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5www.baidu.com%E5%90%8E%E6%89%A7%E8%A1%8C%E7%9A%84%E5%85%A8%E9%83%A8%E8%BF%87%E7%A8%8B/" title= "在浏览器中输入www.baidu.com后执行的全部过程">
+                    <div class="prevTitle">在浏览器中输入www.baidu.com后执行的全部过程</div>
                 </a>
             
         </li>
@@ -554,7 +562,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目描述"><span class="toc-number">1.</span> <span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#输入"><span class="toc-number">1.1.</span> <span class="toc-text">输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出"><span class="toc-number">1.2.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例输入"><span class="toc-number">1.3.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例输出"><span class="toc-number">1.4.</span> <span class="toc-text">样例输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#思路"><span class="toc-number">1.5.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">1.6.</span> <span class="toc-text">代码</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Http与Https的区别"><span class="toc-number">1.</span> <span class="toc-text">Http与Https的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP的缺点"><span class="toc-number">2.</span> <span class="toc-text">HTTP的缺点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Https的优点"><span class="toc-number">3.</span> <span class="toc-text">Https的优点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Https的缺点（对比优点）"><span class="toc-number">4.</span> <span class="toc-text">Https的缺点（对比优点）</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
