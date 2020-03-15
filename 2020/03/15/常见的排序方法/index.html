@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">172</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                        <span>Word count: <span class="post-count word-count">893</span>Reading time: <span class="post-count reading-time">3 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -411,6 +411,38 @@ height:50vh;
 </ul>
 <p><strong>额外空间复杂度</strong>：O(1)</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertsort</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = l + <span class="number">1</span>; i &lt;= r; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (a[i] &lt; a[i - <span class="number">1</span>]) &#123;</span><br><span class="line">            <span class="keyword">int</span> j;</span><br><span class="line">            <span class="keyword">int</span> tmp = a[i];</span><br><span class="line">            <span class="keyword">for</span> (j = i - <span class="number">1</span>; j &gt;= l; j--) &#123;</span><br><span class="line">                <span class="keyword">if</span> (tmp &gt;= a[j]) <span class="keyword">break</span>;</span><br><span class="line">                swap(a[j], a[j + <span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            swap(tmp, a[j + <span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h1><h2 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h2><p>​      堆是具有以下性质的完全二叉树：每个结点的值都大于或等于其左右孩子结点的值，称为大顶堆；或者每个结点的值都小于或等于其左右孩子结点的值，称为小顶堆。</p>
+<ul>
+<li>每次插入的时候插到序列的尾端，然后往上找自己的父亲结点，如果自己比父亲结点小就交换一下值，然后父亲节点继续往上找，看自己的父亲结点是否比自己小。</li>
+<li>弹出的时候把最后一个节点和第一个节点交换，然后把最后一个结点去掉，然后第一个结点往下交换，找到两个儿子结点最小的那个和自己比较，自己比儿子结点大的话就继续往下找，直到平衡位置</li>
+</ul>
+<h2 id="复杂度-1"><a href="#复杂度-1" class="headerlink" title="复杂度"></a>复杂度</h2><p><strong>时间复杂度</strong>：非常稳定</p>
+<ul>
+<li><strong>最佳</strong>情况：T(n) = O(nlog n)</li>
+<li><strong>最差</strong>情况：T(n) = O(nlog n)</li>
+<li><strong>平均</strong>情况：T(n) = O(nlog n)</li>
+</ul>
+<p><strong>空间复杂度</strong>：O(1)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;<span class="comment">//插入</span></span><br><span class="line">    a.push_back(x);</span><br><span class="line">    <span class="keyword">int</span> now = a.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">while</span> (now &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> val = now &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (a[now - <span class="number">1</span>] &lt; a[val - <span class="number">1</span>])swap(a[now - <span class="number">1</span>], a[val - <span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">        now = val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;<span class="comment">//弹出</span></span><br><span class="line">    swap(a[<span class="number">0</span>], a[a.<span class="built_in">size</span>() - <span class="number">1</span>]);</span><br><span class="line">    a.pop_back();</span><br><span class="line">    <span class="keyword">int</span> now = <span class="number">1</span>, cnt = a.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">while</span> ((now &lt;&lt; <span class="number">1</span>) &lt;= cnt) &#123;</span><br><span class="line">        <span class="keyword">int</span> val = now &lt;&lt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (val + <span class="number">1</span> &lt;= cnt &amp;&amp; a[val - <span class="number">1</span>] &gt; a[val])val++;</span><br><span class="line">        <span class="keyword">if</span> (a[val - <span class="number">1</span>] &lt; a[now - <span class="number">1</span>]) swap(a[val - <span class="number">1</span>], a[now - <span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">        now = val;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h1><h2 id="描述-2"><a href="#描述-2" class="headerlink" title="描述"></a>描述</h2><p>将最大的冒泡到结尾，比较相邻的元素，每次循环结尾一定是最大的元素，因此每次第二层循环可以少一次。</p>
+<h2 id="复杂度-2"><a href="#复杂度-2" class="headerlink" title="复杂度"></a>复杂度</h2><p><strong>时间复杂度</strong>：</p>
+<ul>
+<li><strong>最佳</strong>情况：T(n) = O(n)</li>
+<li><strong>最差</strong>情况：T(n) = O(n^2)</li>
+<li><strong>平均</strong>情况：T(n) = O(n^2)</li>
+</ul>
+<p><strong>空间复杂度</strong>：O(1)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubblesort</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = l; i &lt;= r; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = l; j &lt;= (r - l); j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (a[j] &gt; a[j + <span class="number">1</span>])</span><br><span class="line">                swap(a[j], a[j + <span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h1><h2 id="描述-3"><a href="#描述-3" class="headerlink" title="描述"></a>描述</h2><p>​        表现最<strong>稳定</strong>的排序算法之一，因为无论什么数据进去都是<strong>O(n^2)的时间复杂度，所以用到它的时候，数据规模越小越好。唯一的好处可能就是不占用额外的内存空间</strong>了吧。</p>
+<p>​     每次找出现存无序序列中最小的数的下标，找完后与第一个数交换，然后继续找直到遍历完。</p>
+<h2 id="复杂度-3"><a href="#复杂度-3" class="headerlink" title="复杂度"></a>复杂度</h2><p><strong>时间复杂度</strong>：</p>
+<ul>
+<li><strong>最佳</strong>情况：T(n) = O(n2)</li>
+<li><strong>最差</strong>情况：T(n) = O(n2)</li>
+<li><strong>平均</strong>情况：T(n) = O(n2)</li>
+</ul>
+<p><strong>空间复杂度</strong>：O(1)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">selectsort</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;<span class="comment">//插入</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = l; i &lt;= r; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> cnt = i;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt;= r; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (a[j] &lt; a[cnt])</span><br><span class="line">                cnt = j;</span><br><span class="line">        &#125;</span><br><span class="line">        swap(a[cnt], a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </article>
     <!-- license  -->
@@ -552,7 +584,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#插入排序"><span class="toc-number">1.</span> <span class="toc-text">插入排序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述"><span class="toc-number">1.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复杂度"><span class="toc-number">1.2.</span> <span class="toc-text">复杂度</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#插入排序"><span class="toc-number">1.</span> <span class="toc-text">插入排序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述"><span class="toc-number">1.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复杂度"><span class="toc-number">1.2.</span> <span class="toc-text">复杂度</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#堆排序"><span class="toc-number">2.</span> <span class="toc-text">堆排序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述-1"><span class="toc-number">2.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复杂度-1"><span class="toc-number">2.2.</span> <span class="toc-text">复杂度</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#冒泡排序"><span class="toc-number">3.</span> <span class="toc-text">冒泡排序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述-2"><span class="toc-number">3.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复杂度-2"><span class="toc-number">3.2.</span> <span class="toc-text">复杂度</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#选择排序"><span class="toc-number">4.</span> <span class="toc-text">选择排序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述-3"><span class="toc-number">4.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复杂度-3"><span class="toc-number">4.2.</span> <span class="toc-text">复杂度</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -2097,9 +2129,9 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
-        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
-    
         <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
+    
+        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
     
@@ -2107,9 +2139,9 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
-        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
-    
         <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
+    
+        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
         <span class="sidebar-tag-name" data-tags="计算机网络原理"><span class="iconfont-archer">&#xe606;</span>计算机网络原理</span>
     
