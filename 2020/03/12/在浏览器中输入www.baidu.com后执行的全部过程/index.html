@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">1.8k</span>Reading time: <span class="post-count reading-time">6 min</span></span>
+                        <span>Word count: <span class="post-count word-count">2.1k</span>Reading time: <span class="post-count reading-time">7 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -413,9 +413,17 @@ height:50vh;
 <p>​    请求行：GET/POST…，目标URL，HTTP 版本</p>
 <p>​    请求头：客户端的Cookie和User-Agent就放在这里</p>
 <p>​    请求体：比如客户端POST的数据就放在这里(对比:GET的数据放在请求行的URL里).</p>
-<h3 id="2、传输层TCP分割成报文段并加端口"><a href="#2、传输层TCP分割成报文段并加端口" class="headerlink" title="2、传输层TCP分割成报文段并加端口"></a>2、传输层TCP分割成报文段并加端口</h3><p>​    在传输层（TCP 协议）把从应用层处收到的数据（HTTP 请求报文）进行分割（报文段），并在各个报文上打上标记序号及端口号后转发给网络层。</p>
+<h3 id="2、传输层TCP分割成报文段并加端口"><a href="#2、传输层TCP分割成报文段并加端口" class="headerlink" title="2、传输层TCP分割成报文段并加端口"></a>2、传输层TCP分割成报文段并加端口</h3><p>​     TCP 的主要任务是运输它的上层协议的业务逻辑内容,不过可是不很容易,它至少得解决:</p>
+<ul>
+<li>后发送的比之前发送的还早到了怎么办?</li>
+<li>对方是否掉线了?还传吗?</li>
+<li>网络堵塞的时候付款信息是不是得比其它信息先走?</li>
+<li>TCP 要保证,要么到不了,要么就得正确地到</li>
+</ul>
+<p>​    在传输层（TCP 协议）把从应用层处收到的数据（HTTP 请求报文）进行分割（报文段），并在各个报文上打上标记序号及端口号后转发给网络层。</p>
 <p>​    TCP协议为传输报文提供可靠的字节流服务。它为了方便传输，将大块的数据分割成以报文段为单位的数据包进行管理，并为它们编号，方便服务器接收时能准确地还原报文信息。把HTTP会话请求分成报文段，添加源和目的端口，如服务器使用80端口监听客户端的请求，客户端由系统随机选择一个端口如5000，与服务器进行交换，服务器把相应的请求返回给客户端的5000端口。然后使用网络层的IP地址查找目的端。TCP协议通过“三次握手”等方法保证传输的安全可靠。</p>
 <h3 id="3、网络层查找MAC地址（路由器）（IP、ICMP、ARP、RARP）（IP-to-MAC）"><a href="#3、网络层查找MAC地址（路由器）（IP、ICMP、ARP、RARP）（IP-to-MAC）" class="headerlink" title="3、网络层查找MAC地址（路由器）（IP、ICMP、ARP、RARP）（IP to MAC）"></a>3、网络层查找MAC地址（路由器）（IP、ICMP、ARP、RARP）（IP to MAC）</h3><p>​    IP协议的作用是把TCP分割好的各种数据包加上IP首部后传送给接收方。而要保证确实能传到接收方还需要接收方的MAC地址，也就是物理地址。IP地址和MAC地址是一一对应的关系。ARP协议可以将IP地址解析成对应的MAC地址。当通信的双方不在同一个局域网时，需要多次中转才能到达最终的目标，在中转的过程中需要通过下一个中转站（交换机）的MAC地址来搜索下一个中转目标。</p>
+<p>​    我们知道有个 MAC 地址,那为何还要发明个 ip 地址呢?要是只有 MAC 地址,我让百度下线就太容易了,把我自己的 MAC 地址改成百度的 MAC 地址,我们一冲突你们就都不能访问了.要想让 Internet 能够正常互相访问需要有个权威的人去维护 ip 地址,不能每个人都能生成使用,实际上确实有那么个机构负责分配 ip 地址,你只能在你的网络或者系统上作威作福,你可影响不到整个 Internet,正应了协议的名称.</p>
 <h3 id="4、网络接口层"><a href="#4、网络接口层" class="headerlink" title="4、网络接口层"></a>4、网络接口层</h3><p>​    在找到对方的MAC地址后，就将数据发送到数据链路层传输，由数据链路层的网桥、交换机根据mac地址进行端口转发，再由物理层的中继器、集线器进行信号传输放大等。这时，客户端发送请求的阶段结束</p>
 <h3 id="5、服务器接收数据"><a href="#5、服务器接收数据" class="headerlink" title="5、服务器接收数据"></a>5、服务器接收数据</h3><p>​    接收端的服务器在链路层接收到数据包，再层层向上直到应用层。这过程中包括在传输层通过TCP协议将分段的数据包重新组成原来的HTTP请求报文。</p>
 <h3 id="6、服务器响应请求，返回HTTP响应"><a href="#6、服务器响应请求，返回HTTP响应" class="headerlink" title="6、服务器响应请求，返回HTTP响应"></a>6、服务器响应请求，返回HTTP响应</h3><p>​    服务接收到客户端发送的HTTP请求后，查找客户端请求的资源，并返回响应报文，响应报文中包括一个重要的信息——状态码。状态码由三位数字组成，其中比较常见的是200 OK表示请求成功。301表示永久重定向，即请求的资源已经永久转移到新的位置。在返回301状态码的同时，响应报文也会附带重定向的url，客户端接收到后将http请求的url做相应的改变再重新发送。404 not found 表示客户端请求的资源找不到。</p>
@@ -1582,9 +1590,46 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 74
+        Total : 77
         </div>
         <!-- search  -->
         
@@ -1654,6 +1699,11 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">10/04</span><a class="archive-post-title" href= "/2019/10/04/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E5%8D%8A%E5%B9%B3%E9%9D%A2%E4%BA%A4/" >【模板】半平面交</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">08/02</span><a class="archive-post-title" href= "/2019/08/02/BM%E9%80%92%E6%8E%A8%E7%AE%97%E6%B3%95%E6%9D%BF%E5%AD%90%EF%BC%88%E7%94%A8%E4%BA%8E%E7%BA%BF%E6%80%A7%E9%80%92%E6%8E%A8%EF%BC%89%20/" >BM递推算法板子（用于线性递推）</a>
         </li>
     
@@ -1719,6 +1769,11 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">07/18</span><a class="archive-post-title" href= "/2018/07/18/%E3%80%90%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E3%80%91%E5%90%88%E5%B9%B6%E6%9E%9C%E5%AD%90/" >【单调队列】合并果子</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/12</span><a class="archive-post-title" href= "/2018/07/12/%E3%80%90%E6%8E%92%E5%BA%8F%E3%80%91%E7%B4%A7%E6%80%A5%E9%9B%86%E5%90%88/" >【排序】紧急集合</a>
         </li>
     
     
@@ -1839,6 +1894,11 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">03/13</span><a class="archive-post-title" href= "/2020/03/13/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" >快速排序</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">03/12</span><a class="archive-post-title" href= "/2020/03/12/%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5www.baidu.com%E5%90%8E%E6%89%A7%E8%A1%8C%E7%9A%84%E5%85%A8%E9%83%A8%E8%BF%87%E7%A8%8B/" >在浏览器中输入www.baidu.com后执行的全部过程</a>
         </li>
     
@@ -1884,11 +1944,6 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">10/10</span><a class="archive-post-title" href= "/2019/10/10/%E7%9E%AD%E6%9C%9B%E5%A1%94%E3%80%90%E5%8D%8A%E5%B9%B3%E9%9D%A2%E4%BA%A4%E3%80%91/" >瞭望塔【半平面交】</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/04</span><a class="archive-post-title" href= "/2019/10/04/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E5%8D%8A%E5%B9%B3%E9%9D%A2%E4%BA%A4/" >【模板】半平面交</a>
         </li>
     
     
@@ -1997,11 +2052,6 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/12</span><a class="archive-post-title" href= "/2018/07/12/%E3%80%90%E6%8E%92%E5%BA%8F%E3%80%91%E7%B4%A7%E6%80%A5%E9%9B%86%E5%90%88/" >【排序】紧急集合</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">07/10</span><a class="archive-post-title" href= "/2018/07/10/%E5%B8%B8%E7%94%A8%E6%8E%92%E5%BA%8F%E6%B3%95(%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F%EF%BC%89/" >常用排序法(希尔排序）</a>
         </li>
     
@@ -2032,12 +2082,49 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/11</span><a class="archive-post-title" href= "/2018/04/11/%E9%AB%98%E7%B2%BE%E5%BA%A6%E6%A8%A1%E6%9D%BF/" >高精度模板</a>
+            <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2018/04/08/%E5%9B%BD%E7%8E%8B/" >国王</a>
         </li>
     
     
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
         <li class="archive-post-item">
-            <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2018/04/08/%E5%9B%BD%E7%8E%8B/" >国王</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/15/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95/" >常见的排序方法</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/15/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" >归并排序</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/11</span><a class="archive-post-title" href= "/2018/04/11/%E9%AB%98%E7%B2%BE%E5%BA%A6%E6%A8%A1%E6%9D%BF/" >高精度模板</a>
         </li>
     
     </div>
@@ -2047,11 +2134,11 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
-        <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
-    
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
         <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
+    
+        <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
     
         <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
