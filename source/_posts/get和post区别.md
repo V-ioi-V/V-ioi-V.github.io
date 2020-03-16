@@ -1,6 +1,6 @@
 ---
 title: get和post区别
-tags: 计算机网络基础
+tags: 计算机网络原理
 category: CS大学生必备
 ---
 
