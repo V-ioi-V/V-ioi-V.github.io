@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">308</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                        <span>Word count: <span class="post-count word-count">1.4k</span>Reading time: <span class="post-count reading-time">6 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -418,7 +418,72 @@ height:50vh;
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1,<span class="keyword">typename</span> T2&gt;<span class="comment">//两个数可能是不同类型，所以声明两个模板名</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(T1 a,T2 b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> c=a+b;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;(a+b)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>模板函数依赖于模板参数的返回值</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1,<span class="keyword">typename</span> T2&gt;<span class="comment">//两个数可能是不同类型，所以声明两个模板名</span></span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">add</span><span class="params">(T1 a,T2 b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h2 id="nullptr"><a href="#nullptr" class="headerlink" title="nullptr"></a>nullptr</h2><p>NULL是一个宏定义，在c和c++中的定义不同，c中NULL为（void<em>)0,而c++中NULL为整数0，所以在c++中int </em>p=NULL; 实际表示将指针P的值赋为0，而c++中当一个指针的值为0时，认为指针为空指针。所以引入nullptr，专门用来区分0、NULL。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"1"</span>;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">char</span> *p)</span></span>&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"2"</span>;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">fun(<span class="literal">NULL</span>);  <span class="comment">//输出1，c++中NULL为整数0</span></span><br><span class="line">fun(<span class="literal">nullptr</span>);<span class="comment">//输出2，nullptr 为空指针常量。是指针类型</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><p>结合auto的用法</p>
+<ul>
+<li>string</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> str = <span class="string">"this is a string"</span>;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">auto</span> ch : str)</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; ch &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>vector</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">auto</span> i : v)</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>二维vector</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; v = &#123;&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;, &#123;<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;, &#123;<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>&#125;&#125;;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">auto</span> i : v)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> j : i)</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; j &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>数组</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ary[] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">auto</span> i : ary)</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>map</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; m = &#123;&#123;<span class="string">'a'</span>, <span class="number">1</span>&#125;, &#123;<span class="string">'b'</span>, <span class="number">2</span>&#125;, &#123;<span class="string">'c'</span>, <span class="number">3</span>&#125;&#125;;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">auto</span> t : m)</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; t.first &lt;&lt; <span class="string">' '</span> &lt;&lt; t.second &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+<p>等价于</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="built_in">map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; :: iterator itr = m.<span class="built_in">begin</span>(); itr != m.<span class="built_in">end</span>(); itr++)</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; itr -&gt;first &lt;&lt; <span class="string">' '</span> &lt;&lt; itr -&gt;second &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="STL容器"><a href="#STL容器" class="headerlink" title="STL容器"></a>STL容器</h1><h2 id="array"><a href="#array" class="headerlink" title="array"></a>array</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">array</span>&lt;<span class="keyword">int</span>,5&gt; a;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">      a[i]=i;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> i:a)</span><br><span class="line">      <span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="string">' '</span>;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;a.<span class="built_in">size</span>()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="comment">// 0 1 2 3 4 5</span></span><br></pre></td></tr></table></figure>
+<h2 id="forward-list"><a href="#forward-list" class="headerlink" title="forward_list"></a>forward_list</h2><ul>
+<li>list是双向链表结构，它的数据由若干个节点构成，每一个节点都包括一个信息块（即实际存储的数据）、一个前驱指针和一个后驱指针。</li>
+<li>forward_list是一个单向链表，只支持单向顺序访问，在链表的任何位置进行插入/删除操作都非常快。</li>
+<li>forward_list和list的区别在于前者是单向链表，在内部元素只有一个链接到下一个元素，它的迭代器是前向有效的；后者是双向链表，在内部存在两个链接，一个链接指向下一个元素，另一个链接指向前面一个元素，它的迭代器是双向有效地，在存储方面list会消耗更多的空间，插入和删除元素会稍微消耗更多的时间。forward_list的迭代器是虽然是单向的，但是它比list效率高。</li>
+<li>Forward_list与其他标准容器(array、deque、vector)相比较，在容器的任何位置插入、提取、移动元素的效率更高。但是根据位置直接访问元素的操作其他几个容器效率更高。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">forward_list&lt;<span class="keyword">int</span>&gt; f;</span><br><span class="line">f.push_front(<span class="number">2</span>);</span><br><span class="line">f.push_front(<span class="number">3</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> i:f)</span><br><span class="line">   <span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="string">' '</span>;</span><br><span class="line"><span class="comment">//3 2</span></span><br></pre></td></tr></table></figure>
+<h2 id="unordered-map"><a href="#unordered-map" class="headerlink" title="unordered_map"></a>unordered_map</h2><p>与map的使用方法一样，但是map的底层是红黑树，而unoredred_map的底层是用哈希表实现的，速度会比map更快，但是占用的内存更多。而且在存储中是无序的</p>
+<ul>
+<li>map</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="built_in">string</span>&gt; mp1=&#123;&#123;<span class="number">3</span>,<span class="string">"a"</span>&#125;,&#123;<span class="number">1</span>,<span class="string">"b"</span>&#125;,&#123;<span class="number">2</span>,<span class="string">"c"</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> i:mp1)</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;i.first&lt;&lt;<span class="string">' '</span>&lt;&lt;i.second&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1 b</span></span><br><span class="line"><span class="comment">2 c</span></span><br><span class="line"><span class="comment">3 a</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>unordered_map</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>,<span class="built_in">string</span>&gt; mp2=&#123;&#123;<span class="number">3</span>,<span class="string">"a"</span>&#125;,&#123;<span class="number">1</span>,<span class="string">"b"</span>&#125;,&#123;<span class="number">2</span>,<span class="string">"c"</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> i:mp2)</span><br><span class="line">       <span class="built_in">cout</span>&lt;&lt;i.first&lt;&lt;<span class="string">' '</span>&lt;&lt;i.second&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">2 c</span></span><br><span class="line"><span class="comment">1 b</span></span><br><span class="line"><span class="comment">3 a</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><ul>
+<li>set基于红黑树实现，红黑树具有<strong>自动排序的功能</strong>，因此map内部所有的数据，在任何时候，都是有序的。</li>
+<li>unordered_set,基于哈希表，数据插入和查找的时间复杂度很低，几乎是常数时间，而代价是消耗比较多的内存，<strong>无自动排序功能</strong>。底层实现上，使用一个下标范围比较大的数组来存储元素，形成很多的桶，利用<code>hash</code>函数对<code>key</code>进行映射到不同区域进行保存。</li>
+</ul>
+<p><strong>以下情况使用set：</strong></p>
+<ol>
+<li>我们需要有序数据（不同的元素）。</li>
+<li>我们必须打印/访问数据（按排序顺序）。</li>
+<li>我们需要元素的前身/后继者。</li>
+</ol>
+<p><strong>以下情况下使用unordered_set：</strong></p>
+<ol>
+<li>我们需要保留一组不同的元素，不需要排序。</li>
+<li>我们需要单个元素访问，即没有遍历。</li>
+</ol>
+<ul>
+<li>set</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; s1;</span><br><span class="line">s1.insert(<span class="number">3</span>),s1.insert(<span class="number">1</span>),s1.insert(<span class="number">2</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> i:s1)</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1</span></span><br><span class="line"><span class="comment">2</span></span><br><span class="line"><span class="comment">3</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>unordered_set</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">unordered_set</span>&lt;<span class="keyword">int</span>&gt; s2;</span><br><span class="line">s2.insert(<span class="number">3</span>),s2.insert(<span class="number">1</span>),s2.insert(<span class="number">2</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> i:s2)</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">2</span></span><br><span class="line"><span class="comment">3</span></span><br><span class="line"><span class="comment">1</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h1 id="智能指针内存管理"><a href="#智能指针内存管理" class="headerlink" title="智能指针内存管理"></a>智能指针内存管理</h1>
     </article>
     <!-- license  -->
     
@@ -554,7 +619,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关键字"><span class="toc-number">1.</span> <span class="toc-text">关键字</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#auto"><span class="toc-number">1.1.</span> <span class="toc-text">auto</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用法"><span class="toc-number">1.1.1.</span> <span class="toc-text">用法</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关键字"><span class="toc-number">1.</span> <span class="toc-text">关键字</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#auto"><span class="toc-number">1.1.</span> <span class="toc-text">auto</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用法"><span class="toc-number">1.1.1.</span> <span class="toc-text">用法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nullptr"><span class="toc-number">1.2.</span> <span class="toc-text">nullptr</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#for循环"><span class="toc-number">1.3.</span> <span class="toc-text">for循环</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#STL容器"><span class="toc-number">2.</span> <span class="toc-text">STL容器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#array"><span class="toc-number">2.1.</span> <span class="toc-text">array</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#forward-list"><span class="toc-number">2.2.</span> <span class="toc-text">forward_list</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#unordered-map"><span class="toc-number">2.3.</span> <span class="toc-text">unordered_map</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#set"><span class="toc-number">2.4.</span> <span class="toc-text">set</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#智能指针内存管理"><span class="toc-number">3.</span> <span class="toc-text">智能指针内存管理</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -567,6 +632,8 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
     
     
     
@@ -1682,21 +1749,6 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/04</span><a class="archive-post-title" href= "/2019/10/04/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E5%8D%8A%E5%B9%B3%E9%9D%A2%E4%BA%A4/" >【模板】半平面交</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/03</span><a class="archive-post-title" href= "/2019/10/03/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%9C%80%E5%B0%8F%E5%9C%86%E8%A6%86%E7%9B%96%20/" >【模板】最小圆覆盖</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/27</span><a class="archive-post-title" href= "/2019/08/27/%E4%B8%BB%E5%B8%AD%E6%A0%91%E5%AD%A6%E4%B9%A0/" >主席树学习</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">08/02</span><a class="archive-post-title" href= "/2019/08/02/BM%E9%80%92%E6%8E%A8%E7%AE%97%E6%B3%95%E6%9D%BF%E5%AD%90%EF%BC%88%E7%94%A8%E4%BA%8E%E7%BA%BF%E6%80%A7%E9%80%92%E6%8E%A8%EF%BC%89%20/" >BM递推算法板子（用于线性递推）</a>
         </li>
     
@@ -1741,12 +1793,27 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">09/21</span><a class="archive-post-title" href= "/2018/09/21/%5BZJOI2007%5D%E6%A3%8B%E7%9B%98%E5%88%B6%E4%BD%9C%EF%BC%88%E6%82%AC%E7%BA%BF%E6%B3%95%EF%BC%89/" >棋盘制作（悬线法）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">08/01</span><a class="archive-post-title" href= "/2018/08/01/KMP%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91/" >KMP【模板】</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">07/29</span><a class="archive-post-title" href= "/2018/07/29/Sandglass/" >Sandglass</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/25</span><a class="archive-post-title" href= "/2018/07/25/Ultra-QuickSort(%E8%A3%B8%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E6%B1%82%E9%80%86%E5%BA%8F%E6%95%B0)/" >Ultra-QuickSort(裸树状数组求逆序数)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/18</span><a class="archive-post-title" href= "/2018/07/18/%E3%80%90%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E3%80%91%E5%90%88%E5%B9%B6%E6%9E%9C%E5%AD%90/" >【单调队列】合并果子</a>
         </li>
     
     
@@ -1761,55 +1828,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/04</span><a class="archive-post-title" href= "/2018/07/04/64%E4%BD%8D%E6%95%B4%E6%95%B0%E4%B9%98%E6%B3%95/" >64位整数乘法</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/05</span><a class="archive-post-title" href= "/2018/06/05/Persona5/" >Persona5</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2018/04/10/Colorful%20Slimes/" >Colorful Slimes</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/12/Http%E5%92%8CHttps%E7%9A%84%E5%8C%BA%E5%88%AB/" >Http和Https的区别</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2018 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">09/21</span><a class="archive-post-title" href= "/2018/09/21/%5BZJOI2007%5D%E6%A3%8B%E7%9B%98%E5%88%B6%E4%BD%9C%EF%BC%88%E6%82%AC%E7%BA%BF%E6%B3%95%EF%BC%89/" >棋盘制作（悬线法）</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/25</span><a class="archive-post-title" href= "/2018/07/25/Ultra-QuickSort(%E8%A3%B8%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E6%B1%82%E9%80%86%E5%BA%8F%E6%95%B0)/" >Ultra-QuickSort(裸树状数组求逆序数)</a>
+            <span class="archive-post-date">07/08</span><a class="archive-post-title" href= "/2018/07/08/c++%E8%AE%BE%E7%BD%AE%E8%BE%93%E5%87%BA%E5%B7%A6%E5%8F%B3%E5%AF%B9%E9%BD%90%E3%80%81%E4%BF%9D%E7%95%99%E5%B0%8F%E6%95%B0%E5%92%8C%E5%8F%96%E6%95%B4/" >c++设置输出左右对齐、保留小数和取整</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">07/08</span><a class="archive-post-title" href= "/2018/07/08/%E3%80%90%E5%88%86%E6%B2%BB%E3%80%91%E9%80%83%E4%BA%A1/" >【分治】逃亡</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/04</span><a class="archive-post-title" href= "/2018/07/04/64%E4%BD%8D%E6%95%B4%E6%95%B0%E4%B9%98%E6%B3%95/" >64位整数乘法</a>
         </li>
     
     
@@ -1820,6 +1849,11 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">06/07</span><a class="archive-post-title" href= "/2018/06/07/cin.tie%E4%B8%8Esync_with_stdio%E5%8A%A0%E9%80%9F%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" >cin.tie与sync_with_stdio加速输入输出</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/05</span><a class="archive-post-title" href= "/2018/06/05/Persona5/" >Persona5</a>
         </li>
     
     
@@ -1844,6 +1878,11 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2018/04/10/Colorful%20Slimes/" >Colorful Slimes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">04/09</span><a class="archive-post-title" href= "/2018/04/09/Going%20Dutch%20BAPC/" >Going Dutch BAPC（ 状态转移DP）</a>
         </li>
     
@@ -1858,7 +1897,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/10/c++-map%E4%B8%8Eunordered_map%E5%8C%BA%E5%88%AB%E5%8F%8A%E4%BD%BF%E7%94%A8/" >c++ map与unordered_map区别及使用</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/12/Http%E5%92%8CHttps%E7%9A%84%E5%8C%BA%E5%88%AB/" >Http和Https的区别</a>
         </li>
     
     
@@ -1867,12 +1906,12 @@ top:50vh;
     
         </ul>
     
-    <div class="archive-year"> 2019 </div>
+    <div class="archive-year"> Invalid date </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/02</span><a class="archive-post-title" href= "/2019/10/02/%E5%9C%88%E5%A5%B6%E7%89%9BFencing%20the%20Cows/" >圈奶牛Fencing the Cows</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/10/c++-map%E4%B8%8Eunordered_map%E5%8C%BA%E5%88%AB%E5%8F%8A%E4%BD%BF%E7%94%A8/" >c++ map与unordered_map区别及使用</a>
         </li>
     
     
@@ -1954,12 +1993,27 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">10/04</span><a class="archive-post-title" href= "/2019/10/04/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E5%8D%8A%E5%B9%B3%E9%9D%A2%E4%BA%A4/" >【模板】半平面交</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">10/04</span><a class="archive-post-title" href= "/2019/10/04/%E5%B9%B3%E9%9D%A2%E6%9C%80%E8%BF%91%E7%82%B9%E5%AF%B9%EF%BC%88%E5%8A%A0%E5%BC%BA%E7%89%88%EF%BC%89/" >平面最近点对（加强版）</a>
         </li>
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">10/03</span><a class="archive-post-title" href= "/2019/10/03/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%9C%80%E5%B0%8F%E5%9C%86%E8%A6%86%E7%9B%96%20/" >【模板】最小圆覆盖</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">10/03</span><a class="archive-post-title" href= "/2019/10/03/%E6%9E%81%E8%A7%92%E6%8E%92%E5%BA%8F%20/" >极角排序</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/02</span><a class="archive-post-title" href= "/2019/10/02/%E5%9C%88%E5%A5%B6%E7%89%9BFencing%20the%20Cows/" >圈奶牛Fencing the Cows</a>
         </li>
     
     
@@ -1970,6 +2024,11 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">08/30</span><a class="archive-post-title" href= "/2019/08/30/%E6%9C%80%E5%B0%8F%E8%B4%B9%E7%94%A8%E6%9C%80%E5%A4%A7%E6%B5%81%EF%BC%88%E6%A8%A1%E6%9D%BF%EF%BC%89/" >最小费用最大流（模板）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/27</span><a class="archive-post-title" href= "/2019/08/27/%E4%B8%BB%E5%B8%AD%E6%A0%91%E5%AD%A6%E4%B9%A0/" >主席树学习</a>
         </li>
     
     
@@ -1990,6 +2049,11 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">01/24</span><a class="archive-post-title" href= "/2019/01/24/%E7%BD%91%E7%BB%9C%E6%B5%81%E6%A8%A1%E6%9D%BF/" >网络流模板</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/22</span><a class="archive-post-title" href= "/2019/01/22/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E5%AD%A6%E4%B9%A0%E4%BE%8B%E9%A2%98%EF%BC%88Sorting%20It%20All%20Out%EF%BC%89/" >拓扑排序学习例题（Sorting It All Out）</a>
         </li>
     
     
@@ -2018,7 +2082,52 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">09/04</span><a class="archive-post-title" href= "/2018/09/04/%E6%B1%82%E5%A4%9A%E8%BE%B9%E5%BD%A2%EF%BC%88%E8%A6%86%E7%9B%96%EF%BC%89%E9%9D%A2%E7%A7%AF%EF%BC%88%E6%A8%A1%E6%9D%BF%EF%BC%89/" >求多边形（覆盖）面积（模板）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/04</span><a class="archive-post-title" href= "/2018/08/04/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2%E9%97%AE%E9%A2%98(LCS)/" >最长公共子串问题(LCS)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/26</span><a class="archive-post-title" href= "/2018/07/26/%E6%B1%82%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8F(%E5%A4%A7)%E5%BE%AA%E7%8E%AF%E8%8A%82(KMP)/" >求一个字符串的最小(大)循环节(KMP)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/25</span><a class="archive-post-title" href= "/2018/07/25/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C/" >最大子序和</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/10</span><a class="archive-post-title" href= "/2018/07/10/%E5%B8%B8%E7%94%A8%E6%8E%92%E5%BA%8F%E6%B3%95(%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F%EF%BC%89/" >常用排序法(希尔排序）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/10</span><a class="archive-post-title" href= "/2018/07/10/%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0%E6%8E%92%E5%88%97%E5%9E%8B%E6%9E%9A%E4%B8%BE/" >递归实现排列型枚举</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/09</span><a class="archive-post-title" href= "/2018/07/09/%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6/" >文件输入输出文件</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">07/07</span><a class="archive-post-title" href= "/2018/07/07/%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE%E6%B3%95(%E4%BA%8C%E5%88%86%EF%BC%89/" >折半查找法(二分）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/06</span><a class="archive-post-title" href= "/2018/07/06/%E9%80%92%E5%BD%92%EF%BC%8F%E9%9D%9E%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0%E7%BB%84%E5%90%88%E5%9E%8B%E6%9E%9A%E4%B8%BE(%E5%85%A8%E6%8E%92%E5%88%97%E9%97%AE%E9%A2%98%EF%BC%89/" >递归／非递归实现组合型枚举(全排列问题）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/05</span><a class="archive-post-title" href= "/2018/07/05/%E7%BB%84%E5%90%88%E9%97%AE%E9%A2%98/" >组合问题</a>
         </li>
     
     
@@ -2060,77 +2169,8 @@ top:50vh;
     
         </ul>
     
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/22</span><a class="archive-post-title" href= "/2019/01/22/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E5%AD%A6%E4%B9%A0%E4%BE%8B%E9%A2%98%EF%BC%88Sorting%20It%20All%20Out%EF%BC%89/" >拓扑排序学习例题（Sorting It All Out）</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
     <div class="archive-year"> 2018 </div>
     <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">09/04</span><a class="archive-post-title" href= "/2018/09/04/%E6%B1%82%E5%A4%9A%E8%BE%B9%E5%BD%A2%EF%BC%88%E8%A6%86%E7%9B%96%EF%BC%89%E9%9D%A2%E7%A7%AF%EF%BC%88%E6%A8%A1%E6%9D%BF%EF%BC%89/" >求多边形（覆盖）面积（模板）</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/04</span><a class="archive-post-title" href= "/2018/08/04/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2%E9%97%AE%E9%A2%98(LCS)/" >最长公共子串问题(LCS)</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/26</span><a class="archive-post-title" href= "/2018/07/26/%E6%B1%82%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8F(%E5%A4%A7)%E5%BE%AA%E7%8E%AF%E8%8A%82(KMP)/" >求一个字符串的最小(大)循环节(KMP)</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/25</span><a class="archive-post-title" href= "/2018/07/25/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C/" >最大子序和</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/18</span><a class="archive-post-title" href= "/2018/07/18/%E3%80%90%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E3%80%91%E5%90%88%E5%B9%B6%E6%9E%9C%E5%AD%90/" >【单调队列】合并果子</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/10</span><a class="archive-post-title" href= "/2018/07/10/%E5%B8%B8%E7%94%A8%E6%8E%92%E5%BA%8F%E6%B3%95(%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F%EF%BC%89/" >常用排序法(希尔排序）</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/10</span><a class="archive-post-title" href= "/2018/07/10/%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0%E6%8E%92%E5%88%97%E5%9E%8B%E6%9E%9A%E4%B8%BE/" >递归实现排列型枚举</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/09</span><a class="archive-post-title" href= "/2018/07/09/%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6/" >文件输入输出文件</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/08</span><a class="archive-post-title" href= "/2018/07/08/c++%E8%AE%BE%E7%BD%AE%E8%BE%93%E5%87%BA%E5%B7%A6%E5%8F%B3%E5%AF%B9%E9%BD%90%E3%80%81%E4%BF%9D%E7%95%99%E5%B0%8F%E6%95%B0%E5%92%8C%E5%8F%96%E6%95%B4/" >c++设置输出左右对齐、保留小数和取整</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/06</span><a class="archive-post-title" href= "/2018/07/06/%E9%80%92%E5%BD%92%EF%BC%8F%E9%9D%9E%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0%E7%BB%84%E5%90%88%E5%9E%8B%E6%9E%9A%E4%B8%BE(%E5%85%A8%E6%8E%92%E5%88%97%E9%97%AE%E9%A2%98%EF%BC%89/" >递归／非递归实现组合型枚举(全排列问题）</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/05</span><a class="archive-post-title" href= "/2018/07/05/%E7%BB%84%E5%90%88%E9%97%AE%E9%A2%98/" >组合问题</a>
-        </li>
     
     
         <li class="archive-post-item">
@@ -2142,39 +2182,39 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
+        <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
+    
+        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
+    
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
+    
+        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     
         <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
-        <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
-    
-        <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
-    
         <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
-        <span class="sidebar-tag-name" data-tags="计算机网络原理"><span class="iconfont-archer">&#xe606;</span>计算机网络原理</span>
+        <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
         <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
         <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
     
-        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
-    
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
-        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
+        <span class="sidebar-tag-name" data-tags="计算机网络原理"><span class="iconfont-archer">&#xe606;</span>计算机网络原理</span>
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
     
+        <span class="sidebar-tag-name" data-tags="图论"><span class="iconfont-archer">&#xe606;</span>图论</span>
+    
         <span class="sidebar-tag-name" data-tags="分治"><span class="iconfont-archer">&#xe606;</span>分治</span>
     
-        <span class="sidebar-tag-name" data-tags="图论"><span class="iconfont-archer">&#xe606;</span>图论</span>
+        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
     
         <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
     
         <span class="sidebar-tag-name" data-tags="排序"><span class="iconfont-archer">&#xe606;</span>排序</span>
-    
-        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
     
         <span class="sidebar-tag-name" data-tags="网络流"><span class="iconfont-archer">&#xe606;</span>网络流</span>
     
@@ -2215,11 +2255,11 @@ jsonContent:
     
         <span class="sidebar-category-name" data-categories="算法"><span class="iconfont-archer">&#xe60a;</span>算法</span>
     
+        <span class="sidebar-category-name" data-categories="总结"><span class="iconfont-archer">&#xe60a;</span>总结</span>
+    
         <span class="sidebar-category-name" data-categories="算法短板"><span class="iconfont-archer">&#xe60a;</span>算法短板</span>
     
         <span class="sidebar-category-name" data-categories="CS大学生必备"><span class="iconfont-archer">&#xe60a;</span>CS大学生必备</span>
-    
-        <span class="sidebar-category-name" data-categories="总结"><span class="iconfont-archer">&#xe60a;</span>总结</span>
     
         <span class="sidebar-category-name" data-categories="工程"><span class="iconfont-archer">&#xe60a;</span>工程</span>
     
