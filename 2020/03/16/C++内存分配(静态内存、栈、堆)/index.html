@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>occo&#39;s blog</title>
+    <title>C++内存分配(静态内存、栈、堆) · occo&#39;s blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -203,12 +203,23 @@
 <meta name="generator" content="Hexo 4.2.0"></head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >occo&#39;s blog.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">C++内存分配(静态内存、栈、堆)</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>occo's blog.</a>
 </header>
@@ -220,24 +231,74 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            C++内存分配(静态内存、栈、堆)
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "C++">C++</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">375</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/03/16</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -338,353 +399,97 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/07/05/%E7%BB%84%E5%90%88%E9%97%AE%E9%A2%98/" >
-            
-                <span>组合问题</span>
-        </a>
-        <div class="abstract-content">
-             
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>内存分为三种：静态内存、栈内存、堆内存。</p>
+<a id="more"></a>
+<font size=4>
 
-题目描述从 1~n 这 n 个整数中随机选出 m 个，输出所有可能的选择方案。n&gt;0, 0&lt;=m&lt;=n, n+(n-m)&lt;=25。 
-输入一个整数n。
-输出按照从小到大的顺序输出所有方案，每行1个。
-首先，同一行内的数升序排列，相邻两个数用一个空格隔开。其次，对于两个不同的行，对应下标的数一一比较，字典序较小的排在前面（例如1 3 9 12排在1 3 10 11前面）。
-样例输入15 3
-样例输出123456789101 2 31 2 41 2 51 3 41 3 51 4 52 3 42 3 52 4 53 4 5
-m=0的时候一定要特判，不然必WA；
-代...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/07/05</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "瞎搞">瞎搞</a>
-    
-</div>
-            
-        </div>
+<h2 id="静态内存"><a href="#静态内存" class="headerlink" title="静态内存"></a>静态内存</h2><p><strong>保存的对象：</strong></p>
+<p>1.局部static对象</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> a;    <span class="comment">//局部static对象</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.类static数据成员</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">class <span class="title">Function</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span>;    <span class="comment">//类中static函数c</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> i_func;    <span class="comment">//类中static变量</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>3.全局变量</p>
+<p><strong>生命周期：</strong></p>
+<ul>
+<li>从被定义开始，一直存在于程序的整个生命周期中。</li>
+</ul>
+<h2 id="栈内存"><a href="#栈内存" class="headerlink" title="栈内存"></a>栈内存</h2><p><strong>保存的对象：</strong></p>
+<ol>
+<li>定义在函数内的非static对象</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i_func;    <span class="comment">//定义在函数内的非static对象</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>生命周期：</strong></p>
+<ul>
+<li>仅在其定义的程序块运行时才存在。</li>
+</ul>
+<h2 id="堆（动态内存）"><a href="#堆（动态内存）" class="headerlink" title="堆（动态内存）"></a>堆（动态内存）</h2><p><strong>保存的对象：</strong></p>
+<ol>
+<li>动态分配的对象（程序运行时分配的对象）</li>
+</ol>
+<p><strong>生命周期：</strong></p>
+<ul>
+<li>由我们手动分配和摧毁</li>
+</ul>
+<p><strong>使用动态内存的原因：</strong></p>
+<ol>
+<li>程序不知道自己需要使用多少对象</li>
+<li>程序不知道所需对象的准确类型</li>
+<li>程序需要在多个对象间共享数据</li>
+</ol>
+<p><strong>动态内存分配方式：</strong></p>
+<ol>
+<li>运算符：new</li>
+<li>语法：<code>Type *pointer = new Type;</code></li>
+<li>返回：分配失败则返回空指针</li>
+</ol>
+<p><strong>动态内存摧毁方式：</strong></p>
+<ol>
+<li>运算符：delete</li>
+<li>语法：<code>delete pointer;</code></li>
+</ol>
+<p><strong>初始化动态分配对象：</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *pi = <span class="keyword">new</span> <span class="keyword">int</span>(<span class="number">10</span>);    		    <span class="comment">//动态分配一个int对象，初始值为10</span></span><br><span class="line"><span class="built_in">string</span> *ps = <span class="keyword">new</span> <span class="built_in">string</span>(<span class="number">2</span>, <span class="string">'9'</span>);    <span class="comment">//动态分配一个string对象，初始值为"99"</span></span><br><span class="line"><span class="keyword">int</span> *pa = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>]();              <span class="comment">//动态分配一个int数组，大小为10，初始值为0</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>转自<a href="https://blog.csdn.net/weixin_41316331/article/details/89033197" target="_blank" rel="noopener">https://blog.csdn.net/weixin_41316331/article/details/89033197</a></li>
+</ul>
+
     </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/07/04/64%E4%BD%8D%E6%95%B4%E6%95%B0%E4%B9%98%E6%B3%95/" >
-            
-                <span>64位整数乘法</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述求 a 乘 b 对 p 取模的值，其中 1≤a,b,p≤10^18。
-输入第一行a，第二行b，第三行p。
-输出一个整数，表示a*b mod p的值。
-样例输入123239
-样例输出16
-思路1a×b mod c=a×b-[a×b/c]×c([x]表示x下取整)
-代码12345678910111213141516171819#include &lt;bits/stdc++.h&gt;using namespace std;#define ll long longll fun(ll a,ll b,ll c)&#123;    ll cnt=(long double) a*b/c...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/07/04</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "数论">数论</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/07/04/a%5Eb(%E5%BF%AB%E9%80%9F%E5%B9%82%EF%BC%89/" >
-            
-                <span>a^b(快速幂)</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述求 a 的 b 次方对 p 取模的值，其中 1≤a,b,p≤1e9
-输入三个用空格隔开的整数a,b和p。
-输出一个整数，表示a^b mod p的值。
-样例输入12 3 9
-样例输出18
-代码12345678910111213ll ksm(ll a, ll b, ll p) &#123;    ll ans = 1;    while (b) &#123;        if (b % 2) &#123;            ans *= a;            ans %= p;        &#125;        a *= a;        a %= p; ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/07/04</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "数论">数论</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/06/07/cin.tie%E4%B8%8Esync_with_stdio%E5%8A%A0%E9%80%9F%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" >
-            
-                <span>cin.tie与sync_with_stdio加速输入输出</span>
-        </a>
-        <div class="abstract-content">
-             
-
-我是怎么在不知道这一对函数的情况下活到今天的，以前碰到cin TLE的时候总是傻乎乎地改成scanf，甚至还相信过C++在IO方面效率低下的鬼话，殊不知这只是C++为了兼容C而采取的保守措施。
-tietie是将两个stream绑定的函数，空参数的话返回当前的输出流指针。
-12345678910111213141516171819202122#include &lt;iostream&gt;#include &lt;fstream&gt; ///////////////////////////SubMain//////////////////////////////////int m...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/06/07</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "常识">常识</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/06/05/Persona5/" >
-            
-                <span>Persona5</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述Persona5 is a famous video game.In the game, you are going to build relationship with your friends.You have N friends and each friends have his upper bound of relationship with you. Let’s consider the ith friend has the upper bound U[i]. At the beginning, the relationship with others are z...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/06/05</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "数论">数论</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/05/07/ACM%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%B1%B1%E4%B8%9C%E7%9C%81%E7%AC%AC%E4%B9%9D%E5%B1%8AACM%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B/" >
-            
-                <span>ACM入门——山东省第九届ACM大学生程序设计竞赛</span>
-        </a>
-        <div class="abstract-content">
-             
-
-
-第一次看到ACM是军训完了看官方群看到的，因为自己对编程比较感兴趣，也对这个算法竞赛感到好奇，想享受一下高中解数学题般的快感，于是我就加群了，在群里我遇到了张老师，于是开始了我的知码开门刷题之旅，期间我还问了问学长啥是ACM，学长推荐我去知乎上看，但知乎上的评价褒贬不一，于是我也没有自己妄下定论，刷题的时候真的是对AC的那种满足感深有体会，。
-一步一步刷题，一步一步走来，一年一度的新生赛来了，真的是紧张刺激，一开始自己在金牌区，然后眼睁睁的看着自己慢慢掉出金牌区掉，最终银牌第二，真的好气，就差一道题（其实就是自己水平太低）。
-
-来到寒假集训，说实话，对那些高级的算法比较期待，但是...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/07</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "ACM">ACM</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/04/21/Boxes%EF%BC%88%E6%95%B0%E5%AD%A6%E9%A2%98%EF%BC%89/" >
-            
-                <span>Boxes（数学题）</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述There are N boxes arranged in a circle. The i-th box contains Ai stones.
-Determine whether it is possible to remove all the stones from the boxes by repeatedly performing the following operation:
-Select one box. Let the box be the i-th box. Then, for each j from 1 through N, remove exactly...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/21</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "数论">数论</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/04/21/Column%20Addition/" >
-            
-                <span>Column Addition</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述A multi-digit column addition is a formula on adding two integers written like this:
-A multi-digit column addition is written on the blackboard, but the sum is not necessarily correct. We can erase any number of the columns so that the addition becomes correct. For example, in the followin...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/21</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "DP">DP</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/04/12/Tree%20Restoring/" >
-            
-                <span>Tree Restoring</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述Aoki loves numerical sequences and trees.
-One day, Takahashi gave him an integer sequence of length N, a1,a2,…,aN, which made him want to construct a tree.
-Aoki wants to construct a tree with N vertices numbered 1 through N, such that for each i=1,2,…,N, the distance between vertex i and t...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/12</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "图论">图论</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/04/11/%E9%AB%98%E7%B2%BE%E5%BA%A6%E6%A8%A1%E6%9D%BF/" >
-            
-                <span>高精度模板</span>
-        </a>
-        <div class="abstract-content">
-            <font size=5> 
-
-<p>高精度</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/11</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "模板">模板</a>
-    
-</div>
-            
-        </div>
-    </article>
+    <!-- license  -->
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2020/03/16/C++11-%E6%96%B0%E7%89%B9%E6%80%A7/" title= "C++11 新特性">
+                    <div class="prevTitle">C++11 新特性</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
-    <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/archives/2018/page/2/">&lt; PREV</a><a class="page-number" href="/archives/2018/">1</a><a class="page-number" href="/archives/2018/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/2018/page/4/">4</a><a class="extend next" rel="next" href="/archives/2018/page/4/">NEXT &gt;</a>
-    </nav>
     
+    <!-- gitalk评论 -->
+
+    <!-- utteranc评论 -->
+
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -769,6 +574,24 @@ Aoki wants to construct a tree with N vertices numbered 1 through N, such that f
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#静态内存"><span class="toc-number">1.</span> <span class="toc-text">静态内存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#栈内存"><span class="toc-number">2.</span> <span class="toc-text">栈内存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆（动态内存）"><span class="toc-number">3.</span> <span class="toc-text">堆（动态内存）</span></a></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -2457,6 +2280,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>
