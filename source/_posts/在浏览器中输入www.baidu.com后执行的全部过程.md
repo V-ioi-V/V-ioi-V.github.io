@@ -4,8 +4,6 @@ tags: 计算机网络原理
 category: CS大学生必备
 ---
 
-![img](https://img-blog.csdn.net/20180926102540697?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NDI4MjAx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
-
 ## 从系统网络的角度分析输入www.baidu.com后的过程：
 
 - 客户端浏览器通过DNS解析到www.baidu.com的IP地址a，通过这个IP地址找到客户端到服务器的路径。客户端浏览器发起一个HTTP会话到a，然后通过TCP进行封装数据包，输入到网络层。
