@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>occo&#39;s blog</title>
+    <title>最长回文子串(马拉车) · occo&#39;s blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -203,12 +203,23 @@
 <meta name="generator" content="Hexo 4.2.0"></head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >occo&#39;s blog.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">最长回文子串(马拉车)</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>occo's blog.</a>
 </header>
@@ -220,24 +231,76 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            最长回文子串(马拉车)
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "DP">DP</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "字符串">字符串</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">2k</span>Reading time: <span class="post-count reading-time">8 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/03/18</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -338,114 +401,82 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/04/10/Colorful%20Slimes/" >
-            
-                <span>Colorful Slimes</span>
-        </a>
-        <div class="abstract-content">
-             
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;babad&quot;</span><br><span class="line">输出: &quot;bab&quot;</span><br></pre></td></tr></table></figure>
+<p>注意: “aba” 也是一个有效答案。<br><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;cbbd&quot;</span><br><span class="line">输出: &quot;bb&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="DP"><a href="#DP" class="headerlink" title="DP"></a>DP</h2><p>直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2),枚举中心往两边找复杂度也是O（n^2）</p>
+<p><strong>枚举:</strong>在求解过程中，基数的回文子串与偶数的回文子串是不一样的。比如最长回文子串为aba，对称中心就是b，如果最长回文子串为abba，则对称中心应该为两个b之间，为了解决这个问题，可以在每个字符两边加上一个符号，具体什么符号（是字符串里面的符号也行）对结果没有影响，比如加上“#”，则上述的两个序列变成了#a#b#a#和#a#b#b#a#，求出的长度分别为6和9，再除以2就可以得到最后的结果3和4。</p>
+<p> <strong>DP:</strong>对于字符串s，假设dp[i,j]=1表示s[i…j]是回文子串，那个必定存在dp[i+1,j-1]=1。这样最长回文子串就能分解成一系列子问题，可以利用动态规划求解了。</p>
+<ul>
+<li>dp[i][j]=d[i+1][j-1],s[i]=s[j]</li>
+<li>dp[i][j]=0,s[i]!=s[j]</li>
+</ul>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> dp[<span class="number">1010</span>][<span class="number">1010</span>];</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = s.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span> (len == <span class="number">0</span>)<span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">if</span> (len == <span class="number">1</span>)<span class="keyword">return</span> s;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">1</span>, st = <span class="number">0</span>;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i++) &#123;<span class="comment">//初始化单个字符或者两个字符的情况</span></span><br><span class="line">            dp[i][i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (s[i] == s[i - <span class="number">1</span>]) &#123;</span><br><span class="line">                dp[i - <span class="number">1</span>][i] = <span class="number">1</span>;</span><br><span class="line">                ans = <span class="number">2</span>;</span><br><span class="line">                st = i - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> l = <span class="number">3</span>; l &lt;= len; l++) &#123;<span class="comment">//枚举子串的长度</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i + l - <span class="number">1</span> &lt; len; i++) &#123;<span class="comment">//枚举子串的起点</span></span><br><span class="line">                <span class="keyword">int</span> j = i + l - <span class="number">1</span>;<span class="comment">//终点</span></span><br><span class="line">                <span class="keyword">if</span> (s[i] == s[j] &amp;&amp; dp[i + <span class="number">1</span>][j - <span class="number">1</span>] == <span class="number">1</span>) &#123;</span><br><span class="line">                    dp[i][j] = <span class="number">1</span>;</span><br><span class="line">                    st = i;</span><br><span class="line">                    ans = l;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.substr(st, ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Manacher（马拉车）"><a href="#Manacher（马拉车）" class="headerlink" title="Manacher（马拉车）"></a>Manacher（马拉车）</h2><p>作者：windliang<br>链接：<a href="https://www.zhihu.com/question/37289584/answer/465656849" target="_blank" rel="noopener">https://www.zhihu.com/question/37289584/answer/465656849</a><br>来源：知乎</p>
+<p>首先我们解决下奇数和偶数的问题，在每个字符间插入”#”，并且为了使得扩展的过程中，到边界后自动结束，在两端分别插入 “^” 和 “$”，两个不可能在字符串中出现的字符，这样中心扩展的时候，判断两端字符是否相等的时候，如果到了边界就一定会不相等，从而出了循环。经过处理，字符串的长度永远都是奇数了。</p>
+<p><img src="https://pic4.zhimg.com/50/v2-8c613143224234c971d9b5353a3f05aa_hd.jpg" alt="img"><img src="https://pic4.zhimg.com/80/v2-8c613143224234c971d9b5353a3f05aa_720w.jpg" alt="img"></p>
+<p>首先我们用一个数组 P 保存从中心扩展的最大个数，而它刚好也是去掉 “#” 的原字符串的总长度。例如下图中下标是 6 的地方。可以看到 P[ 6 ] 等于 5，所以它是从左边扩展 5 个字符，相应的右边也是扩展 5 个字符，也就是 “#c#b#c#b#c#”。而去掉 # 恢复到原来的字符串，变成 “cbcbc”，它的长度刚好也就是 5。</p>
+<p><img src="https://pic4.zhimg.com/50/v2-d570f7a9e732d577d556b0e6cff1d263_hd.jpg" alt="img"><img src="https://pic4.zhimg.com/80/v2-d570f7a9e732d577d556b0e6cff1d263_720w.jpg" alt="img"></p>
+<h2 id="求原字符串下标"><a href="#求原字符串下标" class="headerlink" title="求原字符串下标"></a>求原字符串下标</h2><p>用 P 的下标 i 减去 P [ i ]，再除以 2 ，就是原字符串的开头下标了。</p>
+<p>例如我们找到 P[ i ] 的最大值为 5 ，也就是回文串的最大长度是 5 ，对应的下标是 6 ，所以原字符串的开头下标是 （6 - 5 ）/ 2 = 0 。所以我们只需要返回原字符串的第 0 到 第 （5 - 1）位就可以了。</p>
+<h2 id="求每个-P-i"><a href="#求每个-P-i" class="headerlink" title="求每个 P [ i ]"></a>求每个 P [ i ]</h2><p>接下来是算法的关键了，它充分利用了回文串的对称性。</p>
+<p>我们用 C 表示回文串的中心，用 R 表示回文串的右边半径。所以 R = C + P[ i ] 。C 和 R 所对应的回文串是当前循环中 R 最靠右的回文串。</p>
+<p>让我们考虑求 P [ i ] 的时候，如下图。</p>
+<p>用 i_mirror 表示当前需要求的第 i 个字符关于 C 对应的下标。</p>
+<p><img src="https://pic1.zhimg.com/50/v2-11f96d39d9648b7c146e49cdceb0854c_hd.jpg" alt="img"><img src="https://pic1.zhimg.com/80/v2-11f96d39d9648b7c146e49cdceb0854c_720w.jpg" alt="img"></p>
+<p>我们现在要求 P [ i ]， 如果是用中心扩展法，那就向两边扩展比对就行了。但是我们其实可以利用回文串 C 的对称性。i 关于 C 的对称点是 i_mirror ，P [ i_mirror ] = 3，所以 P [ i ] 也等于 3 。</p>
+<p>但是有三种情况将会造成直接赋值为 P [ i_mirror ] 是不正确的，下边一一讨论。</p>
+<h3 id="1-超出了-R"><a href="#1-超出了-R" class="headerlink" title="1. 超出了 R"></a>1. 超出了 R</h3><p><img src="https://pic3.zhimg.com/50/v2-70833cbd20c51a98257b5bf3a8c53985_hd.jpg" alt="img"><img src="https://pic3.zhimg.com/80/v2-70833cbd20c51a98257b5bf3a8c53985_720w.jpg" alt="img"></p>
+<p>当我们要求 P [ i ] 的时候，P [ mirror ] = 7，而此时 P [ i ] 并不等于 7 ，为什么呢，因为我们从 i 开始往后数 7 个，等于 22 ，已经超过了最右的 R ，此时不能利用对称性了，但我们一定可以扩展到 R 的，所以 P [ i ] 至少等于 R - i = 20 - 15 = 5，会不会更大呢，我们只需要比较 T [ R+1 ] 和 T [ R+1 ]关于 i 的对称点就行了，就像中心扩展法一样一个个扩展。</p>
+<h3 id="2-P-i-mirror-遇到了原字符串的左边界"><a href="#2-P-i-mirror-遇到了原字符串的左边界" class="headerlink" title="2. P [ i_mirror ] 遇到了原字符串的左边界"></a>2. P [ i_mirror ] 遇到了原字符串的左边界</h3><p><img src="https://pic4.zhimg.com/50/v2-8eb77a3735fb23e67a51e320a47e636b_hd.jpg" alt="img"><img src="https://pic4.zhimg.com/80/v2-8eb77a3735fb23e67a51e320a47e636b_720w.jpg" alt="img"></p>
+<p>此时P [ i_mirror ] = 1，但是 P [ i ] 赋值成 1 是不正确的，出现这种情况的原因是 P [ i_mirror ] 在扩展的时候首先是 “#” == “#” ，之后遇到了 “^”和另一个字符比较，也就是到了边界，才终止循环的。而 P [ i ] 并没有遇到边界，所以我们可以继续通过中心扩展法一步一步向两边扩展就行了。</p>
+<h3 id="3-i-等于了-R"><a href="#3-i-等于了-R" class="headerlink" title="3. i 等于了 R"></a>3. i 等于了 R</h3><p>此时我们先把 P [ i ] 赋值为 0 ，然后通过中心扩展法一步一步扩展就行了。</p>
+<h2 id="考虑-C-和-R-的更新"><a href="#考虑-C-和-R-的更新" class="headerlink" title="考虑 C 和 R 的更新"></a>考虑 C 和 R 的更新</h2><p>就这样一步一步的求出每个 P [ i ]，当求出的 P [ i ] 的右边界大于当前的 R 时，我们就需要更新 C 和 R 为当前的回文串了。因为我们必须保证 i 在 R 里面，所以一旦有更右边的 R 就要更新 R。</p>
+<p><img src="https://pic4.zhimg.com/50/v2-8eb77a3735fb23e67a51e320a47e636b_hd.jpg" alt="img"><img src="https://pic4.zhimg.com/80/v2-8eb77a3735fb23e67a51e320a47e636b_720w.jpg" alt="img"></p>
+<p>此时的 P [ i ] 求出来将会是 3 ，P [ i ] 对应的右边界将是 10 + 3 = 13，所以大于当前的 R ，我们需要把 C 更新成 i 的值，也就是 10 ，R 更新成 13。继续下边的循环。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">process</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = s.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span> (len == <span class="number">0</span>)<span class="keyword">return</span> <span class="string">"^$"</span>;</span><br><span class="line">        <span class="built_in">string</span> str = <span class="string">"^"</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">            str = str + <span class="string">"#"</span> + s[i];</span><br><span class="line">        str += <span class="string">"#$"</span>;</span><br><span class="line">        <span class="keyword">return</span> str;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> P[<span class="number">2100</span>];<span class="comment">//两倍空间</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 马拉车算法</span></span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> t = <span class="built_in">process</span>(s);</span><br><span class="line">        <span class="keyword">int</span> len = t.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> C = <span class="number">0</span>, R = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len - <span class="number">1</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> i_mirror = <span class="number">2</span> * C - i;</span><br><span class="line">            <span class="keyword">if</span> (R &gt; i)</span><br><span class="line">                P[i] = <span class="built_in">min</span>(R - i, P[i_mirror]);<span class="comment">// 防止超出 R</span></span><br><span class="line">            <span class="keyword">else</span> P[i] = <span class="number">0</span>;<span class="comment">// 等于 R 的情况</span></span><br><span class="line">            <span class="comment">// 碰到之前讲的三种情况时候，需要利用中心扩展法</span></span><br><span class="line">            <span class="keyword">while</span> (t[i + P[i] + <span class="number">1</span>] == t[i - P[i] - <span class="number">1</span>])</span><br><span class="line">                P[i]++;</span><br><span class="line">            <span class="comment">// 判断是否需要更新 R和C</span></span><br><span class="line">            <span class="keyword">if</span> (i + P[i] &gt; R) &#123;</span><br><span class="line">                C = i;</span><br><span class="line">                R = i + P[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 找出 P 的最大值</span></span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len - <span class="number">1</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (P[i] &gt; ans) &#123;</span><br><span class="line">                ans = P[i];</span><br><span class="line">                index = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> st = (index - ans) / <span class="number">2</span>; <span class="comment">//最开始讲的求原字符串下标</span></span><br><span class="line">        <span class="keyword">return</span> s.substr(st, ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：for 循环里边套了一层 while 循环，难道不是 O ( n² )，不！其实是 O（n）。我们想象一下整个过程，首先外层有一个 for 循环，所以每个字符会遍历一次，而当我们扩展的时候，每次都是从 R + 1 开始扩展，之后又会更新 R 。所以一些字符会遍历两次，但此时这些字符变到 R 的左边，所以不会遍历第三次了，因为我们每次从 R 的右边开始扩展。综上，每个字符其实最多遍历 2 次，所以依旧是线性的。当然如果字符串长度是 len ，由于扩展了字符串，这里的 n 其实是 2 <em> len + 3 ，所以是O（2 </em> len + 3），就是 O（len）。</p>
+<p>空间复杂度：O（n）。</p>
 
-题目描述Snuke lives in another world, where slimes are real creatures and kept by some people. Slimes come in N colors. Those colors are conveniently numbered 1 through N. Snuke currently has no slime. His objective is to have slimes of all the colors together.
-Snuke can perform the following two ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/10</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "瞎搞">瞎搞</a>
-    
-</div>
-            
-        </div>
     </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/04/09/Going%20Dutch%20BAPC/" >
-            
-                <span>Going Dutch BAPC（ 状态转移DP）</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述​     You and your friends have just returned from a beautiful vacation in the mountains of the Netherlands. When on vacation, it’s annoying to split the bill on every expense every time, so you just kept all the receipts from the vacation, and wrote down who paid how much for who. Now, it...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/09</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "DP">DP</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/04/08/%E5%9B%BD%E7%8E%8B/" >
-            
-                <span>国王</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述​      很久很久以前，有个王国。王国里有个国王。这一天，国王在给他的将军们分发奖金。将军们站成一排，依次编号为1～N，N为将军的个数。但是国王发奖的方法很可爱，每次发奖都是给连续的一些将军同样的金币。具体来说，国王共发了M次，其中第i次给Ai到Bi的人每人发了Ci枚金币。现在国王发完了钱，想让你计算最后每位将军分别得到了多少金币
-输入​     第一行四个整数N，M，下面M行每行三个整数Ai，Bi和Ci，其定义如上。
-输出​      一行N个数，第i个数为将军i最终得到的金币个数。
-样例输入1233 21 2 22 3 5
-样例输出12 7 5
-
-对30%的数据有1...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/08</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "瞎搞">瞎搞</a>
-    
-</div>
-            
-        </div>
-    </article>
+    <!-- license  -->
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2020/03/18/%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0/" title= "寻找两个有序数组的中位数">
+                    <div class="prevTitle">寻找两个有序数组的中位数</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
-    <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/archives/2018/page/3/">&lt; PREV</a><a class="page-number" href="/archives/2018/">1</a><a class="page-number" href="/archives/2018/page/2/">2</a><a class="page-number" href="/archives/2018/page/3/">3</a><span class="page-number current">4</span>
-    </nav>
     
+    <!-- gitalk评论 -->
+
+    <!-- utteranc评论 -->
+
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -530,6 +561,24 @@ Snuke can perform the following two ...
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目描述"><span class="toc-number">1.</span> <span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DP"><span class="toc-number">1.1.</span> <span class="toc-text">DP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码"><span class="toc-number">1.1.1.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Manacher（马拉车）"><span class="toc-number">1.2.</span> <span class="toc-text">Manacher（马拉车）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#求原字符串下标"><span class="toc-number">1.3.</span> <span class="toc-text">求原字符串下标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#求每个-P-i"><span class="toc-number">1.4.</span> <span class="toc-text">求每个 P [ i ]</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-超出了-R"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. 超出了 R</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-P-i-mirror-遇到了原字符串的左边界"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. P [ i_mirror ] 遇到了原字符串的左边界</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-i-等于了-R"><span class="toc-number">1.4.3.</span> <span class="toc-text">3. i 等于了 R</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#考虑-C-和-R-的更新"><span class="toc-number">1.5.</span> <span class="toc-text">考虑 C 和 R 的更新</span></a></li></ol></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -2387,6 +2436,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>
