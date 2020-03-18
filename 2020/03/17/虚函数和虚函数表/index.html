@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">2.1k</span>Reading time: <span class="post-count reading-time">8 min</span></span>
+                        <span>Word count: <span class="post-count word-count">3.1k</span>Reading time: <span class="post-count reading-time">11 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -445,6 +445,17 @@ height:50vh;
 <p>如果一个函数调用符合以上三个条件，编译器就会把该函数调用编译成动态绑定，其函数的调用过程走的是上述通过虚表的机制。</p>
 <h2 id="运行代码"><a href="#运行代码" class="headerlink" title="运行代码"></a>运行代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    A() : m_data1(<span class="number">0</span>), m_data2(<span class="number">0</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">vfunc1</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"A::vfunc1"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">vfunc2</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"A::vfunc2"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">func1</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"A::func1"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">func2</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"A::func2"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> m_data1, m_data2;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> :</span> <span class="keyword">public</span> A &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    B() : A(), m_data3(<span class="number">0</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">vfunc1</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"B::vfunc1"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">func1</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"B::func1"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> m_data3;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> :</span> <span class="keyword">public</span> B &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    C() : B(), m_data1(<span class="number">0</span>), m_data4(<span class="number">0</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">vfunc2</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"C::vfunc2"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">func2</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"C::func2"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> m_data1, m_data4;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    B bObject;</span><br><span class="line">    A *p = &amp;bObject;</span><br><span class="line">    p-&gt;vfunc1();</span><br><span class="line"></span><br><span class="line">    A aObject = (A) bObject;</span><br><span class="line">    aObject.vfunc1();</span><br><span class="line"></span><br><span class="line">    C cObject;</span><br><span class="line">    p = &amp;cObject;</span><br><span class="line">    p-&gt;vfunc1();</span><br><span class="line">    p-&gt;vfunc2();</span><br><span class="line"></span><br><span class="line">    cObject.A::func1();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><p>封装，继承，多态是面向对象设计的三个特征，而多态可以说是面向对象设计的关键。C++通过虚函数表，实现了虚函数与对象的动态绑定，从而构建了C++面向对象程序设计的基石。</p>
+<h2 id="为什么构造函数不能为虚函数"><a href="#为什么构造函数不能为虚函数" class="headerlink" title="为什么构造函数不能为虚函数"></a>为什么构造函数不能为虚函数</h2><p>1.从存储空间角度</p>
+<p>  虚函数对应一个vtable，这大家都知道，可是这个vtable其实是存储在对象的内存空间的。问题出来了，如果构造函数是虚的，就需要通过 vtable来调用，可是<strong>对象还没有实例化，也就是内存空间还没有</strong>，无法找到vtable，所以构造函数不能是虚函数。</p>
+<p>2.从使用角度</p>
+<p>​    虚函数主要用于在信息不全的情况下，能使重载的函数得到对应的调用。构造函数本身就是要初始化实例，那使用虚函数也没有实际意义呀。所以构造函数没有必要是虚函数。</p>
+<p>虚函数的作用在于通过父类的指针或者引用来调用它的时候能够变成调用子类的那个成员函数。而构造函数是在创建对象时自动调用的，不可能通过父类的指针或者引用去调用，因此也就规定构造函数不能是虚函数。</p>
+<p>3.构造函数不需要是虚函数，也不允许是虚函数，因为创建一个对象时我们总是要明确指定对象的类型，尽管我们可能通过实验室的基类的指针或引用去访问它。但析构却不一定，我们往往通过基类的指针来销毁对象。这时候如果析构函数不是虚函数，就不能正确识别对象类型从而不能正确调用析构函数。</p>
+<p>4.从实现上看，vbtl在构造函数调用后才建立，因而构造函数不可能成为虚函数 </p>
+<p> 从实际含义上看，在调用构造函数时还不能确定对象的真实类型（因为子类会调父类的构造函数）；而且构造函数的作用是提供初始化，在对象生命期只执行一次，不是对象的动态行为，也没有太大的必要成为虚函数</p>
+<p>5.当一个构造函数被调用时，它做的首要的事情之一是初始化它的V P T R。因此，它只能知道它是“当前”类的，而完全忽视这个对象后面是否还有继承者。当编译器为这个构造函数产生代码时，它是为这个类的构造函数产生代码- -既不是为基类，也不是为它的派生类（因为类不知道谁继承它）。</p>
+<p>​    所以它使用的V P T R必须是对于这个类的V TA B L E。而且，只要它是最后的构造函数调用，那么在这个对象的生命期内， V P T R将保持被初始化为指向这个V TA B L E, 但如果接着还有一个更晚派生的构造函数被调用，这个构造函数又将设置V P T R指向它的 V TA B L E，等.直到最后的构造函数结束。V P T R的状态是由被最后调用的构造函数确定的。这就是为什么构造函数调用是从基类到更加派生 类顺序的另一个理由。</p>
+<p>​    但是，当这一系列构造函数调用正发生时，每个构造函数都已经设置V P T R指向它自己的 V TA B L E。如果函数调用使用虚机制，它将只产生通过它自己的V TA B L E的调用，而不是最后的V TA B L E（所有构造函数被调用后才会有最后的V TA B L E）。</p>
 <p><strong>转自:</strong><a href="https://blog.csdn.net/lihao21/article/details/50688337" target="_blank" rel="noopener">https://blog.csdn.net/lihao21/article/details/50688337</a></p>
 
     </article>
@@ -587,7 +598,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、概述"><span class="toc-number">1.</span> <span class="toc-text">一、概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、类的虚表"><span class="toc-number">2.</span> <span class="toc-text">二、类的虚表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、虚表指针"><span class="toc-number">3.</span> <span class="toc-text">三、虚表指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、动态绑定"><span class="toc-number">4.</span> <span class="toc-text">四、动态绑定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行代码"><span class="toc-number">5.</span> <span class="toc-text">运行代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、总结"><span class="toc-number">6.</span> <span class="toc-text">五、总结</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、概述"><span class="toc-number">1.</span> <span class="toc-text">一、概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、类的虚表"><span class="toc-number">2.</span> <span class="toc-text">二、类的虚表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、虚表指针"><span class="toc-number">3.</span> <span class="toc-text">三、虚表指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、动态绑定"><span class="toc-number">4.</span> <span class="toc-text">四、动态绑定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行代码"><span class="toc-number">5.</span> <span class="toc-text">运行代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、总结"><span class="toc-number">6.</span> <span class="toc-text">五、总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么构造函数不能为虚函数"><span class="toc-number">7.</span> <span class="toc-text">为什么构造函数不能为虚函数</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -1724,9 +1735,24 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 84
+        Total : 85
         </div>
         <!-- search  -->
         
@@ -1812,6 +1838,11 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">10/04</span><a class="archive-post-title" href= "/2019/10/04/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E5%8D%8A%E5%B9%B3%E9%9D%A2%E4%BA%A4/" >【模板】半平面交</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/03</span><a class="archive-post-title" href= "/2019/10/03/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%9C%80%E5%B0%8F%E5%9C%86%E8%A6%86%E7%9B%96%20/" >【模板】最小圆覆盖</a>
         </li>
     
     
@@ -2065,11 +2096,6 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/03</span><a class="archive-post-title" href= "/2019/10/03/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%9C%80%E5%B0%8F%E5%9C%86%E8%A6%86%E7%9B%96%20/" >【模板】最小圆覆盖</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">10/03</span><a class="archive-post-title" href= "/2019/10/03/%E6%9E%81%E8%A7%92%E6%8E%92%E5%BA%8F%20/" >极角排序</a>
         </li>
     
@@ -2124,6 +2150,11 @@ top:50vh;
         </li>
     
     
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/16</span><a class="archive-post-title" href= "/2019/01/16/%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97/" >括号序列</a>
+        </li>
+    
+    
     
     
     
@@ -2134,17 +2165,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/04</span><a class="archive-post-title" href= "/2018/09/04/%E6%B1%82%E5%A4%9A%E8%BE%B9%E5%BD%A2%EF%BC%88%E8%A6%86%E7%9B%96%EF%BC%89%E9%9D%A2%E7%A7%AF%EF%BC%88%E6%A8%A1%E6%9D%BF%EF%BC%89/" >求多边形（覆盖）面积（模板）</a>
+            <span class="archive-post-date">07/25</span><a class="archive-post-title" href= "/2018/07/25/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C/" >最大子序和</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">08/04</span><a class="archive-post-title" href= "/2018/08/04/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2%E9%97%AE%E9%A2%98(LCS)/" >最长公共子串问题(LCS)</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/10</span><a class="archive-post-title" href= "/2018/07/10/%E5%B8%B8%E7%94%A8%E6%8E%92%E5%BA%8F%E6%B3%95(%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F%EF%BC%89/" >常用排序法(希尔排序）</a>
+            <span class="archive-post-date">07/07</span><a class="archive-post-title" href= "/2018/07/07/%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE%E6%B3%95(%E4%BA%8C%E5%88%86%EF%BC%89/" >折半查找法(二分）</a>
         </li>
     
     
@@ -2164,6 +2190,25 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/18/%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0/" >寻找两个有序数组的中位数</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/21</span><a class="archive-post-title" href= "/2018/09/21/%E6%82%AC%E7%BA%BF%E6%B3%95/" >悬线法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/10</span><a class="archive-post-title" href= "/2018/07/10/%E5%B8%B8%E7%94%A8%E6%8E%92%E5%BA%8F%E6%B3%95(%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F%EF%BC%89/" >常用排序法(希尔排序）</a>
         </li>
     
     
@@ -2200,26 +2245,17 @@ top:50vh;
     
         </ul>
     
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/16</span><a class="archive-post-title" href= "/2019/01/16/%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97/" >括号序列</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
     <div class="archive-year"> 2018 </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/21</span><a class="archive-post-title" href= "/2018/09/21/%E6%82%AC%E7%BA%BF%E6%B3%95/" >悬线法</a>
+            <span class="archive-post-date">09/04</span><a class="archive-post-title" href= "/2018/09/04/%E6%B1%82%E5%A4%9A%E8%BE%B9%E5%BD%A2%EF%BC%88%E8%A6%86%E7%9B%96%EF%BC%89%E9%9D%A2%E7%A7%AF%EF%BC%88%E6%A8%A1%E6%9D%BF%EF%BC%89/" >求多边形（覆盖）面积（模板）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/04</span><a class="archive-post-title" href= "/2018/08/04/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2%E9%97%AE%E9%A2%98(LCS)/" >最长公共子串问题(LCS)</a>
         </li>
     
     
@@ -2229,17 +2265,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/25</span><a class="archive-post-title" href= "/2018/07/25/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C/" >最大子序和</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">07/09</span><a class="archive-post-title" href= "/2018/07/09/%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6/" >文件输入输出文件</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/07</span><a class="archive-post-title" href= "/2018/07/07/%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE%E6%B3%95(%E4%BA%8C%E5%88%86%EF%BC%89/" >折半查找法(二分）</a>
         </li>
     
     
@@ -2268,6 +2294,20 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/17/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/" >构造函数和析构函数</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/18/%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/" >盛最多水的容器</a>
         </li>
     
     
@@ -2339,9 +2379,9 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
-        <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
-    
         <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
+    
+        <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
         <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
     
