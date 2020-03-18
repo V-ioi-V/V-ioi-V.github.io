@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">238</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                        <span>Word count: <span class="post-count word-count">560</span>Reading time: <span class="post-count reading-time">2 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -406,8 +406,10 @@ height:50vh;
 <font size=5> 
 
 <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>​     请实现一个函数用来匹配包括’.’和’*‘的正则表达式。模式中的字符’.’表示任意一个字符，而’*‘表示它前面的字符可以出现任意次（包含0次）。 在本题中，匹配是指字符串的所有字符匹配整个模式。例如，字符串”aaa”与模式”a.a”和”ab*ac*a”匹配，但是与”aa.a”和”ab*a”均不匹配</p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>​      如果是*的话，考虑将p串里这个*及前面的字母全部跳过去，或者将s串里和*前字母想同的全部匹配掉</p>
+<h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><p>​      如果是*的话，考虑将p串里这个*及前面的字母跳过去（匹配0个），或者在s串匹配一个里和*前面字母相同的字母（匹配1个）。就是暴力递归每次匹配0个或1个。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//递归</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">match</span><span class="params">(<span class="keyword">char</span>* str, <span class="keyword">char</span>* pattern)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> *a=str;</span><br><span class="line">    <span class="keyword">char</span> *b=pattern;</span><br><span class="line">    <span class="keyword">int</span> lena=<span class="built_in">strlen</span>(a);</span><br><span class="line">    <span class="keyword">int</span> lenb=<span class="built_in">strlen</span>(b);</span><br><span class="line">    <span class="keyword">if</span>(lenb==<span class="number">0</span>)<span class="keyword">return</span> lena==<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">bool</span> flag=lena&gt;<span class="number">0</span>&amp;&amp;(b[<span class="number">0</span>]==<span class="string">'.'</span>||(a[<span class="number">0</span>]==b[<span class="number">0</span>]));</span><br><span class="line">    <span class="keyword">if</span>(lenb&gt;<span class="number">1</span>&amp;&amp;b[<span class="number">1</span>]==<span class="string">'*'</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> match(a,b+<span class="number">2</span>)||(flag&amp;&amp;match(a+<span class="number">1</span>,b));</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> flag&amp;&amp;match(a+<span class="number">1</span>,b+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="DP"><a href="#DP" class="headerlink" title="DP"></a>DP</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isMatch</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">string</span> p)</span> </span>&#123;</span><br><span class="line">        s = <span class="string">" "</span> + s;<span class="comment">//防止该案例：""\n"c*"</span></span><br><span class="line">        p = <span class="string">" "</span> + p;</span><br><span class="line">        <span class="comment">//可以少一部分初始化</span></span><br><span class="line">        <span class="keyword">int</span> m = s.<span class="built_in">size</span>(), n = p.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">bool</span> dp[m + <span class="number">1</span>][n + <span class="number">1</span>];</span><br><span class="line">        <span class="built_in">memset</span>(dp, <span class="literal">false</span>, (m + <span class="number">1</span>) * (n + <span class="number">1</span>));</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="literal">true</span>;<span class="comment">//长度为0一定是匹配的</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;<span class="comment">//枚举两个字符串的长度</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;<span class="comment">//dp的意思是s长度为i,p长度为j是否匹配</span></span><br><span class="line">                <span class="keyword">if</span> (s[i - <span class="number">1</span>] == p[j - <span class="number">1</span>] || p[j - <span class="number">1</span>] == <span class="string">'.'</span>) &#123;</span><br><span class="line">                    <span class="comment">//如果两个字符相等或者p是点就同时匹配两个</span></span><br><span class="line">                    dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (p[j - <span class="number">1</span>] == <span class="string">'*'</span>) &#123;</span><br><span class="line">                    <span class="comment">//如果是*</span></span><br><span class="line">                    <span class="keyword">if</span> (s[i - <span class="number">1</span>] != p[j - <span class="number">2</span>] &amp;&amp; p[j - <span class="number">2</span>] != <span class="string">'.'</span>)</span><br><span class="line">                        <span class="comment">//二者不相等的时候，就将这个*和前面的字符都跳过去看是否匹配</span></span><br><span class="line">                        dp[i][j] = dp[i][j - <span class="number">2</span>];</span><br><span class="line">                    <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="comment">//二者相等的时候,可以选择跳过或者选一个或多个</span></span><br><span class="line">                        dp[i][j] = dp[i][j - <span class="number">1</span>] || dp[i][j - <span class="number">2</span>] || dp[i - <span class="number">1</span>][j];</span><br><span class="line">                        <span class="comment">// dp[i][j] = dp[i-1][j]  多个字符匹配的情况	</span></span><br><span class="line">                        <span class="comment">//or dp[i][j] = dp[i][j-1]  单个字符匹配的情况</span></span><br><span class="line">                        <span class="comment">//or dp[i][j] = dp[i][j-2]  没有匹配的情况	</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[m][n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
     </article>
     <!-- license  -->
     
@@ -548,7 +550,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目描述"><span class="toc-number">1.</span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思路"><span class="toc-number">2.</span> <span class="toc-text">思路</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目描述"><span class="toc-number">1.</span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#递归"><span class="toc-number">2.</span> <span class="toc-text">递归</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DP"><span class="toc-number"></span> <span class="toc-text">DP</span></a>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -561,12 +563,6 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
-    
-    
     
     
     
@@ -2111,11 +2107,6 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/25</span><a class="archive-post-title" href= "/2018/07/25/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C/" >最大子序和</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">07/10</span><a class="archive-post-title" href= "/2018/07/10/%E5%B8%B8%E7%94%A8%E6%8E%92%E5%BA%8F%E6%B3%95(%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F%EF%BC%89/" >常用排序法(希尔排序）</a>
         </li>
     
@@ -2197,6 +2188,11 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">07/26</span><a class="archive-post-title" href= "/2018/07/26/%E6%B1%82%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8F(%E5%A4%A7)%E5%BE%AA%E7%8E%AF%E8%8A%82(KMP)/" >求一个字符串的最小(大)循环节(KMP)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/25</span><a class="archive-post-title" href= "/2018/07/25/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C/" >最大子序和</a>
         </li>
     
     
