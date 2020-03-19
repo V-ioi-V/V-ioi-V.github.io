@@ -359,6 +359,68 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/19/%E5%90%8C%E6%AD%A5%E3%80%81%E5%BC%82%E6%AD%A5%E4%B8%8E%E9%98%BB%E5%A1%9E%E3%80%81%E9%9D%9E%E9%98%BB%E5%A1%9E/" >
+            
+                <span>同步、异步与阻塞、非阻塞&amp;并发并行</span>
+        </a>
+        <div class="abstract-content">
+            IO操作12345678910111213141516IO分两阶段（一旦拿到数据后就变成了数据操作，不再是IO）：    1.数据准备阶段    2.内核空间复制数据到用户进程缓冲区（用户空间）阶段在操作系统中，程序运行的空间分为内核空间和用户空间。    应用程序都是运行在用户空间的，所以它们能操作的数据也都在用户空间。阻塞IO和非阻塞IO的区别在于第一步发起IO请求是否会被阻塞：    如果阻塞直到完成那么就是传统的阻塞IO，如果不阻塞，那么就是非阻塞IO。一般来讲：    阻塞IO模型、非阻塞IO模型、IO复用模型(select&#x2F;poll&#x2F;epoll)、信号驱动...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/19</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/19/TCP%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/" >
+            
+                <span>TCP拥塞控制</span>
+        </a>
+        <div class="abstract-content">
+            必背
+流量控制是在一条TCP连接中的接收端采用的措施,用来限制发送端发送报文段的速率,以免在接收端来不及接受,流量控制只控制一个发送端。
+拥塞控制是用来控制TCP连接中发送端发送报文段的速率,以免过多的数据注入到网络,导致网络奔溃,超过负荷.当发送方发送数据大量的数据会注入到网络,如果没有限制,网络就会超负荷变卡。拥塞控制可能会同时控制多个发送端,限制他们的发送速率。拥塞控制是全局性的。
+发送窗口的上限值是Min[rwnd,cwnd]。即发送窗口的数值不能超过接受窗口和拥塞窗口中的较小的一个。
+接受窗口的大小体现了接收端对发送端施加的流量控制,而拥塞窗口的大小则是整个因特网的负载情况对发...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/19</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/03/18/%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/" >
             
                 <span>盛最多水的容器</span>
@@ -614,85 +676,6 @@ DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2)
             <div class= abstract-tags >
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "C++">C++</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/15/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" >
-            
-                <span>归并排序</span>
-        </a>
-        <div class="abstract-content">
-            原理盖算法采用分治法，将已有的有序子序列合并，得到有序的序列
-复杂度
-最差时间复杂度：O(nlogn)
-平均时间复杂度：O(nlogn)
-最差空间复杂度：O(n)
-稳定性：稳定
-
-快排和归并都是log，并且归并稳定，为啥实际应用快排
-他们都是分治思想，代码都通过递归来实现，过程十分相似
-归并排序是一种在任何情况下时间复杂度都比较稳定的排序算法，这也使它存在致命的缺点，即归并排序不是原地排序算法，空间复杂度较高，是是O（n），也正因如此，它没有快排应用广泛
-快排虽然最坏情况下是O（n^2），但是平均情况下复杂度都是O(nlogn)。而且快排退化到O（n^2）的概率非常小。
-
-代码实现123...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/15</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "排序">排序</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/15/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95/" >
-            
-                <span>常见的排序方法</span>
-        </a>
-        <div class="abstract-content">
-            插入排序
-描述不需要开设另外的空间，每次遍历到一个数，将它与前面已经有序的序列作比较，插入到正确的位置，、在前面有序序列中这个数后面的数依次向后移动。
-复杂度时间复杂度：
-
-最佳情况：T(n) = O(n)
-最坏情况：T(n) = O(n^2)
-平均情况：T(n) = O(n^2)
-
-额外空间复杂度：O(1)
-12345678910111213void insertsort(int l, int r) &#123;    for (int i = l + 1; i &lt;= r; i++) &#123;        if (a[i] &lt; a[i - 1]) &#123;    ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/15</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "排序">排序</a>
     
 </div>
             
@@ -2032,9 +2015,37 @@ DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2)
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 85
+        Total : 87
         </div>
         <!-- search  -->
         
@@ -2291,6 +2302,20 @@ DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2)
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/19/TCP%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/" >TCP拥塞控制</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/10/c++-map%E4%B8%8Eunordered_map%E5%8C%BA%E5%88%AB%E5%8F%8A%E4%BD%BF%E7%94%A8/" >c++ map与unordered_map区别及使用</a>
         </li>
     
@@ -2316,6 +2341,11 @@ DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2)
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/%E5%90%8C%E6%AD%A5%E3%80%81%E5%BC%82%E6%AD%A5%E4%B8%8E%E9%98%BB%E5%A1%9E%E3%80%81%E9%9D%9E%E9%98%BB%E5%A1%9E/" >同步、异步与阻塞、非阻塞&并发并行</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -2432,11 +2462,6 @@ DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2)
         </li>
     
     
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/16</span><a class="archive-post-title" href= "/2019/01/16/%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97/" >括号序列</a>
-        </li>
-    
-    
     
     
     
@@ -2447,12 +2472,22 @@ DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2)
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">09/04</span><a class="archive-post-title" href= "/2018/09/04/%E6%B1%82%E5%A4%9A%E8%BE%B9%E5%BD%A2%EF%BC%88%E8%A6%86%E7%9B%96%EF%BC%89%E9%9D%A2%E7%A7%AF%EF%BC%88%E6%A8%A1%E6%9D%BF%EF%BC%89/" >求多边形（覆盖）面积（模板）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/04</span><a class="archive-post-title" href= "/2018/08/04/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2%E9%97%AE%E9%A2%98(LCS)/" >最长公共子串问题(LCS)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">07/25</span><a class="archive-post-title" href= "/2018/07/25/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C/" >最大子序和</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/07</span><a class="archive-post-title" href= "/2018/07/07/%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE%E6%B3%95(%E4%BA%8C%E5%88%86%EF%BC%89/" >折半查找法(二分）</a>
+            <span class="archive-post-date">07/10</span><a class="archive-post-title" href= "/2018/07/10/%E5%B8%B8%E7%94%A8%E6%8E%92%E5%BA%8F%E6%B3%95(%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F%EF%BC%89/" >常用排序法(希尔排序）</a>
         </li>
     
     
@@ -2472,25 +2507,6 @@ DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2)
     
         <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/18/%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0/" >寻找两个有序数组的中位数</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2018 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">09/21</span><a class="archive-post-title" href= "/2018/09/21/%E6%82%AC%E7%BA%BF%E6%B3%95/" >悬线法</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/10</span><a class="archive-post-title" href= "/2018/07/10/%E5%B8%B8%E7%94%A8%E6%8E%92%E5%BA%8F%E6%B3%95(%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F%EF%BC%89/" >常用排序法(希尔排序）</a>
         </li>
     
     
@@ -2527,17 +2543,26 @@ DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2)
     
         </ul>
     
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/16</span><a class="archive-post-title" href= "/2019/01/16/%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97/" >括号序列</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
     <div class="archive-year"> 2018 </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/04</span><a class="archive-post-title" href= "/2018/09/04/%E6%B1%82%E5%A4%9A%E8%BE%B9%E5%BD%A2%EF%BC%88%E8%A6%86%E7%9B%96%EF%BC%89%E9%9D%A2%E7%A7%AF%EF%BC%88%E6%A8%A1%E6%9D%BF%EF%BC%89/" >求多边形（覆盖）面积（模板）</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/04</span><a class="archive-post-title" href= "/2018/08/04/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2%E9%97%AE%E9%A2%98(LCS)/" >最长公共子串问题(LCS)</a>
+            <span class="archive-post-date">09/21</span><a class="archive-post-title" href= "/2018/09/21/%E6%82%AC%E7%BA%BF%E6%B3%95/" >悬线法</a>
         </li>
     
     
@@ -2548,6 +2573,11 @@ DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2)
     
         <li class="archive-post-item">
             <span class="archive-post-date">07/09</span><a class="archive-post-title" href= "/2018/07/09/%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6/" >文件输入输出文件</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/07</span><a class="archive-post-title" href= "/2018/07/07/%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE%E6%B3%95(%E4%BA%8C%E5%88%86%EF%BC%89/" >折半查找法(二分）</a>
         </li>
     
     
@@ -2661,15 +2691,15 @@ DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2)
     
         <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
-        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
-    
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
+    
+        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
         <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
     
-        <span class="sidebar-tag-name" data-tags="计算机网络原理"><span class="iconfont-archer">&#xe606;</span>计算机网络原理</span>
-    
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
+    
+        <span class="sidebar-tag-name" data-tags="计算机网络原理"><span class="iconfont-archer">&#xe606;</span>计算机网络原理</span>
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
     
@@ -2729,6 +2759,8 @@ jsonContent:
         <span class="sidebar-category-name" data-categories="CS大学生必备"><span class="iconfont-archer">&#xe60a;</span>CS大学生必备</span>
     
         <span class="sidebar-category-name" data-categories="工程"><span class="iconfont-archer">&#xe60a;</span>工程</span>
+    
+        <span class="sidebar-category-name" data-categories="CS大学必备"><span class="iconfont-archer">&#xe60a;</span>CS大学必备</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
