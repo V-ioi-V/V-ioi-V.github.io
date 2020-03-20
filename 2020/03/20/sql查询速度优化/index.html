@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>平面最近点对（加强版） · occo&#39;s blog</title>
+    <title>sql查询速度优化 · occo&#39;s blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/" >occo&#39;s blog.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">平面最近点对（加强版）</a>
+                <a href="#" class="post-name">sql查询速度优化</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            平面最近点对（加强版）
+            sql查询速度优化
             <!-- 404 -->
             
         </h1>
@@ -266,18 +266,18 @@ height:50vh;
                 
                     <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "数据库">数据库</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">643</span>Reading time: <span class="post-count reading-time">3 min</span></span>
+                        <span>Word count: <span class="post-count word-count">1.5k</span>Reading time: <span class="post-count reading-time">5 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2019/10/04</span>
+                    <span class="post-intro-time">2020/03/20</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -401,31 +401,75 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <font size=5> 
+        <font size=4>
 
-<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定平面上n个点，找出其中的一对点的距离，使得在这n个点的所有点对中，该距离为所有点对中最小的</p>
-<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p>第一行：n；2≤n≤200000</p>
-<p>接下来n行：每行两个实数：x y，表示一个点的行坐标和列坐标，中间用一个空格隔开。</p>
-<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>仅一行，一个实数，表示最短距离，精确到小数点后面4位。</p>
-<h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">1 1</span><br><span class="line">1 2</span><br><span class="line">2 2</span><br></pre></td></tr></table></figure>
-<p>0&lt;=x,y&lt;=10^9</p>
-<h2 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1.0000</span><br></pre></td></tr></table></figure>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>运用分治思想，对于n个点，可以分成T(n/2)+T(n/2)的规模，分界线是x坐标的中位数，</p>
-<p>假设左边点集合为s1, 右边点集合为s2，那么最小值存在于以下三种情况中。</p>
+<h3 id="1-在表中建立索引，优先考虑where、-group-by使用到的字段"><a href="#1-在表中建立索引，优先考虑where、-group-by使用到的字段" class="headerlink" title="1.在表中建立索引，优先考虑where、 group by使用到的字段"></a>1.在表中建立索引，优先考虑where、 group by使用到的字段</h3><h3 id="2-查询条件中，一定不要使用"><a href="#2-查询条件中，一定不要使用" class="headerlink" title="2.查询条件中，一定不要使用*"></a>2.查询条件中，一定不要使用*</h3><p>因为会返回过多无用的字段会降低查询效率。应该使用具体的字段代替*，只返回使用到的字段。</p>
+<h3 id="3-不要在where条件中使用左右两边都是-的like模糊查询，如："><a href="#3-不要在where条件中使用左右两边都是-的like模糊查询，如：" class="headerlink" title="3.不要在where条件中使用左右两边都是%的like模糊查询，如："></a>3.不要在where条件中使用左右两边都是%的like模糊查询，如：</h3><p>SELECT * FROM t_order WHERE customer LIKE ‘%zhang%’</p>
+<p>这样会导致数据库引擎放弃索引进行全表扫描。</p>
+<p>优化：尽量在字段后面使用模糊查询。如下：</p>
+<p>SELECT * FROM t_order WHERE customer LIKE ‘zhang%’</p>
+<h3 id="4-尽量不要使用in-和not-in，会造成全表扫描"><a href="#4-尽量不要使用in-和not-in，会造成全表扫描" class="headerlink" title="4.尽量不要使用in 和not in，会造成全表扫描"></a>4.尽量不要使用in 和not in，会造成全表扫描</h3><p>如下：</p>
+<p>SELECT * FROM t_order WHERE id IN (2,3)</p>
+<p>SELECT * FROM t_order1 WHERE customer IN (SELECT customer FROM t_order2)</p>
+<p>优化：</p>
+<p><strong>对于连续的数值，能用 between 就不要用 in</strong> ，如下：SELECT * FROM t_order WHERE id BETWEEN 2 AND 3</p>
+<p><strong>对于子查询，可以用exists代替</strong>。如下：SELECT <em> FROM t_order1 WHERE EXISTS (SELECT </em> FROM t_order2 WHERE t1.customer = t2.customer)</p>
+<h3 id="5-应尽量避免在-where-子句中使用-or-来连接条件"><a href="#5-应尽量避免在-where-子句中使用-or-来连接条件" class="headerlink" title="5.应尽量避免在 where 子句中使用 or 来连接条件"></a>5.应尽量避免在 where 子句中使用 or 来连接条件</h3><p>如果一个字段有索引，一个字段没有索引，将导致引擎放弃使用索引而进行全表扫描，尽量用union或者union all代替(在确认没有重复数据或者不用剔除重复数据时，union all会更好)；如下：</p>
+<p>SELECT * FROM t_order WHERE id = 1 OR num = 3</p>
+<p>优化：可以用<strong>union或者union all</strong>代替or。如下：</p>
+<p><strong>(union all 不会去重)</strong></p>
+<p>SELECT * FROM t_order WHERE id = 1</p>
+<p>UNION</p>
+<p>SELECT * FROM t_order WHERE num = 3</p>
+<h3 id="6-尽量不要在-where-子句中对字段进行表达式操作"><a href="#6-尽量不要在-where-子句中对字段进行表达式操作" class="headerlink" title="6.尽量不要在 where 子句中对字段进行表达式操作"></a>6.尽量不要在 where 子句中对字段进行表达式操作</h3><p>这样也会造成全表扫描。如：</p>
+<p>select id FROM t_order where num/2=100</p>
+<p>应改为:</p>
+<p>select id FROM t_order where num=100*2</p>
+<h3 id="7-where条件里尽量不要进行null值的判断"><a href="#7-where条件里尽量不要进行null值的判断" class="headerlink" title="7.where条件里尽量不要进行null值的判断"></a>7.where条件里尽量不要进行null值的判断</h3><p>null的判断也会造成全表扫描。如下：</p>
+<p>SELECT * FROM t_order WHERE score IS NULL</p>
+<p>优化：</p>
+<p>给字段添加默认值，对默认值进行判断。如：</p>
+<p>SELECT * FROM t_order WHERE score = 0</p>
+<h3 id="8-尽量不要在where条件中等号的左侧进行表达式或函数操作"><a href="#8-尽量不要在where条件中等号的左侧进行表达式或函数操作" class="headerlink" title="8.尽量不要在where条件中等号的左侧进行表达式或函数操作"></a>8.尽量不要在where条件中等号的左侧进行表达式或函数操作</h3><p>否则系统将可能无法正确使用索引,会导致全表扫描。如下：</p>
+<p>SELECT * FROM t_order2 WHERE score/10 = 10</p>
+<p>SELECT * FROM t_order2 WHERE SUBSTR(customer,1,5) = ‘zhang’</p>
+<p>优化：</p>
+<p>将表达式.函数操作移动到等号右侧。如下：</p>
+<p>SELECT <em> FROM t_order2 WHERE score = 10</em>10</p>
+<p>SELECT * FROM t_order2 WHERE customer LIKE ‘zhang%’</p>
+<h3 id="9-尽量不要使用where-1-1的条件"><a href="#9-尽量不要使用where-1-1的条件" class="headerlink" title="9.尽量不要使用where 1=1的条件"></a>9.尽量不要使用where 1=1的条件</h3><p>有时候，在开发过程中，为了方便拼装查询条件，我们会加上该条件，这样，会造成进行全表扫描。如下：</p>
+<p>SELECT * FROM t_order WHERE 1=1</p>
+<p>优化：</p>
+<p>如果用代码拼装sql，则由代码进行判断，没where加where，有where加and</p>
+<p>如果用mybatis，请用mybatis的where语法。</p>
+<h3 id="10-应尽量避免在-where-子句中使用-或-lt-gt-操作符，否则将引擎放弃使用索引而进行全表扫描"><a href="#10-应尽量避免在-where-子句中使用-或-lt-gt-操作符，否则将引擎放弃使用索引而进行全表扫描" class="headerlink" title="10.应尽量避免在 where 子句中使用 != 或 &lt;&gt; 操作符，否则将引擎放弃使用索引而进行全表扫描"></a>10.应尽量避免在 where 子句中使用 != 或 &lt;&gt; 操作符，否则将引擎放弃使用索引而进行全表扫描</h3><h3 id="11-选择最有效率的表名顺序"><a href="#11-选择最有效率的表名顺序" class="headerlink" title="11.选择最有效率的表名顺序"></a>11.选择最有效率的表名顺序</h3><p>数据库的解析器按照<strong>从右到左的顺序处理FROM子句中的表名，FROM子句中写在最后的表将被最先处理</strong></p>
+<p>在FROM子句中包含多个表的情况下：</p>
 <ul>
-<li><p>s1中任意两点距离的最小距离</p>
+<li><strong>如果三个表是完全无关系的话，将记录和列名最少的表，写在最后，然后依次类推</strong></li>
+<li><strong>也就是说：选择记录条数最少的表放在最后</strong></li>
+</ul>
+<p>如果有3个以上的表连接查询：</p>
+<ul>
+<li><strong>如果三个表是有关系的话，将引用最多的表，放在最后，然后依次类推</strong>。</li>
+<li><strong>也就是说：被其他表所引用的表放在最后</strong></li>
+</ul>
+<p>例如：查询员工的编号，姓名，工资，工资等级，部门名</p>
+<p><strong>emp表被引用得最多，记录数也是最多，因此放在form字句的最后面</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select emp.empno,emp.ename,emp.sal,salgrade.grade,dept.dname</span><br><span class="line">from salgrade,dept,emp</span><br><span class="line">where (emp.deptno &#x3D; dept.deptno) and (emp.sal between salgrade.losal and salgrade.hisal)</span><br></pre></td></tr></table></figure>
+<h3 id="12-WHERE子句中的连接顺序"><a href="#12-WHERE子句中的连接顺序" class="headerlink" title="12.WHERE子句中的连接顺序"></a>12.WHERE子句中的连接顺序</h3><p>数据库采用自<strong>右而左的顺序解析WHERE子句</strong>,根据这个原理,<strong>表之间的连接必须写在其他WHERE条件之左</strong>,那些<strong>可以过滤掉最大数量记录的条件必须写在WHERE子句的之右</strong>。</p>
+<p><strong>emp.sal可以过滤多条记录，写在WHERE字句的最右边</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> emp.empno,emp.ename,emp.sal,dept.dname</span><br><span class="line"><span class="keyword">from</span> dept,emp</span><br><span class="line"><span class="keyword">where</span> (emp.deptno = dept.deptno) <span class="keyword">and</span> (emp.sal &gt; <span class="number">1500</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="13-尽可能的使用-varchar-nvarchar-代替-char-nchar"><a href="#13-尽可能的使用-varchar-nvarchar-代替-char-nchar" class="headerlink" title="13.尽可能的使用 varchar/nvarchar 代替 char/nchar"></a>13.尽可能的使用 varchar/nvarchar 代替 char/nchar</h3><p>因为首先变长字段存储空间小，可以节省存储空间，其次对于查询来说，在一个相对较小的字段内搜索效率显然要高些；</p>
+<h3 id="14-程序要尽量避免大事务操作，提高系统并发能力。"><a href="#14-程序要尽量避免大事务操作，提高系统并发能力。" class="headerlink" title="14.程序要尽量避免大事务操作，提高系统并发能力。"></a>14.程序要尽量避免大事务操作，提高系统并发能力。</h3><h3 id="15-索引并不是越多越好"><a href="#15-索引并不是越多越好" class="headerlink" title="15.索引并不是越多越好"></a>15.索引并不是越多越好</h3><p>索引固然可以提高相应的 select 的效率，但同时也降低了 insert 及 update 的效率，因为 insert 或 update 时有可能会重建索引，所以怎样建索引需要慎重考虑，视具体情况而定。一个表的索引数最好不要超过6个，若太多则应考虑一些不常使用到的列上建的索引是否有 必要；</p>
+<h3 id="16-尽量避免使用子查询，使用join"><a href="#16-尽量避免使用子查询，使用join" class="headerlink" title="16.尽量避免使用子查询，使用join"></a>16.尽量避免使用子查询，使用join</h3><ul>
+<li><p>子查询效率太差，执行子查询时，MYSQL需要创建临时表，查询完毕后再删除这些临时表，所以，子查询的速度会受到一定的影响，这里多了一个创建和销毁临时表的过程。</p>
 </li>
-<li><p>s2中任意两点距离的最小距离</p>
-</li>
-<li><p>s1中的点到s2中的点的距离的最小距离</p>
+<li><p>如果是JOIN的话，它是走嵌套查询的。小表驱动大表，且通过索引字段进行关联。如果表记录比较少的话，还是OK的。大的话业务逻辑中可以控制处理。</p>
 </li>
 </ul>
-<p>前两部分可以一直分治到底。</p>
-<p>第三部分</p>
-<p>对于左边每一个点，右边和他产生距离更小的点只能存在于</p>
-<p>2d<em>d的矩形中，而对于2d/3</em>d/2的矩形，只可能存在一个点，所以点数最多不超过6个</p>
-<p>这就使每一层的时间降到O（n），所以总复杂度为O(nlogn)<br>————————————————<br>原文链接：<a href="https://blog.csdn.net/du_lun/article/details/83344425" target="_blank" rel="noopener">https://blog.csdn.net/du_lun/article/details/83344425</a></p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> GCC optimize(2)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> GCC optimize(3, <span class="meta-string">"Ofast"</span>, <span class="meta-string">"inline"</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;//平面最近点对</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inf 0x3f3f3f3f</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> INF = <span class="number">1e18</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps = <span class="number">1e-10</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">    <span class="keyword">double</span> x, y;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(<span class="keyword">const</span> node &amp;a) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> x &lt; a.x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; s[<span class="number">200010</span>], t[<span class="number">200010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(node a, node b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.y &lt; b.y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">dis</span><span class="params">(node a, node b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">sqrt</span>((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">cdq</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">double</span> d = INF;</span><br><span class="line">    <span class="keyword">if</span> (l &gt;= r)<span class="keyword">return</span> d;</span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    d = <span class="built_in">min</span>(d, cdq(l, mid));</span><br><span class="line">    d = <span class="built_in">min</span>(d, cdq(mid + <span class="number">1</span>, r));</span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = l; i &lt;= r; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">fabs</span>(s[i].x - s[mid].x) &lt;= d)</span><br><span class="line">            t[++cnt] = s[i];</span><br><span class="line">    &#125;</span><br><span class="line">    sort(t + <span class="number">1</span>, t + <span class="number">1</span> + cnt, cmp);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= cnt; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt;= cnt &amp;&amp; <span class="built_in">fabs</span>(t[i].y - t[j].y) &lt;= d; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (dis(t[i], t[j]) &lt; d)</span><br><span class="line">                d = dis(t[i], t[j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> d;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; s[i].x &gt;&gt; s[i].y;</span><br><span class="line">    sort(s + <span class="number">1</span>, s + <span class="number">1</span> + n);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; fixed &lt;&lt; setprecision(<span class="number">4</span>) &lt;&lt; (cdq(<span class="number">1</span>, n)) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="17-使用索引字段作为条件时"><a href="#17-使用索引字段作为条件时" class="headerlink" title="17.使用索引字段作为条件时"></a>17.使用索引字段作为条件时</h3><p>在使用索引字段作为条件时，如果该索引是复合索引，那么必须使用到该索引中的第一个字段作为条件时才能保证系统使用该索引，否则该索引将不会被使用，并且应尽可能的让字段顺序与索引顺序相一致。</p>
+<hr>
+<p>参考:<a href="https://baijiahao.baidu.com/s?id=1628437659593476871&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">https://baijiahao.baidu.com/s?id=1628437659593476871&amp;wfr=spider&amp;for=pc</a></p>
 
     </article>
     <!-- license  -->
@@ -434,17 +478,12 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2019/10/04/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E5%8D%8A%E5%B9%B3%E9%9D%A2%E4%BA%A4/" title= "【模板】半平面交">
-                    <div class="nextTitle">【模板】半平面交</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2019/10/03/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%9C%80%E5%B0%8F%E5%9C%86%E8%A6%86%E7%9B%96%20/" title= "【模板】最小圆覆盖">
-                    <div class="prevTitle">【模板】最小圆覆盖</div>
+                <a href= "/2020/03/20/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1%E5%8F%8A%E5%9B%9B%E4%B8%AA%E7%89%B9%E6%80%A7/" title= "数据库事务及四个特性">
+                    <div class="prevTitle">数据库事务及四个特性</div>
                 </a>
             
         </li>
@@ -567,7 +606,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目描述"><span class="toc-number">1.</span> <span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#输入"><span class="toc-number">1.1.</span> <span class="toc-text">输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出"><span class="toc-number">1.2.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例输入"><span class="toc-number">1.3.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例输出"><span class="toc-number">1.4.</span> <span class="toc-text">样例输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#思路"><span class="toc-number">1.5.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">1.6.</span> <span class="toc-text">代码</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-在表中建立索引，优先考虑where、-group-by使用到的字段"><span class="toc-number">1.</span> <span class="toc-text">1.在表中建立索引，优先考虑where、 group by使用到的字段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-查询条件中，一定不要使用"><span class="toc-number">2.</span> <span class="toc-text">2.查询条件中，一定不要使用*</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-不要在where条件中使用左右两边都是-的like模糊查询，如："><span class="toc-number">3.</span> <span class="toc-text">3.不要在where条件中使用左右两边都是%的like模糊查询，如：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-尽量不要使用in-和not-in，会造成全表扫描"><span class="toc-number">4.</span> <span class="toc-text">4.尽量不要使用in 和not in，会造成全表扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-应尽量避免在-where-子句中使用-or-来连接条件"><span class="toc-number">5.</span> <span class="toc-text">5.应尽量避免在 where 子句中使用 or 来连接条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-尽量不要在-where-子句中对字段进行表达式操作"><span class="toc-number">6.</span> <span class="toc-text">6.尽量不要在 where 子句中对字段进行表达式操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-where条件里尽量不要进行null值的判断"><span class="toc-number">7.</span> <span class="toc-text">7.where条件里尽量不要进行null值的判断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-尽量不要在where条件中等号的左侧进行表达式或函数操作"><span class="toc-number">8.</span> <span class="toc-text">8.尽量不要在where条件中等号的左侧进行表达式或函数操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-尽量不要使用where-1-1的条件"><span class="toc-number">9.</span> <span class="toc-text">9.尽量不要使用where 1&#x3D;1的条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-应尽量避免在-where-子句中使用-或-lt-gt-操作符，否则将引擎放弃使用索引而进行全表扫描"><span class="toc-number">10.</span> <span class="toc-text">10.应尽量避免在 where 子句中使用 !&#x3D; 或 &lt;&gt; 操作符，否则将引擎放弃使用索引而进行全表扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-选择最有效率的表名顺序"><span class="toc-number">11.</span> <span class="toc-text">11.选择最有效率的表名顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-WHERE子句中的连接顺序"><span class="toc-number">12.</span> <span class="toc-text">12.WHERE子句中的连接顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-尽可能的使用-varchar-nvarchar-代替-char-nchar"><span class="toc-number">13.</span> <span class="toc-text">13.尽可能的使用 varchar&#x2F;nvarchar 代替 char&#x2F;nchar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-程序要尽量避免大事务操作，提高系统并发能力。"><span class="toc-number">14.</span> <span class="toc-text">14.程序要尽量避免大事务操作，提高系统并发能力。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-索引并不是越多越好"><span class="toc-number">15.</span> <span class="toc-text">15.索引并不是越多越好</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-尽量避免使用子查询，使用join"><span class="toc-number">16.</span> <span class="toc-text">16.尽量避免使用子查询，使用join</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-使用索引字段作为条件时"><span class="toc-number">17.</span> <span class="toc-text">17.使用索引字段作为条件时</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
