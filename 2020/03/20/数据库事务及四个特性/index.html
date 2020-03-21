@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">6k</span>Reading time: <span class="post-count reading-time">20 min</span></span>
+                        <span>Word count: <span class="post-count word-count">6.5k</span>Reading time: <span class="post-count reading-time">22 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -403,6 +403,8 @@ height:50vh;
     <article class="article-entry">
         <p>转自：<a href="https://www.cnblogs.com/takumicx/p/9998844.html#事务的隔离级别" target="_blank" rel="noopener">https://www.cnblogs.com/takumicx/p/9998844.html#事务的隔离级别</a></p>
 <a id="more"></a>
+<font size=4>
+
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>事务是数据库系统中的重要概念,了解这一概念是以正确的方式开发和数据库交互的应用程序的前提。但是很多开发者对于事务的认识相对片面和肤浅,仅仅把它等同于ACID,不了解数据库系统引入事务的真正动机,ACID对于事务意味着什么以及最重要的:数据库系统是如何保证事务的ACID特性的?<br>因为最近在导师手下做一个微服务和分布式事务相关的课题项目,作为必要的前置准备,需要加深下对单机事务的认识并理解其实现原理。这篇文章是在我给组内的小伙伴分享的PPT的基础上改动而成,旨在帮助大家建立关于事务的相对体系的认识。由于当时正好赶上考试周,所以写的比较仓促,里面肯定有理解不到位甚至出错的地方,希望看到的小伙伴能够我指出来。同时还需强调几点:</p>
 <ul>
 <li>以下所有内容都是针对单机事务而言,不涉及分布式事务相关的东西!</li>
@@ -474,14 +476,29 @@ height:50vh;
 <li>然而完全的隔离性会导致系统并发性能很低,降低对资源的利用率,因而实际上对隔离性的要求会有所放宽,这也会一定程度造成对数据库一致性要求降低</li>
 <li>SQL标准为事务定义了不同的隔离级别,从低到高依次是</li>
 </ol>
+<p>SQL标准定义了4类隔离级别，包括了一些具体规则，用来限定事务内外的哪些改变是可见的，哪些是不可见的。低级别的隔离级一般支持更高的并发处理，并拥有更低的系统开销。</p>
 <ul>
-<li>读未提交(READ UNCOMMITTED)</li>
-<li>读已提交(READ COMMITTED)</li>
-<li>可重复读(REPEATABLE READ)</li>
-<li>串行化(SERIALIZABLE)</li>
+<li><strong>Read Uncommitted（读取未提交内容）</strong></li>
 </ul>
+<p>在该隔离级别，所有事务都可以看到其他未提交事务的执行结果。本隔离级别很少用于实际应用，因为它的性能也不比其他级别好多少。读取未提交的数据，也被称之为脏读（Dirty Read）。</p>
+<p><strong>就好比还没确定的消息，你却先知道了发布出去，最后又变更了，就是说瞎话了。常说的脏读，读到了还未提交的。</strong></p>
+<ul>
+<li><strong>Read Committed（读取提交内容）</strong></li>
+</ul>
+<p>这是大多数数据库系统的默认隔离级别（但不是MySQL默认的）。它满足了隔离的简单定义：一个事务只能看见已经提交事务所做的改变。这种隔离级别 也支持所谓的不可重复读（Nonrepeatable Read），因为同一事务的其他实例在该实例处理其间可能会有新的commit，所以同一select可能返回不同结果。</p>
+<p><strong>只能读取到已经提交的事务。</strong></p>
+<ul>
+<li><strong>Repeatable Read（可重读）</strong></li>
+</ul>
+<p>这是MySQL的默认事务隔离级别，它确保同一事务的多个实例在并发读取数据时，会看到同样的数据行。不过理论上，这会导致另一个棘手的问题：幻读 （Phantom Read）。简单的说，幻读指当用户读取某一范围的数据行时，另一个事务又在该范围内插入了新行，当用户再读取该范围的数据行时，会发现有新的“幻影” 行。InnoDB和Falcon存储引擎通过多版本并发控制（MVCC，Multiversion Concurrency Control）机制解决**了该问题。</p>
+<p><strong>幻读。读到已提交的数据。</strong></p>
+<ul>
+<li><strong>Serializable（可串行化）</strong></li>
+</ul>
+<p>这是最高的隔离级别，它通过强制事务排序，使之不可能相互冲突，从而解决幻读问题。简言之，它是在每个读的数据行上加上共享锁。在这个级别，可能导致大量的超时现象和锁竞争。</p>
+<p><strong>事务顺序执行，没有并行，完全杜绝幻读。</strong></p>
 <p>事务的隔离级别越低,可能出现的并发异常越多,但是通常而言系统能提供的并发能力越强。</p>
-<p>不同的隔离级别与可能的并发异常的对应情况如下表所示,有一点需要强调,这种对应关系只是理论上的,对于特定的数据库实现不一定准确,比如mysql<br>的Innodb存储引擎通过Next-Key Locking技术在可重复读级别就消除了幻读的可能。<br><img src="https://img2018.cnblogs.com/blog/1422237/201811/1422237-20181122103221352-219869675.png" alt="img"></p>
+<p>不同的隔离级别与可能的并发异常的对应情况如下表所示,有一点需要强调,这种对应关系只是理论上的,对于特定的数据库实现不一定准确,比如mysql的Innodb存储引擎通过Next-Key Locking技术在可重复读级别就消除了幻读的可能。<br><img src="https://img2018.cnblogs.com/blog/1422237/201811/1422237-20181122103221352-219869675.png" alt="img"></p>
 <p>所有事务隔离级别都不允许出现脏写,而串行化可以避免所有可能出现的并发异常,但是会极大的降低系统的并发处理能力。</p>
 <h3 id="2-3-事务隔离性的实现——常见的并发控制技术"><a href="#2-3-事务隔离性的实现——常见的并发控制技术" class="headerlink" title="2.3 事务隔离性的实现——常见的并发控制技术"></a>2.3 事务隔离性的实现——常见的并发控制技术</h3><p>并发控制技术是实现事务隔离性以及不同隔离级别的关键,实现方式有很多,按照其对可能冲突的操作采取的不同策略可以分为乐观并发控制和悲观并发控制两大类。</p>
 <ul>
@@ -596,9 +613,10 @@ b.若TS(T)>=W-timestamp(Q),则执行read操作,同时把<br>R-timestamp(Q)设置
 <ol>
 <li>系统从尾部开始反向扫描日志</li>
 <li>发现属于undo-list中的事务的日志记录,就执行undo操作</li>
-<li>发现undo-list中事务的T的<code>记录,就写入一条</code>记录,<br>并把T从undo-list中去除。</li>
-</ol>
+<li><p>发现undo-list中事务的T的<code>记录,就写入一条</code>记录,<br>并把T从undo-list中去除。</p>
 <p>4.undo-list为空,则撤销阶段结束</p>
+</li>
+</ol>
 <p>总结:先将日志记录中所有事务的更新按顺序重做一遍,在针对需要撤销的事务按相反的顺序执行其更新操作的撤销操作。</p>
 <h4 id="3-6-1-一个系统崩溃恢复的例子"><a href="#3-6-1-一个系统崩溃恢复的例子" class="headerlink" title="3.6.1 一个系统崩溃恢复的例子"></a>3.6.1 一个系统崩溃恢复的例子</h4><p>恢复前的日志如下,写入最后一条日志记录后系统崩溃</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;T0 start&gt;</span><br><span class="line">&lt;T0,B,2000,2050&gt;</span><br><span class="line">&lt;T2 commit&gt;</span><br><span class="line">&lt;T1 start&gt;</span><br><span class="line">&lt;checkpoint &#123;T0,T1&#125;&gt;   &#x2F;&#x2F;之前T2已经commit,故不用重做</span><br><span class="line">&lt;T1,C,700,600&gt;</span><br><span class="line">&lt;T1 commit&gt;</span><br><span class="line">&lt;T2 start&gt;</span><br><span class="line">&lt;T2,A,500,400&gt;</span><br><span class="line">&lt;T0,B,2000&gt;</span><br><span class="line">&lt;T0 abort&gt;   &#x2F;&#x2F;T0回滚完成,插入该记录后系统崩溃</span><br></pre></td></tr></table></figure>
@@ -2214,9 +2232,91 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 93
+        Total : 97
         </div>
         <!-- search  -->
         
@@ -2229,6 +2329,26 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97/" >数组中重复的数字</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/" >合并两个有序链表</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/C++%E6%BA%90%E6%96%87%E4%BB%B6%E4%BB%8E%E6%96%87%E6%9C%AC%E5%88%B0%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6%E7%BB%8F%E5%8E%86%E7%9A%84%E8%BF%87%E7%A8%8B/" >C++源文件从文本到可执行文件经历的过程</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/%E6%B0%B4%E5%A3%B6%E9%97%AE%E9%A2%98%EF%BC%88%E8%B4%9D%E7%A5%96%E5%AE%9A%E7%90%86%EF%BC%89/" >水壶问题（贝祖定理）</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -2720,13 +2840,13 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
-        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
-    
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
         <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
@@ -2753,6 +2873,8 @@ top:50vh;
         <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
         <span class="sidebar-tag-name" data-tags="排序"><span class="iconfont-archer">&#xe606;</span>排序</span>
+    
+        <span class="sidebar-tag-name" data-tags="leetcode"><span class="iconfont-archer">&#xe606;</span>leetcode</span>
     
         <span class="sidebar-tag-name" data-tags="网络流"><span class="iconfont-archer">&#xe606;</span>网络流</span>
     
