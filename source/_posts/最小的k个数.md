@@ -1,6 +1,6 @@
 ---
 title: 最小的k个数
-tags: 排序
+tags: leetcode
 category: 算法
 ---
 

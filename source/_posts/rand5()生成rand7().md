@@ -2,6 +2,7 @@
 title: rand5()生成rand7()
 tags: 瞎搞
 category: 算法短板
+date: 2020/03/11
 ---
 
 # 描述
