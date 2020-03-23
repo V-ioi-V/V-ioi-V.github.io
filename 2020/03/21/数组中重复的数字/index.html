@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">380</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                        <span>Word count: <span class="post-count word-count">900</span>Reading time: <span class="post-count reading-time">3 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -413,6 +413,22 @@ height:50vh;
 <h2 id="2-原地置换"><a href="#2-原地置换" class="headerlink" title="2.原地置换"></a>2.原地置换</h2><p>如果该题目有空间和时间的要求，可采用这种把原数组当hash的方法</p>
 <p>由于数组长度为n，数组中又只有0-(n-1)的数字存在，如果没有重复数字，那么正常排序后，数字i应该在下标为i的位置，所以思路是从头扫描数组，遇到下标为i的数字如果不是i的话，（假设为m)，那么我们就拿与下标m的数字交换。在交换过程中，如果有重复的数字发生，那么终止返回ture。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findRepeatNumber</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> cnt;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="keyword">while</span> (nums[i] != i) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[i] == nums[nums[i]]) &#123;</span><br><span class="line">                    <span class="keyword">return</span> nums[i];</span><br><span class="line">                &#125;</span><br><span class="line">                cnt = nums[i];</span><br><span class="line">                swap(nums[i],nums[cnt]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="3-快慢指针法-O-n-O-1-且不用改变数组"><a href="#3-快慢指针法-O-n-O-1-且不用改变数组" class="headerlink" title="3.快慢指针法  O(n),O(1) 且不用改变数组"></a>3.快慢指针法  O(n),O(1) 且不用改变数组</h2><p><strong>问题:</strong>查找数组中的重复数字（长度为n+1,所有数字在1~n范围内，找出数组中任意一个重复数字，不能修改数组）</p>
+<p>思路参考问题<a href="https://app.yinxiang.com/shard/s59/nl/20484633/5190f553-4c73-478b-ba0c-971346ea889e" target="_blank" rel="noopener">Linked List Cycle II（找有环链表的环入口</a>）</p>
+<p>将索引看做当前结点地址，将存储数看做指向下一个结点的指针，则重复数字即为环入口（索引或结点地址）</p>
+<p><strong>把第一个结点当做头结点</strong></p>
+<p>例子：</p>
+<p>1 4 3 5 2 2</p>
+<p>索引分别为0、1、2、3、4、5</p>
+<p>0     1      4      2     3     5</p>
+<p>1 -&gt; 4 -&gt; 2 -&gt; 3 -&gt; 5 -&gt; 2</p>
+<p>​        ↑←———-←↓</p>
+<p>注：</p>
+<p>  (1)如果再多一个重复数字2，则会多一个结点指向2，但是该结点永远无法被访问到，因为没有结点指向它</p>
+<p>  (2)如果数组中不存在重复数字，则为循环链表，相当于循环链表，这个时候需返回-1.</p>
+<p>  (3)如果多个数字重复，只有最前面的重复数字构成环，其他重复数字不会在链表中，所以只能检测一个重复数字</p>
+<p>  (4)如果数组中有数字0,则该结点会指向头结点，从而形成循环链表，而其他结点会被丢失（所以题目限定不包含0，如果要包含0或负数的话，可以把整个数组预处理一遍，为负数时说明输入非法，为0时，可以将各数加1）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findDuplicate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.empty()) <span class="keyword">return</span> <span class="number">-1</span>; <span class="comment">//表示没有重复数字</span></span><br><span class="line">       </span><br><span class="line">        <span class="keyword">int</span> slow = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> fast = nums[nums[<span class="number">0</span>]];</span><br><span class="line">        <span class="keyword">while</span>(slow != fast) <span class="comment">//假设存在重复数字，则会在环内相遇，假设不存在重复数字，形成循环链表，在头结点相遇</span></span><br><span class="line">        &#123;</span><br><span class="line">            slow = nums[slow];</span><br><span class="line">            fast = nums[nums[fast]];</span><br><span class="line">        &#125;</span><br><span class="line">       </span><br><span class="line">        <span class="keyword">int</span> entry = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(entry == slow) <span class="keyword">return</span> <span class="number">-1</span>; <span class="comment">//如果不存在重复数字，为循环链表（环入口在起始位置），则返回-1</span></span><br><span class="line">        <span class="keyword">while</span>(entry != slow)</span><br><span class="line">        &#123;</span><br><span class="line">            entry = nums[entry];</span><br><span class="line">            slow = nums[slow];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> entry;</span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
     </article>
     <!-- license  -->
@@ -422,8 +438,8 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href= "/2020/03/22/20200322-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/" title= "进程和线程">
-                    <div class="nextTitle">进程和线程</div>
+                <a href= "/2020/03/22/20200322-%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/" title= "用户态和内核态">
+                    <div class="nextTitle">用户态和内核态</div>
                 </a>
             
         </li>
@@ -554,7 +570,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目描述"><span class="toc-number">1.</span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路"><span class="toc-number">2.</span> <span class="toc-text">思路</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-直接用哈希表"><span class="toc-number">2.1.</span> <span class="toc-text">1.直接用哈希表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-原地置换"><span class="toc-number">2.2.</span> <span class="toc-text">2.原地置换</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目描述"><span class="toc-number">1.</span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路"><span class="toc-number">2.</span> <span class="toc-text">思路</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-直接用哈希表"><span class="toc-number">2.1.</span> <span class="toc-text">1.直接用哈希表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-原地置换"><span class="toc-number">2.2.</span> <span class="toc-text">2.原地置换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-快慢指针法-O-n-O-1-且不用改变数组"><span class="toc-number">2.3.</span> <span class="toc-text">3.快慢指针法  O(n),O(1) 且不用改变数组</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -2162,9 +2178,60 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 101
+        Total : 104
         </div>
         <!-- search  -->
         
@@ -2177,6 +2244,16 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/23</span><a class="archive-post-title" href= "/2020/03/23/20200323-%E5%83%B5%E5%B0%B8%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%AD%A4%E5%84%BF%E8%BF%9B%E7%A8%8B/" >僵尸进程和孤儿进程</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/23</span><a class="archive-post-title" href= "/2020/03/23/20200323-linux%E4%B8%8B%E7%9A%84fork%EF%BC%88%EF%BC%89%E5%87%BD%E6%95%B0/" >linux下的fork（）函数</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -2196,6 +2273,11 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/22</span><a class="archive-post-title" href= "/2020/03/22/20200322-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/" >进程和线程</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/22</span><a class="archive-post-title" href= "/2020/03/22/20200322-%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/" >用户态和内核态</a>
         </li>
     
     
@@ -2722,9 +2804,9 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
-        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
-    
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
+    
+        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
         <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
     

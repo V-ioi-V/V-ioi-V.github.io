@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">707</span>Reading time: <span class="post-count reading-time">2 min</span></span>
+                        <span>Word count: <span class="post-count word-count">808</span>Reading time: <span class="post-count reading-time">2 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -409,6 +409,13 @@ height:50vh;
 <h1 id="一、管道"><a href="#一、管道" class="headerlink" title="一、管道"></a>一、管道</h1><p>管道，通常指无名管道，是 UNIX 系统IPC最古老的形式。</p>
 <p>1、特点：<br>它是半双工的（即数据只能在一个方向上流动），具有固定的读端和写端。</p>
 <p>它只能用于具有亲缘关系的进程之间的通信（也是父子进程或者兄弟进程之间）。</p>
+<p>（父子进程或者兄弟进程指的是fork或者vfork创建的工程</p>
+<ul>
+<li><p><strong>fork()创建的子进程拥有了自己的栈和数据段拷贝，而且，在子进程中对父进程变量的修改，不会影响父进程；</strong></p>
+</li>
+<li><p><strong>vfork()创建的子进程共享父进程的内存，所以在子进程中对父进程变量的修改，会影响父进程。</strong></p>
+</li>
+</ul>
 <p>它可以看成是一种特殊的文件，对于它的读写也可以使用普通的read、write 等函数。但是它不是普通的文件，并不属于其他任何文件系统，并且只存在于内存中。</p>
 <h1 id="二、FIFO"><a href="#二、FIFO" class="headerlink" title="二、FIFO"></a>二、FIFO</h1><p>FIFO，也称为命名管道，它是一种文件类型。</p>
 <h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>FIFO可以在无关的进程之间交换数据，与无名管道不同。</p>
@@ -433,6 +440,11 @@ height:50vh;
     <!-- paginator  -->
     <ul class="post-paginator">
         <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/03/23/20200323-linux%E4%B8%8B%E7%9A%84fork%EF%BC%88%EF%BC%89%E5%87%BD%E6%95%B0/" title= "linux下的fork（）函数">
+                    <div class="nextTitle">linux下的fork（）函数</div>
+                </a>
             
         </li>
         <li class="previous">
@@ -2170,9 +2182,60 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 101
+        Total : 104
         </div>
         <!-- search  -->
         
@@ -2185,6 +2248,16 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/23</span><a class="archive-post-title" href= "/2020/03/23/20200323-%E5%83%B5%E5%B0%B8%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%AD%A4%E5%84%BF%E8%BF%9B%E7%A8%8B/" >僵尸进程和孤儿进程</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/23</span><a class="archive-post-title" href= "/2020/03/23/20200323-linux%E4%B8%8B%E7%9A%84fork%EF%BC%88%EF%BC%89%E5%87%BD%E6%95%B0/" >linux下的fork（）函数</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -2204,6 +2277,11 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/22</span><a class="archive-post-title" href= "/2020/03/22/20200322-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/" >进程和线程</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/22</span><a class="archive-post-title" href= "/2020/03/22/20200322-%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/" >用户态和内核态</a>
         </li>
     
     
@@ -2730,9 +2808,9 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
-        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
-    
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
+    
+        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
         <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
     
