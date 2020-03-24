@@ -346,6 +346,141 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >
+            
+                <span>IO复用</span>
+        </a>
+        <div class="abstract-content">
+            <p><strong>I/O复用就是单个线程通过记录跟踪每一个Sock(I/O流)的状态来同时管理多个I/O流</strong></p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/19</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >
+            
+                <span>Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</span>
+        </a>
+        <div class="abstract-content">
+            
+
+# 1.引言
+
+​         同步（synchronous） I/O和异步（asynchronous） I/O，阻塞（blocking） I/O和非阻塞（non-blocking）I/O分别是什么，到底有什么区别？这个问题其实不同的人给出的答案都可能不同，比如wiki就认为asynchronous I/O和non-blocking I/O是一个东西。这其实是因为不同的人的知识背景不同，并且在讨论这个问题的时候上下文(context)也不相同。所以，为了更好的回答这个问题，我先限定一下本文的上下文。
+
+​        本文讨论的背景是Linux环境下的network I/O。
+...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/19</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/19/TCP%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/" >
+            
+                <span>TCP拥塞控制</span>
+        </a>
+        <div class="abstract-content">
+            必背
+流量控制是在一条TCP连接中的接收端采用的措施,用来限制发送端发送报文段的速率,以免在接收端来不及接受,流量控制只控制一个发送端。
+拥塞控制是用来控制TCP连接中发送端发送报文段的速率,以免过多的数据注入到网络,导致网络奔溃,超过负荷.当发送方发送数据大量的数据会注入到网络,如果没有限制,网络就会超负荷变卡。拥塞控制可能会同时控制多个发送端,限制他们的发送速率。拥塞控制是全局性的。
+发送窗口的上限值是Min[rwnd,cwnd]。即发送窗口的数值不能超过接受窗口和拥塞窗口中的较小的一个。
+接受窗口的大小体现了接收端对发送端施加的流量控制,而拥塞窗口的大小则是整个因特网的负载情况对发...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/19</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/18/%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0/" >
+            
+                <span>寻找两个有序数组的中位数</span>
+        </a>
+        <div class="abstract-content">
+            题目描述给定两个大小为 m 和 n 的有序数组 nums1 和 nums2。
+请你找出这两个有序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。
+你可以假设 nums1 和 nums2 不会同时为空。
+示例 1:
+12nums1 &#x3D; [1, 3]nums2 &#x3D; [2]
+则中位数是 2.0示例 2:
+12nums1 &#x3D; [1, 2]nums2 &#x3D; [3, 4]
+则中位数是 (2 + 3)/2 = 2.5
+思路中位数也就是可以转化为第k小的数，可以在两个数组同时找第（k/2）个小的数，更小的那个数和他前面的数一定不是前k个数里的，...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/18</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/03/18/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/" >
             
                 <span>最长回文子串(马拉车)</span>
@@ -528,153 +663,6 @@ DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2)
             <div class= abstract-tags >
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "C++">C++</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/16/C++11-%E6%96%B0%E7%89%B9%E6%80%A7/" >
-            
-                <span>C++11 新特性</span>
-        </a>
-        <div class="abstract-content">
-            关键字auto
-使用auto的时候，编译器根据上下文情况，确定auto变量的真正类型。（必须在定义时初始化）
-
-12int a=10;auto b=a;//自动判断b为int类型
-用法
-用于代替冗长复杂、变量使用范围专一的变量声明。
-
-123456vector&lt;string&gt; v;    v.push_back("1");    v.push_back("2");    for(vector&lt;string&gt;::iterator i=v.begin();i!=v.end();i++)&#123;        cout&lt;&lt;(*i)&lt;&lt;endl...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "C++">C++</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/15/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95/" >
-            
-                <span>常见的排序方法</span>
-        </a>
-        <div class="abstract-content">
-            插入排序
-描述不需要开设另外的空间，每次遍历到一个数，将它与前面已经有序的序列作比较，插入到正确的位置，、在前面有序序列中这个数后面的数依次向后移动。
-复杂度时间复杂度：
-
-最佳情况：T(n) = O(n)
-最坏情况：T(n) = O(n^2)
-平均情况：T(n) = O(n^2)
-
-额外空间复杂度：O(1)
-12345678910111213void insertsort(int l, int r) &#123;    for (int i = l + 1; i &lt;= r; i++) &#123;        if (a[i] &lt; a[i - 1]) &#123;    ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/15</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "排序">排序</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/15/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" >
-            
-                <span>归并排序</span>
-        </a>
-        <div class="abstract-content">
-            原理盖算法采用分治法，将已有的有序子序列合并，得到有序的序列
-复杂度
-最差时间复杂度：O(nlogn)
-平均时间复杂度：O(nlogn)
-最差空间复杂度：O(n)
-稳定性：稳定
-
-快排和归并都是log，并且归并稳定，为啥实际应用快排
-他们都是分治思想，代码都通过递归来实现，过程十分相似
-归并排序是一种在任何情况下时间复杂度都比较稳定的排序算法，这也使它存在致命的缺点，即归并排序不是原地排序算法，空间复杂度较高，是是O（n），也正因如此，它没有快排应用广泛
-快排虽然最坏情况下是O（n^2），但是平均情况下复杂度都是O(nlogn)。而且快排退化到O（n^2）的概率非常小。
-
-代码实现123...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/15</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "排序">排序</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/13/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" >
-            
-                <span>快速排序</span>
-        </a>
-        <div class="abstract-content">
-            原理快速排序原理从序列中找一个基准数，将这个数放到正确的位置（左边的数比这个数小，右边的数比这个数大）。
-复杂度手写快排的最优情况就是每次都把序列划分成等数量的两部分（nlogn），最坏情况下就是一个有序的序列，每次分都只能分成一部分，退化成冒泡排序（n^2），所以手写快排是不稳定的排序;
-最差时间复杂度：O(n^2)平均时间复杂度：O(nlogn)稳定性：不稳定
-代码实现12345678910111213void qsort(int low, int high) &#123;    int l = low, r = high;    if (l &gt;= r)return;    w...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/13</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "排序">排序</a>
     
 </div>
             
@@ -2428,9 +2416,71 @@ DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2)
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 104
+        Total : 108
         </div>
         <!-- search  -->
         
@@ -2446,6 +2496,26 @@ DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2)
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/2020/03/24/20200324-%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/" >虚拟内存</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/2020/03/24/20200324-%E5%B9%B6%E5%8F%91%E3%80%81%E5%B9%B6%E8%A1%8C%E3%80%81%E5%90%8C%E6%AD%A5%E3%80%81%E5%BC%82%E6%AD%A5%E3%80%81%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB/" >并发、并行、同步、异步、多线程的区别</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/2020/03/24/20200324-cookie%E5%92%8Csession/" >cookie和session</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/2020/03/24/20200324-%E6%8C%89%E6%91%A9%E5%B8%88/" >按摩师</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">03/23</span><a class="archive-post-title" href= "/2020/03/23/20200323-%E5%83%B5%E5%B0%B8%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%AD%A4%E5%84%BF%E8%BF%9B%E7%A8%8B/" >僵尸进程和孤儿进程</a>
         </li>
     
@@ -2456,7 +2526,7 @@ DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2)
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/22</span><a class="archive-post-title" href= "/2020/03/22/20200322-%E8%BF%9B%E7%A8%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F/" >进程间的通信方式</a>
+            <span class="archive-post-date">03/22</span><a class="archive-post-title" href= "/2020/03/22/20200322-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F/" >进程和线程间的通信方式</a>
         </li>
     
     

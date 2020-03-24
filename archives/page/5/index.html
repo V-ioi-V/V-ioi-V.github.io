@@ -346,6 +346,140 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/11/rand5()%E7%94%9F%E6%88%90rand7()/" >
+            
+                <span>rand5()生成rand7()</span>
+        </a>
+        <div class="abstract-content">
+            描述​     假如有一个函数rand5()能等概率生成1 - 5 之间的整数，如何利用rand5()来实现rand7()，rand7()函数的要求是能够等概率生成1 - 7之间的整数。
+一开始想的是7个rand5()相加然后模7，还是太天真了，没想到这样每个数得出的概率不相等
+方法一12345678int rand7()&#123;    while(1)&#123;        int cnt=5*(rand5()-1)+(rand5()-1);        if(cnt&lt;21)&#123;            return cnt%7+1;        &#125; ...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/11</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "瞎搞">瞎搞</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/10/B%E6%A0%91%EF%BC%88B+%E6%A0%91%EF%BC%89%E3%80%81B+%E6%A0%91/" >
+            
+                <span>B树（B+树）、B+树</span>
+        </a>
+        <div class="abstract-content">
+            B-树定义B树（B-树），是一种多路搜索树（并非二叉的）：
+
+定义任意非叶子节点最多可以有M个儿子节点；且M&gt;2；
+则根节点（非叶子节点前提下）的儿子数为：[2，M]；
+除根节点为的非叶子节点的儿子数为[M/2，M]；
+每个结点存放至少M/2 - 1 （向上取整）且至多M -1 个关键字（至少为2）；
+非叶子结点的关键字个数 = 指向子节点的指针数-1；
+非叶子节点的关键字：K[1],K[2],K[3],…,K[M-1;且K[i] &lt; K[i +1];
+非叶子结点的指针：P[1], P[2], …, P[M]；其中P[1]指向关键字小于K[1]的子树，P[M]指向关键字大于K...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/10</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "数据结构">数据结构</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/10/%E5%93%88%E5%BC%97%E6%9B%BC/" >
+            
+                <span>哈弗曼树和哈弗曼编码</span>
+        </a>
+        <div class="abstract-content">
+             
+
+数据结构：哈夫曼树和哈夫曼编码哈夫曼树哈夫曼树是一种最优二叉树，其定义是：给定n个权值作为n个叶子节点，构造一棵二叉树，若树的带权路径长度达到最小，这样的树就达到最优二叉树，也就是哈夫曼树，示例图如下：
+基本概念深入学习哈夫曼树前，先了解一下基本概念，并以上面的哈夫曼树图为例
+
+路径：树中一个结点到另一个结点之间的分支序列构成两个结点间的路径。
+路径长度：路径中分支的数目，从根结点到第L层结点的路径长度为L-1。例如100和80的路径长度为1，50和30的路径长度为2。
+结点的权：树中结点的数值，例如100，50那些。
+结点带权路径长度：根结点到该结点之间的路径长度与该结点的权的乘...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/10</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "数据结构">数据结构</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/10/c++-map%E4%B8%8Eunordered_map%E5%8C%BA%E5%88%AB%E5%8F%8A%E4%BD%BF%E7%94%A8/" >
+            
+                <span>c++ map与unordered_map区别及使用</span>
+        </a>
+        <div class="abstract-content">
+            <p>曾经被问到过</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/10</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "STL">STL</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/03/09/%E7%BA%A2%E9%BB%91%E6%A0%91%E5%92%8CAVL%E6%A0%91%E7%9A%84%E5%AE%9A%E4%B9%89%EF%BC%8C%E7%89%B9%E7%82%B9%EF%BC%8C%E4%BB%A5%E5%8F%8A%E4%BA%8C%E8%80%85%E5%8C%BA%E5%88%AB/" >
             
                 <span>红黑树和AVL树的定义、特点及区别</span>
@@ -521,143 +655,6 @@ AVL树：平衡二叉树又称AVL树，是一种特殊的二叉查找树，其�
             <!-- date  -->
             <div class="abstract-date">
                 <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/29</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/28/Smallest%20Bounding%20Rectangle(%E6%9C%80%E5%B0%8F%E9%9D%A2%E7%A7%AF%E5%A4%96%E6%8E%A5%E7%9F%A9%E5%BD%A2)/" >
-            
-                <span>Smallest Bounding Rectangle(最小面积外接矩形)</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述Given the Cartesian coordinates of n (&gt; 0) 2-dimensional points, write a program that computes the area of their smallest bounding rectangle (smallest rectangle containing all the given points).
-输入The input file may contain multiple test cases. Each test case begins with a line containi...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/28</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/28/Triangle%EF%BC%88%E6%B1%82%E5%87%B8%E5%8C%85%E6%9C%80%E5%A4%A7%E5%86%85%E6%8E%A5%E4%B8%89%E8%A7%92%E5%BD%A2%EF%BC%89/" >
-            
-                <span>Triangle（求凸包最大内接三角形）</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述Given n distinct points on a plane, your task is to find the triangle that have the maximum area, whose vertices are from the given points.
-输入The input consists of several test cases. The first line of each test case contains an integer n, indicating the number of points on the plane. Each...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/28</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/25/%5BCQOI2006%5D%E5%87%B8%E5%A4%9A%E8%BE%B9%E5%BD%A2%20%20/" >
-            
-                <span>凸多边形</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述逆时针给出n个凸多边形的顶点坐标，求它们交的面积。例如n=2时，两个凸多边形如下图： 
-则相交部分的面积为5.233。
-输入第一行有一个整数n，表示凸多边形的个数，以下依次描述各个多边形。第i个多边形的第一行包含一个整数mi，表示多边形的边数，以下mi行每行两个整数，逆时针给出各个顶点的坐标。
-输出输出文件仅包含一个实数，表示相交部分的面积，保留三位小数
-样例输入1234567891011121326-2 0-1 -21 -22 01 2-1 240 -31 -12 2-1 0
-样例输出15.233
-100%的数据满足：2&lt;=n&lt;=10，3&lt;=mi&lt;...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/25</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/10/%E7%9E%AD%E6%9C%9B%E5%A1%94%E3%80%90%E5%8D%8A%E5%B9%B3%E9%9D%A2%E4%BA%A4%E3%80%91/" >
-            
-                <span>瞭望塔【半平面交】</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述致力于建设全国示范和谐小村庄的H村村长dadzhi，决定在村中建立一个瞭望塔，以此加强村中的治安。
-我们将H村抽象为一维的轮廓。如下图所示
-
-我们可以用一条山的上方轮廓折线(x1, y1), (x2, y2), …. (xn, yn)来描述H村的形状，这里x1 &lt; x2 &lt; …&lt; xn。瞭望塔可以建造在[x1, xn]间的任意位置, 但必须满足从瞭望塔的顶端可以看到H村的任意位置。可见在不同的位置建造瞭望塔，所需要建造的高度是不同的。为了节省开支，dadzhi村长希望建造的塔高度尽可能小。
-请你写一个程序，帮助dadzhi村长计算塔的最小高度。
-输入输入文...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/10</span>
             </div>
             <!-- tags  -->
             
@@ -2417,9 +2414,71 @@ AVL树：平衡二叉树又称AVL树，是一种特殊的二叉查找树，其�
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 104
+        Total : 108
         </div>
         <!-- search  -->
         
@@ -2435,6 +2494,26 @@ AVL树：平衡二叉树又称AVL树，是一种特殊的二叉查找树，其�
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/2020/03/24/20200324-%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/" >虚拟内存</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/2020/03/24/20200324-%E5%B9%B6%E5%8F%91%E3%80%81%E5%B9%B6%E8%A1%8C%E3%80%81%E5%90%8C%E6%AD%A5%E3%80%81%E5%BC%82%E6%AD%A5%E3%80%81%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB/" >并发、并行、同步、异步、多线程的区别</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/2020/03/24/20200324-cookie%E5%92%8Csession/" >cookie和session</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/2020/03/24/20200324-%E6%8C%89%E6%91%A9%E5%B8%88/" >按摩师</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">03/23</span><a class="archive-post-title" href= "/2020/03/23/20200323-%E5%83%B5%E5%B0%B8%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%AD%A4%E5%84%BF%E8%BF%9B%E7%A8%8B/" >僵尸进程和孤儿进程</a>
         </li>
     
@@ -2445,7 +2524,7 @@ AVL树：平衡二叉树又称AVL树，是一种特殊的二叉查找树，其�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/22</span><a class="archive-post-title" href= "/2020/03/22/20200322-%E8%BF%9B%E7%A8%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F/" >进程间的通信方式</a>
+            <span class="archive-post-date">03/22</span><a class="archive-post-title" href= "/2020/03/22/20200322-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F/" >进程和线程间的通信方式</a>
         </li>
     
     
