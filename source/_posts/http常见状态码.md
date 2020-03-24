@@ -31,3 +31,5 @@ category: CS大学生必备
 | 404    | Not Found             | 无法找到所请求的URL                                          |
 | 500    | Internal Server Error | 服务器遇到一个妨碍它为请求提供服务的错误。                   |
 | 503    | Bad Gateway           | 服务器现在无法为请求提供服务，但将来可以。                   |
+
+详细见:https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status
