@@ -346,6 +346,174 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/20/sql%E6%9F%A5%E8%AF%A2%E9%80%9F%E5%BA%A6%E4%BC%98%E5%8C%96/" >
+            
+                <span>sql查询速度优化</span>
+        </a>
+        <div class="abstract-content">
+            
+
+1.在表中建立索引，优先考虑where、 group by使用到的字段2.查询条件中，一定不要使用*因为会返回过多无用的字段会降低查询效率。应该使用具体的字段代替*，只返回使用到的字段。
+3.不要在where条件中使用左右两边都是%的like模糊查询，如：SELECT * FROM t_order WHERE customer LIKE ‘%zhang%’
+这样会导致数据库引擎放弃索引进行全表扫描。
+优化：尽量在字段后面使用模糊查询。如下：
+SELECT * FROM t_order WHERE customer LIKE ‘zhang%’
+4.尽量不要使用in 和not in，会造...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/20</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "数据库">数据库</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/20/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1%E5%8F%8A%E5%9B%9B%E4%B8%AA%E7%89%B9%E6%80%A7/" >
+            
+                <span>数据库事务及四个特性</span>
+        </a>
+        <div class="abstract-content">
+            <p>转自：<a href="https://www.cnblogs.com/takumicx/p/9998844.html#事务的隔离级别" target="_blank" rel="noopener">https://www.cnblogs.com/takumicx/p/9998844.html#事务的隔离级别</a></p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/20</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "数据库">数据库</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/20/%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/" >
+            
+                <span>最小的k个数</span>
+        </a>
+        <div class="abstract-content">
+            <p>经典top(k)问题</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/20</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/20/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95/" >
+            
+                <span>数据库索引简介</span>
+        </a>
+        <div class="abstract-content">
+            
+
+数据库创建索引语句
+12CREATE [索引类型] INDEX 索引名称ON 表名(列名)
+索引类型：
+
+普通索引(啥都不写):单纯的索引
+
+唯一索引(UNIQUE)：不允许两行具有相同的索引值（创建了唯一约束，系统将自动创建唯一索引）。
+
+主键索引：主键索引要求主键中的每个值是唯一的，（创建主键自动创建主键索引）。
+聚集索引(CLUSTERED)：表中各行的物理顺序与键值的逻辑（索引）顺序相同，表中只能包含一个聚集索引，主键列默认为聚集索引。
+非聚集索引(NONCLUSTERED)：表中各行的物理顺序与键值的逻辑（索引）顺序不匹配，表中可以有249个非聚集索引。
+
+思考问题：
+
+为...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/20</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "数据库">数据库</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/19/%E5%90%8C%E6%AD%A5%E3%80%81%E5%BC%82%E6%AD%A5%E4%B8%8E%E9%98%BB%E5%A1%9E%E3%80%81%E9%9D%9E%E9%98%BB%E5%A1%9E/" >
+            
+                <span>同步、异步与阻塞、非阻塞&amp;并发并行</span>
+        </a>
+        <div class="abstract-content">
+            <h3 id="IO操作"><a href="#IO操作" class="headerlink" title="IO操作"></a>IO操作</h3>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/19</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >
             
                 <span>IO复用</span>
@@ -512,167 +680,10 @@ DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2)
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/18/%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/" >
-            
-                <span>盛最多水的容器</span>
-        </a>
-        <div class="abstract-content">
-            题目描述给你 n 个非负整数 a1，a2，…，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
-说明：你不能倾斜容器，且 n 的值至少为 2。
-
-图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。
-示例：
-12输入：[1,8,6,2,5,4,8,3,7]输出：49
-思路双指针法，从两边遍历，由于每条线的距离都是1，所以移动短的那根一定会移动到最大距离。
-简...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/18</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/17/C++%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7/" >
-            
-                <span>C++三大特性</span>
-        </a>
-        <div class="abstract-content">
-            <p><strong>C++ 三大特性 封装，继承，多态</strong></p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/17</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "C++">C++</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/17/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/" >
-            
-                <span>构造函数和析构函数</span>
-        </a>
-        <div class="abstract-content">
-            构造函数和析构函数描述构造函数 ，是一种特殊的方法。主要用来在创建对象时初始化对象， 即为对象成员变量赋初始值，总与new运算符一起使用在创建对象的语句中。特别的一个类可以有多个构造函数 ，可根据其参数个数的不同或参数类型的不同来区分它们 即构造函数的重载。
-析构函数(destructor) 与构造函数相反，当对象结束其生命周期时（例如对象所在的函数已调用完毕），系统自动执行析构函数。析构函数往往用来做“清理善后” 的工作（例如在建立对象时用new开辟了一片内存空间，delete会自动调用析构函数后释放内存）。
-析构函数如果我们不写的话，C++ 会帮我们自动的合成一个，就是说：C++ 会...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/17</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "C++">C++</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/17/%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8/" >
-            
-                <span>虚函数和虚函数表（vtable）</span>
-        </a>
-        <div class="abstract-content">
-            一、概述为了实现C++的多态，C++使用了一种动态绑定的技术。这个技术的核心是虚函数表（下文简称虚表）。本文介绍虚函数表是如何实现动态绑定的。
-二、类的虚表每个包含了虚函数的类都包含一个虚表。我们知道，当一个类（A）继承另一个类（B）时，类A会继承类B的函数的调用权。所以如果一个基类包含了虚函数，那么其继承类也可调用这些虚函数，换句话说，一个类继承了包含虚函数的基类，那么这个类也拥有自己的虚表。
-我们来看以下的代码。类A包含虚函数vfunc1，vfunc2，由于类A包含虚函数，故类A拥有一个虚表。
-123456789class A &#123;public:    virtual voi...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/17</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "C++">C++</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/16/C++%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D(%E9%9D%99%E6%80%81%E5%86%85%E5%AD%98%E3%80%81%E6%A0%88%E3%80%81%E5%A0%86)/" >
-            
-                <span>C++内存分配(静态内存、栈、堆)</span>
-        </a>
-        <div class="abstract-content">
-            <p>内存分为三种：静态内存、栈内存、堆内存。</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "C++">C++</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/archives/page/2/">&lt; PREV</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/11/">11</a><a class="extend next" rel="next" href="/archives/page/4/">NEXT &gt;</a>
+        <a class="extend prev" rel="prev" href="/archives/page/2/">&lt; PREV</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/12/">12</a><a class="extend next" rel="next" href="/archives/page/4/">NEXT &gt;</a>
     </nav>
     
 </main>
@@ -2478,9 +2489,98 @@ DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2)
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 108
+        Total : 113
         </div>
         <!-- search  -->
         
@@ -2493,6 +2593,31 @@ DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2)
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/25</span><a class="archive-post-title" href= "/2020/03/25/20200325-LRU%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95/" >LRU页面置换算法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/25</span><a class="archive-post-title" href= "/2020/03/25/20200325-%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95/" >页面置换算法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/25</span><a class="archive-post-title" href= "/2020/03/25/20200325-%E5%8E%9F%E5%AD%90%E7%9A%84%E6%95%B0%E9%87%8F/" >原子的数量</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/25</span><a class="archive-post-title" href= "/2020/03/25/20200325-%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97/" >乘积最大子序列</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/2020/03/24/20200324-%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/" >括号生成</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -3063,11 +3188,11 @@ DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2)
     
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
-        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
-    
         <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
+    
+        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
         <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
@@ -3077,13 +3202,13 @@ DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2)
     
         <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
-        <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
-    
         <span class="sidebar-tag-name" data-tags="计算机网络原理"><span class="iconfont-archer">&#xe606;</span>计算机网络原理</span>
     
-        <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
+        <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
+    
+        <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
         <span class="sidebar-tag-name" data-tags="图论"><span class="iconfont-archer">&#xe606;</span>图论</span>
     

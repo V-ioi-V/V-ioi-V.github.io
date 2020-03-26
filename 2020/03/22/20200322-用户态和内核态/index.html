@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">903</span>Reading time: <span class="post-count reading-time">3 min</span></span>
+                        <span>Word count: <span class="post-count word-count">896</span>Reading time: <span class="post-count reading-time">3 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -404,17 +404,18 @@ height:50vh;
         <h1 id="用户态和内核态"><a href="#用户态和内核态" class="headerlink" title="用户态和内核态"></a>用户态和内核态</h1><p>通过<strong>系统调用</strong>将Linux整个体系分为用户态和内核态（或者说内核空间和用户空间）。</p>
 <p><strong>用户态：</strong>用户态就是提供应用程序运行的空间，为了使应用程序访问到内核管理的资源例如CPU，内存，I/O。内核必须提供一组通用的访问接口，这些接口就叫<strong>系统调用。</strong></p>
 <p><strong>内核态：</strong>其实从本质上说就是我们所说的内核，它是一种<strong>特殊的软件程序</strong>，特殊在哪儿呢？<strong>控制计算机的硬件资源，例如协调CPU资源，分配内存资源，并且提供稳定的环境供应用程序运行</strong>。</p>
-<h2 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h2><p><strong>系统调用</strong>时操作系统的最小功能单位。根据不同的应用场景，不同的Linux发行版本提供的系统调用数量也不尽相同，大致在240-350之间。这些系统调用组成了用户态跟内核态交互的基本接口，<strong>例如：用户态想要申请一块20K大小的动态内存，就需要brk系统调用，将数据段指针向下偏移，如果用户态多处申请20K动态内存，同时又释放呢？这个内存的管理就变得非常的复杂。</strong></p>
+<p>用户态是一般的函数调用，系统态是系统函数的调用</p>
+<h2 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h2><p><strong>系统调用</strong>是操作系统的最小功能单位。根据不同的应用场景，不同的Linux发行版本提供的系统调用数量也不尽相同，大致在240-350之间。这些系统调用组成了用户态跟内核态交互的基本接口，<strong>例如：用户态想要申请一块20K大小的动态内存，就需要brk系统调用，将数据段指针向下偏移，如果用户态多处申请20K动态内存，同时又释放呢？这个内存的管理就变得非常的复杂。</strong></p>
 <h2 id="用户态到内核态怎样切换？"><a href="#用户态到内核态怎样切换？" class="headerlink" title="用户态到内核态怎样切换？"></a>用户态到内核态怎样切换？</h2><p>往往我们的系统的资源是固定的，例如内存2G，CPU固定，磁盘2TB，网络接口固定。所以就需要操作系统对资源进行有效的利用。假设某个应用程序过分的访问这些资源，就会导致整个系统的资源被占用，如果不对这种行为进行限制和区分，就会导致资源访问的冲突。所以，Linux的设计的初衷：<strong>对不同的操作给与不同的“权限”</strong>。Linux操作系统就将权限等级分为了2个等级，分别就是内核态和用户态。</p>
 <p>各位有没有发现，前面讲了这么多内核态和用户态什么不同，其实用一句话就能概括：<strong>它们权限不同</strong>。用户态的进程能够访问的资源受到了极大的控制，而运行在内核态的进程可以“<strong>为所欲为</strong>”。一个进程可以运行在用户态也可以运行在内核态，那它们之间肯定存在用户态和内核态切换的过程。打一个比方：<strong>C库接口malloc申请动态内存，malloc的实现内部最终还是会调用brk（）或者mmap（）系统调用来分配内存。</strong></p>
 <p><strong>那为问题又来了，从用户态到内核态到底怎么进入？只能通过系统调用吗？还有其他方式吗？</strong></p>
 <p>从用户态到内核态切换可以通过三种方式：</p>
 <ol>
-<li>系统调用，这个上面已经讲解过了，在我公众号之前的文章也有讲解过。其实系统调用本身就是中断，但是软件中断，跟硬中断不同。</li>
+<li>其实系统调用本身就是中断，但是软件中断，跟硬中断不同。</li>
 <li>异常：如果当前进程运行在用户态，如果这个时候发生了异常事件，就会触发切换。例如：缺页异常。</li>
 <li>外设中断：当外设完成用户的请求时，会向CPU发送中断信号。</li>
 </ol>
-<h2 id="为什么要划分用户态和系统态？"><a href="#为什么要划分用户态和系统态？" class="headerlink" title="为什么要划分用户态和系统态？**"></a>为什么要划分用户态和系统态？**</h2><p>一个最主要原因是要把用户程序和系统程序区分开，以利于程序的共享和保护。显然，这也是以增加系统复杂度和系统开销为代价的。</p>
+<h2 id="为什么要划分用户态和系统态？"><a href="#为什么要划分用户态和系统态？" class="headerlink" title="为什么要划分用户态和系统态？"></a>为什么要划分用户态和系统态？</h2><p>一个最主要原因是要把用户程序和系统程序区分开，以利于程序的共享和保护。显然，这也是以增加系统复杂度和系统开销为代价的。</p>
 
     </article>
     <!-- license  -->
@@ -556,7 +557,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#用户态和内核态"><span class="toc-number">1.</span> <span class="toc-text">用户态和内核态</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#系统调用"><span class="toc-number">1.1.</span> <span class="toc-text">系统调用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用户态到内核态怎样切换？"><span class="toc-number">1.2.</span> <span class="toc-text">用户态到内核态怎样切换？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要划分用户态和系统态？"><span class="toc-number">1.3.</span> <span class="toc-text">为什么要划分用户态和系统态？**</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#用户态和内核态"><span class="toc-number">1.</span> <span class="toc-text">用户态和内核态</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#系统调用"><span class="toc-number">1.1.</span> <span class="toc-text">系统调用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用户态到内核态怎样切换？"><span class="toc-number">1.2.</span> <span class="toc-text">用户态到内核态怎样切换？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要划分用户态和系统态？"><span class="toc-number">1.3.</span> <span class="toc-text">为什么要划分用户态和系统态？</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -2277,9 +2278,98 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 108
+        Total : 113
         </div>
         <!-- search  -->
         
@@ -2292,6 +2382,31 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/25</span><a class="archive-post-title" href= "/2020/03/25/20200325-LRU%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95/" >LRU页面置换算法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/25</span><a class="archive-post-title" href= "/2020/03/25/20200325-%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95/" >页面置换算法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/25</span><a class="archive-post-title" href= "/2020/03/25/20200325-%E5%8E%9F%E5%AD%90%E7%9A%84%E6%95%B0%E9%87%8F/" >原子的数量</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/25</span><a class="archive-post-title" href= "/2020/03/25/20200325-%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97/" >乘积最大子序列</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/2020/03/24/20200324-%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/" >括号生成</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -2862,11 +2977,11 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
-        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
-    
         <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
+    
+        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
         <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
@@ -2876,13 +2991,13 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
-        <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
-    
         <span class="sidebar-tag-name" data-tags="计算机网络原理"><span class="iconfont-archer">&#xe606;</span>计算机网络原理</span>
     
-        <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
+        <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
+    
+        <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
         <span class="sidebar-tag-name" data-tags="图论"><span class="iconfont-archer">&#xe606;</span>图论</span>
     

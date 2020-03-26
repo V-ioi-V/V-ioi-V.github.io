@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">2.9k</span>Reading time: <span class="post-count reading-time">9 min</span></span>
+                        <span>Word count: <span class="post-count word-count">3.1k</span>Reading time: <span class="post-count reading-time">10 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -441,10 +441,22 @@ height:50vh;
 <p>有效位为0，数组值为null时，表示未分配的页。</p>
 <p>有效位为0，数组值不为null，表示已经分配了虚拟页，但是还未缓存到具体的物理页中（缺页）</p>
 <p>注意这里的缓存是代表内存中存有数据。</p>
+<ul>
+<li>在使用虚拟页式存储管理时需要在页表中增加一些内容：</li>
+</ul>
+<p><strong>页号、驻留位（中断位）、内存块号、外存地址、访问号、修改位</strong></p>
+<p><strong>驻留位：表示该页在外存还是内存；</strong></p>
+<p><strong>访问位：表示该页在内存期间是否被访问过，又称R位；</strong></p>
+<p><strong>修改位：表示该页在内存中是否被修改过，又称M位；</strong></p>
 <h3 id="页表缓存"><a href="#页表缓存" class="headerlink" title="页表缓存"></a>页表缓存</h3><p>页表是被缓存在内存中的，为了防止每次地址翻译操作都需要去访问内存，<strong>CPU</strong>使用了高速缓存与<strong>TLB</strong>来缓存<strong>PTE</strong>。<strong>TLB</strong>是<strong>MMU</strong>中的一个缓冲区，其中每一行都保存着一个由单个<strong>PTE</strong>组成的块</p>
 <p>页表由操作系统管理，并且MMU需要借助存放在内存中的页表来动态翻译虚拟地址</p>
 <h3 id="缺页"><a href="#缺页" class="headerlink" title="缺页"></a>缺页</h3><p><strong>虚拟页没有被缓存在物理内存中</strong>（缓存未命中）被称为缺页。</p>
 <p>当CPU遇见缺页时会触发一个缺页异常，缺页异常将控制权转向操作系统内核，然后调用内核中的缺页异常处理程序，该程序会选择一个牺牲页，如果牺牲页已被修改过，内核会先将它复制回硬盘（采用写回机制而不是直写也是为了尽量减少对硬盘的访问次数），然后再把该虚拟页覆盖到牺牲页的位置，并且更新PTE。</p>
+<p>缺页本身是一种中断，与一般的中断一样，需要经过4个处理步骤：</p>
+<p>1、保护CPU现场</p>
+<p>2、分析中断原因</p>
+<p>3、转入缺页中断处理程序进行处理</p>
+<p>4、恢复CPU现场，继续执行</p>
 <h3 id="地址翻译"><a href="#地址翻译" class="headerlink" title="地址翻译"></a>地址翻译</h3><p>地址翻译原理：</p>
 <p><img src="https://i.loli.net/2020/03/24/8eD1WsvRTxcuLHd.jpg" alt="2.jpg"></p>
 <p>n位的虚拟地址划分为p位的虚拟地址偏移量VPO和(n - p)位的虚拟页号VPN;</p>
@@ -492,6 +504,11 @@ height:50vh;
     <!-- paginator  -->
     <ul class="post-paginator">
         <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/03/24/20200324-%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/" title= "括号生成">
+                    <div class="nextTitle">括号生成</div>
+                </a>
             
         </li>
         <li class="previous">
@@ -2342,9 +2359,98 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 108
+        Total : 113
         </div>
         <!-- search  -->
         
@@ -2357,6 +2463,31 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/25</span><a class="archive-post-title" href= "/2020/03/25/20200325-LRU%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95/" >LRU页面置换算法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/25</span><a class="archive-post-title" href= "/2020/03/25/20200325-%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95/" >页面置换算法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/25</span><a class="archive-post-title" href= "/2020/03/25/20200325-%E5%8E%9F%E5%AD%90%E7%9A%84%E6%95%B0%E9%87%8F/" >原子的数量</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/25</span><a class="archive-post-title" href= "/2020/03/25/20200325-%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97/" >乘积最大子序列</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/2020/03/24/20200324-%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/" >括号生成</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -2927,11 +3058,11 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
-        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
-    
         <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
+    
+        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
         <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
@@ -2941,13 +3072,13 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
-        <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
-    
         <span class="sidebar-tag-name" data-tags="计算机网络原理"><span class="iconfont-archer">&#xe606;</span>计算机网络原理</span>
     
-        <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
+        <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
+    
+        <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
         <span class="sidebar-tag-name" data-tags="图论"><span class="iconfont-archer">&#xe606;</span>图论</span>
     

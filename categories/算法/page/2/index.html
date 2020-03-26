@@ -346,6 +346,79 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/18/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/" >
+            
+                <span>最长回文子串(马拉车)</span>
+        </a>
+        <div class="abstract-content">
+            题目描述给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
+示例 1：
+12输入: &quot;babad&quot;输出: &quot;bab&quot;
+注意: “aba” 也是一个有效答案。示例 2：
+12输入: &quot;cbbd&quot;输出: &quot;bb&quot;
+DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2),枚举中心往两边找复杂度也是O（n^2）
+枚举:在求解过程中，基数的回文子串与偶数的回文子串是不一样的。比如最长回文子串为aba，对称中心就是b，如果最长回文子串为abba，则对称中心应该为两个...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/18</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "DP">DP</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "字符串">字符串</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/18/%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/" >
+            
+                <span>盛最多水的容器</span>
+        </a>
+        <div class="abstract-content">
+            题目描述给你 n 个非负整数 a1，a2，…，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
+说明：你不能倾斜容器，且 n 的值至少为 2。
+
+图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。
+示例：
+12输入：[1,8,6,2,5,4,8,3,7]输出：49
+思路双指针法，从两边遍历，由于每条线的距离都是1，所以移动短的那根一定会移动到最大距离。
+简...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/18</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/03/15/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95/" >
             
                 <span>常见的排序方法</span>
@@ -598,79 +671,6 @@
             <!-- date  -->
             <div class="abstract-date">
                 <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/28</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/25/%5BCQOI2006%5D%E5%87%B8%E5%A4%9A%E8%BE%B9%E5%BD%A2%20%20/" >
-            
-                <span>凸多边形</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述逆时针给出n个凸多边形的顶点坐标，求它们交的面积。例如n=2时，两个凸多边形如下图： 
-则相交部分的面积为5.233。
-输入第一行有一个整数n，表示凸多边形的个数，以下依次描述各个多边形。第i个多边形的第一行包含一个整数mi，表示多边形的边数，以下mi行每行两个整数，逆时针给出各个顶点的坐标。
-输出输出文件仅包含一个实数，表示相交部分的面积，保留三位小数
-样例输入1234567891011121326-2 0-1 -21 -22 01 2-1 240 -31 -12 2-1 0
-样例输出15.233
-100%的数据满足：2&lt;=n&lt;=10，3&lt;=mi&lt;...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/25</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/10/%E7%9E%AD%E6%9C%9B%E5%A1%94%E3%80%90%E5%8D%8A%E5%B9%B3%E9%9D%A2%E4%BA%A4%E3%80%91/" >
-            
-                <span>瞭望塔【半平面交】</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述致力于建设全国示范和谐小村庄的H村村长dadzhi，决定在村中建立一个瞭望塔，以此加强村中的治安。
-我们将H村抽象为一维的轮廓。如下图所示
-
-我们可以用一条山的上方轮廓折线(x1, y1), (x2, y2), …. (xn, yn)来描述H村的形状，这里x1 &lt; x2 &lt; …&lt; xn。瞭望塔可以建造在[x1, xn]间的任意位置, 但必须满足从瞭望塔的顶端可以看到H村的任意位置。可见在不同的位置建造瞭望塔，所需要建造的高度是不同的。为了节省开支，dadzhi村长希望建造的塔高度尽可能小。
-请你写一个程序，帮助dadzhi村长计算塔的最小高度。
-输入输入文...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/10</span>
             </div>
             <!-- tags  -->
             
@@ -2492,9 +2492,98 @@
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 108
+        Total : 113
         </div>
         <!-- search  -->
         
@@ -2507,6 +2596,31 @@
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/25</span><a class="archive-post-title" href= "/2020/03/25/20200325-LRU%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95/" >LRU页面置换算法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/25</span><a class="archive-post-title" href= "/2020/03/25/20200325-%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95/" >页面置换算法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/25</span><a class="archive-post-title" href= "/2020/03/25/20200325-%E5%8E%9F%E5%AD%90%E7%9A%84%E6%95%B0%E9%87%8F/" >原子的数量</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/25</span><a class="archive-post-title" href= "/2020/03/25/20200325-%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97/" >乘积最大子序列</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/2020/03/24/20200324-%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/" >括号生成</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -3077,11 +3191,11 @@
     
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
-        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
-    
         <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
+    
+        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
         <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
@@ -3091,13 +3205,13 @@
     
         <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
-        <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
-    
         <span class="sidebar-tag-name" data-tags="计算机网络原理"><span class="iconfont-archer">&#xe606;</span>计算机网络原理</span>
     
-        <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
+        <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
+    
+        <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
         <span class="sidebar-tag-name" data-tags="图论"><span class="iconfont-archer">&#xe606;</span>图论</span>
     
