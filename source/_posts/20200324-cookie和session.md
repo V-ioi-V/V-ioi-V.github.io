@@ -1,6 +1,6 @@
 ---
 title: cookie和session
-tags: 操作系统
+tags: 计算机网络原理
 category: CS大学生必备
 date: 2020/03/24 15:34
 ---
