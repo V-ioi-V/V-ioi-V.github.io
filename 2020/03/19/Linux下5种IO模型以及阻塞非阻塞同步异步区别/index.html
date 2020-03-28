@@ -401,37 +401,28 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <font size=4>
+        <h1 id="1-引言"><a href="#1-引言" class="headerlink" title="1.引言"></a>1.引言</h1><p>​         同步（synchronous） I/O和异步（asynchronous） I/O，阻塞（blocking） I/O和非阻塞（non-blocking）I/O分别是什么，到底有什么区别？这个问题其实不同的人给出的答案都可能不同，比如wiki就认为asynchronous I/O和non-blocking I/O是一个东西。这其实是因为不同的人的知识背景不同，并且在讨论这个问题的时候上下文(context)也不相同。所以，为了更好的回答这个问题，我先限定一下本文的上下文。</p>
+<p>​        本文讨论的背景是Linux环境下的network I/O。</p>
+<p>​        本文最重要的参考文献是Richard Stevens的“UNIX® Network Programming Volume 1, Third Edition: The Sockets Networking ”，6.2节“I/O Models ”，Stevens在这节中详细说明了各种I/O的特点和区别，如果英文够好的话，推荐直接阅读。Stevens的文风是有名的深入浅出，所以不用担心看不懂。本文中的流程图也是截取自参考文献。</p>
+<h1 id="2-Linux下的五种I-O模型"><a href="#2-Linux下的五种I-O模型" class="headerlink" title="2.Linux下的五种I/O模型"></a>2.Linux下的五种I/O模型</h1><ul>
+<li>阻塞I/O（blocking I/O）</li>
+<li>非阻塞I/O （nonblocking I/O）</li>
+<li>I/O复用(select 和poll) （I/O multiplexing）</li>
+<li>信号驱动I/O （signal driven I/O (SIGIO)）</li>
+<li>异步I/O （asynchronous I/O (the POSIX aio_functions)） </li>
+</ul>
+<p>Tip：前四种都是同步，只有最后一种才是异步I/O。</p>
+<h2 id="2-1-I-O发生时涉及的对象和阶段"><a href="#2-1-I-O发生时涉及的对象和阶段" class="headerlink" title="2.1 I/O发生时涉及的对象和阶段"></a>2.1 I/O发生时涉及的对象和阶段</h2><p>对于一个network I/O (这里我们以read举例)，它会涉及到两个系统对象，一个是调用这个I/O的process (or thread)，另一个就是系统内核(kernel)。当一个read操作发生时，它会经历两个阶段：</p>
+<ul>
+<li><p>1 等待数据准备 (Waiting for the data to be ready)</p>
+</li>
+<li><p>2 将数据从内核拷贝到进程中 (Copying the data from the kernel to the process)</p>
+</li>
+</ul>
+<p>记住这两点很重要，因为这些I/O Model的区别就是在两个阶段上各有不同的情况。</p>
+<h2 id="2-2-阻塞I-O模型-blocking-I-O"><a href="#2-2-阻塞I-O模型-blocking-I-O" class="headerlink" title="2.2 阻塞I/O模型(blocking I/O)"></a>2.2 阻塞I/O模型(blocking I/O)</h2><font color="red">在linux中，默认情况下所有的socket都是blocking</font>，一个典型的读操作流程大概是这样：
 
-# 1.引言
 
-​         同步（synchronous） I/O和异步（asynchronous） I/O，阻塞（blocking） I/O和非阻塞（non-blocking）I/O分别是什么，到底有什么区别？这个问题其实不同的人给出的答案都可能不同，比如wiki就认为asynchronous I/O和non-blocking I/O是一个东西。这其实是因为不同的人的知识背景不同，并且在讨论这个问题的时候上下文(context)也不相同。所以，为了更好的回答这个问题，我先限定一下本文的上下文。
-
-​        本文讨论的背景是Linux环境下的network I/O。
-
-​        本文最重要的参考文献是Richard Stevens的“UNIX® Network Programming Volume 1, Third Edition: The Sockets Networking ”，6.2节“I/O Models ”，Stevens在这节中详细说明了各种I/O的特点和区别，如果英文够好的话，推荐直接阅读。Stevens的文风是有名的深入浅出，所以不用担心看不懂。本文中的流程图也是截取自参考文献。
-
-# 2.Linux下的五种I/O模型
-
-- 阻塞I/O（blocking I/O）
-- 非阻塞I/O （nonblocking I/O）
-- I/O复用(select 和poll) （I/O multiplexing）
-- 信号驱动I/O （signal driven I/O (SIGIO)）
-- 异步I/O （asynchronous I/O (the POSIX aio_functions)） 
-
-Tip：前四种都是同步，只有最后一种才是异步I/O。
-
-## 2.1 I/O发生时涉及的对象和阶段
-对于一个network I/O (这里我们以read举例)，它会涉及到两个系统对象，一个是调用这个I/O的process (or thread)，另一个就是系统内核(kernel)。当一个read操作发生时，它会经历两个阶段：
-
--  1 等待数据准备 (Waiting for the data to be ready)
-
--  2 将数据从内核拷贝到进程中 (Copying the data from the kernel to the process)
-
-记住这两点很重要，因为这些I/O Model的区别就是在两个阶段上各有不同的情况。
-
-## 2.2 阻塞I/O模型(blocking I/O) 
-<font color="red">在linux中，默认情况下所有的socket都是blocking</font>，一个典型的读操作流程大概是这样：
 
 ![1.jpg](https://i.loli.net/2020/03/19/oICR2gEYXu6mdTS.jpg)
 
@@ -714,7 +705,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-非阻塞I-O模型（non-blocking-IO）"><span class="toc-number">1.</span> <span class="toc-text">2.3 非阻塞I&#x2F;O模型（non-blocking IO）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-I-O复用模型（I-O-multiplexing）"><span class="toc-number">2.</span> <span class="toc-text">2.4 I&#x2F;O复用模型（I&#x2F;O multiplexing）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-信号驱动I-O模型（Signal-driven-I-O）"><span class="toc-number">3.</span> <span class="toc-text">2.5 信号驱动I&#x2F;O模型（Signal-driven I&#x2F;O）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-异步I-O模型（Asynchronous-I-O）"><span class="toc-number">4.</span> <span class="toc-text">2.6 异步I&#x2F;O模型（Asynchronous I&#x2F;O）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7-5种I-O模型比较"><span class="toc-number">5.</span> <span class="toc-text">2.7 5种I&#x2F;O模型比较</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-结语"><span class="toc-number"></span> <span class="toc-text">3.结语</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#扩展：select、poll、epoll简介"><span class="toc-number"></span> <span class="toc-text">扩展：select、poll、epoll简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-select："><span class="toc-number">1.</span> <span class="toc-text">4.1 select：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-poll："><span class="toc-number">2.</span> <span class="toc-text">4.2 poll：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-epoll"><span class="toc-number">3.</span> <span class="toc-text">4.3 epoll:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-select、poll、epoll-区别总结："><span class="toc-number">4.</span> <span class="toc-text">4.4 select、poll、epoll 区别总结：</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-引言"><span class="toc-number">1.</span> <span class="toc-text">1.引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Linux下的五种I-O模型"><span class="toc-number">2.</span> <span class="toc-text">2.Linux下的五种I&#x2F;O模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-I-O发生时涉及的对象和阶段"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 I&#x2F;O发生时涉及的对象和阶段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-阻塞I-O模型-blocking-I-O"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 阻塞I&#x2F;O模型(blocking I&#x2F;O)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-非阻塞I-O模型（non-blocking-IO）"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 非阻塞I&#x2F;O模型（non-blocking IO）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-I-O复用模型（I-O-multiplexing）"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 I&#x2F;O复用模型（I&#x2F;O multiplexing）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-信号驱动I-O模型（Signal-driven-I-O）"><span class="toc-number">2.5.</span> <span class="toc-text">2.5 信号驱动I&#x2F;O模型（Signal-driven I&#x2F;O）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-异步I-O模型（Asynchronous-I-O）"><span class="toc-number">2.6.</span> <span class="toc-text">2.6 异步I&#x2F;O模型（Asynchronous I&#x2F;O）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7-5种I-O模型比较"><span class="toc-number">2.7.</span> <span class="toc-text">2.7 5种I&#x2F;O模型比较</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-结语"><span class="toc-number">3.</span> <span class="toc-text">3.结语</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#扩展：select、poll、epoll简介"><span class="toc-number">4.</span> <span class="toc-text">扩展：select、poll、epoll简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-select："><span class="toc-number">4.1.</span> <span class="toc-text">4.1 select：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-poll："><span class="toc-number">4.2.</span> <span class="toc-text">4.2 poll：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-epoll"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 epoll:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-select、poll、epoll-区别总结："><span class="toc-number">4.4.</span> <span class="toc-text">4.4 select、poll、epoll 区别总结：</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -2530,9 +2521,62 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 113
+        Total : 116
         </div>
         <!-- search  -->
         
@@ -2545,6 +2589,21 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/28</span><a class="archive-post-title" href= "/2020/03/28/20200328-%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" >树的直径</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/28</span><a class="archive-post-title" href= "/2020/03/28/20200328-%E8%B7%AF%E7%94%B1%E5%99%A8%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/" >路由器与交换机</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/27</span><a class="archive-post-title" href= "/2020/03/27/20200327-%E4%B8%AD%E6%96%AD/" >中断</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -3140,6 +3199,8 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="计算机网络原理"><span class="iconfont-archer">&#xe606;</span>计算机网络原理</span>
     
+        <span class="sidebar-tag-name" data-tags="图论"><span class="iconfont-archer">&#xe606;</span>图论</span>
+    
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
@@ -3161,8 +3222,6 @@ top:50vh;
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
-    
-        <span class="sidebar-tag-name" data-tags="图论"><span class="iconfont-archer">&#xe606;</span>图论</span>
     
         <span class="sidebar-tag-name" data-tags="分治"><span class="iconfont-archer">&#xe606;</span>分治</span>
     

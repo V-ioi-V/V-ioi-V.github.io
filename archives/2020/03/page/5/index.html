@@ -346,6 +346,140 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/15/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" >
+            
+                <span>归并排序</span>
+        </a>
+        <div class="abstract-content">
+            原理盖算法采用分治法，将已有的有序子序列合并，得到有序的序列
+复杂度
+最差时间复杂度：O(nlogn)
+平均时间复杂度：O(nlogn)
+最差空间复杂度：O(n)
+稳定性：稳定
+
+快排和归并都是log，并且归并稳定，为啥实际应用快排
+他们都是分治思想，代码都通过递归来实现，过程十分相似
+归并排序是一种在任何情况下时间复杂度都比较稳定的排序算法，这也使它存在致命的缺点，即归并排序不是原地排序算法，空间复杂度较高，是是O（n），也正因如此，它没有快排应用广泛
+快排虽然最坏情况下是O（n^2），但是平均情况下复杂度都是O(nlogn)。而且快排退化到O（n^2）的概率非常小。
+
+代码实现123...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/15</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "排序">排序</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/13/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" >
+            
+                <span>快速排序</span>
+        </a>
+        <div class="abstract-content">
+            原理快速排序原理从序列中找一个基准数，将这个数放到正确的位置（左边的数比这个数小，右边的数比这个数大）。
+复杂度手写快排的最优情况就是每次都把序列划分成等数量的两部分（nlogn），最坏情况下就是一个有序的序列，每次分都只能分成一部分，退化成冒泡排序（n^2），所以手写快排是不稳定的排序;
+最差时间复杂度：O(n^2)平均时间复杂度：O(nlogn)稳定性：不稳定
+代码实现12345678910111213void qsort(int low, int high) &#123;    int l = low, r = high;    if (l &gt;= r)return;    w...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/13</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "排序">排序</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/13/get%E5%92%8Cpost%E5%8C%BA%E5%88%AB/" >
+            
+                <span>get和post区别</span>
+        </a>
+        <div class="abstract-content">
+            
+
+
+
+后退按钮/刷新
+无害
+数据会被重新提交（浏览器应该告知用户数据会被重新提交）。
+
+
+
+
+书签
+可收藏为书签
+不可收藏为书签
+
+
+缓存
+能被缓存
+不能缓存
+
+
+编码类型
+application/x-www-form-urlencoded
+application/x-www-form-urlencoded 或 multipart/form-data。为二进制数据使用多重编码。
+
+
+历史
+参数保留在浏览器历史中。
+参数不会保存在浏览器历史中。
+
+
+对数据长度的限制
+是的。当发送数据时，GET 方法向 URL 添加数据；URL 的长度是受限制的（URL 的最大长度是 2048 个字符）。...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/13</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/03/13/http%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81/" >
             
                 <span>http常见状态码</span>
@@ -568,112 +702,6 @@ TCP/IP分层（4层）：网络接口层、 网际层、运输层、 应用层�
             <!-- date  -->
             <div class="abstract-date">
                 <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/10</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "数据结构">数据结构</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/10/%E5%93%88%E5%BC%97%E6%9B%BC/" >
-            
-                <span>哈弗曼树和哈弗曼编码</span>
-        </a>
-        <div class="abstract-content">
-             
-
-数据结构：哈夫曼树和哈夫曼编码哈夫曼树哈夫曼树是一种最优二叉树，其定义是：给定n个权值作为n个叶子节点，构造一棵二叉树，若树的带权路径长度达到最小，这样的树就达到最优二叉树，也就是哈夫曼树，示例图如下：
-基本概念深入学习哈夫曼树前，先了解一下基本概念，并以上面的哈夫曼树图为例
-
-路径：树中一个结点到另一个结点之间的分支序列构成两个结点间的路径。
-路径长度：路径中分支的数目，从根结点到第L层结点的路径长度为L-1。例如100和80的路径长度为1，50和30的路径长度为2。
-结点的权：树中结点的数值，例如100，50那些。
-结点带权路径长度：根结点到该结点之间的路径长度与该结点的权的乘...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/10</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "数据结构">数据结构</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/10/c++-map%E4%B8%8Eunordered_map%E5%8C%BA%E5%88%AB%E5%8F%8A%E4%BD%BF%E7%94%A8/" >
-            
-                <span>c++ map与unordered_map区别及使用</span>
-        </a>
-        <div class="abstract-content">
-            <p>曾经被问到过</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/10</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "STL">STL</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/09/%E7%BA%A2%E9%BB%91%E6%A0%91%E5%92%8CAVL%E6%A0%91%E7%9A%84%E5%AE%9A%E4%B9%89%EF%BC%8C%E7%89%B9%E7%82%B9%EF%BC%8C%E4%BB%A5%E5%8F%8A%E4%BA%8C%E8%80%85%E5%8C%BA%E5%88%AB/" >
-            
-                <span>红黑树和AVL树的定义、特点及区别</span>
-        </a>
-        <div class="abstract-content">
-            
-
-定义
-AVL树：平衡二叉树又称AVL树，是一种特殊的二叉查找树，其左右子数都是平衡二叉树，且左右子树高度差的绝对值不超过1.一句话表述为：以树中所有结点为根的树的左右子树高度差的绝对值不超过1
-
-红黑树：是一种二叉查找树，但在每个结点增加一个存储位表示结点的颜色，可以是红或者黑（非黑即红）。通过对任何一条从根到叶子的路径上各个结点着色的方式的限制，红黑树确保没有一条路径会比其他路径长出两倍，因此红黑树是一种弱平衡二叉树，相对于要求严格的AVL树来说，它的旋转次数少，所以对于搜索、插入、删除操作比较多的情况下，通常使用红黑树。
-
-
-性质红黑树的性质如下：
-
-每个结点非红即黑；
-根节点是...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/09</span>
             </div>
             <!-- tags  -->
             
@@ -2590,9 +2618,62 @@ AVL树：平衡二叉树又称AVL树，是一种特殊的二叉查找树，其�
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 113
+        Total : 116
         </div>
         <!-- search  -->
         
@@ -2605,6 +2686,21 @@ AVL树：平衡二叉树又称AVL树，是一种特殊的二叉查找树，其�
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/28</span><a class="archive-post-title" href= "/2020/03/28/20200328-%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" >树的直径</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/28</span><a class="archive-post-title" href= "/2020/03/28/20200328-%E8%B7%AF%E7%94%B1%E5%99%A8%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/" >路由器与交换机</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/27</span><a class="archive-post-title" href= "/2020/03/27/20200327-%E4%B8%AD%E6%96%AD/" >中断</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -3200,6 +3296,8 @@ AVL树：平衡二叉树又称AVL树，是一种特殊的二叉查找树，其�
     
         <span class="sidebar-tag-name" data-tags="计算机网络原理"><span class="iconfont-archer">&#xe606;</span>计算机网络原理</span>
     
+        <span class="sidebar-tag-name" data-tags="图论"><span class="iconfont-archer">&#xe606;</span>图论</span>
+    
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
@@ -3221,8 +3319,6 @@ AVL树：平衡二叉树又称AVL树，是一种特殊的二叉查找树，其�
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
-    
-        <span class="sidebar-tag-name" data-tags="图论"><span class="iconfont-archer">&#xe606;</span>图论</span>
     
         <span class="sidebar-tag-name" data-tags="分治"><span class="iconfont-archer">&#xe606;</span>分治</span>
     
