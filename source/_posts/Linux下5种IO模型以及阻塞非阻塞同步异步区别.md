@@ -5,7 +5,7 @@ category: CS大学生必备
 date: 2020/03/19
 ---
 
-<font size=4>
+
 
 # 1.引言
 
@@ -36,6 +36,8 @@ Tip：前四种都是同步，只有最后一种才是异步I/O。
 
 ## 2.2 阻塞I/O模型(blocking I/O) 
 <font color="red">在linux中，默认情况下所有的socket都是blocking</font>，一个典型的读操作流程大概是这样：
+
+
 
 ![1.jpg](https://i.loli.net/2020/03/19/oICR2gEYXu6mdTS.jpg)
 
