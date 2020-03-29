@@ -444,7 +444,7 @@ height:50vh;
 <h2 id="中断向量与中断向量表"><a href="#中断向量与中断向量表" class="headerlink" title="中断向量与中断向量表"></a>中断向量与中断向量表</h2><p><img src="https://i.loli.net/2020/03/27/rFmjyqv3xk2D7OC.png" alt="Picture3.png"></p>
 <p>idtr:CPU上的一个寄存器，存放中断向量表的起始地址</p>
 <p>中断向量表表向长度是固定的</p>
-<h2 id="如何计算存在中断向量表里中断子程序入口地址"><a href="#如何计算存在中断向量表里中断子程序入口地址" class="headerlink" title="如何计算存在中断向量表里中断子程序入口地址"></a>如何计算存在中断向量表里中断子程序入口地址</h2><p>idtr+中断向量表表向的长度×中断向量的值</p>
+<h2 id="如何计算存在中断向量表里中断子程序入口地址在内存的地址"><a href="#如何计算存在中断向量表里中断子程序入口地址在内存的地址" class="headerlink" title="如何计算存在中断向量表里中断子程序入口地址在内存的地址"></a>如何计算存在中断向量表里中断子程序入口地址在内存的地址</h2><p>idtr+中断向量表表向的长度×中断向量的值</p>
 <h1 id="关于中断"><a href="#关于中断" class="headerlink" title="关于中断"></a>关于中断</h1><h2 id="OS需要做的事情"><a href="#OS需要做的事情" class="headerlink" title="OS需要做的事情"></a>OS需要做的事情</h2><ul>
 <li>初始化中断向量表</li>
 <li>初始化中断向量表寄存器</li>
@@ -465,8 +465,8 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href= "/2020/03/28/20200328-%E8%B7%AF%E7%94%B1%E5%99%A8%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/" title= "路由器与交换机">
-                    <div class="nextTitle">路由器与交换机</div>
+                <a href= "/2020/03/28/20200328-%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" title= "树的直径">
+                    <div class="nextTitle">树的直径</div>
                 </a>
             
         </li>
@@ -597,7 +597,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#中断的定义"><span class="toc-number">1.</span> <span class="toc-text">中断的定义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#为什么要引入中断"><span class="toc-number">2.</span> <span class="toc-text">为什么要引入中断</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#中断的类型"><span class="toc-number">3.</span> <span class="toc-text">中断的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#内部中断（同步中断或异常）"><span class="toc-number">3.1.</span> <span class="toc-text">内部中断（同步中断或异常）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#外部中断（异步中断）"><span class="toc-number">3.2.</span> <span class="toc-text">外部中断（异步中断）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#中断屏蔽"><span class="toc-number">3.2.1.</span> <span class="toc-text">中断屏蔽</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#linux里屏蔽中断"><span class="toc-number">3.2.1.1.</span> <span class="toc-text">linux里屏蔽中断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#思考-中断被屏蔽以后，CPU为什么不能转去执行其他进程？"><span class="toc-number">3.2.1.2.</span> <span class="toc-text">思考:中断被屏蔽以后，CPU为什么不能转去执行其他进程？</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#引起中断的原理"><span class="toc-number">4.</span> <span class="toc-text">引起中断的原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#中断响应"><span class="toc-number">5.</span> <span class="toc-text">中断响应</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#单重中断的执行"><span class="toc-number">6.</span> <span class="toc-text">单重中断的执行</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如何找到中断服务子程序"><span class="toc-number">7.</span> <span class="toc-text">如何找到中断服务子程序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#中断向量与中断向量表"><span class="toc-number">7.1.</span> <span class="toc-text">中断向量与中断向量表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何计算存在中断向量表里中断子程序入口地址"><span class="toc-number">7.2.</span> <span class="toc-text">如何计算存在中断向量表里中断子程序入口地址</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于中断"><span class="toc-number">8.</span> <span class="toc-text">关于中断</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#OS需要做的事情"><span class="toc-number">8.1.</span> <span class="toc-text">OS需要做的事情</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#硬件需要做的事情"><span class="toc-number">8.2.</span> <span class="toc-text">硬件需要做的事情</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#中断的定义"><span class="toc-number">1.</span> <span class="toc-text">中断的定义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#为什么要引入中断"><span class="toc-number">2.</span> <span class="toc-text">为什么要引入中断</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#中断的类型"><span class="toc-number">3.</span> <span class="toc-text">中断的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#内部中断（同步中断或异常）"><span class="toc-number">3.1.</span> <span class="toc-text">内部中断（同步中断或异常）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#外部中断（异步中断）"><span class="toc-number">3.2.</span> <span class="toc-text">外部中断（异步中断）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#中断屏蔽"><span class="toc-number">3.2.1.</span> <span class="toc-text">中断屏蔽</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#linux里屏蔽中断"><span class="toc-number">3.2.1.1.</span> <span class="toc-text">linux里屏蔽中断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#思考-中断被屏蔽以后，CPU为什么不能转去执行其他进程？"><span class="toc-number">3.2.1.2.</span> <span class="toc-text">思考:中断被屏蔽以后，CPU为什么不能转去执行其他进程？</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#引起中断的原理"><span class="toc-number">4.</span> <span class="toc-text">引起中断的原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#中断响应"><span class="toc-number">5.</span> <span class="toc-text">中断响应</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#单重中断的执行"><span class="toc-number">6.</span> <span class="toc-text">单重中断的执行</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如何找到中断服务子程序"><span class="toc-number">7.</span> <span class="toc-text">如何找到中断服务子程序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#中断向量与中断向量表"><span class="toc-number">7.1.</span> <span class="toc-text">中断向量与中断向量表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何计算存在中断向量表里中断子程序入口地址在内存的地址"><span class="toc-number">7.2.</span> <span class="toc-text">如何计算存在中断向量表里中断子程序入口地址在内存的地址</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于中断"><span class="toc-number">8.</span> <span class="toc-text">关于中断</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#OS需要做的事情"><span class="toc-number">8.1.</span> <span class="toc-text">OS需要做的事情</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#硬件需要做的事情"><span class="toc-number">8.2.</span> <span class="toc-text">硬件需要做的事情</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -2466,9 +2466,41 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 116
+        Total : 118
         </div>
         <!-- search  -->
         
@@ -2484,12 +2516,22 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/28</span><a class="archive-post-title" href= "/2020/03/28/20200328-%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" >树的直径</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/28</span><a class="archive-post-title" href= "/2020/03/28/20200328-%E8%B7%AF%E7%94%B1%E5%99%A8%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/" >路由器与交换机</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200328-%E8%B7%AF%E7%94%B1%E5%99%A8%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/" >中继器、集线器、网桥、交换机和路由器</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/28</span><a class="archive-post-title" href= "/2020/03/28/20200328-%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" >树的直径</a>
         </li>
     
     
@@ -3095,9 +3137,9 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
-        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
-    
         <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
+    
+        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
     

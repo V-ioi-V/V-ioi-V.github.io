@@ -346,6 +346,66 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/23/20200323-linux%E4%B8%8B%E7%9A%84fork%EF%BC%88%EF%BC%89%E5%87%BD%E6%95%B0/" >
+            
+                <span>linux下的fork（）函数</span>
+        </a>
+        <div class="abstract-content">
+            <p>PID（Process Indentifier）进程识别符，是各进程的身份识别</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/23</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "操作系统">操作系统</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/22/20200322-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F/" >
+            
+                <span>进程和线程间的通信方式</span>
+        </a>
+        <div class="abstract-content">
+            <p>进程间通信（IPC，InterProcess Communication）是指在不同进程之间传播或交换信息.</p>
+<p>IPC的方式通常有管道（包括无名管道和命名管道）、消息队列、信号量、共享存储、Socket、Streams等。其中 Socket和Streams支持不同主机上的两个进程IPC。</p>
+<p>线程中的通信一般是用来同步</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/22</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "操作系统">操作系统</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/03/22/20200322-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/" >
             
                 <span>进程和线程</span>
@@ -594,70 +654,6 @@ SELECT * FROM t_order WHERE customer LIKE ‘zhang%’
         </a>
         <div class="abstract-content">
             <p><strong>I/O复用就是单个线程通过记录跟踪每一个Sock(I/O流)的状态来同时管理多个I/O流</strong></p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/19</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >
-            
-                <span>Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</span>
-        </a>
-        <div class="abstract-content">
-            1.引言​         同步（synchronous） I/O和异步（asynchronous） I/O，阻塞（blocking） I/O和非阻塞（non-blocking）I/O分别是什么，到底有什么区别？这个问题其实不同的人给出的答案都可能不同，比如wiki就认为asynchronous I/O和non-blocking I/O是一个东西。这其实是因为不同的人的知识背景不同，并且在讨论这个问题的时候上下文(context)也不相同。所以，为了更好的回答这个问题，我先限定一下本文的上下文。
-​        本文讨论的背景是Linux环境下的network I/O。
-​      ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/19</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/19/TCP%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/" >
-            
-                <span>TCP拥塞控制</span>
-        </a>
-        <div class="abstract-content">
-            必背
-流量控制是在一条TCP连接中的接收端采用的措施,用来限制发送端发送报文段的速率,以免在接收端来不及接受,流量控制只控制一个发送端。
-拥塞控制是用来控制TCP连接中发送端发送报文段的速率,以免过多的数据注入到网络,导致网络奔溃,超过负荷.当发送方发送数据大量的数据会注入到网络,如果没有限制,网络就会超负荷变卡。拥塞控制可能会同时控制多个发送端,限制他们的发送速率。拥塞控制是全局性的。
-发送窗口的上限值是Min[rwnd,cwnd]。即发送窗口的数值不能超过接受窗口和拥塞窗口中的较小的一个。
-接受窗口的大小体现了接收端对发送端施加的流量控制,而拥塞窗口的大小则是整个因特网的负载情况对发...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -2632,9 +2628,41 @@ SELECT * FROM t_order WHERE customer LIKE ‘zhang%’
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 116
+        Total : 118
         </div>
         <!-- search  -->
         
@@ -2650,12 +2678,22 @@ SELECT * FROM t_order WHERE customer LIKE ‘zhang%’
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/28</span><a class="archive-post-title" href= "/2020/03/28/20200328-%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" >树的直径</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/28</span><a class="archive-post-title" href= "/2020/03/28/20200328-%E8%B7%AF%E7%94%B1%E5%99%A8%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/" >路由器与交换机</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200328-%E8%B7%AF%E7%94%B1%E5%99%A8%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/" >中继器、集线器、网桥、交换机和路由器</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/28</span><a class="archive-post-title" href= "/2020/03/28/20200328-%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" >树的直径</a>
         </li>
     
     
@@ -3261,9 +3299,9 @@ SELECT * FROM t_order WHERE customer LIKE ‘zhang%’
     
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
-        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
-    
         <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
+    
+        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
     

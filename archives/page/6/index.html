@@ -346,6 +346,74 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/11/rand5()%E7%94%9F%E6%88%90rand7()/" >
+            
+                <span>rand5()生成rand7()</span>
+        </a>
+        <div class="abstract-content">
+            描述​     假如有一个函数rand5()能等概率生成1 - 5 之间的整数，如何利用rand5()来实现rand7()，rand7()函数的要求是能够等概率生成1 - 7之间的整数。
+一开始想的是7个rand5()相加然后模7，还是太天真了，没想到这样每个数得出的概率不相等
+方法一12345678int rand7()&#123;    while(1)&#123;        int cnt=5*(rand5()-1)+(rand5()-1);        if(cnt&lt;21)&#123;            return cnt%7+1;        &#125; ...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/11</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "瞎搞">瞎搞</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/10/B%E6%A0%91%EF%BC%88B+%E6%A0%91%EF%BC%89%E3%80%81B+%E6%A0%91/" >
+            
+                <span>B树（B+树）、B+树</span>
+        </a>
+        <div class="abstract-content">
+            B-树定义B树（B-树），是一种多路搜索树（并非二叉的）：
+
+定义任意非叶子节点最多可以有M个儿子节点；且M&gt;2；
+则根节点（非叶子节点前提下）的儿子数为：[2，M]；
+除根节点为的非叶子节点的儿子数为[M/2，M]；
+每个结点存放至少M/2 - 1 （向上取整）且至多M -1 个关键字（至少为2）；
+非叶子结点的关键字个数 = 指向子节点的指针数-1；
+非叶子节点的关键字：K[1],K[2],K[3],…,K[M-1;且K[i] &lt; K[i +1];
+非叶子结点的指针：P[1], P[2], …, P[M]；其中P[1]指向关键字小于K[1]的子树，P[M]指向关键字大于K...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/10</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "数据结构">数据结构</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/03/10/%E5%93%88%E5%BC%97%E6%9B%BC/" >
             
                 <span>哈弗曼树和哈弗曼编码</span>
@@ -587,70 +655,6 @@ AVL树：平衡二叉树又称AVL树，是一种特殊的二叉查找树，其�
             <!-- date  -->
             <div class="abstract-date">
                 <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/29</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/28/Smallest%20Bounding%20Rectangle(%E6%9C%80%E5%B0%8F%E9%9D%A2%E7%A7%AF%E5%A4%96%E6%8E%A5%E7%9F%A9%E5%BD%A2)/" >
-            
-                <span>Smallest Bounding Rectangle(最小面积外接矩形)</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述Given the Cartesian coordinates of n (&gt; 0) 2-dimensional points, write a program that computes the area of their smallest bounding rectangle (smallest rectangle containing all the given points).
-输入The input file may contain multiple test cases. Each test case begins with a line containi...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/28</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/28/Triangle%EF%BC%88%E6%B1%82%E5%87%B8%E5%8C%85%E6%9C%80%E5%A4%A7%E5%86%85%E6%8E%A5%E4%B8%89%E8%A7%92%E5%BD%A2%EF%BC%89/" >
-            
-                <span>Triangle（求凸包最大内接三角形）</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述Given n distinct points on a plane, your task is to find the triangle that have the maximum area, whose vertices are from the given points.
-输入The input consists of several test cases. The first line of each test case contains an integer n, indicating the number of points on the plane. Each...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/28</span>
             </div>
             <!-- tags  -->
             
@@ -2620,9 +2624,41 @@ AVL树：平衡二叉树又称AVL树，是一种特殊的二叉查找树，其�
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 116
+        Total : 118
         </div>
         <!-- search  -->
         
@@ -2638,12 +2674,22 @@ AVL树：平衡二叉树又称AVL树，是一种特殊的二叉查找树，其�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/28</span><a class="archive-post-title" href= "/2020/03/28/20200328-%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" >树的直径</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/28</span><a class="archive-post-title" href= "/2020/03/28/20200328-%E8%B7%AF%E7%94%B1%E5%99%A8%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/" >路由器与交换机</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200328-%E8%B7%AF%E7%94%B1%E5%99%A8%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/" >中继器、集线器、网桥、交换机和路由器</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/28</span><a class="archive-post-title" href= "/2020/03/28/20200328-%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" >树的直径</a>
         </li>
     
     
@@ -3249,9 +3295,9 @@ AVL树：平衡二叉树又称AVL树，是一种特殊的二叉查找树，其�
     
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
-        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
-    
         <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
+    
+        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
     
