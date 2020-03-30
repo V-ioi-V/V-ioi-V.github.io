@@ -346,6 +346,68 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/22/20200322-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%EF%BC%88%E4%B8%8D%E5%BC%80%E8%BE%9F%E6%96%B0%E7%A9%BA%E9%97%B4%EF%BC%89/" >
+            
+                <span>合并两个有序数组（不开辟新空间）</span>
+        </a>
+        <div class="abstract-content">
+            题目描述给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使 num1 成为一个有序数组。
+说明:初始化 nums1 和 nums2 的元素数量分别为 m 和 n 。你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。
+示例:输入:nums1 = [1,2,3,0,0,0], m = 3nums2 = [2,5,6],       n = 3
+输出: [1,2,2,3,5,6]
+思路知道两个数组的长度，而且nums1还有足够的空间，因此nums1后面的空间一定是空着的，所以从最大的数字开始找位置，...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/22</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/22/20200322-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/" >
+            
+                <span>进程和线程</span>
+        </a>
+        <div class="abstract-content">
+            <font size=4 color="red">进程是资源分配的最小单位，线程是CPU调度的最小单位。</font>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/22</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "操作系统">操作系统</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/03/22/20200322-%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/" >
             
                 <span>用户态和内核态</span>
@@ -558,41 +620,18 @@ SELECT * FROM t_order WHERE customer LIKE ‘zhang%’
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/20/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1%E5%8F%8A%E5%9B%9B%E4%B8%AA%E7%89%B9%E6%80%A7/" >
+        <a class="abstract-title" href = "/2020/03/20/20200320-%E8%82%A1%E7%A5%A8%E7%B3%BB%E5%88%97%E9%97%AE%E9%A2%98/" >
             
-                <span>数据库事务及四个特性</span>
+                <span>股票系列问题</span>
         </a>
         <div class="abstract-content">
-            <p>转自：<a href="https://www.cnblogs.com/takumicx/p/9998844.html#事务的隔离级别" target="_blank" rel="noopener">https://www.cnblogs.com/takumicx/p/9998844.html#事务的隔离级别</a></p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/20</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "数据库">数据库</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/20/%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/" >
-            
-                <span>最小的k个数</span>
-        </a>
-        <div class="abstract-content">
-            <p>经典top(k)问题</p>
+            问题一给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。
+如果你最多只允许完成一笔交易（即买入和卖出一支股票一次），设计一个算法来计算你所能获取的最大利润。
+注意：你不能在买入股票前卖出股票。
+示例 1:
+输入: [7,1,5,3,6,4]输出: 5解释: 在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。     注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格。示例 2:
+输入: [7,6,4,3,1]输出: 0解释: 在这种情况下, 没有交易完成, 所以最大利润为 0。
+思路遍历一遍，...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -616,28 +655,12 @@ SELECT * FROM t_order WHERE customer LIKE ‘zhang%’
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/20/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95/" >
+        <a class="abstract-title" href = "/2020/03/20/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1%E5%8F%8A%E5%9B%9B%E4%B8%AA%E7%89%B9%E6%80%A7/" >
             
-                <span>数据库索引简介</span>
+                <span>数据库事务及四个特性</span>
         </a>
         <div class="abstract-content">
-            
-
-数据库创建索引语句
-12CREATE [索引类型] INDEX 索引名称ON 表名(列名)
-索引类型：
-
-普通索引(啥都不写):单纯的索引
-
-唯一索引(UNIQUE)：不允许两行具有相同的索引值（创建了唯一约束，系统将自动创建唯一索引）。
-
-主键索引：主键索引要求主键中的每个值是唯一的，（创建主键自动创建主键索引）。
-聚集索引(CLUSTERED)：表中各行的物理顺序与键值的逻辑（索引）顺序相同，表中只能包含一个聚集索引，主键列默认为聚集索引。
-非聚集索引(NONCLUSTERED)：表中各行的物理顺序与键值的逻辑（索引）顺序不匹配，表中可以有249个非聚集索引。
-
-思考问题：
-
-为...
+            <p>转自：<a href="https://www.cnblogs.com/takumicx/p/9998844.html#事务的隔离级别" target="_blank" rel="noopener">https://www.cnblogs.com/takumicx/p/9998844.html#事务的隔离级别</a></p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -655,39 +678,10 @@ SELECT * FROM t_order WHERE customer LIKE ‘zhang%’
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/19/%E5%90%8C%E6%AD%A5%E3%80%81%E5%BC%82%E6%AD%A5%E4%B8%8E%E9%98%BB%E5%A1%9E%E3%80%81%E9%9D%9E%E9%98%BB%E5%A1%9E/" >
-            
-                <span>同步、异步与阻塞、非阻塞&amp;并发并行</span>
-        </a>
-        <div class="abstract-content">
-            <h3 id="IO操作"><a href="#IO操作" class="headerlink" title="IO操作"></a>IO操作</h3>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/19</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/archives/page/2/">&lt; PREV</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/12/">12</a><a class="extend next" rel="next" href="/archives/page/4/">NEXT &gt;</a>
+        <a class="extend prev" rel="prev" href="/archives/page/2/">&lt; PREV</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/13/">13</a><a class="extend next" rel="next" href="/archives/page/4/">NEXT &gt;</a>
     </nav>
     
 </main>
@@ -2673,9 +2667,54 @@ SELECT * FROM t_order WHERE customer LIKE ‘zhang%’
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 118
+        Total : 121
         </div>
         <!-- search  -->
         
@@ -2688,6 +2727,16 @@ SELECT * FROM t_order WHERE customer LIKE ‘zhang%’
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2020/03/30/20200330-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84LCA/" >二叉树中的LCA</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2020/03/30/20200330-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/" >三数之和</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -2817,6 +2866,11 @@ SELECT * FROM t_order WHERE customer LIKE ‘zhang%’
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/20</span><a class="archive-post-title" href= "/2020/03/20/sql%E6%9F%A5%E8%AF%A2%E9%80%9F%E5%BA%A6%E4%BC%98%E5%8C%96/" >sql查询速度优化</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/20</span><a class="archive-post-title" href= "/2020/03/20/20200320-%E8%82%A1%E7%A5%A8%E7%B3%BB%E5%88%97%E9%97%AE%E9%A2%98/" >股票系列问题</a>
         </li>
     
     
@@ -3318,13 +3372,13 @@ SELECT * FROM t_order WHERE customer LIKE ‘zhang%’
     
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
     
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
-    
         <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
         <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
         <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
     
@@ -3334,9 +3388,9 @@ SELECT * FROM t_order WHERE customer LIKE ‘zhang%’
     
         <span class="sidebar-tag-name" data-tags="分治"><span class="iconfont-archer">&#xe606;</span>分治</span>
     
-        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
-    
         <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
+    
+        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
     
         <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     

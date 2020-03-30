@@ -428,7 +428,7 @@ height:50vh;
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">响应比 &#x3D;（已经拖了多久 + deadline）&#x2F; deadline</span><br></pre></td></tr></table></figure>
 <p>可以看出，你拖的越久，这个任务的优先级越高，很有可能就超过你当前任务的优先级。还是刚才那个栗子，你发现用户调研报告拖了 3 天了，优先级已经比参会更重要，所以你参会当天就抽时间挤时间去做报告，晚上免不了加班，很惨，但总算没被开除。</p>
 <h3 id="5-时间片轮转调度算法（RR）"><a href="#5-时间片轮转调度算法（RR）" class="headerlink" title="5. 时间片轮转调度算法（RR）"></a><strong>5. 时间片轮转调度算法（RR）</strong></h3><p>经过刚才的 4 个算法，你已经对任务如何排序驾轻就熟，很快升职加薪迎娶白富美当上了高管，这时就又有问题了……假如你相同优先级的事有很多呢？毕竟大老板了，手底下 10 个团队，你肯定都要兼顾，任务齐头并进的时候，你怎么办？时间片轮转法你可以试一下。</p>
-<p>一周 5 天工作日，每天按上下午分的话，你正好有 10 整块的时间。你的 To-Do list 里列了 10 项任务分别是跟每个团队交涉，具体交涉需要的时长你没法预估，所以你就每个半天，集中处理一个团队的事情，这就是时间片轮转算法，轮转的是你清单里的任务，“时间片”是一个半天，每个时间片结束后如果任务没有完成，就继续把它放到清单的末尾，下次去轮转。这样就保证了每个团队每周都能有一个半天去协调安排工作（尽管可能存在没有交涉完的情况，但你保证了雨露均沾）。</p>
+<p>一周 5 天工作日，每天按上下午分的话，你正好有 10 整块的时间。你的 To-Do list 里列了 10 项任务分别是跟每个团队交涉，具体交涉需要的时长你没法预估，所以你就每个半天，集中处理一个团队的事情，这就是时间片轮转算法，轮转的是你清单里的任务，“时间片”是一个半天，<strong>每个时间片结束后如果任务没有完成，就继续把它放到清单的末尾，下次去轮转。这样就保证了每个团队每周都能有一个半天去协调安排工作</strong>（尽管可能存在没有交涉完的情况，但你保证了雨露均沾）。</p>
 <p>例子里我图方便，时间片设成了半天，你当然可以设置更细粒度的。比如，1980 年代由 Francesco Cirillo 提出的番茄工作法[2]可以用作时间片轮转的形式。它的理念是把你的时间按每 30 分钟分割，每 30 分钟里，25 分钟集中用于工作，5 分钟用于休息。感兴趣的可以看《番茄工作法图解》[3]这本书，比较玄学说什么 25 分钟时候大脑结构，更利于处理中断等等，我这里就不过多介绍了，早些年我也尝试过，感觉没啥效果就不用了，25 分钟集中工作不如调自己效率高的时候猛工作一下午。</p>
 <h3 id="6-多级反馈队列调度算法（MLFQ）"><a href="#6-多级反馈队列调度算法（MLFQ）" class="headerlink" title="6. 多级反馈队列调度算法（MLFQ）"></a><strong>6. 多级反馈队列调度算法（MLFQ）</strong></h3><p>这个算法就厉害了，集上面所以算法优点，还避免了它们的问题。具体是这样的，它把任务分成多个清单，而不是都统统扔进一个单子里（队列理解成任务清单就行）。这里为了好说，我们采用众所周知的艾森豪威尔法则[4]：</p>
 <p><img src="https://pic1.zhimg.com/80/v2-82d127bfdbdd9c1540ef09f447e6f290_720w.jpg" alt="img"></p>
@@ -451,6 +451,11 @@ height:50vh;
     <!-- paginator  -->
     <ul class="post-paginator">
         <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/03/30/20200330-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/" title= "三数之和">
+                    <div class="nextTitle">三数之和</div>
+                </a>
             
         </li>
         <li class="previous">
@@ -2481,9 +2486,54 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 118
+        Total : 121
         </div>
         <!-- search  -->
         
@@ -2496,6 +2546,16 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2020/03/30/20200330-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84LCA/" >二叉树中的LCA</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2020/03/30/20200330-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/" >三数之和</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -2625,6 +2685,11 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/20</span><a class="archive-post-title" href= "/2020/03/20/sql%E6%9F%A5%E8%AF%A2%E9%80%9F%E5%BA%A6%E4%BC%98%E5%8C%96/" >sql查询速度优化</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/20</span><a class="archive-post-title" href= "/2020/03/20/20200320-%E8%82%A1%E7%A5%A8%E7%B3%BB%E5%88%97%E9%97%AE%E9%A2%98/" >股票系列问题</a>
         </li>
     
     
@@ -3126,13 +3191,13 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
     
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
-    
         <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
         <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
         <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
     
@@ -3142,9 +3207,9 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="分治"><span class="iconfont-archer">&#xe606;</span>分治</span>
     
-        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
-    
         <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
+    
+        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
     
         <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     

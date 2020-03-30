@@ -346,6 +346,106 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2018/07/04/a%5Eb(%E5%BF%AB%E9%80%9F%E5%B9%82%EF%BC%89/" >
+            
+                <span>a^b(快速幂)</span>
+        </a>
+        <div class="abstract-content">
+             
+
+题目描述求 a 的 b 次方对 p 取模的值，其中 1≤a,b,p≤1e9
+输入三个用空格隔开的整数a,b和p。
+输出一个整数，表示a^b mod p的值。
+样例输入12 3 9
+样例输出18
+代码12345678910111213ll ksm(ll a, ll b, ll p) &#123;    ll ans = 1;    while (b) &#123;        if (b % 2) &#123;            ans *= a;            ans %= p;        &#125;        a *= a;        a %= p; ...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/07/04</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "数论">数论</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/06/07/cin.tie%E4%B8%8Esync_with_stdio%E5%8A%A0%E9%80%9F%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" >
+            
+                <span>cin.tie与sync_with_stdio加速输入输出</span>
+        </a>
+        <div class="abstract-content">
+             
+
+我是怎么在不知道这一对函数的情况下活到今天的，以前碰到cin TLE的时候总是傻乎乎地改成scanf，甚至还相信过C++在IO方面效率低下的鬼话，殊不知这只是C++为了兼容C而采取的保守措施。
+tietie是将两个stream绑定的函数，空参数的话返回当前的输出流指针。
+12345678910111213141516171819202122#include &lt;iostream&gt;#include &lt;fstream&gt; ///////////////////////////SubMain//////////////////////////////////int m...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/06/07</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "常识">常识</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/06/05/Persona5/" >
+            
+                <span>Persona5</span>
+        </a>
+        <div class="abstract-content">
+             
+
+题目描述Persona5 is a famous video game.In the game, you are going to build relationship with your friends.You have N friends and each friends have his upper bound of relationship with you. Let’s consider the ith friend has the upper bound U[i]. At the beginning, the relationship with others are z...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/06/05</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "数论">数论</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2018/05/07/ACM%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E5%B1%B1%E4%B8%9C%E7%9C%81%E7%AC%AC%E4%B9%9D%E5%B1%8AACM%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B/" >
             
                 <span>ACM入门——山东省第九届ACM大学生程序设计竞赛</span>
@@ -567,47 +667,10 @@ Snuke can perform the following two ...
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/04/08/%E5%9B%BD%E7%8E%8B/" >
-            
-                <span>国王</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述​      很久很久以前，有个王国。王国里有个国王。这一天，国王在给他的将军们分发奖金。将军们站成一排，依次编号为1～N，N为将军的个数。但是国王发奖的方法很可爱，每次发奖都是给连续的一些将军同样的金币。具体来说，国王共发了M次，其中第i次给Ai到Bi的人每人发了Ci枚金币。现在国王发完了钱，想让你计算最后每位将军分别得到了多少金币
-输入​     第一行四个整数N，M，下面M行每行三个整数Ai，Bi和Ci，其定义如上。
-输出​      一行N个数，第i个数为将军i最终得到的金币个数。
-样例输入1233 21 2 22 3 5
-样例输出12 7 5
-
-对30%的数据有1...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/08</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "瞎搞">瞎搞</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/archives/page/11/">&lt; PREV</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/10/">10</a><a class="page-number" href="/archives/page/11/">11</a><span class="page-number current">12</span>
+        <a class="extend prev" rel="prev" href="/archives/page/11/">&lt; PREV</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/10/">10</a><a class="page-number" href="/archives/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/archives/page/13/">13</a><a class="extend next" rel="next" href="/archives/page/13/">NEXT &gt;</a>
     </nav>
     
 </main>
@@ -2593,9 +2656,54 @@ Snuke can perform the following two ...
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 118
+        Total : 121
         </div>
         <!-- search  -->
         
@@ -2608,6 +2716,16 @@ Snuke can perform the following two ...
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2020/03/30/20200330-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84LCA/" >二叉树中的LCA</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2020/03/30/20200330-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/" >三数之和</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -2737,6 +2855,11 @@ Snuke can perform the following two ...
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/20</span><a class="archive-post-title" href= "/2020/03/20/sql%E6%9F%A5%E8%AF%A2%E9%80%9F%E5%BA%A6%E4%BC%98%E5%8C%96/" >sql查询速度优化</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/20</span><a class="archive-post-title" href= "/2020/03/20/20200320-%E8%82%A1%E7%A5%A8%E7%B3%BB%E5%88%97%E9%97%AE%E9%A2%98/" >股票系列问题</a>
         </li>
     
     
@@ -3238,13 +3361,13 @@ Snuke can perform the following two ...
     
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
     
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
-    
         <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
         <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
         <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
     
@@ -3254,9 +3377,9 @@ Snuke can perform the following two ...
     
         <span class="sidebar-tag-name" data-tags="分治"><span class="iconfont-archer">&#xe606;</span>分治</span>
     
-        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
-    
         <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
+    
+        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
     
         <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
