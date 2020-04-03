@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">3.1k</span>Reading time: <span class="post-count reading-time">10 min</span></span>
+                        <span>Word count: <span class="post-count word-count">3.2k</span>Reading time: <span class="post-count reading-time">11 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -428,7 +428,10 @@ height:50vh;
 <p>3、程序运行地址不确定。我想这个会降低CPU cache命中率</p>
 </li>
 </ul>
-<h2 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h2><h3 id="分段"><a href="#分段" class="headerlink" title="分段"></a>分段</h3><p><strong>解决地址隔离和地址不确定问题，如何实现的？</strong></p>
+<h2 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h2><h3 id="分段"><a href="#分段" class="headerlink" title="分段"></a>分段</h3><ul>
+<li>按照程序固有的段的大小来划分，每个程序有一个段表。</li>
+</ul>
+<p><strong>解决地址隔离和地址不确定问题，如何实现的？</strong></p>
 <p>所有计算机科学中的问题都能通过增加一个中间转换层来解决，虚拟内存就是中间层的存在；</p>
 <p>程序中访问的内存地址不再是实际的物理内存地址，而是一个虚拟地址；操作系统将这个虚拟地址映射到适当的物理内存地址上；然后把程序全部装入内存；通过映射机制，当程序访问虚拟地址空间上的某个地址值时，就相当于访问了物理地址空间中的另一个值</p>
 <p>当进程创建时，每个进程都会有一个自己的 4GB 虚拟地址空间。要注意的是这个 4GB 的地址空间是“虚拟”的，并不是真实存在的，而且<strong>每个进程只能访问自己虚拟地址空间中的数据，无法访问别的进程中的数据</strong>，通过这种方法实现了进程间的地址隔离</p>
@@ -477,19 +480,39 @@ height:50vh;
 <h3 id="1-请求分页存储管理"><a href="#1-请求分页存储管理" class="headerlink" title="1.请求分页存储管理"></a>1.请求分页存储管理</h3><p>将虚拟地址内存空间划分位大小相等的页块，同时内存地址空间，也划分位等大小的页块。系统维持一个页表，存储这虚拟页号到物理快块号的映射。程序中的逻辑地址由两部分组成：页号P和页内位移量W。相邻的页面在内存中不一定相邻，即分配给程序的内存块之间不一定连续。逻辑地址转化为物理地址时，根据页表将页号转化为块号，块号乘块大小加上页内偏移得到物理地址。</p>
 <p>如果程序执行时，调用到不在内存中的虚拟页面时，发生缺页中断，将页由外存调入内存。如果内存已满，采用页面置换算法将老的淘汰，载入新的。页面置换算法常见的有FIFO,LRU。</p>
 <ul>
-<li><p>优点：没有外碎片，每个内碎片不超过页的大小。</p>
+<li>优点：<ul>
+<li>没有外碎片，每个内碎片不超过页的大小。</li>
+<li>页表简单、长度短、所需硬件少，速度快</li>
+<li>主存利用率高于段式。</li>
+<li>调入调出速度快，内存管理简单</li>
+</ul>
 </li>
-<li><p>缺点：程序全部装入内存，要求有相应的硬件支持，如地址变换机构缺页中断的产生和选择淘汰页面等都要求有相应的硬件支持。增加了机器成本和系统开销。</p>
+<li>缺点：<ul>
+<li>程序全部装入内存，要求有相应的硬件支持，如地址变换机构缺页中断的产生和选择淘汰页面等都要求有相应的硬件支持。增加了机器成本和系统开销。</li>
+<li>机械分割程序，破坏段的独立性，（可能将一个段分成好几个页）</li>
+</ul>
 </li>
 </ul>
-<h3 id="2-请求分段存储管理："><a href="#2-请求分段存储管理：" class="headerlink" title="2.请求分段存储管理："></a>2.请求分段存储管理：</h3><p>将用户程序地址空间分成若干个大小不等的段，每段能够定义一组相对完整的逻辑信息。存储分配时，以段为单位，段内地址连续，段间不连续。虚拟地址由段号和段内地址组成，虚拟地址到实存地址的变换通过段表来实现。 分页对程序猿而言是不可见的。而分段通常对程序猿而言是可见的，因而分段为组织程序和数据提供了方便。段页式存储组织是分段式和分页式结合的存储组织方法。这样可充分利用分段管理和分页管理的长处。 </p>
+<h3 id="2-请求分段存储管理："><a href="#2-请求分段存储管理：" class="headerlink" title="2.请求分段存储管理："></a>2.请求分段存储管理：</h3><p>将用户程序地址空间分成若干个大小不等的段，每段能够定义一组相对完整的逻辑信息。存储分配时，以段为单位，段内地址连续，段间不连续。虚拟地址由段号和段内地址组成，虚拟地址到实存地址的变换通过段表来实现。 分页对程序猿而言是不可见的。而分段通常对程序猿而言是可见的，因而分段为组织程序和数据提供了方便。</p>
 <ul>
-<li><p>优点：可以分别编写和编译，可以针对不同类型的段采取不同的保护，可以按段为单位来进行共享，包括通过动态链接进行代码共享。</p>
+<li><p>优点：</p>
+<ul>
+<li>可以分别编写和编译，可以针对不同类型的段采取不同的保护。</li>
+<li>可以按段为单位来进行共享，包括通过动态链接进行代码共享。</li>
+<li>容易实现以段为单位的存储保护</li>
+</ul>
 </li>
-<li><p>缺点：会产生碎片。</p>
+<li><p>缺点：</p>
+<ul>
+<li>各段的长度是任意的，在主存的起点任意，会产生碎片。调入调出速度慢。</li>
+<li><p>段表每行较长，硬件复杂成本高</p>
+</li>
+<li><p>段间零头大，主存利用率低</p>
 </li>
 </ul>
-<h3 id="3-用分段方法来分配和管理虚拟存储器。"><a href="#3-用分段方法来分配和管理虚拟存储器。" class="headerlink" title="3.用分段方法来分配和管理虚拟存储器。"></a>3.用分段方法来分配和管理虚拟存储器。</h3><p>程序的地址空间按逻辑单位分成基本独立的段，而每一段有自己的段名，再把每段分成固定大小的若干页。用分页方法来分配和管理实存。</p>
+</li>
+</ul>
+<h3 id="3-段页式存储组织"><a href="#3-段页式存储组织" class="headerlink" title="3.段页式存储组织"></a>3.段页式存储组织</h3><p>段页式存储组织是分段式和分页式结合的存储组织方法。这样可充分利用分段管理和分页管理的长处。 程序的地址空间按逻辑单位分成基本独立的段，而每一段有自己的段名，再把每段分成固定大小的若干页。用分页方法来分配和管理实存。用分段方法来分配和管理虚拟存储器。</p>
 <ul>
 <li><p>优点：段页式管理是段式管理和页式管理相结合而成，具有两者的优点。</p>
 </li>
@@ -638,7 +661,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#传统存储管理方式："><span class="toc-number">1.</span> <span class="toc-text">传统存储管理方式：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟内存"><span class="toc-number">2.</span> <span class="toc-text">虚拟内存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分段"><span class="toc-number">2.1.</span> <span class="toc-text">分段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分页"><span class="toc-number">2.2.</span> <span class="toc-text">分页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#页表缓存"><span class="toc-number">2.3.</span> <span class="toc-text">页表缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺页"><span class="toc-number">2.4.</span> <span class="toc-text">缺页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#地址翻译"><span class="toc-number">2.5.</span> <span class="toc-text">地址翻译</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟内存实现方式："><span class="toc-number">3.</span> <span class="toc-text">虚拟内存实现方式：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-请求分页存储管理"><span class="toc-number">3.1.</span> <span class="toc-text">1.请求分页存储管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-请求分段存储管理："><span class="toc-number">3.2.</span> <span class="toc-text">2.请求分段存储管理：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-用分段方法来分配和管理虚拟存储器。"><span class="toc-number">3.3.</span> <span class="toc-text">3.用分段方法来分配和管理虚拟存储器。</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#传统存储管理方式："><span class="toc-number">1.</span> <span class="toc-text">传统存储管理方式：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟内存"><span class="toc-number">2.</span> <span class="toc-text">虚拟内存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分段"><span class="toc-number">2.1.</span> <span class="toc-text">分段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分页"><span class="toc-number">2.2.</span> <span class="toc-text">分页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#页表缓存"><span class="toc-number">2.3.</span> <span class="toc-text">页表缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺页"><span class="toc-number">2.4.</span> <span class="toc-text">缺页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#地址翻译"><span class="toc-number">2.5.</span> <span class="toc-text">地址翻译</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟内存实现方式："><span class="toc-number">3.</span> <span class="toc-text">虚拟内存实现方式：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-请求分页存储管理"><span class="toc-number">3.1.</span> <span class="toc-text">1.请求分页存储管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-请求分段存储管理："><span class="toc-number">3.2.</span> <span class="toc-text">2.请求分段存储管理：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-段页式存储组织"><span class="toc-number">3.3.</span> <span class="toc-text">3.段页式存储组织</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -2584,9 +2607,77 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 121
+        Total : 129
         </div>
         <!-- search  -->
         
@@ -2602,7 +2693,42 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2020/03/30/20200330-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84LCA/" >二叉树中的LCA</a>
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/2020/04/02/20200402-%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%90%8C%E6%AD%A5/" >进程的同步</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2020/04/01/20200401-%E6%8E%A5%E9%9B%A8%E6%B0%B4/" >接雨水</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2020/04/01/20200401-%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E5%BA%8F%E5%88%97/" >最长递增子序列</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2020/04/01/20200401-%E6%80%9D%E7%BB%B4%E9%A2%98%E6%80%BB%E7%BB%93/" >思维题总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span><a class="archive-post-title" href= "/2020/03/31/20200331-%E5%90%88%E5%B9%B6k%E4%B8%AA%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8/" >合并k个排序链表</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span><a class="archive-post-title" href= "/2020/03/31/20200331-%E6%9C%8B%E5%8F%8B%E5%9C%88/" >朋友圈</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span><a class="archive-post-title" href= "/2020/03/31/20200331-%E5%B2%9B%E5%B1%BF%E7%9A%84%E6%9C%80%E5%A4%A7%E9%9D%A2%E7%A7%AF/" >岛屿的最大面积</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2020/03/30/20200330-%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/" >搜索旋转排序数组</a>
         </li>
     
     
@@ -2612,12 +2738,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2020/03/30/20200330-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84LCA/" >二叉树中的LCA</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
         </li>
     
     
@@ -3236,19 +3367,21 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="图论"><span class="iconfont-archer">&#xe606;</span>图论</span>
     
+        <span class="sidebar-tag-name" data-tags="思维"><span class="iconfont-archer">&#xe606;</span>思维</span>
+    
+        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
+    
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
-        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
-    
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
+    
+        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
     
         <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
-    
-        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
         <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
