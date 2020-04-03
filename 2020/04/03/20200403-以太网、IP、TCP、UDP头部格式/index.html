@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>Tree Restoring · occo&#39;s blog</title>
+    <title>以太网、IP、TCP、UDP头部格式 · occo&#39;s blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/" >occo&#39;s blog.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Tree Restoring</a>
+                <a href="#" class="post-name">以太网、IP、TCP、UDP头部格式</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Tree Restoring
+            以太网、IP、TCP、UDP头部格式
             <!-- 404 -->
             
         </h1>
@@ -266,18 +266,18 @@ height:50vh;
                 
                     <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "图论">图论</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">653</span>Reading time: <span class="post-count reading-time">3 min</span></span>
+                        <span>Word count: <span class="post-count word-count">2.2k</span>Reading time: <span class="post-count reading-time">7 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2018/04/12</span>
+                    <span class="post-intro-time">2020/04/03</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -401,21 +401,48 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <font size=5> 
+        <font size=4>
 
-<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>Aoki loves numerical sequences and trees.</p>
-<p>One day, Takahashi gave him an integer sequence of length N, a1,a2,…,aN, which made him want to construct a tree.</p>
-<p>Aoki wants to construct a tree with N vertices numbered 1 through N, such that for each i=1,2,…,N, the distance between vertex i and the farthest vertex from it is ai, assuming that the length of each edge is 1.</p>
-<p>Determine whether such a tree exists.</p>
-<p>Constraints<br>2≤N≤100<br>1≤ai≤N−1</p>
-<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p>The input is given from Standard Input in the following format:<br>N<br>a1 a2 … aN</p>
-<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>If there exists a tree that satisfies the condition, print ‘Possible’. Otherwise, print ‘Impossible’.</p>
-<h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">3 2 2 3 3</span><br></pre></td></tr></table></figure>
-<h2 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Possible</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2020/03/09/YSpeGnJDEtoZ71B.png" width=500 height=400></p>
-<p>​      The diagram above shows an example of a tree that satisfies the conditions. The red arrows show paths from each vertex to the farthest vertex from it.</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>​       代码比较长，整体思路就是先排序，找到最长的那一路，然后确定这个长度为主干（比如说最长的是n，那主干长度是n+1），然后把其他的分支都可以插在中间，但是这些分路构成的长度不能长于主干长度，因此这些分支的距离就是主干中间的最长距离加一，就比如说样例，主干长度是3，因此有4个数为主干，因此这四个数的最长距离为3、2、2、3，剩下的一个可以在中间的两个二中任选一个加一，就是3、2、2、3、3。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">int</span> s[<span class="number">200</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> </span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> i,j,k,m,n;</span><br><span class="line">    <span class="keyword">int</span> ans=<span class="number">0</span>,cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> flag=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> flag1=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=n; i++) <span class="built_in">cin</span>&gt;&gt;s[i];</span><br><span class="line">    sort(s+<span class="number">1</span>,s+n+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">int</span> gen=s[n],num=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">        <span class="keyword">if</span>(s[i]==gen) num++;</span><br><span class="line">    <span class="keyword">if</span>(num==<span class="number">1</span>) <span class="built_in">cout</span>&lt;&lt;<span class="string">"Impossible"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(gen%<span class="number">2</span>!=<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line"> </span><br><span class="line">            k=(gen+<span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">            m=k;</span><br><span class="line">            <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(s[i]==k)</span><br><span class="line">                &#123;</span><br><span class="line">                    cnt++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(cnt&gt;<span class="number">2</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">cout</span>&lt;&lt;<span class="string">"Impossible"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(s[i]&lt;k)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">cout</span>&lt;&lt;<span class="string">"Impossible"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(m==s[i])</span><br><span class="line">                &#123;</span><br><span class="line">                    ans++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(ans==<span class="number">2</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    ans=<span class="number">0</span>;</span><br><span class="line">                    m++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(m==(gen+<span class="number">1</span>))</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">cout</span>&lt;&lt;<span class="string">"Possible"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="string">"Impossible"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            k=gen/<span class="number">2</span>;</span><br><span class="line">            m=k;</span><br><span class="line">             <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(s[i]==k)</span><br><span class="line">                &#123;</span><br><span class="line">                    cnt++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(cnt&gt;<span class="number">1</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">cout</span>&lt;&lt;<span class="string">"Impossible"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(s[i]&lt;k)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">cout</span>&lt;&lt;<span class="string">"Impossible"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line"> </span><br><span class="line">                <span class="keyword">if</span>(m==s[i])</span><br><span class="line">                &#123;</span><br><span class="line">                    ans++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(ans==<span class="number">2</span>&amp;&amp;flag)</span><br><span class="line">                &#123;</span><br><span class="line">                    ans=<span class="number">0</span>;</span><br><span class="line">                    m++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(ans==<span class="number">1</span>&amp;&amp;!flag)</span><br><span class="line">                &#123;</span><br><span class="line">                    ans=<span class="number">0</span>;</span><br><span class="line">                    m++;</span><br><span class="line">                    flag=<span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(m==gen+<span class="number">1</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">cout</span>&lt;&lt;<span class="string">"Possible"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="string">"Impossible"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="以太网帧的格式"><a href="#以太网帧的格式" class="headerlink" title="以太网帧的格式"></a>以太网帧的格式</h2><p><img src="https://i.loli.net/2020/04/03/o4rU1WO9PNEGKHa.png" alt="6.png"></p>
+<p>（1）其中的源地址和目的地址是指网卡的硬件地址（也叫MAC 地址），长度是48 位(6个字节)，是在网卡出厂时固化的。</p>
+<p>（2）注意网卡芯片（例如DM9000A）收到的数据就是如上所示的一长串数据；其中包括以太网帧头、IP报报头、传输层协议段头、应用层所需数据。</p>
+<p>（3）以太网帧中的数据长度规定最小46 字节，最大1500 字节，ARP 和RARP 数据包的长度不够46 字节，要在后面补填充位。最大值1500 称为以太网的最大传输单元（MTU），不同的网络类型有不同的MTU，如果一个数据包从以太网路由到拨号链路上，数据包度大于拨号链路的MTU了，则需要对数据包进行分片fragmentation）。ifconfig 命令的输出中也有“MTU:1500”。<strong>MTU是指数据帧中有效载荷的最大长度，不包括帧首部的长度。</strong></p>
+<h2 id="IP报头格式"><a href="#IP报头格式" class="headerlink" title="IP报头格式"></a>IP报头格式</h2><p>　　IP是TCP/IP协议簇中最为重要的协议。所有的TCP、UDP、 ICMP和IGMP数据都以IP数据报格式传输。IP提供的是不可靠、无连接的协议。</p>
+<p><img src="https://i.loli.net/2020/04/03/cDwF3V1BSv4uCWq.png" alt="5.png"></p>
+<p>普通的IP首部长为20个字节，除非含有选项字段。</p>
+<p><strong>4位版本：</strong>目前协议版本号是4，因此IP有时也称作IPV4.</p>
+<p><strong>4位首部长度：</strong>首部长度指的是首部占32bit字的数目，包括任何选项。由于它是一个4比特字段，因此首部长度最长为60个字节。</p>
+<p><strong>服务类型（TOS）：</strong>服务类型字段包括一个3bit的优先权字段（现在已经被忽略），4bit的TOS子字段和1bit未用位必须置0。4bit的TOS分别代表：最小时延，最大吞吐量，最高可靠性和最小费用。4bit中只能置其中1比特。如果所有4bit均为0，那么就意味着是一般服务。</p>
+<p><strong>总长度：</strong>总长度字段是指整个IP数据报的长度，以字节为单位。利用首部长度和总长度字段，就可以知道IP数据报中数据内容的起始位置和长度。由于该字段长16bit，所以IP数据报最长可达65535字节。当数据报被分片时，该字段的值也随着变化。</p>
+<p><strong>标识字段：</strong>标识字段唯一地标识主机发送的每一份数据报。通常每发送一份报文它的值就会加1。</p>
+<p><strong>生存时间：</strong>T T L（time-to-live）生存时间字段设置了数据报可以经过的最多路由器数。它指定了数据报的生存时间。T T L的初始值由源主机设置（通常为 3 2或6 4），一旦经过一个处理它的路由器，它的值就减去 1。当该字段的值为 0时，数据报就被丢弃，并发送 I C M P报文通知源主机。</p>
+<p><strong>首部检验和：</strong>首部检验和字段是根据 I P首部计算的检验和码。它不对首部后面的数据进行计算。 I C M P、<br>I G M P、U D P和T C P在它们各自的首部中均含有同时覆盖首部和数据检验和码。</p>
+<h2 id="TCP首部格式"><a href="#TCP首部格式" class="headerlink" title="TCP首部格式"></a>TCP首部格式</h2><p>　　尽管TCP和UDP都使用相同的网络层（ I P），T C P却向应用层提供与U D P完全不同的服务。T C P提供一种面向连接的、可靠的字节流服务。</p>
+<p>　　如果不计任选字段，它通常是 2 0个字节。</p>
+<p><img src="https://i.loli.net/2020/04/03/XoIRQwPr392GDSx.jpg" alt="3.jpeg"></p>
+<p><strong>源端口号和目的端口号：</strong>用于寻找发送端和接收端应用进程。这两个值加上IP首部中的源端IP地址和目的端IP地址唯一确定一个TCP连接。</p>
+<p><strong>序号字段：</strong>序号用来标识从TCP发送端向TCP接收端发送的数据字节流，它表示在这个报文段中的的第一个数据字节。如果将字节流看作在两个应用程序间的单向流动，则 TCP用序号对每个字节进行计数。序号是32 bit的无符号数，序号到达 2^32-1后又从0开始。</p>
+<p>当建立一个新的连接时，SYN标志变1。序号字段包含由这个主机选择的该连接的初始序号ISN（Initial Sequence Number）。该主机要发送数据的第一个字节序号为这个ISN加1，因为SYN标志消耗了一个序号（FIN标志也要占用一个序号）</p>
+<p><strong>确认序号：</strong>既然每个传输的字节都被计数，确认序号包含发送确认的一端所期望收到的下一个序号。因此，确认序号应当是上次已成功收到数据字节序号加 1。只有ACK标志（下面介绍）为 1时确认序号字段才有效。发送ACK无需任何代价，因为 32 bit的确认序号字段和A C K标志一样，总是T C P首部的一<br>部分。因此，我们看到一旦一个连接建立起来，这个字段总是被设置， ACK标志也总是被设置为1。TCP为应用层提供全双工服务。这意味数据能在两个方向上独立地进行传输。因此，连接的每一端必须保持每个方向上的传输数据序号。</p>
+<p><strong>首部长度：</strong>首部长度给出首部中 32 bit字的数目。需要这个值是因为任选字段的长度是可变的。这个字段占4 bit，因此T C P最多有6 0字节的首部。然而，没有任选字段，正常的长度是 2 0字节。</p>
+<p><strong>标志字段：</strong>在T C P首部中有 6个标志比特。它们中的多个可同时被设置为1.</p>
+<ul>
+<li>URG紧急指针（u rgent pointer）有效（见2 0 . 8节）。</li>
+<li>ACK确认序号有效。</li>
+<li>PSH接收方应该尽快将这个报文段交给应用层。</li>
+<li>RST重建连接。</li>
+<li>SYN同步序号用来发起一个连接。这个标志和下一个标志将在第 1 8章介绍。</li>
+<li>FIN发端完成发送任务。</li>
+</ul>
+<p><strong>窗口大小：</strong>TCP的流量控制由连接的每一端通过声明的窗口大小来提供。窗口大小为字节数，起始于确认序号字段指明的值，这个值是接收端正期望接收的字节。窗口大小是一个 16 bit字段，因而窗口大小最大为 65535字节。</p>
+<p><strong>检验和：</strong>检验和覆盖了整个的 T C P报文段：T C P首部和T C P数据。这是一个强制性的字段，一定是由发端计算和存储，并由收端进行验证。</p>
+<p><strong>紧急指针：</strong>只有当URG标志置1时紧急指针才有效。紧急指针是一个正的偏移量，和序号字段中的值相加表示紧急数据最后一个字节的序号。 T C P的紧急方式是发送端向另一端发送紧急数据的一种方式。</p>
+<p><strong>选项：</strong>最常见的可选字段是最长报文大小，又称为 MSS (Maximum Segment Size)。每个连接方通常都在通信的第一个报文段（为建立连接而设置 S Y N标志的那个段）中指明这个选项。它指明本端所能接收的最大长度的报文段。</p>
+<h2 id="UDP首部"><a href="#UDP首部" class="headerlink" title="UDP首部"></a>UDP首部</h2><p>UDP是一个简单的面向数据报的运输层协议：进程的每个输出操作都正好产生一个UDP数据报，并组装成一份待发送的 I P数据报。这与面向流字符的协议不同，如 T C P，应用程序产生的全体数据与真正发送的单个 I P数据报可能没有什么联系。</p>
+<p><img src="https://i.loli.net/2020/04/03/HAyzpmasobgUZwc.jpg" alt="download.jpeg"></p>
+<p><strong>端口号：</strong>用来表示发送和接受进程。由于 I P层已经把I P数据报分配给T C P或U D P（根据I P首部中协议字段值），因此T C P端口号由T C P来查看，而 U D P端口号由UDP来查看。T C P端口号与UDP端口号是相互独立的。</p>
+<p><strong>长度：</strong>UDP长度字段指的是UDP首部和UDP数据的字节长度。该字段的最小值为 8字节（发送一份0字节的UDP数据报是 O K）。</p>
+<p><strong>检验和：</strong>UDP检验和是一个端到端的检验和。它由发送端计算，然后由接收端验证。其目的是为了发现UDP首部和数据在发送端到接收端之间发生的任何改动。</p>
 
     </article>
     <!-- license  -->
@@ -424,17 +451,12 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2018/04/21/Column%20Addition/" title= "Column Addition">
-                    <div class="nextTitle">Column Addition</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2018/04/11/%E9%AB%98%E7%B2%BE%E5%BA%A6%E6%A8%A1%E6%9D%BF/" title= "高精度模板">
-                    <div class="prevTitle">高精度模板</div>
+                <a href= "/2020/04/02/20200402-%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%90%8C%E6%AD%A5/" title= "进程的同步">
+                    <div class="prevTitle">进程的同步</div>
                 </a>
             
         </li>
@@ -557,7 +579,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目描述"><span class="toc-number">1.</span> <span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#输入"><span class="toc-number">1.1.</span> <span class="toc-text">输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出"><span class="toc-number">1.2.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例输入"><span class="toc-number">1.3.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例输出"><span class="toc-number">1.4.</span> <span class="toc-text">样例输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#思路"><span class="toc-number">1.5.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">1.6.</span> <span class="toc-text">代码</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#以太网帧的格式"><span class="toc-number">1.</span> <span class="toc-text">以太网帧的格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IP报头格式"><span class="toc-number">2.</span> <span class="toc-text">IP报头格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP首部格式"><span class="toc-number">3.</span> <span class="toc-text">TCP首部格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UDP首部"><span class="toc-number">4.</span> <span class="toc-text">UDP首部</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>

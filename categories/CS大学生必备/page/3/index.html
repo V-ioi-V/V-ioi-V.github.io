@@ -346,6 +346,35 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/19/%E5%90%8C%E6%AD%A5%E3%80%81%E5%BC%82%E6%AD%A5%E4%B8%8E%E9%98%BB%E5%A1%9E%E3%80%81%E9%9D%9E%E9%98%BB%E5%A1%9E/" >
+            
+                <span>同步、异步与阻塞、非阻塞&amp;并发并行</span>
+        </a>
+        <div class="abstract-content">
+            <h3 id="IO操作"><a href="#IO操作" class="headerlink" title="IO操作"></a>IO操作</h3>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/19</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >
             
                 <span>IO复用</span>
@@ -406,16 +435,25 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/19/TCP%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/" >
+        <a class="abstract-title" href = "/2020/03/19/TCP%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93/" >
             
-                <span>TCP拥塞控制</span>
+                <span>TCP可靠传输</span>
         </a>
         <div class="abstract-content">
-            必背
-流量控制是在一条TCP连接中的接收端采用的措施,用来限制发送端发送报文段的速率,以免在接收端来不及接受,流量控制只控制一个发送端。
-拥塞控制是用来控制TCP连接中发送端发送报文段的速率,以免过多的数据注入到网络,导致网络奔溃,超过负荷.当发送方发送数据大量的数据会注入到网络,如果没有限制,网络就会超负荷变卡。拥塞控制可能会同时控制多个发送端,限制他们的发送速率。拥塞控制是全局性的。
-发送窗口的上限值是Min[rwnd,cwnd]。即发送窗口的数值不能超过接受窗口和拥塞窗口中的较小的一个。
-接受窗口的大小体现了接收端对发送端施加的流量控制,而拥塞窗口的大小则是整个因特网的负载情况对发...
+            
+
+TCP结构
+
+TCP，控制传输协议，和UDP的差别很大，它充分实现了数据传输时的各种控制功能：
+针对发送端发出的数据包的确认应答信号ACK
+针对数据包丢失或者出现定时器超时的重发机制
+针对数据包到达接收端主机顺序乱掉的顺序控制
+针对高效传输数据包的流动窗口控制
+针对避免网络拥堵时候的流量控制
+针对刚开始启动的时候避免一下子发送大量数据包而导致网络瘫痪的慢启动算法和拥塞控制。
+
+而这些在UDP中都是没有的！此外，TCP作为一种面向有连接的控制传输协议，只有在确认对端主机存在时才会发送数据，从而可以控制通信流量的浪费。
+TCP通过序列号、检验和、确认应答信号、重发控制、连接管理、窗口控制...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -634,35 +672,6 @@ application/x-www-form-urlencoded 或 multipart/form-data。为二进制数据�
 
 对数据长度的限制
 是的。当发送数据时，GET 方法向 URL 添加数据；URL 的长度是受限制的（URL 的最大长度是 2048 个字符）。...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/13</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/13/http%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81/" >
-            
-                <span>http常见状态码</span>
-        </a>
-        <div class="abstract-content">
-            <p>每条HTTP响应报文返回时都会携带一个状态码。状态码是一个三位数字的代码，告知客户端请求是否成功，或者是否需要采取其他动作。</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -2782,9 +2791,28 @@ application/x-www-form-urlencoded 或 multipart/form-data。为二进制数据�
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 129
+        Total : 130
         </div>
         <!-- search  -->
         
@@ -2797,6 +2825,11 @@ application/x-www-form-urlencoded 或 multipart/form-data。为二进制数据�
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/03</span><a class="archive-post-title" href= "/2020/04/03/20200403-%E4%BB%A5%E5%A4%AA%E7%BD%91%E3%80%81IP%E3%80%81TCP%E3%80%81UDP%E5%A4%B4%E9%83%A8%E6%A0%BC%E5%BC%8F/" >以太网、IP、TCP、UDP头部格式</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -2850,12 +2883,12 @@ application/x-www-form-urlencoded 或 multipart/form-data。为二进制数据�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
         </li>
     
     
@@ -3015,7 +3048,7 @@ application/x-www-form-urlencoded 或 multipart/form-data。为二进制数据�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/TCP%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/" >TCP拥塞控制</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/TCP%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93/" >TCP可靠传输</a>
         </li>
     
     
@@ -3486,11 +3519,11 @@ application/x-www-form-urlencoded 或 multipart/form-data。为二进制数据�
     
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
     
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
         <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
-    
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
         <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
     
@@ -3500,9 +3533,9 @@ application/x-www-form-urlencoded 或 multipart/form-data。为二进制数据�
     
         <span class="sidebar-tag-name" data-tags="分治"><span class="iconfont-archer">&#xe606;</span>分治</span>
     
-        <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
-    
         <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
+    
+        <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
     
         <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     

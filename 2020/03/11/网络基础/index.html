@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">1.9k</span>Reading time: <span class="post-count reading-time">7 min</span></span>
+                        <span>Word count: <span class="post-count word-count">2.7k</span>Reading time: <span class="post-count reading-time">10 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -467,8 +467,24 @@ height:50vh;
 <p>ip    : 192.168.2.110  &amp;   Submask : 255.255.255.0</p>
 <p>-—————————————-</p>
 <p>网络号  ：192.168.2  .0</p>
+<p><strong>我们将网络号相同的网络称为本地网络，络号不相同的主机称之为远程网络主机，本地网络中的主机可以直接相互通信；远程网络中的主机要相互通信必须通过本地网关（Gateway）来传递转发数据。</strong></p>
+<p>计算机的网关（Gateway）就是到其他网段的出口，也就是路由器接口IP地址。路由器接口使用的IP地址可以是本网段中任何一个地址，不过通常使用该网段的<strong>第一个可用的地址或最后一个可用的地址</strong>，这是为了尽可能避免和本网段中的主机地址冲突。</p>
 <p>注:</p>
 <p>主机号，全为0的是网络号（例如：192.168.2.0），主机号全为1的为广播地址（192.168.2.255）</p>
+<h2 id="子网掩码的分类"><a href="#子网掩码的分类" class="headerlink" title="子网掩码的分类"></a>子网掩码的分类</h2><p><strong>①、缺省子网掩码</strong></p>
+<p>也叫默认子网掩码，即未划分子网，对应的网络号的位都置 1 ，主机号都置 0 。</p>
+<p>未做子网划分的IP地址：网络号＋主机号</p>
+<p>A类网络缺省子网掩码： 255.0.0.0，用CIDR表示为/8，（<strong>CIDR斜线记法</strong>，表示子网掩码的方法）</p>
+<p>B类网络缺省子网掩码： 255.255.0.0，用CIDR表示为/16</p>
+<p>C类网络缺省子网掩码： 255.255.255.0，用CIDR表示为/24</p>
+<p><strong>②、自定义子网掩码</strong></p>
+<p>将一个网络划分子网后，把原本的主机号位置的一部分给了子网号，余下的才是给了子网的主机号。其形式如下：</p>
+<p>做子网划分后的IP地址：网络号＋子网号＋子网主机号</p>
+<p>举个栗子：</p>
+<p>如：192.168.1.100/25，其子网掩码表示：255.255.255.128</p>
+<p>意思就是将192.168.1.0这个网段的主机位的最高1位划分为了子网。</p>
+<h2 id="为什么要要划分子网？"><a href="#为什么要要划分子网？" class="headerlink" title="为什么要要划分子网？"></a>为什么要要划分子网？</h2><p>例如：在A类IP地址中，每个A类网络可能有16，777，214台主机，它们处于同一广播域。在同一广播域中有这么多主机是不可能的，网络会因为广播通信而饱和。另一方面，IP地址资源越来越少。为实现更小的广播域，就需要进一步分成更小的网络。划分子网后，通过使用掩码，把子网隐藏起来，使得从外部看网络没有变化，这就是子网掩码。</p>
+<h2 id="两个不同的主机怎么知道对方是不是在自己的局域网里？"><a href="#两个不同的主机怎么知道对方是不是在自己的局域网里？" class="headerlink" title="两个不同的主机怎么知道对方是不是在自己的局域网里？"></a>两个不同的主机怎么知道对方是不是在自己的局域网里？</h2><p>假设一个主机A想和主机B通信，但是现在主机A手中唯一的信息就是主机B的IP地址，所以主机A就会拿自己和B的IP地址与自己的子网掩码做”与”运算，运算结果就是二者的主机号，然后再来作比较，相同的话就是同一网段，不相同的话就是不同网段，需要通过网关转发，<strong>之前有一个疑问就是:：</strong>ABC类的子网掩码是不同的，会不会两个不同类的IP地址之间通信会导致由于二者子网掩码不同而导致的做（&amp;）运算时算的是主机号，仔细观察就会发现ABC类地址的最前面0的位置，不管是怎样的运算，都不可能运算出相同的主机号来，因为前面那几位不同网段肯定是不一样的。</p>
 <h1 id="ARP是地址解析协议，简单语言解释一下工作原理。"><a href="#ARP是地址解析协议，简单语言解释一下工作原理。" class="headerlink" title="ARP是地址解析协议，简单语言解释一下工作原理。"></a>ARP是地址解析协议，简单语言解释一下工作原理。</h1><h2 id="出现的原因"><a href="#出现的原因" class="headerlink" title="出现的原因"></a>出现的原因</h2><p>ARP协议是“Address Resolution Protocol”（地址解析协议）的缩写。其作用是在以太网环境中，数据的传输所依懒的是MAC地址而非IP地址，而将已知IP地址转换为MAC地址的工作是由ARP协议来完成的。</p>
 <p>在局域网中，网络中实际传输的是“帧”，帧里面是有目标主机的MAC地址的。在以太网中，一个主机和另一个主机进行直接通信，必须要知道目标主机的MAC地址。但这个目标MAC地址是如何获得的呢？它就是通过地址解析协议获得的。所谓“地址解析”就是主机在发送帧前将目标IP地址转换成目标MAC地址的过程。ARP协议的基本功能就是通过目标设备的IP地址，查询目标设备的MAC地址，以保证通信的顺利进行。</p>
 <h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><ul>
@@ -627,7 +643,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#OSI，TCP-IP，五层协议的体系结构，以及各层协议"><span class="toc-number">1.</span> <span class="toc-text">OSI，TCP&#x2F;IP，五层协议的体系结构，以及各层协议</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IP地址的分类"><span class="toc-number">2.</span> <span class="toc-text">IP地址的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#适用范围"><span class="toc-number">2.1.</span> <span class="toc-text">适用范围</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ARP是地址解析协议，简单语言解释一下工作原理。"><span class="toc-number">3.</span> <span class="toc-text">ARP是地址解析协议，简单语言解释一下工作原理。</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#出现的原因"><span class="toc-number">3.1.</span> <span class="toc-text">出现的原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工作原理"><span class="toc-number">3.2.</span> <span class="toc-text">工作原理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#各种协议的介绍"><span class="toc-number">4.</span> <span class="toc-text">各种协议的介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#描述RARP协议"><span class="toc-number">5.</span> <span class="toc-text">描述RARP协议</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#OSI，TCP-IP，五层协议的体系结构，以及各层协议"><span class="toc-number">1.</span> <span class="toc-text">OSI，TCP&#x2F;IP，五层协议的体系结构，以及各层协议</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IP地址的分类"><span class="toc-number">2.</span> <span class="toc-text">IP地址的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#适用范围"><span class="toc-number">2.1.</span> <span class="toc-text">适用范围</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#子网掩码的分类"><span class="toc-number">2.2.</span> <span class="toc-text">子网掩码的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要要划分子网？"><span class="toc-number">2.3.</span> <span class="toc-text">为什么要要划分子网？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#两个不同的主机怎么知道对方是不是在自己的局域网里？"><span class="toc-number">2.4.</span> <span class="toc-text">两个不同的主机怎么知道对方是不是在自己的局域网里？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ARP是地址解析协议，简单语言解释一下工作原理。"><span class="toc-number">3.</span> <span class="toc-text">ARP是地址解析协议，简单语言解释一下工作原理。</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#出现的原因"><span class="toc-number">3.1.</span> <span class="toc-text">出现的原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工作原理"><span class="toc-number">3.2.</span> <span class="toc-text">工作原理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#各种协议的介绍"><span class="toc-number">4.</span> <span class="toc-text">各种协议的介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#描述RARP协议"><span class="toc-number">5.</span> <span class="toc-text">描述RARP协议</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -2641,9 +2657,28 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 129
+        Total : 130
         </div>
         <!-- search  -->
         
@@ -2656,6 +2691,11 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/03</span><a class="archive-post-title" href= "/2020/04/03/20200403-%E4%BB%A5%E5%A4%AA%E7%BD%91%E3%80%81IP%E3%80%81TCP%E3%80%81UDP%E5%A4%B4%E9%83%A8%E6%A0%BC%E5%BC%8F/" >以太网、IP、TCP、UDP头部格式</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -2709,12 +2749,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
         </li>
     
     
@@ -2874,7 +2914,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/TCP%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/" >TCP拥塞控制</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/TCP%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93/" >TCP可靠传输</a>
         </li>
     
     
@@ -3345,11 +3385,11 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
     
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
         <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
-    
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
         <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
     
@@ -3359,9 +3399,9 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="分治"><span class="iconfont-archer">&#xe606;</span>分治</span>
     
-        <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
-    
         <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
+    
+        <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
     
         <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
