@@ -346,6 +346,67 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/24/20200324-%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/" >
+            
+                <span>虚拟内存</span>
+        </a>
+        <div class="abstract-content">
+            <p><strong>1、对于CPU来说，它的目标存储器是物理内存，使用cache做物理内存的缓存</strong></p>
+<p><strong>2、对于虚拟内存来说，它的目标存储器是磁盘空间，使用物理内存做磁盘的缓存</strong></p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "操作系统">操作系统</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/24/20200324-%E5%B9%B6%E5%8F%91%E3%80%81%E5%B9%B6%E8%A1%8C%E3%80%81%E5%90%8C%E6%AD%A5%E3%80%81%E5%BC%82%E6%AD%A5%E3%80%81%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB/" >
+            
+                <span>并发、并行、同步、异步、多线程的区别</span>
+        </a>
+        <div class="abstract-content">
+            
+
+并发：在操作系统中，是指一个时间段中有几个程序都处于已启动运行到运行完毕之间，且这几个程序都是在同一个处理机上运行。其中两种并发关系分别是同步和互斥互斥：进程间相互排斥的使用临界资源的现象，就叫互斥。同步：进程之间的关系不是相互排斥临界资源的关系，而是相互依赖的关系。进一步的说明：就是前一个进程的输出作为后一个进程的输入，当第一个进程没有输出时第二个进程必须等待。具有同步关系的一组并发进程相互发送的信息称为消息或事件。其中并发又有伪并发和真并发，伪并发是指单核处理器的并发，真并发是指多核处理器的并发。并行：在单处理器中多道程序设计系统中，进程被交替执行，表现出一种并发的外部特种；在多...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "操作系统">操作系统</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/03/24/20200324-cookie%E5%92%8Csession/" >
             
                 <span>cookie和session</span>
@@ -501,12 +562,7 @@
                 <span>用户态和内核态</span>
         </a>
         <div class="abstract-content">
-            用户态和内核态通过系统调用将Linux整个体系分为用户态和内核态（或者说内核空间和用户空间）。
-用户态：用户态就是提供应用程序运行的空间，为了使应用程序访问到内核管理的资源例如CPU，内存，I/O。内核必须提供一组通用的访问接口，这些接口就叫系统调用。
-内核态：其实从本质上说就是我们所说的内核，它是一种特殊的软件程序，特殊在哪儿呢？控制计算机的硬件资源，例如协调CPU资源，分配内存资源，并且提供稳定的环境供应用程序运行。
-用户态是普通的函数调用，系统态是系统函数的调用。
-普通的函数调用有jump到相应的函数，或者用inline直接替换掉该函数
-系统调用系统调用是操作系统的最小功能单位。根...
+            <p>操作系统是用户与计算机硬件之间的接口</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -583,80 +639,6 @@
 优化：尽量在字段后面使用模糊查询。如下：
 SELECT * FROM t_order WHERE customer LIKE ‘zhang%’
 4.尽量不要使用in 和not in，会造...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/20</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "数据库">数据库</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/20/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1%E5%8F%8A%E5%9B%9B%E4%B8%AA%E7%89%B9%E6%80%A7/" >
-            
-                <span>数据库事务及四个特性</span>
-        </a>
-        <div class="abstract-content">
-            <p>转自：<a href="https://www.cnblogs.com/takumicx/p/9998844.html#事务的隔离级别" target="_blank" rel="noopener">https://www.cnblogs.com/takumicx/p/9998844.html#事务的隔离级别</a></p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/20</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "数据库">数据库</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/20/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95/" >
-            
-                <span>数据库索引简介</span>
-        </a>
-        <div class="abstract-content">
-            
-
-数据库创建索引语句
-12CREATE [索引类型] INDEX 索引名称ON 表名(列名)
-索引类型：
-
-普通索引(啥都不写):单纯的索引
-
-唯一索引(UNIQUE)：不允许两行具有相同的索引值（创建了唯一约束，系统将自动创建唯一索引）。
-
-主键索引：主键索引要求主键中的每个值是唯一的，（创建主键自动创建主键索引）。
-聚集索引(CLUSTERED)：表中各行的物理顺序与键值的逻辑（索引）顺序相同，表中只能包含一个聚集索引，主键列默认为聚集索引。
-非聚集索引(NONCLUSTERED)：表中各行的物理顺序与键值的逻辑（索引）顺序不匹配，表中可以有249个非聚集索引。
-
-思考问题：
-
-为...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -2795,9 +2777,76 @@ SELECT * FROM t_order WHERE customer LIKE ‘zhang%’
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 130
+        Total : 133
         </div>
         <!-- search  -->
         
@@ -2810,6 +2859,21 @@ SELECT * FROM t_order WHERE customer LIKE ‘zhang%’
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/04</span><a class="archive-post-title" href= "/2020/04/04/20200404-%E5%AE%9E%E7%8E%B0Trie%EF%BC%88%E5%AD%97%E5%85%B8%E6%A0%91%EF%BC%89/" >实现Trie（字典树）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/04</span><a class="archive-post-title" href= "/2020/04/04/20200404-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/" >操作系统内存管理功能</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/04</span><a class="archive-post-title" href= "/2020/04/04/20200404-TCP%E7%B2%98%E5%8C%85%E3%80%81%E6%8B%86%E5%8C%85/" >TCP粘包、拆包</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -3496,6 +3560,8 @@ SELECT * FROM t_order WHERE customer LIKE ‘zhang%’
     
         <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
+        <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
+    
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
@@ -3511,8 +3577,6 @@ SELECT * FROM t_order WHERE customer LIKE ‘zhang%’
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
         <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
-    
-        <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
     

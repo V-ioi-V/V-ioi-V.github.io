@@ -346,6 +346,104 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/22/20200322-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F/" >
+            
+                <span>进程和线程间的通信方式</span>
+        </a>
+        <div class="abstract-content">
+            <p>进程间通信（IPC，InterProcess Communication）是指在不同进程之间传播或交换信息.</p>
+<p>IPC的方式通常有管道（包括无名管道和命名管道）、消息队列、信号量、共享存储、Socket、Streams等。其中 Socket和Streams支持不同主机上的两个进程IPC。</p>
+<p>线程中的通信一般是用来同步</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/22</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "操作系统">操作系统</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/22/20200322-%E6%89%BE%E4%B8%89%E5%85%83%E7%BB%84/" >
+            
+                <span>找三元组</span>
+        </a>
+        <div class="abstract-content">
+            题目描述给定一个数组，找出其中一组i、j、k并且满足i&lt;j&lt;k&amp;&amp;a[i]&lt;a[j]&lt;a[k]
+要求时间复杂度是O（n），空间复杂度是O（n）
+样例1234输入100 10 99 98 20 97 96 30 95输出1 4 5
+思路假算法害人害己
+如果是要求找出其中的两个数的话，就是边找边记录前面的最小值，然后看当前的数是不是大于这个最小值，大于的话就满足。
+如果是找三个数的话，可以想到，遍历的时候要维护第二个数的最小值，然后遍历的时候看当前数是不是大于第二个数的最小值，是的话就输出，不是的话就看这个数满不满足成为第二个数字（因为它比第二个数字小...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/22</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/22/20200322-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%EF%BC%88%E4%B8%8D%E5%BC%80%E8%BE%9F%E6%96%B0%E7%A9%BA%E9%97%B4%EF%BC%89/" >
+            
+                <span>合并两个有序数组（不开辟新空间）</span>
+        </a>
+        <div class="abstract-content">
+            题目描述给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使 num1 成为一个有序数组。
+说明:初始化 nums1 和 nums2 的元素数量分别为 m 和 n 。你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。
+示例:输入:nums1 = [1,2,3,0,0,0], m = 3nums2 = [2,5,6],       n = 3
+输出: [1,2,2,3,5,6]
+思路知道两个数组的长度，而且nums1还有足够的空间，因此nums1后面的空间一定是空着的，所以从最大的数字开始找位置，...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/22</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/03/22/20200322-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/" >
             
                 <span>进程和线程</span>
@@ -380,12 +478,7 @@
                 <span>用户态和内核态</span>
         </a>
         <div class="abstract-content">
-            用户态和内核态通过系统调用将Linux整个体系分为用户态和内核态（或者说内核空间和用户空间）。
-用户态：用户态就是提供应用程序运行的空间，为了使应用程序访问到内核管理的资源例如CPU，内存，I/O。内核必须提供一组通用的访问接口，这些接口就叫系统调用。
-内核态：其实从本质上说就是我们所说的内核，它是一种特殊的软件程序，特殊在哪儿呢？控制计算机的硬件资源，例如协调CPU资源，分配内存资源，并且提供稳定的环境供应用程序运行。
-用户态是普通的函数调用，系统态是系统函数的调用。
-普通的函数调用有jump到相应的函数，或者用inline直接替换掉该函数
-系统调用系统调用是操作系统的最小功能单位。根...
+            <p>操作系统是用户与计算机硬件之间的接口</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -581,103 +674,10 @@ SELECT * FROM t_order WHERE customer LIKE ‘zhang%’
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/20/20200320-%E8%82%A1%E7%A5%A8%E7%B3%BB%E5%88%97%E9%97%AE%E9%A2%98/" >
-            
-                <span>股票系列问题</span>
-        </a>
-        <div class="abstract-content">
-            问题一给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。
-如果你最多只允许完成一笔交易（即买入和卖出一支股票一次），设计一个算法来计算你所能获取的最大利润。
-注意：你不能在买入股票前卖出股票。
-示例 1:
-输入: [7,1,5,3,6,4]输出: 5解释: 在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。     注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格。示例 2:
-输入: [7,6,4,3,1]输出: 0解释: 在这种情况下, 没有交易完成, 所以最大利润为 0。
-思路遍历一遍，...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/20</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/20/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1%E5%8F%8A%E5%9B%9B%E4%B8%AA%E7%89%B9%E6%80%A7/" >
-            
-                <span>数据库事务及四个特性</span>
-        </a>
-        <div class="abstract-content">
-            <p>转自：<a href="https://www.cnblogs.com/takumicx/p/9998844.html#事务的隔离级别" target="_blank" rel="noopener">https://www.cnblogs.com/takumicx/p/9998844.html#事务的隔离级别</a></p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/20</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "数据库">数据库</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/20/%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/" >
-            
-                <span>最小的k个数</span>
-        </a>
-        <div class="abstract-content">
-            <p>经典top(k)问题</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/20</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/archives/2020/page/3/">&lt; PREV</a><a class="page-number" href="/archives/2020/">1</a><a class="page-number" href="/archives/2020/page/2/">2</a><a class="page-number" href="/archives/2020/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/2020/page/5/">5</a><a class="page-number" href="/archives/2020/page/6/">6</a><a class="page-number" href="/archives/2020/page/7/">7</a><a class="extend next" rel="next" href="/archives/2020/page/5/">NEXT &gt;</a>
+        <a class="extend prev" rel="prev" href="/archives/2020/page/3/">&lt; PREV</a><a class="page-number" href="/archives/2020/">1</a><a class="page-number" href="/archives/2020/page/2/">2</a><a class="page-number" href="/archives/2020/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/2020/page/5/">5</a><a class="page-number" href="/archives/2020/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2020/page/8/">8</a><a class="extend next" rel="next" href="/archives/2020/page/5/">NEXT &gt;</a>
     </nav>
     
 </main>
@@ -2795,9 +2795,76 @@ SELECT * FROM t_order WHERE customer LIKE ‘zhang%’
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 130
+        Total : 133
         </div>
         <!-- search  -->
         
@@ -2810,6 +2877,21 @@ SELECT * FROM t_order WHERE customer LIKE ‘zhang%’
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/04</span><a class="archive-post-title" href= "/2020/04/04/20200404-%E5%AE%9E%E7%8E%B0Trie%EF%BC%88%E5%AD%97%E5%85%B8%E6%A0%91%EF%BC%89/" >实现Trie（字典树）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/04</span><a class="archive-post-title" href= "/2020/04/04/20200404-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/" >操作系统内存管理功能</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/04</span><a class="archive-post-title" href= "/2020/04/04/20200404-TCP%E7%B2%98%E5%8C%85%E3%80%81%E6%8B%86%E5%8C%85/" >TCP粘包、拆包</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -3496,6 +3578,8 @@ SELECT * FROM t_order WHERE customer LIKE ‘zhang%’
     
         <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
+        <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
+    
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
@@ -3511,8 +3595,6 @@ SELECT * FROM t_order WHERE customer LIKE ‘zhang%’
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
         <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
-    
-        <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
     

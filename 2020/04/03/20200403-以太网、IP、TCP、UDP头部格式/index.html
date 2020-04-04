@@ -415,33 +415,42 @@ height:50vh;
 <p><strong>服务类型（TOS）：</strong>服务类型字段包括一个3bit的优先权字段（现在已经被忽略），4bit的TOS子字段和1bit未用位必须置0。4bit的TOS分别代表：最小时延，最大吞吐量，最高可靠性和最小费用。4bit中只能置其中1比特。如果所有4bit均为0，那么就意味着是一般服务。</p>
 <p><strong>总长度：</strong>总长度字段是指整个IP数据报的长度，以字节为单位。利用首部长度和总长度字段，就可以知道IP数据报中数据内容的起始位置和长度。由于该字段长16bit，所以IP数据报最长可达65535字节。当数据报被分片时，该字段的值也随着变化。</p>
 <p><strong>标识字段：</strong>标识字段唯一地标识主机发送的每一份数据报。通常每发送一份报文它的值就会加1。</p>
-<p><strong>生存时间：</strong>T T L（time-to-live）生存时间字段设置了数据报可以经过的最多路由器数。它指定了数据报的生存时间。T T L的初始值由源主机设置（通常为 3 2或6 4），一旦经过一个处理它的路由器，它的值就减去 1。当该字段的值为 0时，数据报就被丢弃，并发送 I C M P报文通知源主机。</p>
+<p><strong>生存时间：</strong>TTL（time-to-live）生存时间字段设置<strong>了数据报可以经过的最多路由器数</strong>。它指定了数据报的生存时间。TTL的初始值由源主机设置（通常为 32或6 4），一旦经过一个处理它的路由器，它的值就减去 1。当该字段的值为 0时，数据报就被丢弃，并发送 ICMP报文通知源主机。</p>
+<p><strong>协议：</strong>8位，这个字段定义了IP数据报的数据部分使用的协议类型,常见的如下：</p>
+<ul>
+<li>1    ICMP</li>
+<li>2    IGMP</li>
+<li>6    TCP</li>
+<li>17  UDP</li>
+<li>88  IGRP</li>
+<li>89  OSPF</li>
+</ul>
 <p><strong>首部检验和：</strong>首部检验和字段是根据 I P首部计算的检验和码。它不对首部后面的数据进行计算。 I C M P、<br>I G M P、U D P和T C P在它们各自的首部中均含有同时覆盖首部和数据检验和码。</p>
 <h2 id="TCP首部格式"><a href="#TCP首部格式" class="headerlink" title="TCP首部格式"></a>TCP首部格式</h2><p>　　尽管TCP和UDP都使用相同的网络层（ I P），T C P却向应用层提供与U D P完全不同的服务。T C P提供一种面向连接的、可靠的字节流服务。</p>
 <p>　　如果不计任选字段，它通常是 2 0个字节。</p>
 <p><img src="https://i.loli.net/2020/04/03/XoIRQwPr392GDSx.jpg" alt="3.jpeg"></p>
 <p><strong>源端口号和目的端口号：</strong>用于寻找发送端和接收端应用进程。这两个值加上IP首部中的源端IP地址和目的端IP地址唯一确定一个TCP连接。</p>
-<p><strong>序号字段：</strong>序号用来标识从TCP发送端向TCP接收端发送的数据字节流，它表示在这个报文段中的的第一个数据字节。如果将字节流看作在两个应用程序间的单向流动，则 TCP用序号对每个字节进行计数。序号是32 bit的无符号数，序号到达 2^32-1后又从0开始。</p>
+<p><strong>序号字段：</strong>序号用来标识从TCP发送端向TCP接收端发送的数据字节流，它<strong>表示在这个报文段中的的第一个数据字节</strong>。如果将字节流看作在两个应用程序间的单向流动，则 TCP用序号对每个字节进行计数。序号是32 bit的无符号数，序号到达 2^32-1后又从0开始。</p>
 <p>当建立一个新的连接时，SYN标志变1。序号字段包含由这个主机选择的该连接的初始序号ISN（Initial Sequence Number）。该主机要发送数据的第一个字节序号为这个ISN加1，因为SYN标志消耗了一个序号（FIN标志也要占用一个序号）</p>
-<p><strong>确认序号：</strong>既然每个传输的字节都被计数，确认序号包含发送确认的一端所期望收到的下一个序号。因此，确认序号应当是上次已成功收到数据字节序号加 1。只有ACK标志（下面介绍）为 1时确认序号字段才有效。发送ACK无需任何代价，因为 32 bit的确认序号字段和A C K标志一样，总是T C P首部的一<br>部分。因此，我们看到一旦一个连接建立起来，这个字段总是被设置， ACK标志也总是被设置为1。TCP为应用层提供全双工服务。这意味数据能在两个方向上独立地进行传输。因此，连接的每一端必须保持每个方向上的传输数据序号。</p>
+<p><strong>确认序号：</strong>既然每个传输的字节都被计数，确认序号包含<strong>发送确认的一端所期望收到的下一个序号</strong>。因此，确认序号应当是上次已成功收到数据字节序号加 1。只有ACK标志（下面介绍）为 1时确认序号字段才有效。发送ACK无需任何代价，因为 32 bit的确认序号字段和ACK标志一样，总是TCP首部的一部分。因此，我们看到一旦一个连接建立起来，这个字段总是被设置， ACK标志也总是被设置为1。TCP为应用层提供全双工服务。这意味数据能在两个方向上独立地进行传输。因此，连接的每一端必须保持每个方向上的传输数据序号。<strong>每次发送的数据字段的序号是从确认序号开始往下编号的。</strong></p>
 <p><strong>首部长度：</strong>首部长度给出首部中 32 bit字的数目。需要这个值是因为任选字段的长度是可变的。这个字段占4 bit，因此T C P最多有6 0字节的首部。然而，没有任选字段，正常的长度是 2 0字节。</p>
 <p><strong>标志字段：</strong>在T C P首部中有 6个标志比特。它们中的多个可同时被设置为1.</p>
 <ul>
-<li>URG紧急指针（u rgent pointer）有效（见2 0 . 8节）。</li>
+<li>URG紧急指针（urgent pointer）有效。</li>
 <li>ACK确认序号有效。</li>
 <li>PSH接收方应该尽快将这个报文段交给应用层。</li>
 <li>RST重建连接。</li>
-<li>SYN同步序号用来发起一个连接。这个标志和下一个标志将在第 1 8章介绍。</li>
+<li>SYN同步序号用来发起一个连接。。</li>
 <li>FIN发端完成发送任务。</li>
 </ul>
 <p><strong>窗口大小：</strong>TCP的流量控制由连接的每一端通过声明的窗口大小来提供。窗口大小为字节数，起始于确认序号字段指明的值，这个值是接收端正期望接收的字节。窗口大小是一个 16 bit字段，因而窗口大小最大为 65535字节。</p>
-<p><strong>检验和：</strong>检验和覆盖了整个的 T C P报文段：T C P首部和T C P数据。这是一个强制性的字段，一定是由发端计算和存储，并由收端进行验证。</p>
+<p><strong>检验和：</strong>检验和覆盖了整个的 TCP报文段：TCP首部和TCP数据。这是一个强制性的字段，一定是由发端计算和存储，并由收端进行验证。</p>
 <p><strong>紧急指针：</strong>只有当URG标志置1时紧急指针才有效。紧急指针是一个正的偏移量，和序号字段中的值相加表示紧急数据最后一个字节的序号。 T C P的紧急方式是发送端向另一端发送紧急数据的一种方式。</p>
 <p><strong>选项：</strong>最常见的可选字段是最长报文大小，又称为 MSS (Maximum Segment Size)。每个连接方通常都在通信的第一个报文段（为建立连接而设置 S Y N标志的那个段）中指明这个选项。它指明本端所能接收的最大长度的报文段。</p>
 <h2 id="UDP首部"><a href="#UDP首部" class="headerlink" title="UDP首部"></a>UDP首部</h2><p>UDP是一个简单的面向数据报的运输层协议：进程的每个输出操作都正好产生一个UDP数据报，并组装成一份待发送的 I P数据报。这与面向流字符的协议不同，如 T C P，应用程序产生的全体数据与真正发送的单个 I P数据报可能没有什么联系。</p>
 <p><img src="https://i.loli.net/2020/04/03/HAyzpmasobgUZwc.jpg" alt="download.jpeg"></p>
-<p><strong>端口号：</strong>用来表示发送和接受进程。由于 I P层已经把I P数据报分配给T C P或U D P（根据I P首部中协议字段值），因此T C P端口号由T C P来查看，而 U D P端口号由UDP来查看。T C P端口号与UDP端口号是相互独立的。</p>
-<p><strong>长度：</strong>UDP长度字段指的是UDP首部和UDP数据的字节长度。该字段的最小值为 8字节（发送一份0字节的UDP数据报是 O K）。</p>
+<p><strong>端口号：</strong>用来表示发送和接受进程。由于 IP层已经把IP数据报分配给TCP或UDP（根据IP首部中协议字段值），因此TCP端口号由TCP来查看，而 UDP端口号由UDP来查看。TCP端口号与UDP端口号是相互独立的。</p>
+<p><strong>长度：</strong>UDP长度字段指的是UDP首部和UDP数据的字节长度。该字段的最小值为 8字节（发送一份0字节的UDP数据报是 0K）。</p>
 <p><strong>检验和：</strong>UDP检验和是一个端到端的检验和。它由发送端计算，然后由接收端验证。其目的是为了发现UDP首部和数据在发送端到接收端之间发生的任何改动。</p>
 
     </article>
@@ -450,6 +459,11 @@ height:50vh;
     <!-- paginator  -->
     <ul class="post-paginator">
         <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/04/04/20200404-TCP%E7%B2%98%E5%8C%85%E3%80%81%E6%8B%86%E5%8C%85/" title= "TCP粘包、拆包">
+                    <div class="nextTitle">TCP粘包、拆包</div>
+                </a>
             
         </li>
         <li class="previous">
@@ -2612,9 +2626,76 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 130
+        Total : 133
         </div>
         <!-- search  -->
         
@@ -2627,6 +2708,21 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/04</span><a class="archive-post-title" href= "/2020/04/04/20200404-%E5%AE%9E%E7%8E%B0Trie%EF%BC%88%E5%AD%97%E5%85%B8%E6%A0%91%EF%BC%89/" >实现Trie（字典树）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/04</span><a class="archive-post-title" href= "/2020/04/04/20200404-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/" >操作系统内存管理功能</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/04</span><a class="archive-post-title" href= "/2020/04/04/20200404-TCP%E7%B2%98%E5%8C%85%E3%80%81%E6%8B%86%E5%8C%85/" >TCP粘包、拆包</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -3313,6 +3409,8 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
+        <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
+    
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
@@ -3328,8 +3426,6 @@ top:50vh;
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
         <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
-    
-        <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
     
