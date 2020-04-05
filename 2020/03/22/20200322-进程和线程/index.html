@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">1.8k</span>Reading time: <span class="post-count reading-time">6 min</span></span>
+                        <span>Word count: <span class="post-count word-count">2k</span>Reading time: <span class="post-count reading-time">6 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -403,6 +403,7 @@ height:50vh;
     <article class="article-entry">
         <font size=4 color="red">进程是资源分配的最小单位，线程是CPU调度的最小单位。</font>
 
+<p>进程=程序+数据+PCB（进程控制块）</p>
 <a id="more"></a>
 <font size=4>
 
@@ -416,10 +417,21 @@ height:50vh;
 <ul>
 <li><strong>进程就是包换上下文切换的程序执行时间总和</strong> = <strong>CPU加载上下文+CPU执行+CPU保存上下文</strong></li>
 </ul>
-<p><strong><em>线程是什么呢？<br>\</em></strong>进程的颗粒度太大，每次都要有上下的调入，保存，调出。如果我们把进程比喻为一个运行在电脑上的软件，那么一个软件的执行不可能是一条逻辑执行的，必定有多个分支和多个程序段，就好比要实现程序A，实际分成 a，b，c等多个块组合而成。那么这里具体的执行就可能变成：</p>
+<p><strong>线程是什么呢？
+</strong>进程的颗粒度太大，每次都要有上下的调入，保存，调出。如果我们把进程比喻为一个运行在电脑上的软件，那么一个软件的执行不可能是一条逻辑执行的，必定有多个分支和多个程序段，就好比要实现程序A，实际分成 a，b，c等多个块组合而成。那么这里具体的执行就可能变成：</p>
 <p>程序A得到CPU，CPU加载上下文，开始执行程序A的a小段，然后执行A的b小段，然后再执行A的c小段，最后CPU保存A的上下文。</p>
 <p>这里a，b，c的执行是共享了A的上下文，CPU在执行的时候没有进行上下文切换的。这里的a，b，c就是线程，也就是说线程是共享了进程的上下文环境，的更为细小的CPU时间段。</p>
 <p>到此全文结束，再一个总结：<br><strong>进程和线程都是一个时间段的描述，是CPU工作时间段的描述，不过是颗粒大小不同。</strong></p>
+<h2 id="进程具有的特征："><a href="#进程具有的特征：" class="headerlink" title="进程具有的特征："></a>进程具有的特征：</h2><ul>
+<li><p>动态性：进程是程序的一次执行过程，是临时的，有生命期的，是动态产生，动态消亡的；</p>
+</li>
+<li><p>并发性：任何进程都可以同其他进程一起并发执行；</p>
+</li>
+<li><p>独立性：进程是系统进行资源分配和调度的一个独立单位；</p>
+</li>
+<li><p>结构性：进程由程序、数据集合和进程控制块三部分组成。</p>
+</li>
+</ul>
 <h1 id="进程和线程的概念"><a href="#进程和线程的概念" class="headerlink" title="进程和线程的概念"></a>进程和线程的概念</h1><ul>
 <li>进程是计算机中的程序关于某数据集合上的一次运行活动，是系统进行资源分配和调度的基本单位，是操作系统结构的基础。程序是指令、数据及其组织形式的描述，进程是程序的实体。进程是一个具有独立功能的程序关于某个数据集合的一次运行活动。它可以申请和拥有系统资源，是一个动态的概念，是一个活动的实体。它不只是程序的代码，还包括当前的活动，通过程序计数器的值和处理寄存器的内容来表示。通俗点讲，进程是一段程序的执行过程，是个动态概念。</li>
 <li>线程是进程内的一个执行实体或执行单元。</li>
@@ -440,6 +452,12 @@ height:50vh;
 <li><p><strong>包含关系：</strong>如果一个进程有一个线程，则是单线程，如果一个进程内有多个线程，则执行过程不是一条线的，而是多条线（线程）共同完成的；线程是进程的一部分，所以线程也被称为轻权进程或者轻量级进程。</p>
 </li>
 <li><strong>影响关系</strong>：一个进程崩溃后，在保护模式下不会对其他进程产生影响，但是一个线程崩溃整个进程都死掉。所以多进程要比多线程健壮。</li>
+</ul>
+<h1 id="线程可以共享进程哪些资源？"><a href="#线程可以共享进程哪些资源？" class="headerlink" title="线程可以共享进程哪些资源？"></a>线程可以共享进程哪些资源？</h1><ul>
+<li><p>线程共享的环境包括：<strong>内存、进程代码段（代码和常量）</strong>、<strong>数据段</strong>(例如全局变量和静态变量，利用这些共享的数据，线程很容易的实现相互之间的通讯)、<strong>扩展段（堆存储）、进程打开的文件描述符</strong>、<strong>信号的处理器</strong>、<strong>进程的当前目录</strong>、<strong>进程用户ID</strong>与<strong>进程组ID</strong>。</p>
+</li>
+<li><p>非共享的包括：<strong>线程ID，寄存器组的值，线程的栈段（存放局部变量和临时变量），错误返回码， 线程的信号屏蔽码， 线程的优先级</strong></p>
+</li>
 </ul>
 
     </article>
@@ -582,7 +600,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#进程和线程"><span class="toc-number">1.</span> <span class="toc-text">进程和线程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#进程和线程的概念"><span class="toc-number">2.</span> <span class="toc-text">进程和线程的概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#为什么要有线程"><span class="toc-number">3.</span> <span class="toc-text">为什么要有线程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#进程和线程的区别"><span class="toc-number">4.</span> <span class="toc-text">进程和线程的区别</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#进程和线程"><span class="toc-number">1.</span> <span class="toc-text">进程和线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#进程具有的特征："><span class="toc-number">1.1.</span> <span class="toc-text">进程具有的特征：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#进程和线程的概念"><span class="toc-number">2.</span> <span class="toc-text">进程和线程的概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#为什么要有线程"><span class="toc-number">3.</span> <span class="toc-text">为什么要有线程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#进程和线程的区别"><span class="toc-number">4.</span> <span class="toc-text">进程和线程的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线程可以共享进程哪些资源？"><span class="toc-number">5.</span> <span class="toc-text">线程可以共享进程哪些资源？</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -2682,9 +2700,82 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 133
+        Total : 136
         </div>
         <!-- search  -->
         
@@ -2697,6 +2788,21 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2020/04/05/20200406-Http%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/" >HTTP报文格式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2020/04/05/20200405-select%E3%80%81poll%E3%80%81epoll/" >select、poll、epoll</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2020/04/05/20200405-%E9%9D%A2%E5%90%91%E5%AD%97%E8%8A%82%E6%B5%81%E7%9A%84TCP/" >面向字节流的TCP</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -3400,9 +3506,9 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
-        <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
-    
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
+    
+        <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     

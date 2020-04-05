@@ -417,7 +417,7 @@ height:50vh;
 <p>物理页(PP)：物理地址空间划分为多个固定大小的物理页</p>
 <p>页表基地址寄存器（PTBR）：CPU有一个专门的页表基地址寄存器，指向当前页表的基地址</p>
 <p>翻译后备缓冲区（TLB）：一个用来缓存页表条目PTE的硬件设备</p>
-<p>MMU(Memory Management Unit)：CPU中含有的硬件，将虚拟地址转换为物理地址</p>
+<p>MMU(Memory Management Unit)：内存管理单元，CPU中含有的硬件，将虚拟地址转换为物理地址</p>
 <h2 id="传统存储管理方式："><a href="#传统存储管理方式：" class="headerlink" title="传统存储管理方式："></a>传统存储管理方式：</h2><p>​       进程必须一次全部加载到内存中，方可运行。当进程很大，就无法运行。而且多道进程运行时，内存不足容纳所有进程，导致多道程序性能下降。操作系统引入了虚拟内存的概念，利用计算机的空间局部性和时间局部性原理，将程序分的一部分装入内存运行，其余部分留在外存，等需要的时候再将外存的程序装入内存继续运行。</p>
 <p>​        例如一台计算机有128M内存，A进程需要10M内存，B进程需要100M内存；操作系统会先将内存中的前 10M 分配给程序 A ，接着再从内存中剩余的 118M 中划分出 110M 分配给程序 B ；如果这时候又运行了需要20M程序 C，系统只剩下 8M 的空间可供使用，此时系统必须在已运行的程序中选择一个将该程序的数据暂时拷贝到硬盘上，释放出部分空间来供程序 C 使用，然后再将程序 C 的数据全部装入内存中运行。</p>
 <p>虚拟内存好像给用户提供了一个比实际内存大得多的存储器。叫虚拟存储器，大小由计算机地址结构决定。</p>
@@ -2761,9 +2761,82 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 133
+        Total : 136
         </div>
         <!-- search  -->
         
@@ -2776,6 +2849,21 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2020/04/05/20200406-Http%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/" >HTTP报文格式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2020/04/05/20200405-select%E3%80%81poll%E3%80%81epoll/" >select、poll、epoll</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2020/04/05/20200405-%E9%9D%A2%E5%90%91%E5%AD%97%E8%8A%82%E6%B5%81%E7%9A%84TCP/" >面向字节流的TCP</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -3479,9 +3567,9 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
-        <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
-    
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
+    
+        <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     

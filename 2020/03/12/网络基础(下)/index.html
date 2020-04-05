@@ -465,11 +465,11 @@ height:50vh;
 <li><p><strong>根域名服务器</strong>　</p>
 <p>当以上均未完成，则进入根服务器进行查询。全球仅有13台根域名服务器，1个主根域名服务器，其余12为辅根域名服务器。根域名收到请求后会查看区域文件记录，若无则将其管辖范围内顶级域名（如.com）服务器IP告诉本地DNS服务器；</p>
 </li>
-<li><p><strong>顶级域名服务器</strong></p>
+<li><p><strong>顶级域名服务器（一级域名）</strong></p>
 <p>顶级域名服务器收到请求后查看区域文件记录，若无则将其管辖范围内主域名服务器的IP地址告诉本地DNS服务器； </p>
 </li>
-<li><p><strong>主域名服务器</strong></p>
-<p>主域名服务器接受到请求后查询自己的缓存，如果没有则进入下一级域名服务器进行查找(二级域名，三级域名，四级域名…)，并重复该步骤直至找到正确纪录；</p>
+<li><p><strong>主域名服务器（二级域名）</strong></p>
+<p>主域名服务器接受到请求后查询自己的缓存，如果没有则进入下一级域名服务器进行查找(三级域名，四级域名…)，并重复该步骤直至找到正确纪录；</p>
 </li>
 <li><p><strong>保存结果至缓存</strong></p>
 <p>本地域名服务器把返回的结果保存到缓存，以备下一次使用，同时将该结果反馈给客户端，客户端通过这个IP地址与web服务器建立链接。</p>
@@ -2725,9 +2725,82 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 133
+        Total : 136
         </div>
         <!-- search  -->
         
@@ -2740,6 +2813,21 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2020/04/05/20200406-Http%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/" >HTTP报文格式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2020/04/05/20200405-select%E3%80%81poll%E3%80%81epoll/" >select、poll、epoll</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2020/04/05/20200405-%E9%9D%A2%E5%90%91%E5%AD%97%E8%8A%82%E6%B5%81%E7%9A%84TCP/" >面向字节流的TCP</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -3443,9 +3531,9 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
-        <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
-    
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
+    
+        <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     

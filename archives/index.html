@@ -346,6 +346,97 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/05/20200406-Http%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/" >
+            
+                <span>HTTP报文格式</span>
+        </a>
+        <div class="abstract-content">
+            <p>HTTP报文是面向文本的，报文中的每一个字段都是一些ASCII码串，各个字段的长度是不确定的。HTTP有两类报文：请求报文和响应报文。</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/05</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/05/20200405-select%E3%80%81poll%E3%80%81epoll/" >
+            
+                <span>select、poll、epoll</span>
+        </a>
+        <div class="abstract-content">
+            select，poll，epoll都是IO多路复用的机制。I/O多路复用就通过一种机制，可以监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），能够通知程序进行相应的读写操作。但select，poll，epoll本质上都是同步I/O，因为他们都需要在读写事件就绪后自己负责进行读写，也就是说这个读写过程是阻塞的，而异步I/O则无需自己负责进行读写，异步I/O的实现会负责把数据从内核拷贝到用户空间。 
+epoll跟select都能提供多路I/O复用的解决方案。在现在的Linux内核里有都能够支持，其中epoll是Linux所特有，而select则应该是POSIX所规定，一般操作系统...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/05</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "操作系统">操作系统</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/05/20200405-%E9%9D%A2%E5%90%91%E5%AD%97%E8%8A%82%E6%B5%81%E7%9A%84TCP/" >
+            
+                <span>面向字节流的TCP</span>
+        </a>
+        <div class="abstract-content">
+            <ul>
+<li>MTU: Maxitum Transmission Unit 最大传输单元（以太网）[46,1500]</li>
+<li>MSS: Maxitum Segment Size 最大报文段长度(TCP) [6,1460]</li>
+</ul>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/05</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/04/04/20200404-%E5%AE%9E%E7%8E%B0Trie%EF%BC%88%E5%AD%97%E5%85%B8%E6%A0%91%EF%BC%89/" >
             
                 <span>实现Trie（字典树）</span>
@@ -577,116 +668,6 @@ in、inn、int、tea、ten、to
         <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "DP">DP</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/01/20200401-%E6%80%9D%E7%BB%B4%E9%A2%98%E6%80%BB%E7%BB%93/" >
-            
-                <span>思维题总结</span>
-        </a>
-        <div class="abstract-content">
-            狼和羊的故事青青草原上有100只狼和1只喜羊羊，狼可以吃草也可以吃羊，但是狼更喜欢吃羊。         
-①如果狼吃了羊，就会变成羊，可能被其他狼吃掉。         
-②假设这些狼都绝对聪明，他们的第一要务是生存。         
-③一只羊只能被一只狼吃掉，并且排除其他可能性。         
-问：喜羊羊会不会被狼吃掉？         
-【思路】         
-假设只有 1 只狼和 1 只羊，那么羊肯定会被吃掉；√         
-假设有 2 只狼和 1 只羊，由于吃掉羊的狼会被另一只狼吃掉，所以羊不会被吃掉；×         
-假设有 3 只狼和 1 只羊，他们绝对...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/01</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "思维">思维</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/31/20200331-%E5%90%88%E5%B9%B6k%E4%B8%AA%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8/" >
-            
-                <span>合并k个排序链表</span>
-        </a>
-        <div class="abstract-content">
-            题目描述
-
-
-合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。
-示例:
-输入:[  1-&gt;4-&gt;5,  1-&gt;3-&gt;4,  2-&gt;6]输出: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6
-暴力直接把所有的数放到一个数组中然后排序
-时间复杂度： O（nlogn） n为所有节点的个数
-空间复杂度：O（n）
-逐一比较每次取这k个链表里最前面的那个数字，然后从这k个数字里选一个最小的，并将这个数插入答案链表，选完后从这个最小的值对应的链表再取一个值放进去，重复即可。
-时间复杂度： O（kn）
-空间复杂度...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/31</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/31/20200331-%E6%9C%8B%E5%8F%8B%E5%9C%88/" >
-            
-                <span>朋友圈</span>
-        </a>
-        <div class="abstract-content">
-            题目描述班上有 N 名学生。其中有些人是朋友，有些则不是。他们的友谊具有是传递性。如果已知 A 是 B 的朋友，B 是 C 的朋友，那么我们可以认为 A 也是 C 的朋友。所谓的朋友圈，是指所有朋友的集合。
-给定一个 N * N 的矩阵 M，表示班级中学生之间的朋友关系。如果M[i][j] = 1，表示已知第 i 个和 j 个学生互为朋友关系，否则为不知道。你必须输出所有学生中的已知的朋友圈总数。
-示例 1:
-输入:[[1,1,0], [1,1,0], [0,0,1]]输出: 2说明：已知学生0和学生1互为朋友，他们在一个朋友圈。第2个学生自己在一个朋友圈。所以返回2。示例 2:
-输入:...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/31</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
     
 </div>
             
@@ -2881,9 +2862,82 @@ in、inn、int、tea、ten、to
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 133
+        Total : 136
         </div>
         <!-- search  -->
         
@@ -2896,6 +2950,21 @@ in、inn、int、tea、ten、to
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2020/04/05/20200406-Http%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/" >HTTP报文格式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2020/04/05/20200405-select%E3%80%81poll%E3%80%81epoll/" >select、poll、epoll</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2020/04/05/20200405-%E9%9D%A2%E5%90%91%E5%AD%97%E8%8A%82%E6%B5%81%E7%9A%84TCP/" >面向字节流的TCP</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -3599,9 +3668,9 @@ in、inn、int、tea、ten、to
     
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
-        <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
-    
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
+    
+        <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     
