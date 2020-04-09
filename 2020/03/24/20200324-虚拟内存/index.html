@@ -512,7 +512,7 @@ height:50vh;
 </ul>
 </li>
 </ul>
-<h3 id="3-段页式存储组织"><a href="#3-段页式存储组织" class="headerlink" title="3.段页式存储组织"></a>3.段页式存储组织</h3><p>段页式存储组织是分段式和分页式结合的存储组织方法。这样可充分利用分段管理和分页管理的长处。 程序的地址空间按逻辑单位分成基本独立的段，而每一段有自己的段名，再把每段分成固定大小的若干页。用分页方法来分配和管理实存。用分段方法来分配和管理虚拟存储器。</p>
+<h3 id="3-段页式存储管理"><a href="#3-段页式存储管理" class="headerlink" title="3.段页式存储管理"></a>3.段页式存储管理</h3><p>段页式存储组织是分段式和分页式结合的存储组织方法。这样可充分利用分段管理和分页管理的长处。 程序的地址空间按逻辑单位分成基本独立的段，而每一段有自己的段名，再把每段分成固定大小的若干页。用分页方法来分配和管理实存。用分段方法来分配和管理虚拟存储器。</p>
 <ul>
 <li><p>优点：段页式管理是段式管理和页式管理相结合而成，具有两者的优点。</p>
 </li>
@@ -661,7 +661,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#传统存储管理方式："><span class="toc-number">1.</span> <span class="toc-text">传统存储管理方式：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟内存"><span class="toc-number">2.</span> <span class="toc-text">虚拟内存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分段"><span class="toc-number">2.1.</span> <span class="toc-text">分段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分页"><span class="toc-number">2.2.</span> <span class="toc-text">分页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#页表缓存"><span class="toc-number">2.3.</span> <span class="toc-text">页表缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺页"><span class="toc-number">2.4.</span> <span class="toc-text">缺页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#地址翻译"><span class="toc-number">2.5.</span> <span class="toc-text">地址翻译</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟内存实现方式："><span class="toc-number">3.</span> <span class="toc-text">虚拟内存实现方式：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-请求分页存储管理"><span class="toc-number">3.1.</span> <span class="toc-text">1.请求分页存储管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-请求分段存储管理："><span class="toc-number">3.2.</span> <span class="toc-text">2.请求分段存储管理：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-段页式存储组织"><span class="toc-number">3.3.</span> <span class="toc-text">3.段页式存储组织</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#传统存储管理方式："><span class="toc-number">1.</span> <span class="toc-text">传统存储管理方式：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟内存"><span class="toc-number">2.</span> <span class="toc-text">虚拟内存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分段"><span class="toc-number">2.1.</span> <span class="toc-text">分段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分页"><span class="toc-number">2.2.</span> <span class="toc-text">分页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#页表缓存"><span class="toc-number">2.3.</span> <span class="toc-text">页表缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺页"><span class="toc-number">2.4.</span> <span class="toc-text">缺页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#地址翻译"><span class="toc-number">2.5.</span> <span class="toc-text">地址翻译</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟内存实现方式："><span class="toc-number">3.</span> <span class="toc-text">虚拟内存实现方式：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-请求分页存储管理"><span class="toc-number">3.1.</span> <span class="toc-text">1.请求分页存储管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-请求分段存储管理："><span class="toc-number">3.2.</span> <span class="toc-text">2.请求分段存储管理：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-段页式存储管理"><span class="toc-number">3.3.</span> <span class="toc-text">3.段页式存储管理</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -2834,9 +2834,82 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 136
+        Total : 141
         </div>
         <!-- search  -->
         
@@ -2849,6 +2922,31 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3/" >链表中环的入口</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/09</span><a class="archive-post-title" href= "/2020/04/09/20200409-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/" >二叉树的前序遍历</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/09</span><a class="archive-post-title" href= "/2020/04/09/20200409-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%80%86%E5%BA%8F%E5%AF%B9/" >数组中的逆序对</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2020/04/08/20200408-%E6%95%B0%E7%BB%84%E4%B8%AD%E6%95%B0%E5%AD%97%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0/" >数组中数字出现的次数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2020/04/08/20200408-%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/" >调整数组顺序使奇数位于偶数前面</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -3182,7 +3280,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/12</span><a class="archive-post-title" href= "/2020/03/12/Http%E5%92%8CHttps%E7%9A%84%E5%8C%BA%E5%88%AB/" >Http和Https的区别</a>
+            <span class="archive-post-date">03/12</span><a class="archive-post-title" href= "/2020/03/12/Http%E5%92%8CHttps%E7%9A%84%E5%8C%BA%E5%88%AB/" >HTTP和HTTPS的区别</a>
         </li>
     
     
@@ -3197,7 +3295,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/10</span><a class="archive-post-title" href= "/2020/03/10/B%E6%A0%91%EF%BC%88B+%E6%A0%91%EF%BC%89%E3%80%81B+%E6%A0%91/" >B树（B+树）、B+树</a>
+            <span class="archive-post-date">03/10</span><a class="archive-post-title" href= "/2020/03/10/B%E6%A0%91%EF%BC%88B+%E6%A0%91%EF%BC%89%E3%80%81B+%E6%A0%91/" >B树（B-树）、B+树</a>
         </li>
     
     
@@ -3567,9 +3665,9 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
-        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
-    
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
+    
+        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
         <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     

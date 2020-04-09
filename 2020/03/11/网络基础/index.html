@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">2.7k</span>Reading time: <span class="post-count reading-time">10 min</span></span>
+                        <span>Word count: <span class="post-count word-count">3k</span>Reading time: <span class="post-count reading-time">10 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -401,10 +401,17 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="OSI，TCP-IP，五层协议的体系结构，以及各层协议"><a href="#OSI，TCP-IP，五层协议的体系结构，以及各层协议" class="headerlink" title="OSI，TCP/IP，五层协议的体系结构，以及各层协议"></a>OSI，TCP/IP，五层协议的体系结构，以及各层协议</h1><ul>
+        <p>如果不分层，可能下层的开发和各种协议都要学，但是做了分层，只需要开发应用层，然后接入下层API就可。</p>
+<a id="more"></a>
+<h1 id="OSI，TCP-IP，五层协议的体系结构，以及各层协议"><a href="#OSI，TCP-IP，五层协议的体系结构，以及各层协议" class="headerlink" title="OSI，TCP/IP，五层协议的体系结构，以及各层协议"></a>OSI，TCP/IP，五层协议的体系结构，以及各层协议</h1><ul>
 <li><p>OSI分层 （7层）：物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。</p>
 </li>
 <li><p>TCP/IP分层（4层）：网络接口层、 网际层、运输层、 应用层。</p>
+<ul>
+<li>前三层一般在内核执行，应用程序通常是用户进程。</li>
+<li>应用层关心应用程序的细节，下三层处理通讯细节。</li>
+<li>互联网的目的之一就是在应用程序中隐藏所有的物理细节</li>
+</ul>
 </li>
 <li><p>五层协议 （5层）：物理层、数据链路层、网络层、运输层、 应用层。</p>
 <p><strong>每一层的协议如下：</strong></p>
@@ -428,7 +435,7 @@ height:50vh;
 </li>
 <li><p>数据链路层：将比特组装成帧和点到点的传递（帧Frame）</p>
 </li>
-<li><p>网络层：负责数据包从源到宿的传递和网际互连（包PackeT）</p>
+<li><p>网络层：负责数据包从源到宿的传递和网际互连（包PackeT）[46,1500]</p>
 </li>
 <li><p>传输层：提供端到端的可靠报文传递和错误恢复（段Segment）</p>
 </li>
@@ -493,15 +500,16 @@ height:50vh;
 <li>当本网络的所有主机收到该ARP数据包时，首先检查数据包中的IP地址是否是自己的IP地址，如果不是，则忽略该数据包，如果是，则首先从数据包中取出源主机的IP和MAC地址写入到ARP列表中，如果已经存在，则覆盖，然后将自己的MAC地址写入<strong>ARP响应包</strong>中，告诉源主机自己是它想要找的MAC地址。</li>
 <li>源主机收到ARP响应包后。将目的主机的IP和MAC地址写入ARP列表，并利用此信息发送数据。如果源主机一直没有收到ARP响应数据包，表示ARP查询失败。<br>广播发送ARP请求，单播发送ARP响应。</li>
 </ul>
+<h2 id="描述RARP协议"><a href="#描述RARP协议" class="headerlink" title="描述RARP协议"></a>描述RARP协议</h2><p>​        RARP是逆地址解析协议，作用是完成硬件地址到IP地址的映射，主要用于无盘工作站，因为给无盘工作站配置的IP地址不能保存。</p>
+<p>​        工作流程：在网络中配置一台RARP服务器，里面保存着IP地址和MAC地址的映射关系，当无盘工作站启动后，就封装一个RARP数据包，里面有其MAC地址，然后广播到网络上去，当服务器收到请求包后，就查找对应的MAC地址的IP地址装入响应报文中发回给请求者。因为需要广播请求报文，因此RARP只能用于具有广播能力的网络。</p>
 <h1 id="各种协议的介绍"><a href="#各种协议的介绍" class="headerlink" title="各种协议的介绍"></a>各种协议的介绍</h1><ul>
 <li>ICMP协议： 因特网控制报文协议（网络层）。它是TCP/IP协议族的一个子协议，用于在IP主机、路由器之间传递控制消息。 <strong>功能：确认IP包是否成功到达目标地址；通知在发送过程中IP包被丢弃的原因.</strong></li>
 <li>TFTP协议： 是TCP/IP协议族中的一个用来在客户机与服务器之间进行简单文件传输的协议，提供不复杂、开销不大的文件传输服务。</li>
 <li>HTTP协议： 超文本传输协议，是一个属于应用层的面向对象的协议，由于其简捷、快速的方式，适用于分布式超媒体信息系统。</li>
 <li>NAT协议：网络地址转换属接入广域网(WAN)技术，是一种将私有（保留）地址转化为合法IP地址的转换技术，</li>
-<li>DHCP协议：动态主机配置协议，是一种让系统得以连接到网络上，并获取所需要的配置参数手段，使用UDP协议工作。具体用途：给内部网络或网络服务供应商自动分配IP地址，给用户或者内部网络管理员作为对所有计算机作中央管理的手段。</li>
+<li>DHCP协议：动态主机配置协议，是一种让系统得以连接到网络上，并获取所需要的配置参数手段，使用UDP协议工作。具体用途：给内部网络或网络服务供应商自动分配IP地址，给用户或者内部网络管理员作为对所有计算机作中央管理的手段。<strong>没有分配前，ip地址为0:0:0:0</strong></li>
 </ul>
-<h1 id="描述RARP协议"><a href="#描述RARP协议" class="headerlink" title="描述RARP协议"></a>描述RARP协议</h1><p>​        RARP是逆地址解析协议，作用是完成硬件地址到IP地址的映射，主要用于无盘工作站，因为给无盘工作站配置的IP地址不能保存。</p>
-<p>​        工作流程：在网络中配置一台RARP服务器，里面保存着IP地址和MAC地址的映射关系，当无盘工作站启动后，就封装一个RARP数据包，里面有其MAC地址，然后广播到网络上去，当服务器收到请求包后，就查找对应的MAC地址的IP地址装入响应报文中发回给请求者。因为需要广播请求报文，因此RARP只能用于具有广播能力的网络。</p>
+<p><strong>traceroute：</strong>采用的是<strong>UDP协议</strong>利用ICMP会返回丢包原因和IP的TTL来找到主机之间所有的路由器，首先TTL设置成1，就会找到距离原主机1个单位的路由器。依次把TTL+1，得到所有的信息。把目的端口号设置成大于30000，也就是基本上不可能存在的那种，每次TTL++时，目的端口号也++，这样的话，每次如果到达的还是路由器就会返回超时，到达目的主机的话就会返回端口不可达，就知道自己已经找完了。</p>
 
     </article>
     <!-- license  -->
@@ -511,8 +519,8 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href= "/2020/03/12/Http%E5%92%8CHttps%E7%9A%84%E5%8C%BA%E5%88%AB/" title= "Http和Https的区别">
-                    <div class="nextTitle">Http和Https的区别</div>
+                <a href= "/2020/03/12/Http%E5%92%8CHttps%E7%9A%84%E5%8C%BA%E5%88%AB/" title= "HTTP和HTTPS的区别">
+                    <div class="nextTitle">HTTP和HTTPS的区别</div>
                 </a>
             
         </li>
@@ -643,7 +651,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#OSI，TCP-IP，五层协议的体系结构，以及各层协议"><span class="toc-number">1.</span> <span class="toc-text">OSI，TCP&#x2F;IP，五层协议的体系结构，以及各层协议</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IP地址的分类"><span class="toc-number">2.</span> <span class="toc-text">IP地址的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#适用范围"><span class="toc-number">2.1.</span> <span class="toc-text">适用范围</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#子网掩码的分类"><span class="toc-number">2.2.</span> <span class="toc-text">子网掩码的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要要划分子网？"><span class="toc-number">2.3.</span> <span class="toc-text">为什么要要划分子网？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#两个不同的主机怎么知道对方是不是在自己的局域网里？"><span class="toc-number">2.4.</span> <span class="toc-text">两个不同的主机怎么知道对方是不是在自己的局域网里？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ARP是地址解析协议，简单语言解释一下工作原理。"><span class="toc-number">3.</span> <span class="toc-text">ARP是地址解析协议，简单语言解释一下工作原理。</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#出现的原因"><span class="toc-number">3.1.</span> <span class="toc-text">出现的原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工作原理"><span class="toc-number">3.2.</span> <span class="toc-text">工作原理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#各种协议的介绍"><span class="toc-number">4.</span> <span class="toc-text">各种协议的介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#描述RARP协议"><span class="toc-number">5.</span> <span class="toc-text">描述RARP协议</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#OSI，TCP-IP，五层协议的体系结构，以及各层协议"><span class="toc-number">1.</span> <span class="toc-text">OSI，TCP&#x2F;IP，五层协议的体系结构，以及各层协议</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IP地址的分类"><span class="toc-number">2.</span> <span class="toc-text">IP地址的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#适用范围"><span class="toc-number">2.1.</span> <span class="toc-text">适用范围</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#子网掩码的分类"><span class="toc-number">2.2.</span> <span class="toc-text">子网掩码的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要要划分子网？"><span class="toc-number">2.3.</span> <span class="toc-text">为什么要要划分子网？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#两个不同的主机怎么知道对方是不是在自己的局域网里？"><span class="toc-number">2.4.</span> <span class="toc-text">两个不同的主机怎么知道对方是不是在自己的局域网里？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ARP是地址解析协议，简单语言解释一下工作原理。"><span class="toc-number">3.</span> <span class="toc-text">ARP是地址解析协议，简单语言解释一下工作原理。</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#出现的原因"><span class="toc-number">3.1.</span> <span class="toc-text">出现的原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工作原理"><span class="toc-number">3.2.</span> <span class="toc-text">工作原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#描述RARP协议"><span class="toc-number">3.3.</span> <span class="toc-text">描述RARP协议</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#各种协议的介绍"><span class="toc-number">4.</span> <span class="toc-text">各种协议的介绍</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -2816,9 +2824,82 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 136
+        Total : 141
         </div>
         <!-- search  -->
         
@@ -2831,6 +2912,31 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3/" >链表中环的入口</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/09</span><a class="archive-post-title" href= "/2020/04/09/20200409-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/" >二叉树的前序遍历</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/09</span><a class="archive-post-title" href= "/2020/04/09/20200409-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%80%86%E5%BA%8F%E5%AF%B9/" >数组中的逆序对</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2020/04/08/20200408-%E6%95%B0%E7%BB%84%E4%B8%AD%E6%95%B0%E5%AD%97%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0/" >数组中数字出现的次数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2020/04/08/20200408-%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/" >调整数组顺序使奇数位于偶数前面</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -3164,7 +3270,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/12</span><a class="archive-post-title" href= "/2020/03/12/Http%E5%92%8CHttps%E7%9A%84%E5%8C%BA%E5%88%AB/" >Http和Https的区别</a>
+            <span class="archive-post-date">03/12</span><a class="archive-post-title" href= "/2020/03/12/Http%E5%92%8CHttps%E7%9A%84%E5%8C%BA%E5%88%AB/" >HTTP和HTTPS的区别</a>
         </li>
     
     
@@ -3179,7 +3285,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/10</span><a class="archive-post-title" href= "/2020/03/10/B%E6%A0%91%EF%BC%88B+%E6%A0%91%EF%BC%89%E3%80%81B+%E6%A0%91/" >B树（B+树）、B+树</a>
+            <span class="archive-post-date">03/10</span><a class="archive-post-title" href= "/2020/03/10/B%E6%A0%91%EF%BC%88B+%E6%A0%91%EF%BC%89%E3%80%81B+%E6%A0%91/" >B树（B-树）、B+树</a>
         </li>
     
     
@@ -3549,9 +3655,9 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
-        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
-    
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
+    
+        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
         <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     

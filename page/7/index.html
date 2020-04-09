@@ -245,7 +245,7 @@ height:50vh;
             <!-- 主页副标题  -->
             
             
-                it's better to burn out than to fade away
+                在技术学习的过程中要有钻牛角尖的精神
             
             <!-- 文章页  -->
             
@@ -352,6 +352,172 @@ height:50vh;
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
             <main class="main index-page">
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/17/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/" >
+            
+                <span>构造函数和析构函数</span>
+        </a>
+        <div class="abstract-content">
+            构造函数和析构函数描述构造函数 ，是一种特殊的方法。主要用来在创建对象时初始化对象， 即为对象成员变量赋初始值，总与new运算符一起使用在创建对象的语句中。特别的一个类可以有多个构造函数 ，可根据其参数个数的不同或参数类型的不同来区分它们 即构造函数的重载。
+析构函数(destructor) 与构造函数相反，当对象结束其生命周期时（例如对象所在的函数已调用完毕），系统自动执行析构函数。析构函数往往用来做“清理善后” 的工作（例如在建立对象时用new开辟了一片内存空间，delete会自动调用析构函数后释放内存）。
+析构函数如果我们不写的话，C++ 会帮我们自动的合成一个，就是说：C++ 会...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/17</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "C++">C++</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/17/%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8/" >
+            
+                <span>虚函数和虚函数表（vtable）</span>
+        </a>
+        <div class="abstract-content">
+            一、概述为了实现C++的多态，C++使用了一种动态绑定的技术。这个技术的核心是虚函数表（下文简称虚表）。本文介绍虚函数表是如何实现动态绑定的。
+二、类的虚表每个包含了虚函数的类都包含一个虚表。我们知道，当一个类（A）继承另一个类（B）时，类A会继承类B的函数的调用权。所以如果一个基类包含了虚函数，那么其继承类也可调用这些虚函数，换句话说，一个类继承了包含虚函数的基类，那么这个类也拥有自己的虚表。
+我们来看以下的代码。类A包含虚函数vfunc1，vfunc2，由于类A包含虚函数，故类A拥有一个虚表。
+123456789class A &#123;public:    virtual voi...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/17</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "C++">C++</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/16/C++%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D(%E9%9D%99%E6%80%81%E5%86%85%E5%AD%98%E3%80%81%E6%A0%88%E3%80%81%E5%A0%86)/" >
+            
+                <span>C++内存分配(静态内存、栈、堆)</span>
+        </a>
+        <div class="abstract-content">
+            <p>内存分为三种：静态内存、栈内存、堆内存。</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/16</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "C++">C++</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/16/C++11-%E6%96%B0%E7%89%B9%E6%80%A7/" >
+            
+                <span>C++11 新特性</span>
+        </a>
+        <div class="abstract-content">
+            关键字auto
+使用auto的时候，编译器根据上下文情况，确定auto变量的真正类型。（必须在定义时初始化）
+
+12int a=10;auto b=a;//自动判断b为int类型
+用法
+用于代替冗长复杂、变量使用范围专一的变量声明。
+
+123456vector&lt;string&gt; v;    v.push_back("1");    v.push_back("2");    for(vector&lt;string&gt;::iterator i=v.begin();i!=v.end();i++)&#123;        cout&lt;&lt;(*i)&lt;&lt;endl...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/16</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "C++">C++</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/15/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95/" >
+            
+                <span>常见的排序方法</span>
+        </a>
+        <div class="abstract-content">
+            插入排序
+描述不需要开设另外的空间，每次遍历到一个数，将它与前面已经有序的序列作比较，插入到正确的位置，、在前面有序序列中这个数后面的数依次向后移动。
+复杂度时间复杂度：
+
+最佳情况：T(n) = O(n)
+最坏情况：T(n) = O(n^2)
+平均情况：T(n) = O(n^2)
+
+额外空间复杂度：O(1)
+12345678910111213void insertsort(int l, int r) &#123;    for (int i = l + 1; i &lt;= r; i++) &#123;        if (a[i] &lt; a[i - 1]) &#123;    ...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/15</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "排序">排序</a>
+    
+</div>
+            
+        </div>
+    </article>
     
     
     
@@ -548,189 +714,10 @@ application/x-www-form-urlencoded 或 multipart/form-data。为二进制数据�
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/12/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80(%E4%B8%8B)/" >
-            
-                <span>网络基础(下)</span>
-        </a>
-        <div class="abstract-content">
-            <p>比上重要篇，精华篇</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/12</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/12/Http%E5%92%8CHttps%E7%9A%84%E5%8C%BA%E5%88%AB/" >
-            
-                <span>Http和Https的区别</span>
-        </a>
-        <div class="abstract-content">
-            <p>HTTP（超文本传输协议）是应用层上的一种客户端/服务端模型的通信协议,它由请求和响应构成，且是无状态的。</p>
-<ul>
-<li>协议</li>
-</ul>
-<p>协议规定了通信双方必须遵循的数据传输格式，这样通信双方按照约定的格式才能准确的通信。</p>
-<ul>
-<li>无状态</li>
-</ul>
-<p>无状态是指两次连接通信之间是没有任何关系的，每次都是一个新的连接，服务端不会记录前后的请求信息。</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/12</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/11/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" >
-            
-                <span>网络基础(上)</span>
-        </a>
-        <div class="abstract-content">
-            OSI，TCP/IP，五层协议的体系结构，以及各层协议
-OSI分层 （7层）：物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。
-
-TCP/IP分层（4层）：网络接口层、 网际层、运输层、 应用层。
-
-五层协议 （5层）：物理层、数据链路层、网络层、运输层、 应用层。
-每一层的协议如下：
-
-物理层：RJ45、CLOCK、IEEE802.3 （中继器，集线器）
-
-数据链路：PPP、FR、HDLC、VLAN、MAC （网桥，交换机）
-
-网络层：IP、ICMP、ARP、RARP、OSPF、IPX、RIP、IGRP、 （路由器）
-
-传输层：TCP、UDP、SPX
-
-会话层：NFS、SQ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/11</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/11/rand5()%E7%94%9F%E6%88%90rand7()/" >
-            
-                <span>rand5()生成rand7()</span>
-        </a>
-        <div class="abstract-content">
-            描述​     假如有一个函数rand5()能等概率生成1 - 5 之间的整数，如何利用rand5()来实现rand7()，rand7()函数的要求是能够等概率生成1 - 7之间的整数。
-一开始想的是7个rand5()相加然后模7，还是太天真了，没想到这样每个数得出的概率不相等
-方法一12345678int rand7()&#123;    while(1)&#123;        int cnt=5*(rand5()-1)+(rand5()-1);        if(cnt&lt;21)&#123;            return cnt%7+1;        &#125; ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/11</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "瞎搞">瞎搞</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/10/B%E6%A0%91%EF%BC%88B+%E6%A0%91%EF%BC%89%E3%80%81B+%E6%A0%91/" >
-            
-                <span>B树（B+树）、B+树</span>
-        </a>
-        <div class="abstract-content">
-            B-树定义B树（B-树），是一种多路搜索树（并非二叉的）：
-
-定义任意非叶子节点最多可以有M个儿子节点；且M&gt;2；
-则根节点（非叶子节点前提下）的儿子数为：[2，M]；
-除根节点为的非叶子节点的儿子数为[M/2，M]；
-每个结点存放至少M/2 - 1 （向上取整）且至多M -1 个关键字（至少为2）；
-非叶子结点的关键字个数 = 指向子节点的指针数-1；
-非叶子节点的关键字：K[1],K[2],K[3],…,K[M-1;且K[i] &lt; K[i +1];
-非叶子结点的指针：P[1], P[2], …, P[M]；其中P[1]指向关键字小于K[1]的子树，P[M]指向关键字大于K...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/10</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "数据结构">数据结构</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/page/6/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/8/">NEXT &gt;</a>
+        <a class="extend prev" rel="prev" href="/page/6/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/8/">NEXT &gt;</a>
     </nav>
     
 </main>
@@ -3066,9 +3053,82 @@ TCP/IP分层（4层）：网络接口层、 网际层、运输层、 应用层�
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 136
+        Total : 141
         </div>
         <!-- search  -->
         
@@ -3081,6 +3141,31 @@ TCP/IP分层（4层）：网络接口层、 网际层、运输层、 应用层�
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3/" >链表中环的入口</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/09</span><a class="archive-post-title" href= "/2020/04/09/20200409-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/" >二叉树的前序遍历</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/09</span><a class="archive-post-title" href= "/2020/04/09/20200409-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%80%86%E5%BA%8F%E5%AF%B9/" >数组中的逆序对</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2020/04/08/20200408-%E6%95%B0%E7%BB%84%E4%B8%AD%E6%95%B0%E5%AD%97%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0/" >数组中数字出现的次数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2020/04/08/20200408-%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/" >调整数组顺序使奇数位于偶数前面</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -3414,7 +3499,7 @@ TCP/IP分层（4层）：网络接口层、 网际层、运输层、 应用层�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/12</span><a class="archive-post-title" href= "/2020/03/12/Http%E5%92%8CHttps%E7%9A%84%E5%8C%BA%E5%88%AB/" >Http和Https的区别</a>
+            <span class="archive-post-date">03/12</span><a class="archive-post-title" href= "/2020/03/12/Http%E5%92%8CHttps%E7%9A%84%E5%8C%BA%E5%88%AB/" >HTTP和HTTPS的区别</a>
         </li>
     
     
@@ -3429,7 +3514,7 @@ TCP/IP分层（4层）：网络接口层、 网际层、运输层、 应用层�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/10</span><a class="archive-post-title" href= "/2020/03/10/B%E6%A0%91%EF%BC%88B+%E6%A0%91%EF%BC%89%E3%80%81B+%E6%A0%91/" >B树（B+树）、B+树</a>
+            <span class="archive-post-date">03/10</span><a class="archive-post-title" href= "/2020/03/10/B%E6%A0%91%EF%BC%88B+%E6%A0%91%EF%BC%89%E3%80%81B+%E6%A0%91/" >B树（B-树）、B+树</a>
         </li>
     
     
@@ -3799,9 +3884,9 @@ TCP/IP分层（4层）：网络接口层、 网际层、运输层、 应用层�
     
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
-        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
-    
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
+    
+        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
         <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     

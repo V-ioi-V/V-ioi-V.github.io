@@ -245,7 +245,7 @@ height:50vh;
             <!-- 主页副标题  -->
             
             
-                it's better to burn out than to fade away
+                在技术学习的过程中要有钻牛角尖的精神
             
             <!-- 文章页  -->
             
@@ -352,6 +352,169 @@ height:50vh;
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
             <main class="main index-page">
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/12/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80(%E4%B8%8B)/" >
+            
+                <span>网络基础(下)</span>
+        </a>
+        <div class="abstract-content">
+            <p>比上重要篇，精华篇</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/12</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/12/Http%E5%92%8CHttps%E7%9A%84%E5%8C%BA%E5%88%AB/" >
+            
+                <span>HTTP和HTTPS的区别</span>
+        </a>
+        <div class="abstract-content">
+            <h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><p>HTTP（超文本传输协议）是应用层上的一种客户端/服务端模型的通信协议,它由请求和响应构成，且是无状态的。</p>
+<ul>
+<li>协议</li>
+</ul>
+<p>协议规定了通信双方必须遵循的数据传输格式，这样通信双方按照约定的格式才能准确的通信。</p>
+<ul>
+<li>无状态</li>
+</ul>
+<p>无状态是指两次连接通信之间是没有任何关系的，每次都是一个新的连接，服务端不会记录前后的请求信息。</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/12</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/11/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" >
+            
+                <span>网络基础(上)</span>
+        </a>
+        <div class="abstract-content">
+            <p>如果不分层，可能下层的开发和各种协议都要学，但是做了分层，只需要开发应用层，然后接入下层API就可。</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/11</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/11/rand5()%E7%94%9F%E6%88%90rand7()/" >
+            
+                <span>rand5()生成rand7()</span>
+        </a>
+        <div class="abstract-content">
+            描述​     假如有一个函数rand5()能等概率生成1 - 5 之间的整数，如何利用rand5()来实现rand7()，rand7()函数的要求是能够等概率生成1 - 7之间的整数。
+一开始想的是7个rand5()相加然后模7，还是太天真了，没想到这样每个数得出的概率不相等
+方法一12345678int rand7()&#123;    while(1)&#123;        int cnt=5*(rand5()-1)+(rand5()-1);        if(cnt&lt;21)&#123;            return cnt%7+1;        &#125; ...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/11</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "瞎搞">瞎搞</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/10/B%E6%A0%91%EF%BC%88B+%E6%A0%91%EF%BC%89%E3%80%81B+%E6%A0%91/" >
+            
+                <span>B树（B-树）、B+树</span>
+        </a>
+        <div class="abstract-content">
+            B-树定义B树（B-树），是一种多路搜索树（并非二叉的）：
+
+定义任意非叶子节点最多可以有M个儿子节点；且M&gt;2；
+则根节点（非叶子节点前提下）的儿子数为：[2，M]；
+除根节点外的非叶子节点的儿子数为[M/2，M]；
+每个结点存放至少M/2 - 1 （向上取整）且至多M -1 个关键字（至少为2）；
+非叶子结点的关键字个数 = 指向子节点的指针数-1；
+非叶子节点的关键字：K[1],K[2],K[3],…,K[M-1;且K[i] &lt; K[i +1];
+非叶子结点的指针：P[1], P[2], …, P[M]；其中P[1]指向关键字小于K[1]的子树，P[M]指向关键字大于K...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/10</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "数据结构">数据结构</a>
+    
+</div>
+            
+        </div>
+    </article>
     
     
     
@@ -517,169 +680,10 @@ AVL树：平衡二叉树又称AVL树，是一种特殊的二叉查找树，其�
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/07/hello-world/" >
-            
-                <span>Hello World</span>
-        </a>
-        <div class="abstract-content">
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/07</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "hexo">hexo</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/12/10/SPJ%20%E5%86%99%E6%B3%95/" >
-            
-                <span>SPJ 写法</span>
-        </a>
-        <div class="abstract-content">
-            <ul>
-<li>SPJ</li>
-</ul>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/10</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "常识">常识</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/29/Beauty%20Contest%EF%BC%88%E6%B1%82%E5%87%B8%E5%8C%85%E6%9C%80%E5%A4%A7%E7%9B%B4%E5%BE%84%EF%BC%89%20/" >
-            
-                <span>Beauty Contest（求凸包最大直径）</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述贝茜在牛的选美比赛中赢得了冠军”牛世界小姐”。因此,贝西会参观N(2 &lt; = N &lt; = 50000)个农场来传播善意。世界将被表示成一个二维平面,每个农场位于一对整数坐标(x,y),各有一个值范围在-10000…10000。没有两个农场共享相同的一对坐标。
-尽管贝西沿直线前往下一个农场，但牧场之间的距离可能很大,所以她需要一个手提箱保证在每一段旅程中她有足够吃的食物。她想确定她可能需要旅行的最大可能距离,她要知道她必须带的手提箱的大小。帮助贝西计算农场的最大距离。
-输入第一行：一个整数n
-第2~n+1行：xi yi 表示n个农场中第i个的坐标
-输出一行：最远距...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/29</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/28/Smallest%20Bounding%20Rectangle(%E6%9C%80%E5%B0%8F%E9%9D%A2%E7%A7%AF%E5%A4%96%E6%8E%A5%E7%9F%A9%E5%BD%A2)/" >
-            
-                <span>Smallest Bounding Rectangle(最小面积外接矩形)</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述Given the Cartesian coordinates of n (&gt; 0) 2-dimensional points, write a program that computes the area of their smallest bounding rectangle (smallest rectangle containing all the given points).
-输入The input file may contain multiple test cases. Each test case begins with a line containi...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/28</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/28/Triangle%EF%BC%88%E6%B1%82%E5%87%B8%E5%8C%85%E6%9C%80%E5%A4%A7%E5%86%85%E6%8E%A5%E4%B8%89%E8%A7%92%E5%BD%A2%EF%BC%89/" >
-            
-                <span>Triangle（求凸包最大内接三角形）</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述Given n distinct points on a plane, your task is to find the triangle that have the maximum area, whose vertices are from the given points.
-输入The input consists of several test cases. The first line of each test case contains an integer n, indicating the number of points on the plane. Each...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/28</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/page/7/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/9/">NEXT &gt;</a>
+        <a class="extend prev" rel="prev" href="/page/7/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/9/">NEXT &gt;</a>
     </nav>
     
 </main>
@@ -3015,9 +3019,82 @@ AVL树：平衡二叉树又称AVL树，是一种特殊的二叉查找树，其�
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 136
+        Total : 141
         </div>
         <!-- search  -->
         
@@ -3030,6 +3107,31 @@ AVL树：平衡二叉树又称AVL树，是一种特殊的二叉查找树，其�
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3/" >链表中环的入口</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/09</span><a class="archive-post-title" href= "/2020/04/09/20200409-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/" >二叉树的前序遍历</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/09</span><a class="archive-post-title" href= "/2020/04/09/20200409-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%80%86%E5%BA%8F%E5%AF%B9/" >数组中的逆序对</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2020/04/08/20200408-%E6%95%B0%E7%BB%84%E4%B8%AD%E6%95%B0%E5%AD%97%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0/" >数组中数字出现的次数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2020/04/08/20200408-%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/" >调整数组顺序使奇数位于偶数前面</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -3363,7 +3465,7 @@ AVL树：平衡二叉树又称AVL树，是一种特殊的二叉查找树，其�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/12</span><a class="archive-post-title" href= "/2020/03/12/Http%E5%92%8CHttps%E7%9A%84%E5%8C%BA%E5%88%AB/" >Http和Https的区别</a>
+            <span class="archive-post-date">03/12</span><a class="archive-post-title" href= "/2020/03/12/Http%E5%92%8CHttps%E7%9A%84%E5%8C%BA%E5%88%AB/" >HTTP和HTTPS的区别</a>
         </li>
     
     
@@ -3378,7 +3480,7 @@ AVL树：平衡二叉树又称AVL树，是一种特殊的二叉查找树，其�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/10</span><a class="archive-post-title" href= "/2020/03/10/B%E6%A0%91%EF%BC%88B+%E6%A0%91%EF%BC%89%E3%80%81B+%E6%A0%91/" >B树（B+树）、B+树</a>
+            <span class="archive-post-date">03/10</span><a class="archive-post-title" href= "/2020/03/10/B%E6%A0%91%EF%BC%88B+%E6%A0%91%EF%BC%89%E3%80%81B+%E6%A0%91/" >B树（B-树）、B+树</a>
         </li>
     
     
@@ -3748,9 +3850,9 @@ AVL树：平衡二叉树又称AVL树，是一种特殊的二叉查找树，其�
     
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
-        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
-    
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
+    
+        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
         <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     

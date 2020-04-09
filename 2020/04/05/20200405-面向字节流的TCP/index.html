@@ -408,13 +408,13 @@ height:50vh;
 <a id="more"></a>
 <font size=4>
 
-<h2 id="个人理解如下："><a href="#个人理解如下：" class="headerlink" title="个人理解如下："></a>个人理解如下：</h2><p>TCP是一种面向字节流的协议，上层交给TCP的数据段，TCP不保证传到目的地还是那么多数据段，但是他会保证最终传送到的服务端的字节不管是数量上还是顺序上都是和上层应用传给自己的一样。比如上层协议给了10个数据段，而TCP分成了4个数据段，但是发送的时候并不是一个段一个段发送，而是根据字节来发送的（滑动窗口大小也是根据字节来限制的），虽然数据段发送的数量没对上，但是对于发送的字节来看，和原数据段是一样的，或者是上层给了1个数据段，但是由于它太大了，所以TCP将它分成了10个数据段发送，依旧保证在字节的顺序和数量上都是没有改变的。总之，TCP对于上层传给自己的数据段会再次分段，分成合适的大小发送。</p>
-<h2 id="关于MSS"><a href="#关于MSS" class="headerlink" title="关于MSS"></a>关于MSS</h2><p>在双方建立连接时，会协商双方的MSS值，一般会控制在MTU之内。</p>
+<h2 id="个人理解如下："><a href="#个人理解如下：" class="headerlink" title="个人理解如下："></a>个人理解如下：</h2><p>TCP是一种面向字节流的协议，上层交给TCP的数据段，TCP不保证传到目的地还是那么多数据段，但是他会保证最终传送到的服务端的字节不管是数量上还是顺序上都是和上层应用传给自己的一样。比如上层协议给了10个数据段，而TCP分成了4个数据段来发送，虽然数据段发送的数量没对上，但是对于发送的字节来看，和原数据段是一样的，或者是上层给了1个数据段，但是由于它太大了，所以TCP将它分成了10个数据段发送，依旧保证在字节的顺序和数量上都是没有改变的。总之，TCP对于上层传给自己的数据段会再次分段，分成合适的大小发送。</p>
+<h2 id="关于MSS"><a href="#关于MSS" class="headerlink" title="关于MSS"></a>关于MSS</h2><p>在双方建立连接时，会协商双方的MSS（最大报文大小）值，一般会控制在MTU（最大传输单元）之内。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>TCP是一种流协议（stream protocol）。这就意味着数据是以字节流的形式传递给接收者的，没有固有的”报文”或”报文边界”的概念。从这方面来说，读取TCP数据就像从串行端口读取数据一样–无法预先得知在一次指定的读调用中会返回多少字节（也就是说能知道总共要读多少，但是不知道具体某一次读多少）。</p>
 <p>为了说明这一点，我们假设在主机A和主机B的应用程序之间有一条TCP连接，主机A上的应用程序向主机B发送一条报文。进一步假设主机A有两条报文要发送，并两次调用send来发送，每条报文调用一次。很自然就会想到从主机A向主机B发送的两条报文是作为两个独立实体，在各自的分组中发送的，如图 2-25所示。</p>
 <p><img src="https://i.loli.net/2020/04/05/y6DSzZPudUFaNmR.png" alt="1.png"></p>
 <p>但 不幸的是，实际的数据传输过程很可能不会遵循这个模型。主机A上的应用程序会调用send，我们假设这条写操作的数据被封装在一个分组中传送给B。实际 上，send通常只是将数据复制到主机A的TCP/IP栈<strong>（TCP的发送缓存，滑动窗口就在这上面运行）</strong>中，就返回了。由TCP来决定（如果有的话）需要立即发送多少数据。做这种决定的过程很复杂，取决于很多因素，比如发送窗口（当时主机B能够接收的数据量），拥塞窗口（对网络拥塞的估计），路径上的最大传输单元（沿着主机A和B之间的网络路径一次可 以传输的最大数据量），以及连接的输出队列中有多少数据。</p>
-<p>下图只显示了主机A的TCP封装数据时可能使用的诸多方法中的4种。在图2-26中，M11和M12表示M1的第一和第二部分，M21和M22与之类似。如图2-26所示，<strong>TCP不一定会将一条报文的全部内容都放在一个分组(一个包)中传送出去。</strong></p>
+<p>下图只显示了主机A的TCP封装数据时可能使用的诸多方法中的4种。在图2-26中，M11和M12表示M1的第一和第二部分，M21和M22与之类似。如图2-26所示，<strong>TCP不一定会将一条报文的全部内容都放在一个分组(一个段)中传送出去，但是每次都会以封装好的数据段为单位发送出去，并且保证按照字节来看与发送的与接受的一样。</strong></p>
 <p><img src="https://i.loli.net/2020/04/05/vphxkbMfZ6z5w1u.png" alt="2.png"></p>
 <p>现在，我们从主机B应用程序的角度来看这种情形。总的来说，主机B应用程序任意一次调用recv时，都不会对TCP发送给它的数据量做任何假设。比如，当主机B应用程序读取第一条报文时，可能会出现下列4种结果。</p>
 <p>实际上，可能的结果不止4种，但我们忽略了出错和EOF之类的结果。我们还假设应用程序读取了所有可读的数据。</p>
@@ -2742,9 +2742,82 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 136
+        Total : 141
         </div>
         <!-- search  -->
         
@@ -2757,6 +2830,31 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3/" >链表中环的入口</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/09</span><a class="archive-post-title" href= "/2020/04/09/20200409-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/" >二叉树的前序遍历</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/09</span><a class="archive-post-title" href= "/2020/04/09/20200409-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%80%86%E5%BA%8F%E5%AF%B9/" >数组中的逆序对</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2020/04/08/20200408-%E6%95%B0%E7%BB%84%E4%B8%AD%E6%95%B0%E5%AD%97%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0/" >数组中数字出现的次数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/08</span><a class="archive-post-title" href= "/2020/04/08/20200408-%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/" >调整数组顺序使奇数位于偶数前面</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -3090,7 +3188,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/12</span><a class="archive-post-title" href= "/2020/03/12/Http%E5%92%8CHttps%E7%9A%84%E5%8C%BA%E5%88%AB/" >Http和Https的区别</a>
+            <span class="archive-post-date">03/12</span><a class="archive-post-title" href= "/2020/03/12/Http%E5%92%8CHttps%E7%9A%84%E5%8C%BA%E5%88%AB/" >HTTP和HTTPS的区别</a>
         </li>
     
     
@@ -3105,7 +3203,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/10</span><a class="archive-post-title" href= "/2020/03/10/B%E6%A0%91%EF%BC%88B+%E6%A0%91%EF%BC%89%E3%80%81B+%E6%A0%91/" >B树（B+树）、B+树</a>
+            <span class="archive-post-date">03/10</span><a class="archive-post-title" href= "/2020/03/10/B%E6%A0%91%EF%BC%88B+%E6%A0%91%EF%BC%89%E3%80%81B+%E6%A0%91/" >B树（B-树）、B+树</a>
         </li>
     
     
@@ -3475,9 +3573,9 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
-        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
-    
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
+    
+        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
         <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     
