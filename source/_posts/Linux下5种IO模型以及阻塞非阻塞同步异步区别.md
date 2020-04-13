@@ -7,15 +7,21 @@ date: 2020/03/19
 
 
 
-# 1.引言
+# 引言
 
-​         同步（synchronous） I/O和异步（asynchronous） I/O，阻塞（blocking） I/O和非阻塞（non-blocking）I/O分别是什么，到底有什么区别？这个问题其实不同的人给出的答案都可能不同，比如wiki就认为asynchronous I/O和non-blocking I/O是一个东西。这其实是因为不同的人的知识背景不同，并且在讨论这个问题的时候上下文(context)也不相同。所以，为了更好的回答这个问题，我先限定一下本文的上下文。
+**IO操作指的是什么（个人理解）？**
 
-​        本文讨论的背景是Linux环境下的network I/O。
+![5.jpg](https://i.loli.net/2020/04/12/RTranFlECAN3Mvd.jpg)
 
-​        本文最重要的参考文献是Richard Stevens的“UNIX® Network Programming Volume 1, Third Edition: The Sockets Networking ”，6.2节“I/O Models ”，Stevens在这节中详细说明了各种I/O的特点和区别。Stevens的文风是有名的深入浅出，所以不用担心看不懂。本文中的流程图也是截取自参考文献。
 
-# 2.Linux下的五种I/O模型
+
+计算机的核心部件是计算单元，即CPU，相对于CPU来说，访问任何寄存器和 Cache 等封装以外的数据资源都可以当成 I/O 操作，包括内存，磁盘，显卡等外部设备。
+
+对于CPU来说，如果一个指令需要从内存中读取数据，就涉及I/O操作，CPU会通过多线程、多发射（超标量）等方法在读取数据的空闲时间（这个时间还比较长）执行其他指令。
+
+对于操作系统来说，当某个线程访问接口，例如读取鼠标或键盘输入，这个时间都是以ms或更长为单位的，操作系统为了少让CPU空闲，会调度其他线程执行，占用CPU。
+
+# Linux下的五种I/O模型
 
 - 阻塞I/O（blocking I/O）
 - 非阻塞I/O （nonblocking I/O）
@@ -25,7 +31,7 @@ date: 2020/03/19
 
 Tip：前四种都是同步，只有最后一种才是异步I/O。
 
-## 2.1 I/O发生时涉及的对象和阶段
+## I/O发生时涉及的对象和阶段
 对于一个network I/O (这里我们以read举例)，它会涉及到两个系统对象，一个是调用这个I/O的process (or thread)，另一个就是系统内核(kernel)。当一个read操作发生时，它会经历两个阶段：
 
 -  1 等待数据准备 (Waiting for the data to be ready)
@@ -34,7 +40,7 @@ Tip：前四种都是同步，只有最后一种才是异步I/O。
 
 记住这两点很重要，因为这些I/O Model的区别就是在两个阶段上各有不同的情况。
 
-## 2.2 阻塞I/O模型(blocking I/O) 
+##  阻塞I/O模型(blocking I/O) 
 <font color="red">在linux中，默认情况下所有的socket都是blocking</font>，一个典型的读操作流程大概是这样：
 
 
@@ -58,7 +64,7 @@ Tip：前四种都是同步，只有最后一种才是异步I/O。
 
  
 
-## 2.3 非阻塞I/O模型（non-blocking IO）
+## 非阻塞I/O模型（non-blocking IO）
 linux下，可以通过设置socket使其变为non-blocking。当对一个non-blocking socket执行读操作时，流程是这个样子：
 
 ![2.jpg](https://i.loli.net/2020/03/19/efuBkNrtwJCbUh9.jpg)
@@ -79,7 +85,7 @@ linux下，可以通过设置socket使其变为non-blocking。当对一个non-bl
 
  
 
-## 2.4 I/O复用模型（I/O multiplexing）
+## I/O复用模型（I/O multiplexing）
 I/O multiplexing这个词可能有点陌生，但是如果我说select，poll、epoll，大概就都能明白了。有些地方也称这种I/O方式为event driven I/O，也是实际中使用最多的一种I/O模型。我们都知道，select/epoll的好处就在于单个process就可以同时处理多个网络连接的I/O。它的基本原理就是select/epoll这个function会不断的轮询所负责的所有socket，当某个socket有数据到达了，就通知用户进程。它的流程如图：
 
 ![3.jpg](https://i.loli.net/2020/03/19/KSbgFmGp5Vuzl9Z.jpg)
@@ -92,27 +98,27 @@ I/O multiplexing这个词可能有点陌生，但是如果我说select，poll、
 
  
 
-## 2.5 信号驱动I/O模型（Signal-driven I/O）
+## 信号驱动I/O模型（Signal-driven I/O）
 首先我们允许套接口进行信号驱动I/O,并安装一个信号处理函数，进程继续运行并不阻塞。当数据准备好时，进程会收到一个SIGIO信号，可以在信号处理函数中调用I/O操作函数处理数据。(signal driven I/O在实际中并不常用)
 
 
 
 ![4.jpg](https://i.loli.net/2020/03/19/m3DFIPx6afpQYwX.jpg) 
 
-## 2.6 异步I/O模型（Asynchronous I/O）
+## 异步I/O模型（Asynchronous I/O）
 linux下的asynchronous IO其实用得很少。先看一下它的流程：
 
 ![5.jpg](https://i.loli.net/2020/03/19/kSUzWwI49M8ErfF.jpg)
 
 用户进程发起read操作之后，立刻就可以开始去做其它的事。而另一方面，从kernel的角度，当它受到一个asynchronous read之后，首先它会立刻返回，所以不会对用户进程产生任何block。然后，kernel会等待数据准备完成，然后将数据拷贝到用户内存，当这一切都完成之后，kernel会给用户进程发送一个signal，告诉它read操作完成了。
 
-## 2.7 5种I/O模型比较
+## 5种I/O模型比较
 
 ![6.jpg](https://i.loli.net/2020/03/19/agyWxDRcri8lmNb.jpg)
 
 经过上面的介绍，会发现non-blocking I/O和asynchronous I/O的区别还是很明显的。在non-blocking I/O中，虽然进程大部分时间都不会被block，但是它仍然要求进程去主动的check，并且当数据准备完成以后，也需要进程主动的再次调用recvfrom来将数据拷贝到用户内存。而asynchronous I/O则完全不同。它就像是用户进程将整个I/O操作交给了他人（kernel）完成，然后他人做完后发信号通知。在此期间，用户进程不需要去检查I/O操作的状态，也不需要主动的去拷贝数据。
 
- # 3.结语
+ # 结语
 到目前为止，已经将四个IO Model都介绍完了。现在回过头来回答最初的那几个问题：
 
 - blocking和non-blocking的区别在哪？？
