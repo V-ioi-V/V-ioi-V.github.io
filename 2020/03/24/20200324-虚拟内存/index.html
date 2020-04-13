@@ -406,18 +406,17 @@ height:50vh;
 <a id="more"></a>
 <font size=4>
 
-<p><strong>名词解释</strong></p>
-<p>虚拟地址(virtual memory)：相对物理地址来说的概念，不真实存在的</p>
-<p>物理地址(physical address)：真实存在的，和物理内存关联的</p>
-<p>页表(page table)：管理虚拟内存页和物理内存页映射和缓存状态的数据结构</p>
-<p>页表条目(page table entry PTE)：是构成页表的基本元素，是索引号为虚拟页号、值为物理页号的数组</p>
-<p>地址翻译：将虚拟地址映射成物理地址的过程</p>
-<p>页(page)：和存储里块一样，类似的单位；虚拟内存中使用页(<strong>page</strong>)来表示块</p>
-<p>虚拟页(VP)：虚拟地址空间划分为多个固定大小的虚拟页</p>
-<p>物理页(PP)：物理地址空间划分为多个固定大小的物理页</p>
-<p>页表基地址寄存器（PTBR）：CPU有一个专门的页表基地址寄存器，指向当前页表的基地址</p>
-<p>翻译后备缓冲区（TLB）：一个用来缓存页表条目PTE的硬件设备</p>
-<p>MMU(Memory Management Unit)：内存管理单元，CPU中含有的硬件，将虚拟地址转换为物理地址</p>
+<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><p><strong>虚拟地址(virtual address)：</strong>相对物理地址来说的概念，不真实存在的</p>
+<p><strong>物理地址(physical address)：</strong>真实存在的，和物理内存关联的</p>
+<p><strong>页表(page table)：</strong>管理虚拟内存页和物理内存页映射和缓存状态的数据结构</p>
+<p><strong>页表条目(page table entry PTE)：</strong>是构成页表的基本元素，是索引号为虚拟页号、值为物理页号的数组</p>
+<p><strong>地址翻译：</strong>将虚拟地址映射成物理地址的过程</p>
+<p><strong>页(page)：</strong>和存储里块一样，类似的单位；虚拟内存中使用页(<strong>page</strong>)来表示块</p>
+<p><strong>虚拟页(VP)：</strong>虚拟地址空间划分为多个固定大小的虚拟页</p>
+<p><strong>物理页(PP)：</strong>物理地址空间划分为多个固定大小的物理页</p>
+<p><strong>页表基地址寄存器（PTBR）：</strong>CPU有一个专门的页表基地址寄存器，指向当前页表的基地址</p>
+<p><strong>翻译后备缓冲区（TLB）：</strong>一个用来缓存页表条目PTE的硬件设备</p>
+<p><strong>MMU(Memory Management Unit)：</strong>内存管理单元，CPU中含有的硬件，将虚拟地址转换为物理地址</p>
 <h2 id="传统存储管理方式："><a href="#传统存储管理方式：" class="headerlink" title="传统存储管理方式："></a>传统存储管理方式：</h2><p>​       进程必须一次全部加载到内存中，方可运行。当进程很大，就无法运行。而且多道进程运行时，内存不足容纳所有进程，导致多道程序性能下降。操作系统引入了虚拟内存的概念，利用计算机的空间局部性和时间局部性原理，将程序分的一部分装入内存运行，其余部分留在外存，等需要的时候再将外存的程序装入内存继续运行。</p>
 <p>​        例如一台计算机有128M内存，A进程需要10M内存，B进程需要100M内存；操作系统会先将内存中的前 10M 分配给程序 A ，接着再从内存中剩余的 118M 中划分出 110M 分配给程序 B ；如果这时候又运行了需要20M程序 C，系统只剩下 8M 的空间可供使用，此时系统必须在已运行的程序中选择一个将该程序的数据暂时拷贝到硬盘上，释放出部分空间来供程序 C 使用，然后再将程序 C 的数据全部装入内存中运行。</p>
 <p>虚拟内存好像给用户提供了一个比实际内存大得多的存储器。叫虚拟存储器，大小由计算机地址结构决定。</p>
@@ -661,7 +660,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#传统存储管理方式："><span class="toc-number">1.</span> <span class="toc-text">传统存储管理方式：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟内存"><span class="toc-number">2.</span> <span class="toc-text">虚拟内存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分段"><span class="toc-number">2.1.</span> <span class="toc-text">分段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分页"><span class="toc-number">2.2.</span> <span class="toc-text">分页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#页表缓存"><span class="toc-number">2.3.</span> <span class="toc-text">页表缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺页"><span class="toc-number">2.4.</span> <span class="toc-text">缺页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#地址翻译"><span class="toc-number">2.5.</span> <span class="toc-text">地址翻译</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟内存实现方式："><span class="toc-number">3.</span> <span class="toc-text">虚拟内存实现方式：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-请求分页存储管理"><span class="toc-number">3.1.</span> <span class="toc-text">1.请求分页存储管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-请求分段存储管理："><span class="toc-number">3.2.</span> <span class="toc-text">2.请求分段存储管理：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-段页式存储管理"><span class="toc-number">3.3.</span> <span class="toc-text">3.段页式存储管理</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#名词解释"><span class="toc-number">1.</span> <span class="toc-text">名词解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#传统存储管理方式："><span class="toc-number">2.</span> <span class="toc-text">传统存储管理方式：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟内存"><span class="toc-number">3.</span> <span class="toc-text">虚拟内存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分段"><span class="toc-number">3.1.</span> <span class="toc-text">分段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分页"><span class="toc-number">3.2.</span> <span class="toc-text">分页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#页表缓存"><span class="toc-number">3.3.</span> <span class="toc-text">页表缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺页"><span class="toc-number">3.4.</span> <span class="toc-text">缺页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#地址翻译"><span class="toc-number">3.5.</span> <span class="toc-text">地址翻译</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟内存实现方式："><span class="toc-number">4.</span> <span class="toc-text">虚拟内存实现方式：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-请求分页存储管理"><span class="toc-number">4.1.</span> <span class="toc-text">1.请求分页存储管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-请求分段存储管理："><span class="toc-number">4.2.</span> <span class="toc-text">2.请求分段存储管理：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-段页式存储管理"><span class="toc-number">4.3.</span> <span class="toc-text">3.段页式存储管理</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -2907,9 +2906,197 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 141
+        Total : 151
         </div>
         <!-- search  -->
         
@@ -2925,7 +3112,57 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3/" >链表中环的入口</a>
+            <span class="archive-post-date">04/14</span><a class="archive-post-title" href= "/2020/04/14/20200414-%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E4%BF%A1%E5%B0%81%E9%97%AE%E9%A2%98/" >俄罗斯套娃信封问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/13</span><a class="archive-post-title" href= "/2020/04/13/20200413-%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/" >三角形最小路径和</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/13</span><a class="archive-post-title" href= "/2020/04/13/20200413-%E9%80%BB%E8%BE%91%E5%9C%B0%E5%9D%80%E3%80%81%E7%BA%BF%E6%80%A7%E5%9C%B0%E5%9D%80%E3%80%81%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80/" >逻辑地址、线性地址、物理地址</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/12</span><a class="archive-post-title" href= "/2020/04/12/20200412-%E5%89%8Dk%E4%B8%AA%E9%AB%98%E9%A2%91%E5%85%83%E7%B4%A0/" >前k个高频元素</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/12</span><a class="archive-post-title" href= "/2020/04/12/20200412-%E5%8D%95%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E5%88%86%E6%9E%90/" >单线程与多线程的优缺点分析</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/11</span><a class="archive-post-title" href= "/2020/04/11/20200411-epoll%E7%9A%84%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/" >epoll的底层实现原理</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%93%84%E6%B0%B4%E6%B1%A0%E6%8A%BD%E6%A0%B7%E7%AE%97%E6%B3%95/" >蓄水池抽样算法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84%E9%94%81/" >数据库中的锁</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >进程和程序的区别</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E7%BF%BB%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D/" >翻转字符串里的单词</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3%E5%8F%8A%E5%85%AC%E5%85%B1%E8%8A%82%E7%82%B9/" >链表中环的入口及公共节点</a>
         </li>
     
     
@@ -3665,6 +3902,8 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
+        <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
+    
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
@@ -3688,8 +3927,6 @@ top:50vh;
         <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
     
         <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
-    
-        <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
         <span class="sidebar-tag-name" data-tags="排序"><span class="iconfont-archer">&#xe606;</span>排序</span>
     

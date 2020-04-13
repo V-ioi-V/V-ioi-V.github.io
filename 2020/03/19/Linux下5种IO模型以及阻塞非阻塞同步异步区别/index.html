@@ -403,10 +403,12 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="1-引言"><a href="#1-引言" class="headerlink" title="1.引言"></a>1.引言</h1><p>​         同步（synchronous） I/O和异步（asynchronous） I/O，阻塞（blocking） I/O和非阻塞（non-blocking）I/O分别是什么，到底有什么区别？这个问题其实不同的人给出的答案都可能不同，比如wiki就认为asynchronous I/O和non-blocking I/O是一个东西。这其实是因为不同的人的知识背景不同，并且在讨论这个问题的时候上下文(context)也不相同。所以，为了更好的回答这个问题，我先限定一下本文的上下文。</p>
-<p>​        本文讨论的背景是Linux环境下的network I/O。</p>
-<p>​        本文最重要的参考文献是Richard Stevens的“UNIX® Network Programming Volume 1, Third Edition: The Sockets Networking ”，6.2节“I/O Models ”，Stevens在这节中详细说明了各种I/O的特点和区别。Stevens的文风是有名的深入浅出，所以不用担心看不懂。本文中的流程图也是截取自参考文献。</p>
-<h1 id="2-Linux下的五种I-O模型"><a href="#2-Linux下的五种I-O模型" class="headerlink" title="2.Linux下的五种I/O模型"></a>2.Linux下的五种I/O模型</h1><ul>
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p><strong>IO操作指的是什么（个人理解）？</strong></p>
+<p><img src="https://i.loli.net/2020/04/12/RTranFlECAN3Mvd.jpg" alt="5.jpg"></p>
+<p>计算机的核心部件是计算单元，即CPU，相对于CPU来说，访问任何寄存器和 Cache 等封装以外的数据资源都可以当成 I/O 操作，包括内存，磁盘，显卡等外部设备。</p>
+<p>对于CPU来说，如果一个指令需要从内存中读取数据，就涉及I/O操作，CPU会通过多线程、多发射（超标量）等方法在读取数据的空闲时间（这个时间还比较长）执行其他指令。</p>
+<p>对于操作系统来说，当某个线程访问接口，例如读取鼠标或键盘输入，这个时间都是以ms或更长为单位的，操作系统为了少让CPU空闲，会调度其他线程执行，占用CPU。</p>
+<h1 id="Linux下的五种I-O模型"><a href="#Linux下的五种I-O模型" class="headerlink" title="Linux下的五种I/O模型"></a>Linux下的五种I/O模型</h1><ul>
 <li>阻塞I/O（blocking I/O）</li>
 <li>非阻塞I/O （nonblocking I/O）</li>
 <li>I/O复用(select 和poll) （I/O multiplexing）</li>
@@ -414,7 +416,7 @@ height:50vh;
 <li>异步I/O （asynchronous I/O (the POSIX aio_functions)） </li>
 </ul>
 <p>Tip：前四种都是同步，只有最后一种才是异步I/O。</p>
-<h2 id="2-1-I-O发生时涉及的对象和阶段"><a href="#2-1-I-O发生时涉及的对象和阶段" class="headerlink" title="2.1 I/O发生时涉及的对象和阶段"></a>2.1 I/O发生时涉及的对象和阶段</h2><p>对于一个network I/O (这里我们以read举例)，它会涉及到两个系统对象，一个是调用这个I/O的process (or thread)，另一个就是系统内核(kernel)。当一个read操作发生时，它会经历两个阶段：</p>
+<h2 id="I-O发生时涉及的对象和阶段"><a href="#I-O发生时涉及的对象和阶段" class="headerlink" title="I/O发生时涉及的对象和阶段"></a>I/O发生时涉及的对象和阶段</h2><p>对于一个network I/O (这里我们以read举例)，它会涉及到两个系统对象，一个是调用这个I/O的process (or thread)，另一个就是系统内核(kernel)。当一个read操作发生时，它会经历两个阶段：</p>
 <ul>
 <li><p>1 等待数据准备 (Waiting for the data to be ready)</p>
 </li>
@@ -422,7 +424,7 @@ height:50vh;
 </li>
 </ul>
 <p>记住这两点很重要，因为这些I/O Model的区别就是在两个阶段上各有不同的情况。</p>
-<h2 id="2-2-阻塞I-O模型-blocking-I-O"><a href="#2-2-阻塞I-O模型-blocking-I-O" class="headerlink" title="2.2 阻塞I/O模型(blocking I/O)"></a>2.2 阻塞I/O模型(blocking I/O)</h2><font color="red">在linux中，默认情况下所有的socket都是blocking</font>，一个典型的读操作流程大概是这样：
+<h2 id="阻塞I-O模型-blocking-I-O"><a href="#阻塞I-O模型-blocking-I-O" class="headerlink" title="阻塞I/O模型(blocking I/O)"></a>阻塞I/O模型(blocking I/O)</h2><font color="red">在linux中，默认情况下所有的socket都是blocking</font>，一个典型的读操作流程大概是这样：
 
 
 
@@ -440,7 +442,7 @@ height:50vh;
 </ul>
 <p>使用阻塞模式的套接字，开发网络程序比较简单，容易实现。当希望能够立即发送和接收数据，且处理的套接字数量比较少的情况下，使用阻塞模式来开发网络程序比较合适。</p>
 <p>阻塞模式套接字的不足表现为，在大量建立好的套接字线程之间进行通信时比较困难。当使用“生产者-消费者”模型开发网络程序时，为每个套接字都分别分配一个读线程、一个处理数据线程和一个用于同步的事件，那么这样无疑加大系统的开销。其最大的缺点是当希望同时处理大量套接字时，将无从下手，其扩展性很差。</p>
-<h2 id="2-3-非阻塞I-O模型（non-blocking-IO）"><a href="#2-3-非阻塞I-O模型（non-blocking-IO）" class="headerlink" title="2.3 非阻塞I/O模型（non-blocking IO）"></a>2.3 非阻塞I/O模型（non-blocking IO）</h2><p>linux下，可以通过设置socket使其变为non-blocking。当对一个non-blocking socket执行读操作时，流程是这个样子：</p>
+<h2 id="非阻塞I-O模型（non-blocking-IO）"><a href="#非阻塞I-O模型（non-blocking-IO）" class="headerlink" title="非阻塞I/O模型（non-blocking IO）"></a>非阻塞I/O模型（non-blocking IO）</h2><p>linux下，可以通过设置socket使其变为non-blocking。当对一个non-blocking socket执行读操作时，流程是这个样子：</p>
 <p><img src="https://i.loli.net/2020/03/19/efuBkNrtwJCbUh9.jpg" alt="2.jpg"></p>
 <p>从图中可以看出，当用户进程发出read操作时，如果kernel中的数据还没有准备好，那么它并不会block用户进程，而是立刻返回一个error。从用户进程角度讲 ，它发起一个read操作后，并不需要等待，而是马上就得到了一个结果。用户进程判断结果是一个error时，它就知道数据还没有准备好，于是它可以再次发送read操作。一旦kernel中的数据准备好了，并且又再次收到了用户进程的system call，那么它马上就将数据拷贝到了用户内存，然后返回。所以，<font color="red">用户进程其实是需要不断的主动询问kernel数据好了没有。</font></p>
 <p>我们把一个SOCKET接口设置为非阻塞就是告诉内核，当所请求的I/O操作无法完成时，不要将进程睡眠，而是返回一个错误。这样我们的I/O操作函数将不断的测试数据是否已经准备好，如果没有准备好，继续测试，直到数据准备好为止。在这个不断测试的过程中，会大量的占用CPU的时间。</p>
@@ -449,19 +451,19 @@ height:50vh;
 <p>需要说明的是并非所有的Windows Sockets API在非阻塞模式下调用，都会返回WSAEWOULDBLOCK错误。例如，以非阻塞模式的套接字为参数调用bind()函数时，就不会返回该错误代码。当然，在调用WSAStartup()函数时更不会返回该错误代码，因为该函数是应用程序第一调用的函数，当然不会返回这样的错误代码。</p>
 <p>要将套接字设置为非阻塞模式，除了使用ioctlsocket()函数之外，还可以使用WSAAsyncselect()和WSAEventselect()函数。当调用该函数时，套接字会自动地设置为非阻塞方式。</p>
 <p>由于使用非阻塞套接字在调用函数时，会经常返回WSAEWOULDBLOCK错误。所以在任何时候，都应仔细检查返回代码并作好对“失败”的准备。应用程序连续不断地调用这个函数，直到它返回成功指示为止。上面的程序清单中，在While循环体内不断地调用recv()函数，以读入1024个字节的数据。这种做法很浪费系统资源。</p>
-<h2 id="2-4-I-O复用模型（I-O-multiplexing）"><a href="#2-4-I-O复用模型（I-O-multiplexing）" class="headerlink" title="2.4 I/O复用模型（I/O multiplexing）"></a>2.4 I/O复用模型（I/O multiplexing）</h2><p>I/O multiplexing这个词可能有点陌生，但是如果我说select，poll、epoll，大概就都能明白了。有些地方也称这种I/O方式为event driven I/O，也是实际中使用最多的一种I/O模型。我们都知道，select/epoll的好处就在于单个process就可以同时处理多个网络连接的I/O。它的基本原理就是select/epoll这个function会不断的轮询所负责的所有socket，当某个socket有数据到达了，就通知用户进程。它的流程如图：</p>
+<h2 id="I-O复用模型（I-O-multiplexing）"><a href="#I-O复用模型（I-O-multiplexing）" class="headerlink" title="I/O复用模型（I/O multiplexing）"></a>I/O复用模型（I/O multiplexing）</h2><p>I/O multiplexing这个词可能有点陌生，但是如果我说select，poll、epoll，大概就都能明白了。有些地方也称这种I/O方式为event driven I/O，也是实际中使用最多的一种I/O模型。我们都知道，select/epoll的好处就在于单个process就可以同时处理多个网络连接的I/O。它的基本原理就是select/epoll这个function会不断的轮询所负责的所有socket，当某个socket有数据到达了，就通知用户进程。它的流程如图：</p>
 <p><img src="https://i.loli.net/2020/03/19/KSbgFmGp5Vuzl9Z.jpg" alt="3.jpg"></p>
 <p>当用户进程调用了select，那么整个进程会被block，而同时，kernel会“监视”所有select负责的socket，当任何一个socket中的数据准备好了，select就会返回。这个时候用户进程再调用read操作，将数据从kernel拷贝到用户进程。</p>
 <p>这个图和blocking I/O的图其实并没有太大的不同，事实上，还更差一些。因为这里需要使用两个system call (select 和 recvfrom)，而blocking I/O只调用了一个system call (recvfrom)。但是，用select的优势在于它可以同时处理多个connection。（多说一句。所以，如果处理的连接数不是很高的话，使用select/epoll的web server不一定比使用multi-threading + blocking I/O的web server性能更好，可能延迟还更大。<strong>select/epoll的优势并不是对于单个连接能处理得更快，而是在于能处理更多的连接。</strong>）</p>
 <p>在I/O multiplexing Model中，实际中，对于每一个socket，一般都设置成为non-blocking，但是，如上图所示，整个用户的process其实是一直被block的。只不过process是被select这个函数block，而不是被socket I/O给block。</p>
-<h2 id="2-5-信号驱动I-O模型（Signal-driven-I-O）"><a href="#2-5-信号驱动I-O模型（Signal-driven-I-O）" class="headerlink" title="2.5 信号驱动I/O模型（Signal-driven I/O）"></a>2.5 信号驱动I/O模型（Signal-driven I/O）</h2><p>首先我们允许套接口进行信号驱动I/O,并安装一个信号处理函数，进程继续运行并不阻塞。当数据准备好时，进程会收到一个SIGIO信号，可以在信号处理函数中调用I/O操作函数处理数据。(signal driven I/O在实际中并不常用)</p>
+<h2 id="信号驱动I-O模型（Signal-driven-I-O）"><a href="#信号驱动I-O模型（Signal-driven-I-O）" class="headerlink" title="信号驱动I/O模型（Signal-driven I/O）"></a>信号驱动I/O模型（Signal-driven I/O）</h2><p>首先我们允许套接口进行信号驱动I/O,并安装一个信号处理函数，进程继续运行并不阻塞。当数据准备好时，进程会收到一个SIGIO信号，可以在信号处理函数中调用I/O操作函数处理数据。(signal driven I/O在实际中并不常用)</p>
 <p><img src="https://i.loli.net/2020/03/19/m3DFIPx6afpQYwX.jpg" alt="4.jpg"> </p>
-<h2 id="2-6-异步I-O模型（Asynchronous-I-O）"><a href="#2-6-异步I-O模型（Asynchronous-I-O）" class="headerlink" title="2.6 异步I/O模型（Asynchronous I/O）"></a>2.6 异步I/O模型（Asynchronous I/O）</h2><p>linux下的asynchronous IO其实用得很少。先看一下它的流程：</p>
+<h2 id="异步I-O模型（Asynchronous-I-O）"><a href="#异步I-O模型（Asynchronous-I-O）" class="headerlink" title="异步I/O模型（Asynchronous I/O）"></a>异步I/O模型（Asynchronous I/O）</h2><p>linux下的asynchronous IO其实用得很少。先看一下它的流程：</p>
 <p><img src="https://i.loli.net/2020/03/19/kSUzWwI49M8ErfF.jpg" alt="5.jpg"></p>
 <p>用户进程发起read操作之后，立刻就可以开始去做其它的事。而另一方面，从kernel的角度，当它受到一个asynchronous read之后，首先它会立刻返回，所以不会对用户进程产生任何block。然后，kernel会等待数据准备完成，然后将数据拷贝到用户内存，当这一切都完成之后，kernel会给用户进程发送一个signal，告诉它read操作完成了。</p>
-<h2 id="2-7-5种I-O模型比较"><a href="#2-7-5种I-O模型比较" class="headerlink" title="2.7 5种I/O模型比较"></a>2.7 5种I/O模型比较</h2><p><img src="https://i.loli.net/2020/03/19/agyWxDRcri8lmNb.jpg" alt="6.jpg"></p>
+<h2 id="5种I-O模型比较"><a href="#5种I-O模型比较" class="headerlink" title="5种I/O模型比较"></a>5种I/O模型比较</h2><p><img src="https://i.loli.net/2020/03/19/agyWxDRcri8lmNb.jpg" alt="6.jpg"></p>
 <p>经过上面的介绍，会发现non-blocking I/O和asynchronous I/O的区别还是很明显的。在non-blocking I/O中，虽然进程大部分时间都不会被block，但是它仍然要求进程去主动的check，并且当数据准备完成以后，也需要进程主动的再次调用recvfrom来将数据拷贝到用户内存。而asynchronous I/O则完全不同。它就像是用户进程将整个I/O操作交给了他人（kernel）完成，然后他人做完后发信号通知。在此期间，用户进程不需要去检查I/O操作的状态，也不需要主动的去拷贝数据。</p>
-<h1 id="3-结语"><a href="#3-结语" class="headerlink" title="3.结语"></a>3.结语</h1><p>到目前为止，已经将四个IO Model都介绍完了。现在回过头来回答最初的那几个问题：</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>到目前为止，已经将四个IO Model都介绍完了。现在回过头来回答最初的那几个问题：</p>
 <ul>
 <li><p>blocking和non-blocking的区别在哪？？</p>
 </li>
@@ -614,7 +616,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-引言"><span class="toc-number">1.</span> <span class="toc-text">1.引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Linux下的五种I-O模型"><span class="toc-number">2.</span> <span class="toc-text">2.Linux下的五种I&#x2F;O模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-I-O发生时涉及的对象和阶段"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 I&#x2F;O发生时涉及的对象和阶段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-阻塞I-O模型-blocking-I-O"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 阻塞I&#x2F;O模型(blocking I&#x2F;O)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-非阻塞I-O模型（non-blocking-IO）"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 非阻塞I&#x2F;O模型（non-blocking IO）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-I-O复用模型（I-O-multiplexing）"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 I&#x2F;O复用模型（I&#x2F;O multiplexing）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-信号驱动I-O模型（Signal-driven-I-O）"><span class="toc-number">2.5.</span> <span class="toc-text">2.5 信号驱动I&#x2F;O模型（Signal-driven I&#x2F;O）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-异步I-O模型（Asynchronous-I-O）"><span class="toc-number">2.6.</span> <span class="toc-text">2.6 异步I&#x2F;O模型（Asynchronous I&#x2F;O）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7-5种I-O模型比较"><span class="toc-number">2.7.</span> <span class="toc-text">2.7 5种I&#x2F;O模型比较</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-结语"><span class="toc-number">3.</span> <span class="toc-text">3.结语</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux下的五种I-O模型"><span class="toc-number">2.</span> <span class="toc-text">Linux下的五种I&#x2F;O模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#I-O发生时涉及的对象和阶段"><span class="toc-number">2.1.</span> <span class="toc-text">I&#x2F;O发生时涉及的对象和阶段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#阻塞I-O模型-blocking-I-O"><span class="toc-number">2.2.</span> <span class="toc-text">阻塞I&#x2F;O模型(blocking I&#x2F;O)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#非阻塞I-O模型（non-blocking-IO）"><span class="toc-number">2.3.</span> <span class="toc-text">非阻塞I&#x2F;O模型（non-blocking IO）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-O复用模型（I-O-multiplexing）"><span class="toc-number">2.4.</span> <span class="toc-text">I&#x2F;O复用模型（I&#x2F;O multiplexing）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#信号驱动I-O模型（Signal-driven-I-O）"><span class="toc-number">2.5.</span> <span class="toc-text">信号驱动I&#x2F;O模型（Signal-driven I&#x2F;O）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#异步I-O模型（Asynchronous-I-O）"><span class="toc-number">2.6.</span> <span class="toc-text">异步I&#x2F;O模型（Asynchronous I&#x2F;O）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5种I-O模型比较"><span class="toc-number">2.7.</span> <span class="toc-text">5种I&#x2F;O模型比较</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#结语"><span class="toc-number">3.</span> <span class="toc-text">结语</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -2860,9 +2862,197 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 141
+        Total : 151
         </div>
         <!-- search  -->
         
@@ -2878,7 +3068,57 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3/" >链表中环的入口</a>
+            <span class="archive-post-date">04/14</span><a class="archive-post-title" href= "/2020/04/14/20200414-%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E4%BF%A1%E5%B0%81%E9%97%AE%E9%A2%98/" >俄罗斯套娃信封问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/13</span><a class="archive-post-title" href= "/2020/04/13/20200413-%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/" >三角形最小路径和</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/13</span><a class="archive-post-title" href= "/2020/04/13/20200413-%E9%80%BB%E8%BE%91%E5%9C%B0%E5%9D%80%E3%80%81%E7%BA%BF%E6%80%A7%E5%9C%B0%E5%9D%80%E3%80%81%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80/" >逻辑地址、线性地址、物理地址</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/12</span><a class="archive-post-title" href= "/2020/04/12/20200412-%E5%89%8Dk%E4%B8%AA%E9%AB%98%E9%A2%91%E5%85%83%E7%B4%A0/" >前k个高频元素</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/12</span><a class="archive-post-title" href= "/2020/04/12/20200412-%E5%8D%95%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E5%88%86%E6%9E%90/" >单线程与多线程的优缺点分析</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/11</span><a class="archive-post-title" href= "/2020/04/11/20200411-epoll%E7%9A%84%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/" >epoll的底层实现原理</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%93%84%E6%B0%B4%E6%B1%A0%E6%8A%BD%E6%A0%B7%E7%AE%97%E6%B3%95/" >蓄水池抽样算法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84%E9%94%81/" >数据库中的锁</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >进程和程序的区别</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E7%BF%BB%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D/" >翻转字符串里的单词</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3%E5%8F%8A%E5%85%AC%E5%85%B1%E8%8A%82%E7%82%B9/" >链表中环的入口及公共节点</a>
         </li>
     
     
@@ -3618,6 +3858,8 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
+        <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
+    
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
@@ -3641,8 +3883,6 @@ top:50vh;
         <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
     
         <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
-    
-        <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
         <span class="sidebar-tag-name" data-tags="排序"><span class="iconfont-archer">&#xe606;</span>排序</span>
     

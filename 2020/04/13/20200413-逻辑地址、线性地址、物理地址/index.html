@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>链表中环的入口 · occo&#39;s blog</title>
+    <title>逻辑地址、线性地址、物理地址 · occo&#39;s blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/" >occo&#39;s blog.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">链表中环的入口</a>
+                <a href="#" class="post-name">逻辑地址、线性地址、物理地址</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            链表中环的入口
+            逻辑地址、线性地址、物理地址
             <!-- 404 -->
             
         </h1>
@@ -266,18 +266,18 @@ height:50vh;
                 
                     <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "操作系统">操作系统</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">0</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                        <span>Word count: <span class="post-count word-count">2k</span>Reading time: <span class="post-count reading-time">6 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2020/04/10</span>
+                    <span class="post-intro-time">2020/04/13</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -401,7 +401,32 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        
+        <font size=4>
+
+<p>机器语言指令中出现的内存地址都是逻辑地址，需要转换成线性地址，再经过MMU(CPU中的内存管理单元)转换成物理地址才能够被访问到。</p>
+<a id="more"></a>
+<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p><img src="https://i.loli.net/2020/04/13/lwOfKWHX5MaQkBt.png" alt="1.png"></p>
+<h2 id="逻辑地址"><a href="#逻辑地址" class="headerlink" title="逻辑地址"></a>逻辑地址</h2><p>段标识符（16bit） + 相对位置偏移量（32bit）。</p>
+<p>包含在机器语言指令中用来指定一个操作数或一条指令的地址（有点深奥）。这种寻址方式在80x86著名的分段结构中表现得尤为具体，它促使windows程序员把程序分成若干段。每个逻辑地址都由一个段和偏移量组成，偏移量指明了从段开始的地方到实际地址之间的距离。</p>
+<h2 id="线性地址（虚拟地址）"><a href="#线性地址（虚拟地址）" class="headerlink" title="线性地址（虚拟地址）"></a>线性地址（虚拟地址）</h2><p> 是一个32位无符号整数，可以用来表示高达4GB的地址，线性地址通常用十六进制数字表示，值的范围从0x00000000到0xffffffff。</p>
+<h2 id="物理地址"><a href="#物理地址" class="headerlink" title="物理地址"></a>物理地址</h2><p>用于内存芯片级内存单元寻址。它们与从微处理器的地址引脚按发送到内存总线上的电信号相对应。物理地址由32位或36位无符号整数表示。（其实这个最好理解，就是实实在在的地址）</p>
+<h1 id="Linux内存管理"><a href="#Linux内存管理" class="headerlink" title="Linux内存管理"></a>Linux内存管理</h1><p>CPU将一个虚拟内存空间中的地址转换为物理地址，需要进行两步：首先将给定一个逻辑地址（其实是段内偏移量，这个一定要理解！！！），CPU要利用其段式内存管理单元，先将为个逻辑地址转换成一个线程地址，再利用其页式内存管理单元，转换为最终物理地址。</p>
+<p>现代操作系统的内存管理机制有两种：段式管理和页式管理。</p>
+<h2 id="段式内存管理"><a href="#段式内存管理" class="headerlink" title="段式内存管理"></a>段式内存管理</h2><p>就是将内存分成段，每个段的起始地址就是段基地址。地址映射的时候，由逻辑地址加上段基地址而得到物理地址。纯粹的段式内存管理的缺点很明显，就是灵活性和效率比较差。首先是段的长度是可变的，这给内存的换入换出带来诸多不便，如何选择一个段的长度是一个棘手的问题；其次进程在运行过程中，可能会扩充地址空间，这就要增加段，从而造成进程的地址空间由很多小段构成，在进程运行过程中，访问不同的段时，就需要频繁切换段基地址；再一点，段式内存管理如果有太多的小段，在释放段的时候，会造成外部碎片。</p>
+<h2 id="页式内存管理"><a href="#页式内存管理" class="headerlink" title="页式内存管理"></a>页式内存管理</h2><p>内存分成固定长度的一个个页片。地址映射的时候，需要先建立页表，页表中的每一项都记录了这个页的基地址。通过页表，由逻辑地址的高位部分先找到逻辑地址对应的页基地址，再由页基地址偏移一定长度就得到最后的物理地址，偏移的长度由逻辑地址的低位部分决定。一般情况下，这个过程都可以由硬件完成，所以效率还是比较高的。页式内存管理的优点就是比较灵活，内存管理以较小的页为单位，方便内存换入换出和扩充地址空间。</p>
+<h2 id="段页式内存管理"><a href="#段页式内存管理" class="headerlink" title="段页式内存管理"></a>段页式内存管理</h2><p>段管理机制对于Intel处理器来说是最基本的, 任何时候都无法关闭. 也就是说, 即使启用页管理功能, 分段机制依然是起作用的, 段部件依然工作。</p>
+<p>严格说Linux采用段页式内存管理，也就是既分段，又分页。地址映射的时候，先确定对应的段，确定段基地址；段内分页，再找到对应的页表项，确定页基地址；再由逻辑地址低位确定的页偏移量，就能找到最终的物理地址。但是，实际上Linux采用的是页式内存管理。原因是Linux中的段基地址都是0，相当于所有的段都是相同的。这样做的原因是<strong>某些体系结构的硬件限制</strong>，比如Intel的i386。作为软件的操作系统，必须要符合硬件体系。虽然所有段基地址都是0，但是段的概念在Linux内核中是确实存在的。比如常见的内核代码段、内核数据段、用户态代码段、用户态数据段等。除了符合硬件要求外，段也是有实际意义的。</p>
+<p><img src="https://i.loli.net/2020/04/13/69l3FavbmTBVIun.jpg" alt="1.jpg"></p>
+<p>逻辑地址分为两部分组成：段标识符和指定段内相对地址的偏移量。</p>
+<p>段描述符：用来存放段起始地址，段大小，存储权限等。<br>段描述符表：存放段描述的表项。<br>段寄存器：存放段标识符。6个段寄存器称为cs(代码段寄存器)，ss(栈段寄存器)，ds(数据段寄存器)，es，fs 和gs。<br>段基地址寄存器：指向段描述符表地址。</p>
+<h3 id="Linux分段机制"><a href="#Linux分段机制" class="headerlink" title="Linux分段机制"></a>Linux分段机制</h3><p>Linux对分段使用非常有限。作为一个跨硬件体系的操作系统，要支持多种硬件体系，而一些硬件体系结构式不支持分段的，Linux把所有段起始地址都设为0。<br>Linux采用4个段进行寻址，用户态代码段，用户态数据段，内核态代码段，内核态数据段。</p>
+<p><img src="https://i.loli.net/2020/04/13/exyL8rXs4RmVnoT.jpg" alt="2.jpg"></p>
+<p>x86采用两级页表。<br>第一级为页目录表，存储在一个4K字节的页中，每个表项包含了一个页表的物理地址。线性地址最高的10位(22-31)用来产生第一级表索引，由该索引得到的表项中的内容定位了二级表中的一个表的地址，即下级页表所在的内存块号。<br>第二级为页表，存储在一个4K字节页中，每个表项包含了一个页的物理地址。线性地址的中间10位(12-21)位进行索引，定位页表表项，获得页的物理地址。页物理地址的高20位与线性地址的低12位形成最后的物理地址。</p>
+<p>分页机制由CR0寄存器中的PG位启用。如PG=1，启用分页机制，把线性地址转换为物理地址。如PG=0，禁用分页机制，直接段机制产生的线性地址当作物理地址使用。<br>页目录表的物理地址存放在CR3寄存器。每个进程有它自己的页全局目录和自己的页表集。当发生进程切换时，Linux把CR3控制寄存器的内容保存在前一个执行进程的描述符中，然后把下一个要执行进程的描述符的值装入CR3寄存器中。这确保了当新进程重新开始在CPU上执行时，分页单元指向一组正确的页表。</p>
+<h3 id="Linux分页机制"><a href="#Linux分页机制" class="headerlink" title="Linux分页机制"></a>Linux分页机制</h3><p>作为一个通用的操作系统，Linux需要兼容各种硬件体系，包括不同位数的CPU。对64位的CPU来说，两级页表仍然太少，一个页表会太大，这会占用太多宝贵的物理内存。Linux采用了通用的四级页表。实际采用几级页表则具体受硬件的限制。</p>
+<p><img src="https://i.loli.net/2020/04/13/sn5kw49ouaHZtNq.gif" alt="3.gif"></p>
+<p>四种页表分别称为： 页全局目录、页上级目录、页中间目录、页表。对于32位x86系统，两级页表已经足够了。Linux通过使“页上级目录”位和“页中间目录”位全为0，彻底取消了页上级目 录和页中间目录字段。不过，页上级目录和页中间目录在指针序列中的位置被保留，以便同样的代码在32位系统和64位系统下都能使用。</p>
+
     </article>
     <!-- license  -->
     
@@ -409,12 +434,17 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/04/13/20200413-%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/" title= "三角形最小路径和">
+                    <div class="nextTitle">三角形最小路径和</div>
+                </a>
+            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2020/04/09/20200409-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/" title= "二叉树的前序遍历">
-                    <div class="prevTitle">二叉树的前序遍历</div>
+                <a href= "/2020/04/12/20200412-%E5%89%8Dk%E4%B8%AA%E9%AB%98%E9%A2%91%E5%85%83%E7%B4%A0/" title= "前k个高频元素">
+                    <div class="prevTitle">前k个高频元素</div>
                 </a>
             
         </li>
@@ -537,7 +567,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#定义"><span class="toc-number">1.</span> <span class="toc-text">定义</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#逻辑地址"><span class="toc-number">1.1.</span> <span class="toc-text">逻辑地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线性地址（虚拟地址）"><span class="toc-number">1.2.</span> <span class="toc-text">线性地址（虚拟地址）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#物理地址"><span class="toc-number">1.3.</span> <span class="toc-text">物理地址</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux内存管理"><span class="toc-number">2.</span> <span class="toc-text">Linux内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#段式内存管理"><span class="toc-number">2.1.</span> <span class="toc-text">段式内存管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#页式内存管理"><span class="toc-number">2.2.</span> <span class="toc-text">页式内存管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#段页式内存管理"><span class="toc-number">2.3.</span> <span class="toc-text">段页式内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux分段机制"><span class="toc-number">2.3.1.</span> <span class="toc-text">Linux分段机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux分页机制"><span class="toc-number">2.3.2.</span> <span class="toc-text">Linux分页机制</span></a></li></ol></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -2783,9 +2813,197 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 141
+        Total : 151
         </div>
         <!-- search  -->
         
@@ -2801,7 +3019,57 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3/" >链表中环的入口</a>
+            <span class="archive-post-date">04/14</span><a class="archive-post-title" href= "/2020/04/14/20200414-%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E4%BF%A1%E5%B0%81%E9%97%AE%E9%A2%98/" >俄罗斯套娃信封问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/13</span><a class="archive-post-title" href= "/2020/04/13/20200413-%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/" >三角形最小路径和</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/13</span><a class="archive-post-title" href= "/2020/04/13/20200413-%E9%80%BB%E8%BE%91%E5%9C%B0%E5%9D%80%E3%80%81%E7%BA%BF%E6%80%A7%E5%9C%B0%E5%9D%80%E3%80%81%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80/" >逻辑地址、线性地址、物理地址</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/12</span><a class="archive-post-title" href= "/2020/04/12/20200412-%E5%89%8Dk%E4%B8%AA%E9%AB%98%E9%A2%91%E5%85%83%E7%B4%A0/" >前k个高频元素</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/12</span><a class="archive-post-title" href= "/2020/04/12/20200412-%E5%8D%95%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E5%88%86%E6%9E%90/" >单线程与多线程的优缺点分析</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/11</span><a class="archive-post-title" href= "/2020/04/11/20200411-epoll%E7%9A%84%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/" >epoll的底层实现原理</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%93%84%E6%B0%B4%E6%B1%A0%E6%8A%BD%E6%A0%B7%E7%AE%97%E6%B3%95/" >蓄水池抽样算法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84%E9%94%81/" >数据库中的锁</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >进程和程序的区别</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E7%BF%BB%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D/" >翻转字符串里的单词</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3%E5%8F%8A%E5%85%AC%E5%85%B1%E8%8A%82%E7%82%B9/" >链表中环的入口及公共节点</a>
         </li>
     
     
@@ -3541,6 +3809,8 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
+        <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
+    
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
@@ -3564,8 +3834,6 @@ top:50vh;
         <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
     
         <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
-    
-        <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
         <span class="sidebar-tag-name" data-tags="排序"><span class="iconfont-archer">&#xe606;</span>排序</span>
     

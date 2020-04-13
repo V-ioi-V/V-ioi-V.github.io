@@ -346,6 +346,183 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/20/%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/" >
+            
+                <span>最小的k个数</span>
+        </a>
+        <div class="abstract-content">
+            <p>经典top(k)问题</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/20</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/18/%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0/" >
+            
+                <span>寻找两个有序数组的中位数</span>
+        </a>
+        <div class="abstract-content">
+            题目描述给定两个大小为 m 和 n 的有序数组 nums1 和 nums2。
+请你找出这两个有序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。
+你可以假设 nums1 和 nums2 不会同时为空。
+示例 1:
+12nums1 &#x3D; [1, 3]nums2 &#x3D; [2]
+则中位数是 2.0示例 2:
+12nums1 &#x3D; [1, 2]nums2 &#x3D; [3, 4]
+则中位数是 (2 + 3)/2 = 2.5
+思路中位数也就是可以转化为第k小的数，可以在两个数组同时找第（k/2）个小的数，更小的那个数和他前面的数一定不是前k个数里的，...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/18</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/18/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/" >
+            
+                <span>最长回文子串(马拉车)</span>
+        </a>
+        <div class="abstract-content">
+            题目描述给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
+示例 1：
+12输入: &quot;babad&quot;输出: &quot;bab&quot;
+注意: “aba” 也是一个有效答案。示例 2：
+12输入: &quot;cbbd&quot;输出: &quot;bb&quot;
+DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2),枚举中心往两边找复杂度也是O（n^2）
+枚举:在求解过程中，基数的回文子串与偶数的回文子串是不一样的。比如最长回文子串为aba，对称中心就是b，如果最长回文子串为abba，则对称中心应该为两个...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/18</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "DP">DP</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "字符串">字符串</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/18/%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/" >
+            
+                <span>盛最多水的容器</span>
+        </a>
+        <div class="abstract-content">
+            题目描述给你 n 个非负整数 a1，a2，…，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
+说明：你不能倾斜容器，且 n 的值至少为 2。
+
+图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。
+示例：
+12输入：[1,8,6,2,5,4,8,3,7]输出：49
+思路双指针法，从两边遍历，由于每条线的距离都是1，所以移动短的那根一定会移动到最大距离。
+简...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/18</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/15/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95/" >
+            
+                <span>常见的排序方法</span>
+        </a>
+        <div class="abstract-content">
+            插入排序
+描述不需要开设另外的空间，每次遍历到一个数，将它与前面已经有序的序列作比较，插入到正确的位置，在前面有序序列中这个数后面的数依次向后移动。
+复杂度时间复杂度：
+
+最佳情况：T(n) = O(n)
+最坏情况：T(n) = O(n^2)
+平均情况：T(n) = O(n^2)
+
+额外空间复杂度：O(1)
+12345678910111213void insertsort(int l, int r) &#123;    for (int i = l + 1; i &lt;= r; i++) &#123;        if (a[i] &lt; a[i - 1]) &#123;     ...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/15</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "排序">排序</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/03/15/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" >
             
                 <span>归并排序</span>
@@ -358,12 +535,14 @@
 最差空间复杂度：O(n)
 稳定性：稳定
 
-快排和归并都是log，并且归并稳定，为啥实际应用快排
+**快排和归并都是log，并且归并稳定，为啥实际应用快排?**
+
+
 他们都是分治思想，代码都通过递归来实现，过程十分相似
 归并排序是一种在任何情况下时间复杂度都比较稳定的排序算法，这也使它存在致命的缺点，即归并排序不是原地排序算法，空间复杂度较高，是是O（n），也正因如此，它没有快排应用广泛
 快排虽然最坏情况下是O（n^2），但是平均情况下复杂度都是O(nlogn)。而且快排退化到O（n^2）的概率非常小。
 
-代码实现123...
+...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -392,10 +571,10 @@
                 <span>快速排序</span>
         </a>
         <div class="abstract-content">
-            原理快速排序原理从序列中找一个基准数，将这个数放到正确的位置（左边的数比这个数小，右边的数比这个数大）。
+            快速排序原理从序列中找一个基准数，将这个数放到正确的位置（左边的数比这个数小，右边的数比这个数大）。
 复杂度手写快排的最优情况就是每次都把序列划分成等数量的两部分（nlogn），最坏情况下就是一个有序的序列，每次分都只能分成一部分，退化成冒泡排序（n^2），所以手写快排是不稳定的排序;
 最差时间复杂度：O(n^2)平均时间复杂度：O(nlogn)稳定性：不稳定
-代码实现12345678910111213void qsort(int low, int high) &#123;    int l = low, r = high;    if (l &gt;= r)return;    w...
+递归版12345678910111213void qsort(int low, int high) &#123;    int l = low, r = high;    if (l &gt;= r)return;    whil...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -500,181 +679,6 @@
             <!-- tags  -->
             
             <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/28/Smallest%20Bounding%20Rectangle(%E6%9C%80%E5%B0%8F%E9%9D%A2%E7%A7%AF%E5%A4%96%E6%8E%A5%E7%9F%A9%E5%BD%A2)/" >
-            
-                <span>Smallest Bounding Rectangle(最小面积外接矩形)</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述Given the Cartesian coordinates of n (&gt; 0) 2-dimensional points, write a program that computes the area of their smallest bounding rectangle (smallest rectangle containing all the given points).
-输入The input file may contain multiple test cases. Each test case begins with a line containi...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/28</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/28/Triangle%EF%BC%88%E6%B1%82%E5%87%B8%E5%8C%85%E6%9C%80%E5%A4%A7%E5%86%85%E6%8E%A5%E4%B8%89%E8%A7%92%E5%BD%A2%EF%BC%89/" >
-            
-                <span>Triangle（求凸包最大内接三角形）</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述Given n distinct points on a plane, your task is to find the triangle that have the maximum area, whose vertices are from the given points.
-输入The input consists of several test cases. The first line of each test case contains an integer n, indicating the number of points on the plane. Each...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/28</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/25/%5BCQOI2006%5D%E5%87%B8%E5%A4%9A%E8%BE%B9%E5%BD%A2%20%20/" >
-            
-                <span>凸多边形</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述逆时针给出n个凸多边形的顶点坐标，求它们交的面积。例如n=2时，两个凸多边形如下图： 
-则相交部分的面积为5.233。
-输入第一行有一个整数n，表示凸多边形的个数，以下依次描述各个多边形。第i个多边形的第一行包含一个整数mi，表示多边形的边数，以下mi行每行两个整数，逆时针给出各个顶点的坐标。
-输出输出文件仅包含一个实数，表示相交部分的面积，保留三位小数
-样例输入1234567891011121326-2 0-1 -21 -22 01 2-1 240 -31 -12 2-1 0
-样例输出15.233
-100%的数据满足：2&lt;=n&lt;=10，3&lt;=mi&lt;...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/25</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/10/%E7%9E%AD%E6%9C%9B%E5%A1%94%E3%80%90%E5%8D%8A%E5%B9%B3%E9%9D%A2%E4%BA%A4%E3%80%91/" >
-            
-                <span>瞭望塔【半平面交】</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述致力于建设全国示范和谐小村庄的H村村长dadzhi，决定在村中建立一个瞭望塔，以此加强村中的治安。
-我们将H村抽象为一维的轮廓。如下图所示
-
-我们可以用一条山的上方轮廓折线(x1, y1), (x2, y2), …. (xn, yn)来描述H村的形状，这里x1 &lt; x2 &lt; …&lt; xn。瞭望塔可以建造在[x1, xn]间的任意位置, 但必须满足从瞭望塔的顶端可以看到H村的任意位置。可见在不同的位置建造瞭望塔，所需要建造的高度是不同的。为了节省开支，dadzhi村长希望建造的塔高度尽可能小。
-请你写一个程序，帮助dadzhi村长计算塔的最小高度。
-输入输入文...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/10</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/04/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E5%8D%8A%E5%B9%B3%E9%9D%A2%E4%BA%A4/" >
-            
-                <span>【模板】半平面交</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述逆时针给出n个凸多边形的顶点坐标，求它们交的面积。例如n=2时，两个凸多边形如下图： 
-则相交部分的面积为5.233。
-输入第一行有一个整数n，表示凸多边形的个数，以下依次描述各个多边形。第i个多边形的第一行包含一个整数mi，表示多边形的边数，以下mi行每行两个整数，逆时针给出各个顶点的坐标。
-输出输出文件仅包含一个实数，表示相交部分的面积，保留三位小数。
-样例输入1234567891011121326-2 0-1 -21 -22 01 2-1 240 -31 -12 2-1 0
-100%的数据满足：2&lt;=n&lt;=10，3&lt;=mi&lt;=50，每维坐标为[...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/04</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "模板">模板</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
     
@@ -3017,9 +3021,197 @@
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 141
+        Total : 151
         </div>
         <!-- search  -->
         
@@ -3035,7 +3227,57 @@
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3/" >链表中环的入口</a>
+            <span class="archive-post-date">04/14</span><a class="archive-post-title" href= "/2020/04/14/20200414-%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E4%BF%A1%E5%B0%81%E9%97%AE%E9%A2%98/" >俄罗斯套娃信封问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/13</span><a class="archive-post-title" href= "/2020/04/13/20200413-%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/" >三角形最小路径和</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/13</span><a class="archive-post-title" href= "/2020/04/13/20200413-%E9%80%BB%E8%BE%91%E5%9C%B0%E5%9D%80%E3%80%81%E7%BA%BF%E6%80%A7%E5%9C%B0%E5%9D%80%E3%80%81%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80/" >逻辑地址、线性地址、物理地址</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/12</span><a class="archive-post-title" href= "/2020/04/12/20200412-%E5%89%8Dk%E4%B8%AA%E9%AB%98%E9%A2%91%E5%85%83%E7%B4%A0/" >前k个高频元素</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/12</span><a class="archive-post-title" href= "/2020/04/12/20200412-%E5%8D%95%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E5%88%86%E6%9E%90/" >单线程与多线程的优缺点分析</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/11</span><a class="archive-post-title" href= "/2020/04/11/20200411-epoll%E7%9A%84%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/" >epoll的底层实现原理</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%93%84%E6%B0%B4%E6%B1%A0%E6%8A%BD%E6%A0%B7%E7%AE%97%E6%B3%95/" >蓄水池抽样算法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84%E9%94%81/" >数据库中的锁</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >进程和程序的区别</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E7%BF%BB%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D/" >翻转字符串里的单词</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3%E5%8F%8A%E5%85%AC%E5%85%B1%E8%8A%82%E7%82%B9/" >链表中环的入口及公共节点</a>
         </li>
     
     
@@ -3775,6 +4017,8 @@
     
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
+        <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
+    
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
@@ -3798,8 +4042,6 @@
         <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
     
         <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
-    
-        <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
         <span class="sidebar-tag-name" data-tags="排序"><span class="iconfont-archer">&#xe606;</span>排序</span>
     
