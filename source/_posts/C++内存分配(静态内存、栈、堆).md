@@ -14,7 +14,7 @@ category: CS大学生必备
 
 **保存的对象：**
 
-1.局部static对象
+1.局部static变量
 
 ```c++
 void func()
@@ -23,12 +23,12 @@ void func()
 }
 ```
 
-2.类static数据成员
+2.类static数据成员变量
 
 ```c++
 class Function(){
 public:
-	static void func();    //类中static函数c
+	static void func();    //类中static函数
 private:
 	static int i_func;    //类中static变量
 };
@@ -42,9 +42,11 @@ private:
 
 ## 栈内存
 
+- 大小一般是 1M 或者 2M 。
+
 **保存的对象：**
 
-1. 定义在函数内的非static对象
+1. 定义在函数内的非static变量
 
 ```c++
 void func()
@@ -76,13 +78,13 @@ void func()
 **动态内存分配方式：**
 
 1. 运算符：new
-2. 语法：`Type *pointer = new Type;`
-3. 返回：分配失败则返回空指针
+2. 语法：Type *pointer = new Type;
+3. 返回：分配失败则返回异常
 
 **动态内存摧毁方式：**
 
 1. 运算符：delete
-2. 语法：`delete pointer;`
+2. 语法：delete pointer;
 
 **初始化动态分配对象：**
 
@@ -91,5 +93,13 @@ int *pi = new int(10);    		    //动态分配一个int对象，初始值为10
 string *ps = new string(2, '9');    //动态分配一个string对象，初始值为"99"
 int *pa = new int[10]();              //动态分配一个int数组，大小为10，初始值为0
 ```
+
+**自由存储区**
+
+那些由new分配的内存块，由应用程序去控制，一般一个new就要对应一个delete。如果程序员没有释放掉，那么在程序结束后，操作系统会自动回收。
+
+**常量存储区**
+
+这是一块比较特殊的存储区，他们里面存放的是常量，不允许修改。
 
 - 转自https://blog.csdn.net/weixin_41316331/article/details/89033197

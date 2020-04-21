@@ -45,9 +45,11 @@ Tip：前四种都是同步，只有最后一种才是异步I/O。
 
 
 
+
+
 ![1.jpg](https://i.loli.net/2020/03/19/oICR2gEYXu6mdTS.jpg)
 
-​       当用户进程调用了recvfrom(**接受服务器的数据**)这个系统调用，kernel（内核）就开始了I/O的第一个阶段：准备数据。对于network io来说，很多时候数据在一开始还没有到达（比如，还没有收到一个完整的UDP包），这个时候kernel就要等待足够的数据到来。而在用户进程这边，整个进程会被阻塞。当kernel一直等到数据准备好了，它就会将数据从kernel系统缓冲区中拷贝到用户内存，然后kernel返回结果，用户进程才解除block的状态，重新运行起来。所以，<font color="red">blocking IO的特点就是在I/O执行的两个阶段都被block了。</font>
+​       当用户进程调用了recvfrom(**接受服务器的数据**)这个系统调用，kernel（内核）就开始了I/O的第一个阶段：准备数据。对于network io来说，很多时候数据在一开始还没有到达（比如，还没有收到一个完整的UDP包），这个时候kernel就要等待足够的数据到来。而在用户进程这边，整个进程会被阻塞。当kernel一直等到数据准备好了，它就会**将数据从kernel系统缓冲区中拷贝到用户内存**，然后kernel返回结果，用户进程才解除block的状态，重新运行起来。所以，<font color="red">blocking IO的特点就是在I/O执行的两个阶段都被block了。</font>
 
 当使用socket()函数和WSASocket()函数创建套接字时，默认的套接字都是阻塞的。这意味着当调用Windows Sockets API不能立即完成时，线程处于等待状态，直到操作完成。
 
