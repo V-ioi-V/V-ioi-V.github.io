@@ -500,12 +500,12 @@ height:50vh;
 </tbody>
 </table>
 </div>
-<p><strong>为什么说B+-tree比B 树更适合实际应用中操作系统的文件索引和数据库索引？</strong></p>
+<p><strong>为什么说B+tree比B-树更适合实际应用中操作系统的文件索引和数据库索引？</strong></p>
 <ul>
-<li><p><strong>B+-tree的磁盘读写代价更低</strong></p>
-<p>B+-tree的内部结点并没有指向关键字具体信息的指针。因此其内部结点相对B 树更小。如果把所有同一内部结点的关键字存放在同一盘块中，那么盘块所能容纳的关键字数量也越多。一次性读入内存中的需要查找的关键字也就越多。相对来说IO读写次数也就降低了。举个例子，假设磁盘中的一个盘块容纳16bytes，而一个关键字2bytes，一个关键字具体信息指针2bytes。一棵9阶B-tree ( 一个结点最多8个关键字) 的内部结点需要2个盘快。而B+ 树内部结点只需要1个盘快。当需要把内部结点读入内存中的时候，B 树就比B+ 树多一次盘块查找时间(在磁盘中就是盘片旋转的时间)。</p>
+<li><p><strong>B+tree的磁盘读写代价更低</strong></p>
+<p>B+tree的内部结点并没有指向关键字具体信息的指针。因此<strong>其内部结点相对B树更小</strong>。如果把所有同一内部结点的关键字存放在同一盘块中，那么盘块所能容纳的关键字数量也越多。一次性读入内存中的需要查找的关键字也就越多。相对来说IO读写次数也就降低了。举个例子，假设磁盘中的一个盘块容纳16bytes，而一个关键字2bytes，一个关键字具体信息指针2bytes。一棵9阶B-tree ( 一个结点最多8个关键字) 的内部结点需要2个盘快。而B+ 树内部结点只需要1个盘快。当需要把内部结点读入内存中的时候，B 树就比B+ 树多一次盘块查找时间(在磁盘中就是盘片旋转的时间)。</p>
 </li>
-<li><p><strong>B+-tree的查询效率更加稳定</strong></p>
+<li><p><strong>B+tree的查询效率更加稳定</strong></p>
 <p>由于非终结点并不是最终指向文件内容的结点，而只是叶子结点中关键字的索引。所以任何关键字的查找必须走一条从根结点到叶子结点的路。所有关键字查询的路径长度相同，导致每一个数据的查询效率相当。</p>
 </li>
 </ul>
@@ -3106,9 +3106,192 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 151
+        Total : 162
         </div>
         <!-- search  -->
         
@@ -3124,7 +3307,57 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/14</span><a class="archive-post-title" href= "/2020/04/14/20200414-%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E4%BF%A1%E5%B0%81%E9%97%AE%E9%A2%98/" >俄罗斯套娃信封问题</a>
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/2020/04/21/20200421-%E5%88%A0%E6%95%B0%E9%97%AE%E9%A2%98/" >删数问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/2020/04/21/20200421-%E6%9C%80%E5%B0%8F%E6%A0%88/" >最小栈</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/2020/04/21/20200421-C++%E4%B8%AD%E6%8C%87%E9%92%88()%E3%80%81%E5%8F%96%E5%9C%B0%E5%9D%80(&)%E3%80%81%E8%A7%A3%E5%BC%95%E7%94%A8()%E4%B8%8E%E5%BC%95%E7%94%A8(&)%E7%9A%84%E5%8C%BA%E5%88%AB/" >C++中指针(*)、取地址(&)、解引用(*)与引用(&)的区别</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/20</span><a class="archive-post-title" href= "/2020/04/20/20200420-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" >数据库基础知识</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%AF%B9%E7%A7%B0%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91/" >对称的二叉树</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" >二叉树的镜像</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" >从上到下打印二叉树</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" >单例模式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span><a class="archive-post-title" href= "/2020/04/16/20200416-%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF/" >单源最短路</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/15</span><a class="archive-post-title" href= "/2020/04/15/20200415-C++%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" >C++基础知识</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/14</span><a class="archive-post-title" href= "/2020/04/14/20200414-%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E4%BF%A1%E5%B0%81%E9%97%AE%E9%A2%98/" >俄罗斯套娃信封问题（LIS）</a>
         </li>
     
     
@@ -3164,7 +3397,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >进程和程序的区别</a>
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >进程的理解</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%90%86%E8%A7%A3/" >进程和程序的区别</a>
         </li>
     
     
@@ -3439,12 +3677,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
         </li>
     
     
@@ -3479,7 +3717,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/17</span><a class="archive-post-title" href= "/2020/03/17/%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8/" >虚函数和虚函数表（vtable）</a>
+            <span class="archive-post-date">03/17</span><a class="archive-post-title" href= "/2020/03/17/%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0/" >虚函数和纯虚函数</a>
         </li>
     
     
@@ -3534,7 +3772,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/11</span><a class="archive-post-title" href= "/2020/03/11/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" >网络基础(上)</a>
+            <span class="archive-post-date">03/11</span><a class="archive-post-title" href= "/2020/03/11/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80(%E4%B8%8A)/" >网络基础(上)</a>
         </li>
     
     
@@ -3916,17 +4154,15 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
+        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
+    
+        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
+    
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
-        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
-    
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
-    
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
-    
-        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
@@ -3934,11 +4170,13 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
     
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
         <span class="sidebar-tag-name" data-tags="分治"><span class="iconfont-archer">&#xe606;</span>分治</span>
     
-        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
-    
         <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
+    
+        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
     
         <span class="sidebar-tag-name" data-tags="排序"><span class="iconfont-archer">&#xe606;</span>排序</span>
     

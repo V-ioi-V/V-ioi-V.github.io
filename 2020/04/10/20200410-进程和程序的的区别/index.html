@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>进程和程序的区别 · occo&#39;s blog</title>
+    <title>进程的理解 · occo&#39;s blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/" >occo&#39;s blog.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">进程和程序的区别</a>
+                <a href="#" class="post-name">进程的理解</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            进程和程序的区别
+            进程的理解
             <!-- 404 -->
             
         </h1>
@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">363</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                        <span>Word count: <span class="post-count word-count">574</span>Reading time: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -424,6 +424,23 @@ height:50vh;
 <li>进程是暂时的，程序是永久的（保存在硬盘中）：进程是一个状态变化的过程，程序可长期保存</li>
 <li>进程与程序的组成不同：进程的组成包括程序，数据和进程控制块（即进程状态信息）</li>
 </ul>
+<h2 id="进程创建的过程"><a href="#进程创建的过程" class="headerlink" title="进程创建的过程"></a>进程创建的过程</h2><ol>
+<li>给新进程分配一个唯一的标识符</li>
+<li>给进程分配内存空间</li>
+<li>初始化进程控制块PCB</li>
+<li>将PCB放入就绪队列中，等待分配CPU资源</li>
+</ol>
+<h2 id="什么是进程控制块PCB？PCB保存了哪些信息？"><a href="#什么是进程控制块PCB？PCB保存了哪些信息？" class="headerlink" title="什么是进程控制块PCB？PCB保存了哪些信息？"></a>什么是进程控制块PCB？PCB保存了哪些信息？</h2><ul>
+<li>1.是进程存在的唯一标识</li>
+<li>2.创建一个进程就会创建一个PCB，当进程撤销时，系统回收它的PCB</li>
+<li>3.系统对进程的控制根据PCB进行，对进程的管理通过管理PCB实现</li>
+<li>4.能实现间断性的运行方式</li>
+<li>5.提供进程间通信管理所需的资源</li>
+<li>6.提供进程调度所需的信息<br><strong>PCB中保存了</strong></li>
+<li>1.进程的标识信息</li>
+<li>2.进程的状态信息（就绪、运行、阻塞）</li>
+<li>3.进程的控制信息</li>
+</ul>
 
     </article>
     <!-- license  -->
@@ -441,8 +458,8 @@ height:50vh;
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2020/04/10/20200410-%E7%BF%BB%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D/" title= "翻转字符串里的单词">
-                    <div class="prevTitle">翻转字符串里的单词</div>
+                <a href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%90%86%E8%A7%A3/" title= "进程和程序的区别">
+                    <div class="prevTitle">进程和程序的区别</div>
                 </a>
             
         </li>
@@ -565,7 +582,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#进程包括什么"><span class="toc-number">1.</span> <span class="toc-text">进程包括什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程和程序的联系"><span class="toc-number">2.</span> <span class="toc-text">进程和程序的联系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程和程序的区别"><span class="toc-number">3.</span> <span class="toc-text">进程和程序的区别</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#进程包括什么"><span class="toc-number">1.</span> <span class="toc-text">进程包括什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程和程序的联系"><span class="toc-number">2.</span> <span class="toc-text">进程和程序的联系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程和程序的区别"><span class="toc-number">3.</span> <span class="toc-text">进程和程序的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程创建的过程"><span class="toc-number">4.</span> <span class="toc-text">进程创建的过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是进程控制块PCB？PCB保存了哪些信息？"><span class="toc-number">5.</span> <span class="toc-text">什么是进程控制块PCB？PCB保存了哪些信息？</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -2999,9 +3016,192 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 151
+        Total : 162
         </div>
         <!-- search  -->
         
@@ -3017,7 +3217,57 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/14</span><a class="archive-post-title" href= "/2020/04/14/20200414-%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E4%BF%A1%E5%B0%81%E9%97%AE%E9%A2%98/" >俄罗斯套娃信封问题</a>
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/2020/04/21/20200421-%E5%88%A0%E6%95%B0%E9%97%AE%E9%A2%98/" >删数问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/2020/04/21/20200421-%E6%9C%80%E5%B0%8F%E6%A0%88/" >最小栈</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/2020/04/21/20200421-C++%E4%B8%AD%E6%8C%87%E9%92%88()%E3%80%81%E5%8F%96%E5%9C%B0%E5%9D%80(&)%E3%80%81%E8%A7%A3%E5%BC%95%E7%94%A8()%E4%B8%8E%E5%BC%95%E7%94%A8(&)%E7%9A%84%E5%8C%BA%E5%88%AB/" >C++中指针(*)、取地址(&)、解引用(*)与引用(&)的区别</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/20</span><a class="archive-post-title" href= "/2020/04/20/20200420-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" >数据库基础知识</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%AF%B9%E7%A7%B0%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91/" >对称的二叉树</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" >二叉树的镜像</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" >从上到下打印二叉树</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" >单例模式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span><a class="archive-post-title" href= "/2020/04/16/20200416-%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF/" >单源最短路</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/15</span><a class="archive-post-title" href= "/2020/04/15/20200415-C++%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" >C++基础知识</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/14</span><a class="archive-post-title" href= "/2020/04/14/20200414-%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E4%BF%A1%E5%B0%81%E9%97%AE%E9%A2%98/" >俄罗斯套娃信封问题（LIS）</a>
         </li>
     
     
@@ -3057,7 +3307,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >进程和程序的区别</a>
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >进程的理解</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%90%86%E8%A7%A3/" >进程和程序的区别</a>
         </li>
     
     
@@ -3332,12 +3587,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
         </li>
     
     
@@ -3372,7 +3627,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/17</span><a class="archive-post-title" href= "/2020/03/17/%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8/" >虚函数和虚函数表（vtable）</a>
+            <span class="archive-post-date">03/17</span><a class="archive-post-title" href= "/2020/03/17/%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0/" >虚函数和纯虚函数</a>
         </li>
     
     
@@ -3427,7 +3682,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/11</span><a class="archive-post-title" href= "/2020/03/11/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" >网络基础(上)</a>
+            <span class="archive-post-date">03/11</span><a class="archive-post-title" href= "/2020/03/11/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80(%E4%B8%8A)/" >网络基础(上)</a>
         </li>
     
     
@@ -3809,17 +4064,15 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
+        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
+    
+        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
+    
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
-        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
-    
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
-    
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
-    
-        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
@@ -3827,11 +4080,13 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
     
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
         <span class="sidebar-tag-name" data-tags="分治"><span class="iconfont-archer">&#xe606;</span>分治</span>
     
-        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
-    
         <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
+    
+        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
     
         <span class="sidebar-tag-name" data-tags="排序"><span class="iconfont-archer">&#xe606;</span>排序</span>
     

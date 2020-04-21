@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>俄罗斯套娃信封问题 · occo&#39;s blog</title>
+    <title>俄罗斯套娃信封问题（LIS） · occo&#39;s blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/" >occo&#39;s blog.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">俄罗斯套娃信封问题</a>
+                <a href="#" class="post-name">俄罗斯套娃信封问题（LIS）</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            俄罗斯套娃信封问题
+            俄罗斯套娃信封问题（LIS）
             <!-- 404 -->
             
         </h1>
@@ -274,7 +274,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">172</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                        <span>Word count: <span class="post-count word-count">420</span>Reading time: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -410,13 +410,22 @@ height:50vh;
 <p><strong>说明:</strong><br>不允许旋转信封。</p>
 <p><strong>示例:</strong></p>
 <p>输入: envelopes = [[5,4],[6,4],[6,7],[2,3]]<br>输出: 3<br>解释: 最多信封的个数为 3, 组合为: [2,3] =&gt; [5,4] =&gt; [6,7]。</p>
-<h2 id="最长上升子序列（nlogn）"><a href="#最长上升子序列（nlogn）" class="headerlink" title="最长上升子序列（nlogn）"></a>最长上升子序列（nlogn）</h2>
+<h2 id="最长上升子序列（nlogn）"><a href="#最长上升子序列（nlogn）" class="headerlink" title="最长上升子序列（nlogn）"></a>最长上升子序列（nlogn）</h2><p>n^2的算法很简单，设置一个数组，dp遍历一遍即可。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span><span class="comment">//O（n^2）</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lengthOfLIS</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.empty())<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">dp</span><span class="params">(nums.<span class="built_in">size</span>()+<span class="number">1</span>,<span class="number">1</span>)</span></span>;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[i]&gt;nums[j])&#123;</span><br><span class="line">                    dp[i]=<span class="built_in">max</span>(dp[i],dp[j]+<span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">             ans=<span class="built_in">max</span>(ans,dp[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>维护一个数组，这个数组的含义是：当前这个这个数组下表这么长的上升子序列结尾的数最小值是多少，所以每次只需要用二分更新一下里面的值即可实现O（nlogn）。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span><span class="comment">//O(nlogn)</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lengthOfLIS</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.empty())<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (ans.empty())</span><br><span class="line">                ans.push_back(nums[i]);</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[i] &gt; ans[ans.<span class="built_in">size</span>() - <span class="number">1</span>])</span><br><span class="line">                    ans.push_back(nums[i]);</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">int</span> pos=lower_bound(ans.<span class="built_in">begin</span>(),ans.<span class="built_in">end</span>(),nums[i])-ans.<span class="built_in">begin</span>();</span><br><span class="line">                    ans[pos]=nums[i];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans.<span class="built_in">size</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
     </article>
     <!-- license  -->
     
     <!-- paginator  -->
     <ul class="post-paginator">
         <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/04/15/20200415-C++%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title= "C++基础知识">
+                    <div class="nextTitle">C++基础知识</div>
+                </a>
             
         </li>
         <li class="previous">
@@ -2980,9 +2989,192 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 151
+        Total : 162
         </div>
         <!-- search  -->
         
@@ -2998,7 +3190,57 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/14</span><a class="archive-post-title" href= "/2020/04/14/20200414-%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E4%BF%A1%E5%B0%81%E9%97%AE%E9%A2%98/" >俄罗斯套娃信封问题</a>
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/2020/04/21/20200421-%E5%88%A0%E6%95%B0%E9%97%AE%E9%A2%98/" >删数问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/2020/04/21/20200421-%E6%9C%80%E5%B0%8F%E6%A0%88/" >最小栈</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/2020/04/21/20200421-C++%E4%B8%AD%E6%8C%87%E9%92%88()%E3%80%81%E5%8F%96%E5%9C%B0%E5%9D%80(&)%E3%80%81%E8%A7%A3%E5%BC%95%E7%94%A8()%E4%B8%8E%E5%BC%95%E7%94%A8(&)%E7%9A%84%E5%8C%BA%E5%88%AB/" >C++中指针(*)、取地址(&)、解引用(*)与引用(&)的区别</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/20</span><a class="archive-post-title" href= "/2020/04/20/20200420-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" >数据库基础知识</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%AF%B9%E7%A7%B0%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91/" >对称的二叉树</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" >二叉树的镜像</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" >从上到下打印二叉树</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" >单例模式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span><a class="archive-post-title" href= "/2020/04/16/20200416-%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF/" >单源最短路</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/15</span><a class="archive-post-title" href= "/2020/04/15/20200415-C++%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" >C++基础知识</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/14</span><a class="archive-post-title" href= "/2020/04/14/20200414-%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E4%BF%A1%E5%B0%81%E9%97%AE%E9%A2%98/" >俄罗斯套娃信封问题（LIS）</a>
         </li>
     
     
@@ -3038,7 +3280,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >进程和程序的区别</a>
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >进程的理解</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%90%86%E8%A7%A3/" >进程和程序的区别</a>
         </li>
     
     
@@ -3313,12 +3560,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
         </li>
     
     
@@ -3353,7 +3600,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/17</span><a class="archive-post-title" href= "/2020/03/17/%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8/" >虚函数和虚函数表（vtable）</a>
+            <span class="archive-post-date">03/17</span><a class="archive-post-title" href= "/2020/03/17/%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0/" >虚函数和纯虚函数</a>
         </li>
     
     
@@ -3408,7 +3655,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/11</span><a class="archive-post-title" href= "/2020/03/11/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" >网络基础(上)</a>
+            <span class="archive-post-date">03/11</span><a class="archive-post-title" href= "/2020/03/11/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80(%E4%B8%8A)/" >网络基础(上)</a>
         </li>
     
     
@@ -3790,17 +4037,15 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
+        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
+    
+        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
+    
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
-        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
-    
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
-    
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
-    
-        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
@@ -3808,11 +4053,13 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
     
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
         <span class="sidebar-tag-name" data-tags="分治"><span class="iconfont-archer">&#xe606;</span>分治</span>
     
-        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
-    
         <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
+    
+        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
     
         <span class="sidebar-tag-name" data-tags="排序"><span class="iconfont-archer">&#xe606;</span>排序</span>
     

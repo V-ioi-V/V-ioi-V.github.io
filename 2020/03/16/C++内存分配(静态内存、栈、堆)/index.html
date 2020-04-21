@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">375</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                        <span>Word count: <span class="post-count word-count">478</span>Reading time: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -406,18 +406,21 @@ height:50vh;
 <font size=4>
 
 <h2 id="静态内存"><a href="#静态内存" class="headerlink" title="静态内存"></a>静态内存</h2><p><strong>保存的对象：</strong></p>
-<p>1.局部static对象</p>
+<p>1.局部static变量</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> a;    <span class="comment">//局部static对象</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>2.类static数据成员</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">class <span class="title">Function</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span>;    <span class="comment">//类中static函数c</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> i_func;    <span class="comment">//类中static变量</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>2.类static数据成员变量</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">class <span class="title">Function</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span>;    <span class="comment">//类中static函数</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> i_func;    <span class="comment">//类中static变量</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>3.全局变量</p>
 <p><strong>生命周期：</strong></p>
 <ul>
 <li>从被定义开始，一直存在于程序的整个生命周期中。</li>
 </ul>
-<h2 id="栈内存"><a href="#栈内存" class="headerlink" title="栈内存"></a>栈内存</h2><p><strong>保存的对象：</strong></p>
+<h2 id="栈内存"><a href="#栈内存" class="headerlink" title="栈内存"></a>栈内存</h2><ul>
+<li>大小一般是 1M 或者 2M 。</li>
+</ul>
+<p><strong>保存的对象：</strong></p>
 <ol>
-<li>定义在函数内的非static对象</li>
+<li>定义在函数内的非static变量</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i_func;    <span class="comment">//定义在函数内的非static对象</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>生命周期：</strong></p>
@@ -441,16 +444,20 @@ height:50vh;
 <p><strong>动态内存分配方式：</strong></p>
 <ol>
 <li>运算符：new</li>
-<li>语法：<code>Type *pointer = new Type;</code></li>
-<li>返回：分配失败则返回空指针</li>
+<li>语法：Type *pointer = new Type;</li>
+<li>返回：分配失败则返回异常</li>
 </ol>
 <p><strong>动态内存摧毁方式：</strong></p>
 <ol>
 <li>运算符：delete</li>
-<li>语法：<code>delete pointer;</code></li>
+<li>语法：delete pointer;</li>
 </ol>
 <p><strong>初始化动态分配对象：</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *pi = <span class="keyword">new</span> <span class="keyword">int</span>(<span class="number">10</span>);    		    <span class="comment">//动态分配一个int对象，初始值为10</span></span><br><span class="line"><span class="built_in">string</span> *ps = <span class="keyword">new</span> <span class="built_in">string</span>(<span class="number">2</span>, <span class="string">'9'</span>);    <span class="comment">//动态分配一个string对象，初始值为"99"</span></span><br><span class="line"><span class="keyword">int</span> *pa = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>]();              <span class="comment">//动态分配一个int数组，大小为10，初始值为0</span></span><br></pre></td></tr></table></figure>
+<p><strong>自由存储区</strong></p>
+<p>那些由new分配的内存块，由应用程序去控制，一般一个new就要对应一个delete。如果程序员没有释放掉，那么在程序结束后，操作系统会自动回收。</p>
+<p><strong>常量存储区</strong></p>
+<p>这是一块比较特殊的存储区，他们里面存放的是常量，不允许修改。</p>
 <ul>
 <li>转自<a href="https://blog.csdn.net/weixin_41316331/article/details/89033197" target="_blank" rel="noopener">https://blog.csdn.net/weixin_41316331/article/details/89033197</a></li>
 </ul>
@@ -463,8 +470,8 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href= "/2020/03/17/%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8/" title= "虚函数和虚函数表（vtable）">
-                    <div class="nextTitle">虚函数和虚函数表（vtable）</div>
+                <a href= "/2020/03/17/%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0/" title= "虚函数和纯虚函数">
+                    <div class="nextTitle">虚函数和纯虚函数</div>
                 </a>
             
         </li>
@@ -3029,9 +3036,192 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 151
+        Total : 162
         </div>
         <!-- search  -->
         
@@ -3047,7 +3237,57 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/14</span><a class="archive-post-title" href= "/2020/04/14/20200414-%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E4%BF%A1%E5%B0%81%E9%97%AE%E9%A2%98/" >俄罗斯套娃信封问题</a>
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/2020/04/21/20200421-%E5%88%A0%E6%95%B0%E9%97%AE%E9%A2%98/" >删数问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/2020/04/21/20200421-%E6%9C%80%E5%B0%8F%E6%A0%88/" >最小栈</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/2020/04/21/20200421-C++%E4%B8%AD%E6%8C%87%E9%92%88()%E3%80%81%E5%8F%96%E5%9C%B0%E5%9D%80(&)%E3%80%81%E8%A7%A3%E5%BC%95%E7%94%A8()%E4%B8%8E%E5%BC%95%E7%94%A8(&)%E7%9A%84%E5%8C%BA%E5%88%AB/" >C++中指针(*)、取地址(&)、解引用(*)与引用(&)的区别</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/20</span><a class="archive-post-title" href= "/2020/04/20/20200420-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" >数据库基础知识</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%AF%B9%E7%A7%B0%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91/" >对称的二叉树</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" >二叉树的镜像</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" >从上到下打印二叉树</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" >单例模式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span><a class="archive-post-title" href= "/2020/04/16/20200416-%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF/" >单源最短路</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/15</span><a class="archive-post-title" href= "/2020/04/15/20200415-C++%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" >C++基础知识</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/14</span><a class="archive-post-title" href= "/2020/04/14/20200414-%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E4%BF%A1%E5%B0%81%E9%97%AE%E9%A2%98/" >俄罗斯套娃信封问题（LIS）</a>
         </li>
     
     
@@ -3087,7 +3327,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >进程和程序的区别</a>
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >进程的理解</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%90%86%E8%A7%A3/" >进程和程序的区别</a>
         </li>
     
     
@@ -3362,12 +3607,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
         </li>
     
     
@@ -3402,7 +3647,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/17</span><a class="archive-post-title" href= "/2020/03/17/%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8/" >虚函数和虚函数表（vtable）</a>
+            <span class="archive-post-date">03/17</span><a class="archive-post-title" href= "/2020/03/17/%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0/" >虚函数和纯虚函数</a>
         </li>
     
     
@@ -3457,7 +3702,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/11</span><a class="archive-post-title" href= "/2020/03/11/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" >网络基础(上)</a>
+            <span class="archive-post-date">03/11</span><a class="archive-post-title" href= "/2020/03/11/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80(%E4%B8%8A)/" >网络基础(上)</a>
         </li>
     
     
@@ -3839,17 +4084,15 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
+        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
+    
+        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
+    
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
-        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
-    
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
-    
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
-    
-        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
@@ -3857,11 +4100,13 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
     
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
         <span class="sidebar-tag-name" data-tags="分治"><span class="iconfont-archer">&#xe606;</span>分治</span>
     
-        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
-    
         <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
+    
+        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
     
         <span class="sidebar-tag-name" data-tags="排序"><span class="iconfont-archer">&#xe606;</span>排序</span>
     

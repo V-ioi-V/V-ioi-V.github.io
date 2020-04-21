@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>网络基础(上) · occo&#39;s blog</title>
+    <title>从上到下打印二叉树 · occo&#39;s blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/" >occo&#39;s blog.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">网络基础(上)</a>
+                <a href="#" class="post-name">从上到下打印二叉树</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            网络基础(上)
+            从上到下打印二叉树
             <!-- 404 -->
             
         </h1>
@@ -266,18 +266,18 @@ height:50vh;
                 
                     <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">3k</span>Reading time: <span class="post-count reading-time">10 min</span></span>
+                        <span>Word count: <span class="post-count word-count">564</span>Reading time: <span class="post-count reading-time">3 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2020/03/11</span>
+                    <span class="post-intro-time">2020/04/18</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -401,115 +401,21 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>如果不分层，可能下层的开发和各种协议都要学，但是做了分层，只需要开发应用层，然后接入下层API就可。</p>
-<a id="more"></a>
-<h1 id="OSI，TCP-IP，五层协议的体系结构，以及各层协议"><a href="#OSI，TCP-IP，五层协议的体系结构，以及各层协议" class="headerlink" title="OSI，TCP/IP，五层协议的体系结构，以及各层协议"></a>OSI，TCP/IP，五层协议的体系结构，以及各层协议</h1><ul>
-<li><p>OSI分层 （7层）：物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。</p>
-</li>
-<li><p>TCP/IP分层（4层）：网络接口层、 网际层、运输层、 应用层。</p>
-<ul>
-<li>前三层一般在内核执行，应用程序通常是用户进程。</li>
-<li>应用层关心应用程序的细节，下三层处理通讯细节。</li>
-<li>互联网的目的之一就是在应用程序中隐藏所有的物理细节</li>
-</ul>
-</li>
-<li><p>五层协议 （5层）：物理层、数据链路层、网络层、运输层、 应用层。</p>
-<p><strong>每一层的协议如下：</strong></p>
-</li>
-<li><p>物理层：RJ45、CLOCK、IEEE802.3 （中继器，集线器）</p>
-</li>
-<li><p>数据链路：PPP、FR、HDLC、VLAN、MAC （网桥，交换机）</p>
-</li>
-<li><p>网络层：IP、ICMP、ARP、RARP、OSPF、IPX、RIP、IGRP、 （路由器）</p>
-</li>
-<li><p>传输层：TCP、UDP、SPX</p>
-</li>
-<li><p>会话层：NFS、SQL、NETBIOS、RPC</p>
-</li>
-<li><p>表示层：JPEG、MPEG、ASII</p>
-</li>
-<li><p>应用层：FTP、DNS、Telnet、SMTP、HTTP、WWW、NFS</p>
-<p><strong>每一层的作用如下：</strong></p>
-</li>
-<li><p>物理层：通过媒介传输比特,确定机械及电气规范（比特Bit）</p>
-</li>
-<li><p>数据链路层：将比特组装成帧和点到点的传递（帧Frame）</p>
-</li>
-<li><p>网络层：负责数据包从源到宿的传递和网际互连（包PackeT）[46,1500]</p>
-</li>
-<li><p>传输层：提供端到端的可靠报文传递和错误恢复（段Segment）</p>
-</li>
-<li><p>会话层：建立、管理和终止会话（会话协议数据单元SPDU）</p>
-</li>
-<li><p>表示层：对数据进行翻译、加密和压缩（表示协议数据单元PPDU）</p>
-</li>
-<li><p>应用层：允许访问OSI环境的手段（应用协议数据单元APDU）</p>
-</li>
-</ul>
-<h1 id="IP地址的分类"><a href="#IP地址的分类" class="headerlink" title="IP地址的分类"></a>IP地址的分类</h1><p><img src="https://i.loli.net/2020/03/16/6EPTuHXgCRAp4Ms.png" alt="20160712182446560.jpeg"></p>
-<ul>
-<li><p>A类地址：以0开头，  第一个字节范围：1~126（1.0.0.0 - 126.255.255.255）；</p>
-<p><del>127.0.0.0到127.255.255.255是保留地址，用做循环测试用的。比如你ping 127.0.0.1,和ping本机的IP是一样的效果 127.0.0.1是本地主机IP,就是用来测试的</del></p>
-</li>
-<li><p>B类地址：以10开头，  第一个字节范围：128~191（128.0.0.0 - 191.255.255.255）；</p>
-</li>
-<li><p>C类地址：以110开头， 第一个字节范围：192~223（192.0.0.0 - 223.255.255.255）；</p>
-</li>
-<li><p>D类地址：以1110开头，第一个字节范围：224~239（224.0.0.0 - 239.255.255.255）；（作为多播使用）</p>
-</li>
-<li><p>E类地址：保留</p>
-</li>
-</ul>
-<h2 id="适用范围"><a href="#适用范围" class="headerlink" title="适用范围"></a>适用范围</h2><ul>
-<li>A类适用的类型为大型网络，A类网络地址数量较少，有126个网络，每个网络支持的最大主机数为256的3次方-2=16777214台；</li>
-<li>B类适用的类型为中型网络，B类网络地址数量适中，有16384个网络，每个网络支持的最大主机数为256的2次方-2=65534台；</li>
-<li>C类适用的类型为小型网络，C类网络地址数量较多，有209万余个网络，适用于小规模的局域网络，每个网络支持的最大主机数为256的</li>
-</ul>
-<p><strong>其中A、B、C是基本类，D、E类作为多播和保留使用。以下是留用的内部私有地址：</strong></p>
-<p>A类 10.0.0.0—10.255.255.255</p>
-<p>B类 172.16.0.0—172.31.255.255</p>
-<p>C类 192.168.0.0—192.168.255.255</p>
-<p><strong>IP地址与子网掩码相与得到网络号：</strong></p>
-<p>子网掩码只有一个作用，就是将某个IP地址划分成网络地址和主机地址两部分。 </p>
-<p>ip    : 192.168.2.110  &amp;   Submask : 255.255.255.0</p>
-<p>-—————————————-</p>
-<p>网络号  ：192.168.2  .0</p>
-<p><strong>我们将网络号相同的网络称为本地网络，络号不相同的主机称之为远程网络主机，本地网络中的主机可以直接相互通信；远程网络中的主机要相互通信必须通过本地网关（Gateway）来传递转发数据。</strong></p>
-<p>计算机的网关（Gateway）就是到其他网段的出口，也就是路由器接口IP地址。路由器接口使用的IP地址可以是本网段中任何一个地址，不过通常使用该网段的<strong>第一个可用的地址或最后一个可用的地址</strong>，这是为了尽可能避免和本网段中的主机地址冲突。</p>
-<p>注:</p>
-<p>主机号，全为0的是网络号（例如：192.168.2.0），主机号全为1的为广播地址（192.168.2.255）</p>
-<h2 id="子网掩码的分类"><a href="#子网掩码的分类" class="headerlink" title="子网掩码的分类"></a>子网掩码的分类</h2><p><strong>①、缺省子网掩码</strong></p>
-<p>也叫默认子网掩码，即未划分子网，对应的网络号的位都置 1 ，主机号都置 0 。</p>
-<p>未做子网划分的IP地址：网络号＋主机号</p>
-<p>A类网络缺省子网掩码： 255.0.0.0，用CIDR表示为/8，（<strong>CIDR斜线记法</strong>，表示子网掩码的方法）</p>
-<p>B类网络缺省子网掩码： 255.255.0.0，用CIDR表示为/16</p>
-<p>C类网络缺省子网掩码： 255.255.255.0，用CIDR表示为/24</p>
-<p><strong>②、自定义子网掩码</strong></p>
-<p>将一个网络划分子网后，把原本的主机号位置的一部分给了子网号，余下的才是给了子网的主机号。其形式如下：</p>
-<p>做子网划分后的IP地址：网络号＋子网号＋子网主机号</p>
-<p>举个栗子：</p>
-<p>如：192.168.1.100/25，其子网掩码表示：255.255.255.128</p>
-<p>意思就是将192.168.1.0这个网段的主机位的最高1位划分为了子网。</p>
-<h2 id="为什么要要划分子网？"><a href="#为什么要要划分子网？" class="headerlink" title="为什么要要划分子网？"></a>为什么要要划分子网？</h2><p>例如：在A类IP地址中，每个A类网络可能有16，777，214台主机，它们处于同一广播域。在同一广播域中有这么多主机是不可能的，网络会因为广播通信而饱和。另一方面，IP地址资源越来越少。为实现更小的广播域，就需要进一步分成更小的网络。划分子网后，通过使用掩码，把子网隐藏起来，使得从外部看网络没有变化，这就是子网掩码。</p>
-<h2 id="两个不同的主机怎么知道对方是不是在自己的局域网里？"><a href="#两个不同的主机怎么知道对方是不是在自己的局域网里？" class="headerlink" title="两个不同的主机怎么知道对方是不是在自己的局域网里？"></a>两个不同的主机怎么知道对方是不是在自己的局域网里？</h2><p>假设一个主机A想和主机B通信，但是现在主机A手中唯一的信息就是主机B的IP地址，所以主机A就会拿自己和B的IP地址与自己的子网掩码做”与”运算，运算结果就是二者的主机号，然后再来作比较，相同的话就是同一网段，不相同的话就是不同网段，需要通过网关转发，<strong>之前有一个疑问就是:：</strong>ABC类的子网掩码是不同的，会不会两个不同类的IP地址之间通信会导致由于二者子网掩码不同而导致的做（&amp;）运算时算的是主机号，仔细观察就会发现ABC类地址的最前面0的位置，不管是怎样的运算，都不可能运算出相同的主机号来，因为前面那几位不同网段肯定是不一样的。</p>
-<h1 id="ARP是地址解析协议，简单语言解释一下工作原理。"><a href="#ARP是地址解析协议，简单语言解释一下工作原理。" class="headerlink" title="ARP是地址解析协议，简单语言解释一下工作原理。"></a>ARP是地址解析协议，简单语言解释一下工作原理。</h1><h2 id="出现的原因"><a href="#出现的原因" class="headerlink" title="出现的原因"></a>出现的原因</h2><p>ARP协议是“Address Resolution Protocol”（地址解析协议）的缩写。其作用是在以太网环境中，数据的传输所依懒的是MAC地址而非IP地址，而将已知IP地址转换为MAC地址的工作是由ARP协议来完成的。</p>
-<p>在局域网中，网络中实际传输的是“帧”，帧里面是有目标主机的MAC地址的。在以太网中，一个主机和另一个主机进行直接通信，必须要知道目标主机的MAC地址。但这个目标MAC地址是如何获得的呢？它就是通过地址解析协议获得的。所谓“地址解析”就是主机在发送帧前将目标IP地址转换成目标MAC地址的过程。ARP协议的基本功能就是通过目标设备的IP地址，查询目标设备的MAC地址，以保证通信的顺利进行。</p>
-<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><ul>
-<li>首先，每个主机都会在自己的<strong>ARP缓冲区</strong>中建立一个ARP列表，以表示IP地址和MAC地址之间的对应关系。</li>
-<li>当源主机要发送数据时，首先检查ARP列表中是否有对应IP地址的目的主机的MAC地址，如果有，则直接发送数据，如果没有，就向本网段的所有主机发送ARP数据包，该数据包包括的内容有：源主机 IP地址，源主机MAC地址，目的主机的IP 地址。</li>
-<li>当本网络的所有主机收到该ARP数据包时，首先检查数据包中的IP地址是否是自己的IP地址，如果不是，则忽略该数据包，如果是，则首先从数据包中取出源主机的IP和MAC地址写入到ARP列表中，如果已经存在，则覆盖，然后将自己的MAC地址写入<strong>ARP响应包</strong>中，告诉源主机自己是它想要找的MAC地址。</li>
-<li>源主机收到ARP响应包后。将目的主机的IP和MAC地址写入ARP列表，并利用此信息发送数据。如果源主机一直没有收到ARP响应数据包，表示ARP查询失败。<br>广播发送ARP请求，单播发送ARP响应。</li>
-</ul>
-<h2 id="描述RARP协议"><a href="#描述RARP协议" class="headerlink" title="描述RARP协议"></a>描述RARP协议</h2><p>​        RARP是逆地址解析协议，作用是完成硬件地址到IP地址的映射，主要用于无盘工作站，因为给无盘工作站配置的IP地址不能保存。</p>
-<p>​        工作流程：在网络中配置一台RARP服务器，里面保存着IP地址和MAC地址的映射关系，当无盘工作站启动后，就封装一个RARP数据包，里面有其MAC地址，然后广播到网络上去，当服务器收到请求包后，就查找对应的MAC地址的IP地址装入响应报文中发回给请求者。因为需要广播请求报文，因此RARP只能用于具有广播能力的网络。</p>
-<h1 id="各种协议的介绍"><a href="#各种协议的介绍" class="headerlink" title="各种协议的介绍"></a>各种协议的介绍</h1><ul>
-<li>ICMP协议： 因特网控制报文协议（网络层）。它是TCP/IP协议族的一个子协议，用于在IP主机、路由器之间传递控制消息。 <strong>功能：确认IP包是否成功到达目标地址；通知在发送过程中IP包被丢弃的原因.</strong></li>
-<li>TFTP协议： 是TCP/IP协议族中的一个用来在客户机与服务器之间进行简单文件传输的协议，提供不复杂、开销不大的文件传输服务。</li>
-<li>HTTP协议： 超文本传输协议，是一个属于应用层的面向对象的协议，由于其简捷、快速的方式，适用于分布式超媒体信息系统。</li>
-<li>NAT协议：网络地址转换属接入广域网(WAN)技术，是一种将私有（保留）地址转化为合法IP地址的转换技术，</li>
-<li>DHCP协议：动态主机配置协议，是一种让系统得以连接到网络上，并获取所需要的配置参数手段，使用UDP协议工作。具体用途：给内部网络或网络服务供应商自动分配IP地址，给用户或者内部网络管理员作为对所有计算机作中央管理的手段。<strong>没有分配前，ip地址为0:0:0:0</strong></li>
-</ul>
-<p><strong>traceroute：</strong>采用的是<strong>UDP协议</strong>利用ICMP会返回丢包原因和IP的TTL来找到主机之间所有的路由器，首先TTL设置成1，就会找到距离原主机1个单位的路由器。依次把TTL+1，得到所有的信息。把目的端口号设置成大于30000，也就是基本上不可能存在的那种，每次TTL++时，目的端口号也++，这样的话，每次如果到达的还是路由器就会返回超时，到达目的主机的话就会返回端口不可达，就知道自己已经找完了。</p>
+        <font size=4>
+
+<h2 id="I"><a href="#I" class="headerlink" title="I"></a>I</h2><p>从上到下打印出二叉树的每个节点，同一层的节点按照从左到右的顺序打印。</p>
+<p><strong>例如:</strong><br>给定二叉树: [3,9,20,null,null,15,7],</p>
+<p>给定二叉树: <code>[3,9,20,null,null,15,7]</code>,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  3</span><br><span class="line"> &#x2F; \</span><br><span class="line">9  20</span><br><span class="line">  &#x2F;  \</span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure>
+<p><strong>返回：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[3,9,20,15,7]</span><br></pre></td></tr></table></figure>
+<p><strong>提示：</strong></p>
+<p>节点总数 &lt;= 1000</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    TreeNode *left;</span><br><span class="line">    TreeNode *right;</span><br><span class="line"></span><br><span class="line">    TreeNode(<span class="keyword">int</span> x) : val(x), left(<span class="literal">NULL</span>), right(<span class="literal">NULL</span>) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">levelOrder</span><span class="params">(TreeNode *root)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line">        <span class="built_in">queue</span>&lt;TreeNode *&gt; q;</span><br><span class="line">        q.push(root);</span><br><span class="line">        <span class="keyword">while</span> (!q.empty()) &#123;</span><br><span class="line">            TreeNode *x = q.front();</span><br><span class="line">            q.pop();</span><br><span class="line">            <span class="keyword">if</span> (x == <span class="literal">NULL</span>)<span class="keyword">continue</span>;</span><br><span class="line">            ans.push_back(x-&gt;val);</span><br><span class="line">            q.push(x-&gt;left);</span><br><span class="line">            q.push(x-&gt;right);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="II"><a href="#II" class="headerlink" title="II"></a>II</h2><p>从上到下按层打印二叉树，同一层的节点按从左到右的顺序打印，每一层打印到一行。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    TreeNode *left;</span><br><span class="line">    TreeNode *right;</span><br><span class="line"></span><br><span class="line">    TreeNode(<span class="keyword">int</span> x) : val(x), left(<span class="literal">NULL</span>), right(<span class="literal">NULL</span>) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">levelOrder</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ans;</span><br><span class="line">        <span class="built_in">queue</span>&lt;TreeNode *&gt; q1;</span><br><span class="line">        <span class="built_in">queue</span>&lt;TreeNode *&gt; q2;</span><br><span class="line">        q1.push(root);</span><br><span class="line">        <span class="keyword">while</span> (!q1.empty() || !q2.empty()) &#123;</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ant;</span><br><span class="line">            <span class="keyword">while</span> (!q1.empty()) &#123;</span><br><span class="line">                TreeNode *x = q1.front();</span><br><span class="line">                q1.pop();</span><br><span class="line">                <span class="keyword">if</span> (x == <span class="literal">NULL</span>)<span class="keyword">continue</span>;</span><br><span class="line">                ant.push_back(x-&gt;val);</span><br><span class="line">                q2.push(x-&gt;left);</span><br><span class="line">                q2.push(x-&gt;right);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(!ant.empty())ans.push_back(ant);</span><br><span class="line">            ant.<span class="built_in">clear</span>();</span><br><span class="line">            <span class="keyword">while</span> (!q2.empty()) &#123;</span><br><span class="line">                TreeNode *x = q2.front();</span><br><span class="line">                q2.pop();</span><br><span class="line">                <span class="keyword">if</span> (x == <span class="literal">NULL</span>)<span class="keyword">continue</span>;</span><br><span class="line">                ant.push_back(x-&gt;val);</span><br><span class="line">                q1.push(x-&gt;left);</span><br><span class="line">                q1.push(x-&gt;right);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(!ant.empty())ans.push_back(ant);</span><br><span class="line">            ant.<span class="built_in">clear</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="III"><a href="#III" class="headerlink" title="III"></a>III</h2><p>请实现一个函数按照之字形顺序打印二叉树，即第一行按照从左到右的顺序打印，第二层按照从右到左的顺序打印，第三行再按照从左到右的顺序打印，其他行以此类推。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    TreeNode *left;</span><br><span class="line">    TreeNode *right;</span><br><span class="line"></span><br><span class="line">    TreeNode(<span class="keyword">int</span> x) : val(x), left(<span class="literal">NULL</span>), right(<span class="literal">NULL</span>) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">levelOrder</span><span class="params">(TreeNode *root)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ans;</span><br><span class="line">        <span class="built_in">stack</span>&lt;TreeNode *&gt; s1,s2;</span><br><span class="line">        s1.push(root);</span><br><span class="line">        <span class="keyword">while</span>(!s1.empty()||!s2.empty())&#123;</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ant;</span><br><span class="line">            <span class="keyword">while</span>(!s1.empty())&#123;</span><br><span class="line">                TreeNode *x=s1.top();</span><br><span class="line">                s1.pop();</span><br><span class="line">                <span class="keyword">if</span>(x==<span class="literal">NULL</span>)<span class="keyword">continue</span>;</span><br><span class="line">                ant.push_back(x-&gt;val);</span><br><span class="line">                s2.push(x-&gt;left);</span><br><span class="line">                s2.push(x-&gt;right);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(!ant.empty())ans.push_back(ant);</span><br><span class="line">            ant.<span class="built_in">clear</span>();</span><br><span class="line">            <span class="keyword">while</span>(!s2.empty())&#123;</span><br><span class="line">                TreeNode *x=s2.top();</span><br><span class="line">                s2.pop();</span><br><span class="line">                <span class="keyword">if</span>(x==<span class="literal">NULL</span>)<span class="keyword">continue</span>;</span><br><span class="line">                ant.push_back(x-&gt;val);</span><br><span class="line">                s1.push(x-&gt;right);</span><br><span class="line">                s1.push(x-&gt;left);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(!ant.empty())ans.push_back(ant);</span><br><span class="line">            ant.<span class="built_in">clear</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
     </article>
     <!-- license  -->
@@ -519,16 +425,16 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href= "/2020/03/12/Http%E5%92%8CHttps%E7%9A%84%E5%8C%BA%E5%88%AB/" title= "HTTP和HTTPS的区别">
-                    <div class="nextTitle">HTTP和HTTPS的区别</div>
+                <a href= "/2020/04/18/20200418-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" title= "二叉树的镜像">
+                    <div class="nextTitle">二叉树的镜像</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2020/03/11/rand5()%E7%94%9F%E6%88%90rand7()/" title= "rand5()生成rand7()">
-                    <div class="prevTitle">rand5()生成rand7()</div>
+                <a href= "/2020/04/18/20200418-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" title= "单例模式">
+                    <div class="prevTitle">单例模式</div>
                 </a>
             
         </li>
@@ -651,7 +557,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#OSI，TCP-IP，五层协议的体系结构，以及各层协议"><span class="toc-number">1.</span> <span class="toc-text">OSI，TCP&#x2F;IP，五层协议的体系结构，以及各层协议</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IP地址的分类"><span class="toc-number">2.</span> <span class="toc-text">IP地址的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#适用范围"><span class="toc-number">2.1.</span> <span class="toc-text">适用范围</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#子网掩码的分类"><span class="toc-number">2.2.</span> <span class="toc-text">子网掩码的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要要划分子网？"><span class="toc-number">2.3.</span> <span class="toc-text">为什么要要划分子网？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#两个不同的主机怎么知道对方是不是在自己的局域网里？"><span class="toc-number">2.4.</span> <span class="toc-text">两个不同的主机怎么知道对方是不是在自己的局域网里？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ARP是地址解析协议，简单语言解释一下工作原理。"><span class="toc-number">3.</span> <span class="toc-text">ARP是地址解析协议，简单语言解释一下工作原理。</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#出现的原因"><span class="toc-number">3.1.</span> <span class="toc-text">出现的原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工作原理"><span class="toc-number">3.2.</span> <span class="toc-text">工作原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#描述RARP协议"><span class="toc-number">3.3.</span> <span class="toc-text">描述RARP协议</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#各种协议的介绍"><span class="toc-number">4.</span> <span class="toc-text">各种协议的介绍</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#I"><span class="toc-number">1.</span> <span class="toc-text">I</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#II"><span class="toc-number">2.</span> <span class="toc-text">II</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#III"><span class="toc-number">3.</span> <span class="toc-text">III</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -3085,9 +2991,192 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 151
+        Total : 162
         </div>
         <!-- search  -->
         
@@ -3103,7 +3192,57 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/14</span><a class="archive-post-title" href= "/2020/04/14/20200414-%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E4%BF%A1%E5%B0%81%E9%97%AE%E9%A2%98/" >俄罗斯套娃信封问题</a>
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/2020/04/21/20200421-%E5%88%A0%E6%95%B0%E9%97%AE%E9%A2%98/" >删数问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/2020/04/21/20200421-%E6%9C%80%E5%B0%8F%E6%A0%88/" >最小栈</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/2020/04/21/20200421-C++%E4%B8%AD%E6%8C%87%E9%92%88()%E3%80%81%E5%8F%96%E5%9C%B0%E5%9D%80(&)%E3%80%81%E8%A7%A3%E5%BC%95%E7%94%A8()%E4%B8%8E%E5%BC%95%E7%94%A8(&)%E7%9A%84%E5%8C%BA%E5%88%AB/" >C++中指针(*)、取地址(&)、解引用(*)与引用(&)的区别</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/20</span><a class="archive-post-title" href= "/2020/04/20/20200420-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" >数据库基础知识</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%AF%B9%E7%A7%B0%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91/" >对称的二叉树</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" >二叉树的镜像</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" >从上到下打印二叉树</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" >单例模式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span><a class="archive-post-title" href= "/2020/04/16/20200416-%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF/" >单源最短路</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/15</span><a class="archive-post-title" href= "/2020/04/15/20200415-C++%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" >C++基础知识</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/14</span><a class="archive-post-title" href= "/2020/04/14/20200414-%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E4%BF%A1%E5%B0%81%E9%97%AE%E9%A2%98/" >俄罗斯套娃信封问题（LIS）</a>
         </li>
     
     
@@ -3143,7 +3282,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >进程和程序的区别</a>
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >进程的理解</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%90%86%E8%A7%A3/" >进程和程序的区别</a>
         </li>
     
     
@@ -3418,12 +3562,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
         </li>
     
     
@@ -3458,7 +3602,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/17</span><a class="archive-post-title" href= "/2020/03/17/%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8/" >虚函数和虚函数表（vtable）</a>
+            <span class="archive-post-date">03/17</span><a class="archive-post-title" href= "/2020/03/17/%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0/" >虚函数和纯虚函数</a>
         </li>
     
     
@@ -3513,7 +3657,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/11</span><a class="archive-post-title" href= "/2020/03/11/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" >网络基础(上)</a>
+            <span class="archive-post-date">03/11</span><a class="archive-post-title" href= "/2020/03/11/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80(%E4%B8%8A)/" >网络基础(上)</a>
         </li>
     
     
@@ -3895,17 +4039,15 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
+        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
+    
+        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
+    
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
-        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
-    
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
-    
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
-    
-        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
@@ -3913,11 +4055,13 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
     
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
         <span class="sidebar-tag-name" data-tags="分治"><span class="iconfont-archer">&#xe606;</span>分治</span>
     
-        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
-    
         <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
+    
+        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
     
         <span class="sidebar-tag-name" data-tags="排序"><span class="iconfont-archer">&#xe606;</span>排序</span>
     

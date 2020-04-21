@@ -403,10 +403,9 @@ height:50vh;
     <article class="article-entry">
         <font size=4>
 
-<font size=6>**一个C++源文件从文本到可执行文件经历的过程**</font>
-
+<p><strong>一个C++源文件从文本到可执行文件经历的过程</strong></p>
 <p>对于一个C++源文件，从文本到可执行文件一般需要四个过程：</p>
-<h2 id="一、预处理阶段：（-i）"><a href="#一、预处理阶段：（-i）" class="headerlink" title="一、预处理阶段：（.i）"></a>一、预处理阶段：（.i）</h2><p>对源代码文件中文件包含关系（头文件）、预编译语句（宏定义）进行分析和替换，成预编译文件。</p>
+<h2 id="一、预处理阶段-i"><a href="#一、预处理阶段-i" class="headerlink" title="一、预处理阶段(.i)"></a>一、预处理阶段(.i)</h2><p>对源代码文件中文件包含关系（头文件）、预编译语句（宏定义）进行分析和替换，成预编译文件。</p>
 <ul>
 <li>1.删除所有的#define，展开所有的宏定义。</li>
 <li>2.处理所有的条件预编译指令，如“#if”、“#endif”、“#ifdef”、“#elif”和“#else”，将不必要的代码过滤掉。</li>
@@ -428,38 +427,44 @@ height:50vh;
 </ul>
 <p>　　#include” “ 引用的是你<strong>程序目录的相对路径中的头文件</strong>。</p>
 <p>　　假如你的项目目录是在 D:\Projects\tmp\ ，则 #include”my.h” 引用的就是 D:\Projects\tmp\my.h 这个头文件，一般是用来引用自己写的一些头文件。如果使用 #include” “ ，它是会先在你项目的当前目录查找是否有对应头文件，如果没有，它还是会在对应的引用目录里面查找对应的头文件。例如，使用 #include “stdio.h” 如果在你项目目录里面，没有 stdio.h 这个头文件，它还是会定位到 C:\Keil\c51\INC\stdio.h 这个头文件的。</p>
-<h2 id="二、编译阶段：-s"><a href="#二、编译阶段：-s" class="headerlink" title="二、编译阶段：(.s)"></a>二、编译阶段：(.s)</h2><p>将经过预处理后的预编译文件转换成特定汇编代码，生成汇编文件。</p>
+<h2 id="二、编译阶段-s"><a href="#二、编译阶段-s" class="headerlink" title="二、编译阶段(.s)"></a>二、编译阶段(.s)</h2><p>将经过预处理后的预编译文件转换成特定汇编代码，生成汇编文件。</p>
 <p>词法分析：利用类似于“有限状态机”的算法，将源代码程序输入到扫描机中，将其中的字符序列分割成一系列的记号。<br>语法分析：语法分析器对由扫描器产生的记号，进行语法分析，产生语法树。由语法分析器输出的语法树是一种以表达式为节点的树。<br>语义分析：语法分析器只是完成了对表达式语法层面的分析，语义分析器则对表达式是否有意义进行判断，其分析的语义是静态语义——在编译期能分期的语义，相对应的动态语义是在运行期才能确定的语义。<br>优化：源代码级别的一个优化过程。<br>目标代码生成：由代码生成器将中间代码转换成目标机器代码，生成一系列的代码序列——汇编语言表示。<br>目标代码优化：目标代码优化器对上述的目标机器代码进行优化：寻找合适的寻址方式、使用位移来替代乘法运算、删除多余的指令等。</p>
-<h2 id="三、汇编阶段：-o或-obj"><a href="#三、汇编阶段：-o或-obj" class="headerlink" title="三、汇编阶段：(.o或.obj)"></a>三、汇编阶段：(.o或.obj)</h2><p>将编译阶段生成的汇编文件转化成机器码，可重定位的(二进制)目标文件。<br>汇编器的汇编过程相对于编译器来说更简单，没有复杂的语法，也没有语义，更不需要做指令优化，<strong>只是根据汇编指令和机器指令的对照表一一翻译过来</strong>，汇编过程有汇编器as完成。经汇编之后，产生目标文件(与可执行文件格式几乎一样)xxx.o(Windows下)、xxx.obj(Linux下)。</p>
+<h2 id="三、汇编阶段-o或-obj"><a href="#三、汇编阶段-o或-obj" class="headerlink" title="三、汇编阶段(.o或.obj)"></a>三、汇编阶段(.o或.obj)</h2><p>将编译阶段生成的汇编文件转化成机器码，可重定位的(二进制)目标文件。<br>汇编器的汇编过程相对于编译器来说更简单，没有复杂的语法，也没有语义，更不需要做指令优化，<strong>只是根据汇编指令和机器指令的对照表一一翻译过来</strong>，汇编过程有汇编器as完成。经汇编之后，产生目标文件(与可执行文件格式几乎一样)xxx.o(Windows下)、xxx.obj(Linux下)。</p>
 <p>目标文件由段组成，通常一个目标文件中至少有两个段：</p>
 <ul>
 <li><strong>代码段</strong>：该段中所包含的<strong>主要是程序的指令</strong>。该段一般是可读和可执行的，但一般却不可写。</li>
 <li><strong>数据段</strong>：主要存放程序中要用到的各种<strong>全局变量或静态的数据</strong>。一般数据段都是可读，可写，可执行的。</li>
 </ul>
-<h2 id="四、链接阶段：-out或-exe"><a href="#四、链接阶段：-out或-exe" class="headerlink" title="四、链接阶段：(.out或.exe)"></a>四、链接阶段：(.out或.exe)</h2><p>将多个目标文件及所需要的库连接成最终的可执行目标文件。链接分为静态链接和动态链接：</p>
-<p>静态链接和动态链接两者最大的区别就在于链接的时机不一样，静态链接是在形成可执行程序前，而动态链接的进行则是在程序执行时，下面来详细介绍这两种链接方式。</p>
-<h3 id="一、静态链接"><a href="#一、静态链接" class="headerlink" title="一、静态链接"></a>一、静态链接</h3><h4 id="1-为什么要进行静态链接"><a href="#1-为什么要进行静态链接" class="headerlink" title="1.为什么要进行静态链接"></a>1.为什么要进行静态链接</h4><p>​        在我们的实际开发中，不可能将所有代码放在一个源文件中，所以会出现多个源文件，而且多个源文件之间不是独立的，而会存在多种依赖关系，如一个源文件可能要调用另一个源文件中定义的函数，但是每个源文件都是独立编译的，即每个<em>.c文件会形成一个</em>.o文件，为了满足前面说的依赖关系，则需要将这些源文件产生的目标文件进行链接，从而形成一个可以执行的程序。这个链接的过程就是静态链接</p>
-<h4 id="2-静态链接的原理"><a href="#2-静态链接的原理" class="headerlink" title="2.静态链接的原理"></a>2.静态链接的原理</h4><p>​         由很多目标文件进行链接形成的是静态库，反之静态库也可以简单地看成是一组目标文件的集合，即很多目标文件经过压缩打包后形成的一个文件，如下图，使用ar命令的-a参数查看静态库的组成：</p>
-<p><img src="https://img-blog.csdn.net/20180505234059214" alt="img"></p>
+<h2 id="四、链接阶段-out或-exe"><a href="#四、链接阶段-out或-exe" class="headerlink" title="四、链接阶段(.out或.exe)"></a>四、链接阶段(.out或.exe)</h2><p>将多个目标文件及所需要的库连接成最终的可执行目标文件。链接分为静态链接和动态链接：</p>
+<p>静态链接和动态链接两者最大的区别就在于链接的时机不一样，<strong>静态链接是在形成可执行程序前，而动态链接的进行则是在程序执行时</strong>，下面来详细介绍这两种链接方式。</p>
+<h3 id="静态链接"><a href="#静态链接" class="headerlink" title="静态链接"></a>静态链接</h3><h4 id="1-为什么要进行静态链接"><a href="#1-为什么要进行静态链接" class="headerlink" title="1.为什么要进行静态链接"></a>1.为什么要进行静态链接</h4><p>​        在我们的实际开发中，不可能将所有代码放在一个源文件中，所以会出现多个源文件，而且多个源文件之间不是独立的，而会存在多种依赖关系，如一个源文件可能要调用另一个源文件中定义的函数，但是每个源文件都是独立编译的，即<strong>每个.c文件会形成一个.o文件</strong>，为了满足前面说的依赖关系，则需要将这些源文件产生的目标文件进行链接，从而形成一个可以执行的程序。这个链接的过程就是静态链接</p>
+<h4 id="2-静态链接的原理"><a href="#2-静态链接的原理" class="headerlink" title="2.静态链接的原理"></a>2.静态链接的原理</h4><p>​         由很多目标文件进行链接形成的是静态库，反之<strong>静态库也可以简单地看成是一组目标文件的集合</strong>，即很多<strong>目标文件经过压缩打包后形成的一个文件</strong>，如下图，使用ar命令的-a参数查看静态库的组成：</p>
+<p><img src="https://i.loli.net/2020/04/16/BKqMVCDL53u42Ag.png" alt="1.jpg"></p>
 <p>​      以下面这个图来简单说明一下从静态链接到可执行文件的过程，根据在源文件中包含的头文件和程序中使用到的库函数，如stdio.h中定义的printf()函数，在libc.a中找到目标文件printf.o(这里暂且不考虑printf()函数的依赖关系)，然后将这个目标文件和我们hello.o这个文件进行链接形成我们的可执行文件。</p>
-<p><img src="https://img-blog.csdn.net/20180505235327609" alt="img"></p>
+<p><img src="https://i.loli.net/2020/04/16/fJgOF1mQZ8nCd4V.png" alt="2.jpg"></p>
 <p>​        这里有一个小问题，就是从上面的图中可以看到静态运行库里面的一个目标文件只包含一个函数，如libc.a里面的printf.o只有printf()函数，strlen.o里面只有strlen()函数。</p>
 <p>​       我们知道，链接器在链接静态链接库的时候是以目标文件为单位的。比如我们引用了静态库中的printf()函数，那么链接器就会把库中包含printf()函数的那个目标文件链接进来，如果很多函数都放在一个目标文件中，很可能很多没用的函数都被一起链接进了输出结果中。由于运行库有成百上千个函数，数量非常庞大，每个函数独立地放在一个目标文件中可以尽量减少空间的浪费，那些没有被用到的目标文件就不要链接到最终的输出文件中。</p>
-<h4 id="3-静态链接的优缺点"><a href="#3-静态链接的优缺点" class="headerlink" title="3.静态链接的优缺点"></a>3.静态链接的优缺点</h4><p>​        静态链接的缺点很明显，一是浪费空间，因为每个可执行程序中对所有需要的目标文件都要有一份副本，所以如果多个程序对同一个目标文件都有依赖，如多个程序中都调用了printf()函数，则这多个程序中都含有printf.o，所以同一个目标文件都在内存存在多个副本；另一方面就是更新比较困难，因为每当库函数的代码修改了，这个时候就需要重新进行编译链接形成可执行程序。但是静态链接的优点就是，在可执行程序中已经具备了所有执行程序所需要的任何东西，在执行的时候运行速度快。</p>
+<h4 id="3-静态链接的优缺点"><a href="#3-静态链接的优缺点" class="headerlink" title="3.静态链接的优缺点"></a>3.静态链接的优缺点</h4><p>​        静态链接的缺点很明显，<strong>一是浪费空间</strong>，因为每个可执行程序中对所有需要的目标文件都要有一份副本，所以如果多个程序对同一个目标文件都有依赖，如多个程序中都调用了printf()函数，则这多个程序中都含有printf.o，所以同一个目标文件都在内存存在多个副本；<strong>另一方面就是更新比较困难</strong>，因为每当库函数的代码修改了，这个时候就需要重新进行编译链接形成可执行程序。但是静态链接的优点就是，在可执行程序中已经具备了所有执行程序所需要的任何东西，在执行的时候<strong>运行速度快</strong>。</p>
 <p>问题：</p>
-<h3 id="二、动态链接"><a href="#二、动态链接" class="headerlink" title="二、动态链接"></a>二、动态链接</h3><h4 id="1-为什么会出现动态链接"><a href="#1-为什么会出现动态链接" class="headerlink" title="1.为什么会出现动态链接"></a>1.为什么会出现动态链接</h4><p>​        动态链接出现的原因就是为了解决静态链接中提到的两个问题，一方面是空间浪费，另外一方面是更新困难。下面介绍一下如何解决这两个问题。</p>
+<h3 id="动态链接"><a href="#动态链接" class="headerlink" title="动态链接"></a>动态链接</h3><h4 id="1-为什么会出现动态链接"><a href="#1-为什么会出现动态链接" class="headerlink" title="1.为什么会出现动态链接"></a>1.为什么会出现动态链接</h4><p>​        动态链接出现的原因就是为了解决静态链接中提到的两个问题，一方面是空间浪费，另外一方面是更新困难。下面介绍一下如何解决这两个问题。</p>
 <h4 id="2-动态链接的原理"><a href="#2-动态链接的原理" class="headerlink" title="2.动态链接的原理"></a>2.动态链接的原理</h4><p>​        动态链接的基本思想是把程序按照模块拆分成各个相对独立部分，在程序运行时才将它们链接在一起形成一个完整的程序，而不是像静态链接一样把所有程序模块都链接成一个单独的可执行文件。下面简单介绍动态链接的过程：</p>
 <p>​      假设现在有两个程序program1.o和program2.o，这两者共用同一个库lib.o,假设首先运行程序program1，系统首先加载program1.o，当系统发现program1.o中用到了lib.o，即program1.o依赖于lib.o，那么系统接着加载lib.o，如果program1.o和lib.o还依赖于其他目标文件，则依次全部加载到内存中。当program2运行时，同样的加载program2.o，然后发现program2.o依赖于lib.o，但是此时lib.o已经存在于内存中，这个时候就不再进行重新加载，而是将内存中已经存在的lib.o映射到program2的虚拟地址空间中，从而进行链接（这个链接过程和静态链接类似）形成可执行程序。</p>
-<h4 id="3-动态链接的优缺点"><a href="#3-动态链接的优缺点" class="headerlink" title="3.动态链接的优缺点"></a>3.动态链接的优缺点</h4><p>​        动态链接的优点显而易见，就是即使需要每个程序都依赖同一个库，但是该库不会像静态链接那样在内存中存在多分，副本，而是这多个程序在执行时共享同一份副本；另一个优点是，更新也比较方便，更新时只需要替换原来的目标文件，而无需将所有的程序再重新链接一遍。当程序下一次运行时，新版本的目标文件会被自动加载到内存并且链接起来，程序就完成了升级的目标。但是动态链接也是有缺点的，因为把链接推迟到了程序运行时，所以每次执行程序都需要进行链接，所以性能会有一定损失。</p>
+<h4 id="3-动态链接的优缺点"><a href="#3-动态链接的优缺点" class="headerlink" title="3.动态链接的优缺点"></a>3.动态链接的优缺点</h4><p>​        动态链接的优点显而易见，就是即使需要每个程序都依赖同一个库，但是该库不会像静态链接那样在内存中存在多份副本，而是这多个程序在执行时共享同一份副本；另一个优点是，更新也比较方便，更新时只需要替换原来的目标文件，而无需将所有的程序再重新链接一遍。当程序下一次运行时，新版本的目标文件会被自动加载到内存并且链接起来，程序就完成了升级的目标。但是动态链接也是有缺点的，因为把链接推迟到了程序运行时，所以每次执行程序都需要进行链接，所以性能会有一定损失。</p>
 <p>​       据估算，动态链接和静态链接相比，性能损失大约在5%以下。经过实践证明，这点性能损失用来换区程序在空间上的节省和程序构建和升级时的灵活性是值得的。</p>
 <h3 id="重定位"><a href="#重定位" class="headerlink" title="重定位"></a>重定位</h3><p>程序和数据装入内存时需对目标程序中的地址进行修改。这种把逻辑地址转变为内存的物理地址的过程叫重定位。</p>
 <p>对程序进行重定位的技术按重定位的时机可分为两种：静态重定位和动态重定位。</p>
 <h4 id="1-静态重定位"><a href="#1-静态重定位" class="headerlink" title="1.静态重定位"></a>1.静态重定位</h4><p>静态重定位是在目标程序装入内存时，由装入程序对目标程序中的指令和数据的地址进行修改，即把程序的逻辑地址都改成实际的地址。对每个程序来说，这种地址变换只是在装入时一次完成，在程序运行期间不再进行重定位。</p>
-<p>优点是：无需增加硬件地址转换机构，便于实现程序的静态连接。在早期计算机系统中大多采用这种方案。</p>
-<p>缺点是：（1）程序的存储空间只能是连续的一片区域，而且在重定位之后就不能再移动。这不利于内存空间的有效使用。（2）各个用户进程很难共享内存中的同一程序的副本。</p>
+<p>优点是：</p>
+<p>无需增加硬件地址转换机构，便于实现程序的静态连接。在早期计算机系统中大多采用这种方案。</p>
+<p>缺点是：</p>
+<p>（1）程序的存储空间只能是连续的一片区域，而且在重定位之后就不能再移动。这不利于内存空间的有效使用。（2）各个用户进程很难共享内存中的同一程序的副本。</p>
 <h4 id="2-动态重定位"><a href="#2-动态重定位" class="headerlink" title="2.动态重定位"></a>2.动态重定位</h4><p>动态重定位是在程序执行期间每次访问内存之前进行重定位。这种变换是靠硬件地址变换机构实现的。通常采用一个重定位寄存器，其中放有当前正在执行的程序在内存空间中的起始地址，而地址空间中的代码在装入过程中不发生变化。</p>
 <p>此工作由硬件地址映射机制来完成。硬件支持，软硬件结合完成） 硬件上需要一对寄存器的支持。程序放在不连续的实际物理空间中，要进行逻辑地址到物理地址的转换，实现动态重定位一般需要页式存储管理，页式存储管理用的不是寄存器，使用的是称为page table(页表)的数据结构page table记录了所有逻辑地址到物理地址的转换信息，进程切换的时候需要冲洗硬件上的page table 。 </p>
-<p>优点是：（1）程序占用的内存空间动态可变，不必连续存放在一处。（2）比较容易实现几个进程对同一程序副本的共享使用。<br>缺点是：需要附加的硬件支持，增加了机器成本，而且实现存储管理的软件算法比较复杂。<br>现在一般计算机系统中都采用动态重定位方法。</p>
+<p>优点是：</p>
+<p>（1）程序占用的内存空间动态可变，不必连续存放在一处。</p>
+<p>（2）比较容易实现几个进程对同一程序副本的共享使用。<br>缺点是：</p>
+<p>需要附加的硬件支持，增加了机器成本，而且实现存储管理的软件算法比较复杂。</p>
+<p>现在一般计算机系统中都采用动态重定位方法。</p>
 <hr>
 <p>参考自：<a href="https://blog.csdn.net/lym940928/article/details/93384917" target="_blank" rel="noopener">https://blog.csdn.net/lym940928/article/details/93384917</a></p>
 <p><a href="https://blog.csdn.net/daaikuaichuan/article/details/89060957" target="_blank" rel="noopener">https://blog.csdn.net/daaikuaichuan/article/details/89060957</a></p>
@@ -605,7 +610,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、预处理阶段：（-i）"><span class="toc-number">1.</span> <span class="toc-text">一、预处理阶段：（.i）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注意1：条件预编译指令的作用"><span class="toc-number">1.1.</span> <span class="toc-text">注意1：条件预编译指令的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意2-lt-gt-和””的区别"><span class="toc-number">1.2.</span> <span class="toc-text">注意2:&lt;&gt;和””的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、编译阶段：-s"><span class="toc-number">2.</span> <span class="toc-text">二、编译阶段：(.s)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、汇编阶段：-o或-obj"><span class="toc-number">3.</span> <span class="toc-text">三、汇编阶段：(.o或.obj)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、链接阶段：-out或-exe"><span class="toc-number">4.</span> <span class="toc-text">四、链接阶段：(.out或.exe)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、静态链接"><span class="toc-number">4.1.</span> <span class="toc-text">一、静态链接</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-为什么要进行静态链接"><span class="toc-number">4.1.1.</span> <span class="toc-text">1.为什么要进行静态链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-静态链接的原理"><span class="toc-number">4.1.2.</span> <span class="toc-text">2.静态链接的原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-静态链接的优缺点"><span class="toc-number">4.1.3.</span> <span class="toc-text">3.静态链接的优缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、动态链接"><span class="toc-number">4.2.</span> <span class="toc-text">二、动态链接</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-为什么会出现动态链接"><span class="toc-number">4.2.1.</span> <span class="toc-text">1.为什么会出现动态链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-动态链接的原理"><span class="toc-number">4.2.2.</span> <span class="toc-text">2.动态链接的原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-动态链接的优缺点"><span class="toc-number">4.2.3.</span> <span class="toc-text">3.动态链接的优缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重定位"><span class="toc-number">4.3.</span> <span class="toc-text">重定位</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-静态重定位"><span class="toc-number">4.3.1.</span> <span class="toc-text">1.静态重定位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-动态重定位"><span class="toc-number">4.3.2.</span> <span class="toc-text">2.动态重定位</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、预处理阶段-i"><span class="toc-number">1.</span> <span class="toc-text">一、预处理阶段(.i)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注意1：条件预编译指令的作用"><span class="toc-number">1.1.</span> <span class="toc-text">注意1：条件预编译指令的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意2-lt-gt-和””的区别"><span class="toc-number">1.2.</span> <span class="toc-text">注意2:&lt;&gt;和””的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、编译阶段-s"><span class="toc-number">2.</span> <span class="toc-text">二、编译阶段(.s)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、汇编阶段-o或-obj"><span class="toc-number">3.</span> <span class="toc-text">三、汇编阶段(.o或.obj)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、链接阶段-out或-exe"><span class="toc-number">4.</span> <span class="toc-text">四、链接阶段(.out或.exe)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#静态链接"><span class="toc-number">4.1.</span> <span class="toc-text">静态链接</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-为什么要进行静态链接"><span class="toc-number">4.1.1.</span> <span class="toc-text">1.为什么要进行静态链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-静态链接的原理"><span class="toc-number">4.1.2.</span> <span class="toc-text">2.静态链接的原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-静态链接的优缺点"><span class="toc-number">4.1.3.</span> <span class="toc-text">3.静态链接的优缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态链接"><span class="toc-number">4.2.</span> <span class="toc-text">动态链接</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-为什么会出现动态链接"><span class="toc-number">4.2.1.</span> <span class="toc-text">1.为什么会出现动态链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-动态链接的原理"><span class="toc-number">4.2.2.</span> <span class="toc-text">2.动态链接的原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-动态链接的优缺点"><span class="toc-number">4.2.3.</span> <span class="toc-text">3.动态链接的优缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重定位"><span class="toc-number">4.3.</span> <span class="toc-text">重定位</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-静态重定位"><span class="toc-number">4.3.1.</span> <span class="toc-text">1.静态重定位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-动态重定位"><span class="toc-number">4.3.2.</span> <span class="toc-text">2.动态重定位</span></a></li></ol></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -3039,9 +3044,192 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 151
+        Total : 162
         </div>
         <!-- search  -->
         
@@ -3057,7 +3245,57 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/14</span><a class="archive-post-title" href= "/2020/04/14/20200414-%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E4%BF%A1%E5%B0%81%E9%97%AE%E9%A2%98/" >俄罗斯套娃信封问题</a>
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/2020/04/21/20200421-%E5%88%A0%E6%95%B0%E9%97%AE%E9%A2%98/" >删数问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/2020/04/21/20200421-%E6%9C%80%E5%B0%8F%E6%A0%88/" >最小栈</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/2020/04/21/20200421-C++%E4%B8%AD%E6%8C%87%E9%92%88()%E3%80%81%E5%8F%96%E5%9C%B0%E5%9D%80(&)%E3%80%81%E8%A7%A3%E5%BC%95%E7%94%A8()%E4%B8%8E%E5%BC%95%E7%94%A8(&)%E7%9A%84%E5%8C%BA%E5%88%AB/" >C++中指针(*)、取地址(&)、解引用(*)与引用(&)的区别</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/20</span><a class="archive-post-title" href= "/2020/04/20/20200420-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" >数据库基础知识</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%AF%B9%E7%A7%B0%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91/" >对称的二叉树</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" >二叉树的镜像</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" >从上到下打印二叉树</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" >单例模式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span><a class="archive-post-title" href= "/2020/04/16/20200416-%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF/" >单源最短路</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/15</span><a class="archive-post-title" href= "/2020/04/15/20200415-C++%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" >C++基础知识</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/14</span><a class="archive-post-title" href= "/2020/04/14/20200414-%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E4%BF%A1%E5%B0%81%E9%97%AE%E9%A2%98/" >俄罗斯套娃信封问题（LIS）</a>
         </li>
     
     
@@ -3097,7 +3335,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >进程和程序的区别</a>
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >进程的理解</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%90%86%E8%A7%A3/" >进程和程序的区别</a>
         </li>
     
     
@@ -3372,12 +3615,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
         </li>
     
     
@@ -3412,7 +3655,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/17</span><a class="archive-post-title" href= "/2020/03/17/%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8/" >虚函数和虚函数表（vtable）</a>
+            <span class="archive-post-date">03/17</span><a class="archive-post-title" href= "/2020/03/17/%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0/" >虚函数和纯虚函数</a>
         </li>
     
     
@@ -3467,7 +3710,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/11</span><a class="archive-post-title" href= "/2020/03/11/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" >网络基础(上)</a>
+            <span class="archive-post-date">03/11</span><a class="archive-post-title" href= "/2020/03/11/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80(%E4%B8%8A)/" >网络基础(上)</a>
         </li>
     
     
@@ -3849,17 +4092,15 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
+        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
+    
+        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
+    
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
-        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
-    
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
-    
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
-    
-        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
@@ -3867,11 +4108,13 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
     
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
         <span class="sidebar-tag-name" data-tags="分治"><span class="iconfont-archer">&#xe606;</span>分治</span>
     
-        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
-    
         <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
+    
+        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
     
         <span class="sidebar-tag-name" data-tags="排序"><span class="iconfont-archer">&#xe606;</span>排序</span>
     

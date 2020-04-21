@@ -359,23 +359,28 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/07/hello-world/" >
+        <a class="abstract-title" href = "/2020/03/12/%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5www.baidu.com%E5%90%8E%E6%89%A7%E8%A1%8C%E7%9A%84%E5%85%A8%E9%83%A8%E8%BF%87%E7%A8%8B/" >
             
-                <span>Hello World</span>
+                <span>在浏览器中输入www.baidu.com后执行的全部过程</span>
         </a>
         <div class="abstract-content">
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+            
+
+从系统网络的角度分析输入www.baidu.com后的过程：
+客户端浏览器通过DNS解析到www.baidu.com的IP地址a，通过这个IP地址找到客户端到服务器的路径。客户端浏览器发起一个HTTP会话到a，然后通过TCP进行封装数据包，输入到网络层。
+在客户端的传输层，把HTTP会话请求分成报文段，添加源和目的端口，如服务器使用80端口监听客户端的请求，客户端由系统随机选择一个端口如5000，与服务器进行交换，服务器把相应的请求返回给客户端的5000端口。然后使用IP层的IP地址查找目的端。
+客户端的网络层不用关心应用层或者传输层的东西，主要做的是通过查找路由表确定如何到达服务器...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/07</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/12</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "hexo">hexo</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
     
 </div>
             
@@ -388,25 +393,62 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/12/10/SPJ%20%E5%86%99%E6%B3%95/" >
+        <a class="abstract-title" href = "/2020/03/12/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80(%E4%B8%8B)/" >
             
-                <span>SPJ 写法</span>
+                <span>网络基础(下)</span>
         </a>
         <div class="abstract-content">
-            <ul>
-<li>SPJ</li>
+            <p>比上重要篇，精华篇</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/12</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/12/Http%E5%92%8CHttps%E7%9A%84%E5%8C%BA%E5%88%AB/" >
+            
+                <span>HTTP和HTTPS的区别</span>
+        </a>
+        <div class="abstract-content">
+            <font size=4>
+
+<h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><p>HTTP（超文本传输协议）是应用层上的一种客户端/服务端模型的通信协议,它由请求和响应构成，且是无状态的。</p>
+<ul>
+<li>协议</li>
 </ul>
+<p>协议规定了通信双方必须遵循的数据传输格式，这样通信双方按照约定的格式才能准确的通信。</p>
+<ul>
+<li>无状态</li>
+</ul>
+<p>无状态是指两次连接通信之间是没有任何关系的，每次都是一个新的连接，服务端不会记录前后的请求信息。</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/10</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/12</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "常识">常识</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
     
 </div>
             
@@ -419,29 +461,23 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/29/Beauty%20Contest%EF%BC%88%E6%B1%82%E5%87%B8%E5%8C%85%E6%9C%80%E5%A4%A7%E7%9B%B4%E5%BE%84%EF%BC%89%20/" >
+        <a class="abstract-title" href = "/2020/03/11/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80(%E4%B8%8A)/" >
             
-                <span>Beauty Contest（求凸包最大直径）</span>
+                <span>网络基础(上)</span>
         </a>
         <div class="abstract-content">
-             
-
-题目描述贝茜在牛的选美比赛中赢得了冠军”牛世界小姐”。因此,贝西会参观N(2 &lt; = N &lt; = 50000)个农场来传播善意。世界将被表示成一个二维平面,每个农场位于一对整数坐标(x,y),各有一个值范围在-10000…10000。没有两个农场共享相同的一对坐标。
-尽管贝西沿直线前往下一个农场，但牧场之间的距离可能很大,所以她需要一个手提箱保证在每一段旅程中她有足够吃的食物。她想确定她可能需要旅行的最大可能距离,她要知道她必须带的手提箱的大小。帮助贝西计算农场的最大距离。
-输入第一行：一个整数n
-第2~n+1行：xi yi 表示n个农场中第i个的坐标
-输出一行：最远距...
+            <p>如果不分层，可能下层的开发和各种协议都要学，但是做了分层，只需要开发应用层，然后接入下层API就可。</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/29</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/11</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
     
 </div>
             
@@ -454,26 +490,25 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/28/Smallest%20Bounding%20Rectangle(%E6%9C%80%E5%B0%8F%E9%9D%A2%E7%A7%AF%E5%A4%96%E6%8E%A5%E7%9F%A9%E5%BD%A2)/" >
+        <a class="abstract-title" href = "/2020/03/11/rand5()%E7%94%9F%E6%88%90rand7()/" >
             
-                <span>Smallest Bounding Rectangle(最小面积外接矩形)</span>
+                <span>rand5()生成rand7()</span>
         </a>
         <div class="abstract-content">
-             
-
-题目描述Given the Cartesian coordinates of n (&gt; 0) 2-dimensional points, write a program that computes the area of their smallest bounding rectangle (smallest rectangle containing all the given points).
-输入The input file may contain multiple test cases. Each test case begins with a line containi...
+            描述​     假如有一个函数rand5()能等概率生成1 - 5 之间的整数，如何利用rand5()来实现rand7()，rand7()函数的要求是能够等概率生成1 - 7之间的整数。
+一开始想的是7个rand5()相加然后模7，还是太天真了，没想到这样每个数得出的概率不相等
+方法一12345678int rand7()&#123;    while(1)&#123;        int cnt=5*(rand5()-1)+(rand5()-1);        if(cnt&lt;21)&#123;            return cnt%7+1;        &#125; ...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/28</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/11</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "瞎搞">瞎搞</a>
     
 </div>
             
@@ -486,26 +521,31 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/28/Triangle%EF%BC%88%E6%B1%82%E5%87%B8%E5%8C%85%E6%9C%80%E5%A4%A7%E5%86%85%E6%8E%A5%E4%B8%89%E8%A7%92%E5%BD%A2%EF%BC%89/" >
+        <a class="abstract-title" href = "/2020/03/10/B%E6%A0%91%EF%BC%88B+%E6%A0%91%EF%BC%89%E3%80%81B+%E6%A0%91/" >
             
-                <span>Triangle（求凸包最大内接三角形）</span>
+                <span>B树（B-树）、B+树</span>
         </a>
         <div class="abstract-content">
-             
+            B-树定义B树（B-树），是一种多路搜索树（并非二叉的）：
 
-题目描述Given n distinct points on a plane, your task is to find the triangle that have the maximum area, whose vertices are from the given points.
-输入The input consists of several test cases. The first line of each test case contains an integer n, indicating the number of points on the plane. Each...
+定义任意非叶子节点最多可以有M个儿子节点；且M&gt;2；
+则根节点（非叶子节点前提下）的儿子数为：[2，M]；
+除根节点外的非叶子节点的儿子数为[M/2，M]；
+每个结点存放至少M/2 - 1 （向上取整）且至多M -1 个关键字（至少为2）；
+非叶子结点的关键字个数 = 指向子节点的指针数-1；
+非叶子节点的关键字：K[1],K[2],K[3],…,K[M-1;且K[i] &lt; K[i +1];
+非叶子结点的指针：P[1], P[2], …, P[M]；其中P[1]指向关键字小于K[1]的子树，P[M]指向关键字大于K...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/28</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/10</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "数据结构">数据结构</a>
     
 </div>
             
@@ -518,31 +558,31 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/25/%5BCQOI2006%5D%E5%87%B8%E5%A4%9A%E8%BE%B9%E5%BD%A2%20%20/" >
+        <a class="abstract-title" href = "/2020/03/10/%E5%93%88%E5%BC%97%E6%9B%BC/" >
             
-                <span>凸多边形</span>
+                <span>哈弗曼树和哈弗曼编码</span>
         </a>
         <div class="abstract-content">
              
 
-题目描述逆时针给出n个凸多边形的顶点坐标，求它们交的面积。例如n=2时，两个凸多边形如下图： 
-则相交部分的面积为5.233。
-输入第一行有一个整数n，表示凸多边形的个数，以下依次描述各个多边形。第i个多边形的第一行包含一个整数mi，表示多边形的边数，以下mi行每行两个整数，逆时针给出各个顶点的坐标。
-输出输出文件仅包含一个实数，表示相交部分的面积，保留三位小数
-样例输入1234567891011121326-2 0-1 -21 -22 01 2-1 240 -31 -12 2-1 0
-样例输出15.233
-100%的数据满足：2&lt;=n&lt;=10，3&lt;=mi&lt;...
+数据结构：哈夫曼树和哈夫曼编码哈夫曼树哈夫曼树是一种最优二叉树，其定义是：给定n个权值作为n个叶子节点，构造一棵二叉树，若树的带权路径长度达到最小，这样的树就达到最优二叉树，也就是哈夫曼树，示例图如下：
+基本概念深入学习哈夫曼树前，先了解一下基本概念，并以上面的哈夫曼树图为例
+
+路径：树中一个结点到另一个结点之间的分支序列构成两个结点间的路径。
+路径长度：路径中分支的数目，从根结点到第L层结点的路径长度为L-1。例如100和80的路径长度为1，50和30的路径长度为2。
+结点的权：树中结点的数值，例如100，50那些。
+结点带权路径长度：根结点到该结点之间的路径长度与该结点的权的乘...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/25</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/10</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "数据结构">数据结构</a>
     
 </div>
             
@@ -555,30 +595,23 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/10/%E7%9E%AD%E6%9C%9B%E5%A1%94%E3%80%90%E5%8D%8A%E5%B9%B3%E9%9D%A2%E4%BA%A4%E3%80%91/" >
+        <a class="abstract-title" href = "/2020/03/10/c++-map%E4%B8%8Eunordered_map%E5%8C%BA%E5%88%AB%E5%8F%8A%E4%BD%BF%E7%94%A8/" >
             
-                <span>瞭望塔【半平面交】</span>
+                <span>c++ map与unordered_map区别及使用</span>
         </a>
         <div class="abstract-content">
-             
-
-题目描述致力于建设全国示范和谐小村庄的H村村长dadzhi，决定在村中建立一个瞭望塔，以此加强村中的治安。
-我们将H村抽象为一维的轮廓。如下图所示
-
-我们可以用一条山的上方轮廓折线(x1, y1), (x2, y2), …. (xn, yn)来描述H村的形状，这里x1 &lt; x2 &lt; …&lt; xn。瞭望塔可以建造在[x1, xn]间的任意位置, 但必须满足从瞭望塔的顶端可以看到H村的任意位置。可见在不同的位置建造瞭望塔，所需要建造的高度是不同的。为了节省开支，dadzhi村长希望建造的塔高度尽可能小。
-请你写一个程序，帮助dadzhi村长计算塔的最小高度。
-输入输入文...
+            <p>曾经被问到过</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/10</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/10</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "STL">STL</a>
     
 </div>
             
@@ -591,32 +624,34 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/04/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E5%8D%8A%E5%B9%B3%E9%9D%A2%E4%BA%A4/" >
+        <a class="abstract-title" href = "/2020/03/09/%E7%BA%A2%E9%BB%91%E6%A0%91%E5%92%8CAVL%E6%A0%91%E7%9A%84%E5%AE%9A%E4%B9%89%EF%BC%8C%E7%89%B9%E7%82%B9%EF%BC%8C%E4%BB%A5%E5%8F%8A%E4%BA%8C%E8%80%85%E5%8C%BA%E5%88%AB/" >
             
-                <span>【模板】半平面交</span>
+                <span>红黑树和AVL树的定义、特点及区别</span>
         </a>
         <div class="abstract-content">
-             
+            
 
-题目描述逆时针给出n个凸多边形的顶点坐标，求它们交的面积。例如n=2时，两个凸多边形如下图： 
-则相交部分的面积为5.233。
-输入第一行有一个整数n，表示凸多边形的个数，以下依次描述各个多边形。第i个多边形的第一行包含一个整数mi，表示多边形的边数，以下mi行每行两个整数，逆时针给出各个顶点的坐标。
-输出输出文件仅包含一个实数，表示相交部分的面积，保留三位小数。
-样例输入1234567891011121326-2 0-1 -21 -22 01 2-1 240 -31 -12 2-1 0
-100%的数据满足：2&lt;=n&lt;=10，3&lt;=mi&lt;=50，每维坐标为[...
+定义
+AVL树：平衡二叉树又称AVL树，是一种特殊的二叉查找树，其左右子数都是平衡二叉树，且左右子树高度差的绝对值不超过1.一句话表述为：以树中所有结点为根的树的左右子树高度差的绝对值不超过1
+
+红黑树：是一种二叉查找树，但在每个结点增加一个存储位表示结点的颜色，可以是红或者黑（非黑即红）。通过对任何一条从根到叶子的路径上各个结点着色的方式的限制，红黑树确保没有一条路径会比其他路径长出两倍，因此红黑树是一种弱平衡二叉树，相对于要求严格的AVL树来说，它的旋转次数少，所以对于搜索、插入、删除操作比较多的情况下，通常使用红黑树。
+
+
+性质红黑树的性质如下：
+
+每个结点非红即黑；
+根节点是...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/04</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/09</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "模板">模板</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "数据结构">数据结构</a>
     
 </div>
             
@@ -629,76 +664,23 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/04/%E5%B9%B3%E9%9D%A2%E6%9C%80%E8%BF%91%E7%82%B9%E5%AF%B9%EF%BC%88%E5%8A%A0%E5%BC%BA%E7%89%88%EF%BC%89/" >
+        <a class="abstract-title" href = "/2020/03/09/%E6%A8%A1%E6%9D%BF%E5%A4%A7%20(17th%20copy)/" >
             
-                <span>平面最近点对（加强版）</span>
+                <span>ubutun 启动/停止/重启MySQL数据库</span>
         </a>
         <div class="abstract-content">
-             
-
-题目描述给定平面上n个点，找出其中的一对点的距离，使得在这n个点的所有点对中，该距离为所有点对中最小的
-输入第一行：n；2≤n≤200000
-接下来n行：每行两个实数：x y，表示一个点的行坐标和列坐标，中间用一个空格隔开。
-输出仅一行，一个实数，表示最短距离，精确到小数点后面4位。
-样例输入123431 11 22 2
-0&lt;=x,y&lt;=10^9
-样例输出11.0000
-思路运用分治思想，对于n个点，可以分成T(n/2)+T(n/2)的规模，分界线是x坐标的中位数，
-假设左边点集合为s1, 右边点集合为s2，那么最小值存在于以下三种情况中。
-
-s1中任意两点距离的最小距...
+            <p>ubutun 数据库基操</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/04</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/09</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/03/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%9C%80%E5%B0%8F%E5%9C%86%E8%A6%86%E7%9B%96%20/" >
-            
-                <span>【模板】最小圆覆盖</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述给出N个点，让你画一个最小的包含所有点的圆。
-输入先给出点的个数N,2&lt;=N&lt;=100000，再给出坐标Xi,Yi.(-10000.0&lt;=xi,yi&lt;=10000.0)
-输出输出圆的半径，及圆心的坐标，保留10位小数
-样例输入123456768.0 9.04.0 7.51.0 2.05.1 8.79.0 2.04.5 1.0
-样例输出125.00000000005.0000000000 5.0000000000
-思路随机数处理复杂度为O（n）
-第一个点定为圆心；
-第二个点和第一个点的连线的中点定位圆心，距离为直径；
-第三个点要和前两个点进行三点定圆；...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/03</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "模板">模板</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "数据库">数据库</a>
     
 </div>
             
@@ -708,7 +690,7 @@ s1中任意两点距离的最小距...
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/page/9/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/11/">NEXT &gt;</a>
+        <a class="extend prev" rel="prev" href="/page/9/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/11/">NEXT &gt;</a>
     </nav>
     
 </main>
@@ -3305,9 +3287,192 @@ s1中任意两点距离的最小距...
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 151
+        Total : 162
         </div>
         <!-- search  -->
         
@@ -3323,7 +3488,57 @@ s1中任意两点距离的最小距...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/14</span><a class="archive-post-title" href= "/2020/04/14/20200414-%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E4%BF%A1%E5%B0%81%E9%97%AE%E9%A2%98/" >俄罗斯套娃信封问题</a>
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/2020/04/21/20200421-%E5%88%A0%E6%95%B0%E9%97%AE%E9%A2%98/" >删数问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/2020/04/21/20200421-%E6%9C%80%E5%B0%8F%E6%A0%88/" >最小栈</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/2020/04/21/20200421-C++%E4%B8%AD%E6%8C%87%E9%92%88()%E3%80%81%E5%8F%96%E5%9C%B0%E5%9D%80(&)%E3%80%81%E8%A7%A3%E5%BC%95%E7%94%A8()%E4%B8%8E%E5%BC%95%E7%94%A8(&)%E7%9A%84%E5%8C%BA%E5%88%AB/" >C++中指针(*)、取地址(&)、解引用(*)与引用(&)的区别</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/20</span><a class="archive-post-title" href= "/2020/04/20/20200420-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" >数据库基础知识</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%AF%B9%E7%A7%B0%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91/" >对称的二叉树</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" >二叉树的镜像</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" >从上到下打印二叉树</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" >单例模式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span><a class="archive-post-title" href= "/2020/04/16/20200416-%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF/" >单源最短路</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/15</span><a class="archive-post-title" href= "/2020/04/15/20200415-C++%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" >C++基础知识</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/14</span><a class="archive-post-title" href= "/2020/04/14/20200414-%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E4%BF%A1%E5%B0%81%E9%97%AE%E9%A2%98/" >俄罗斯套娃信封问题（LIS）</a>
         </li>
     
     
@@ -3363,7 +3578,12 @@ s1中任意两点距离的最小距...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >进程和程序的区别</a>
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >进程的理解</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%90%86%E8%A7%A3/" >进程和程序的区别</a>
         </li>
     
     
@@ -3638,12 +3858,12 @@ s1中任意两点距离的最小距...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
         </li>
     
     
@@ -3678,7 +3898,7 @@ s1中任意两点距离的最小距...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/17</span><a class="archive-post-title" href= "/2020/03/17/%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8/" >虚函数和虚函数表（vtable）</a>
+            <span class="archive-post-date">03/17</span><a class="archive-post-title" href= "/2020/03/17/%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0/" >虚函数和纯虚函数</a>
         </li>
     
     
@@ -3733,7 +3953,7 @@ s1中任意两点距离的最小距...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/11</span><a class="archive-post-title" href= "/2020/03/11/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" >网络基础(上)</a>
+            <span class="archive-post-date">03/11</span><a class="archive-post-title" href= "/2020/03/11/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80(%E4%B8%8A)/" >网络基础(上)</a>
         </li>
     
     
@@ -4115,17 +4335,15 @@ s1中任意两点距离的最小距...
     
         <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
+        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
+    
+        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
+    
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
-        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
-    
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
-    
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
-    
-        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
@@ -4133,11 +4351,13 @@ s1中任意两点距离的最小距...
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
     
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
         <span class="sidebar-tag-name" data-tags="分治"><span class="iconfont-archer">&#xe606;</span>分治</span>
     
-        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
-    
         <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
+    
+        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
     
         <span class="sidebar-tag-name" data-tags="排序"><span class="iconfont-archer">&#xe606;</span>排序</span>
     

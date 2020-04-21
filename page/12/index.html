@@ -359,77 +359,27 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/03/27/RGB%20Coloring(%E7%BB%84%E5%90%88%E6%95%B0%E6%A8%A1%E6%9D%BF%EF%BC%89/" >
+        <a class="abstract-title" href = "/2019/10/03/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%9C%80%E5%B0%8F%E5%9C%86%E8%A6%86%E7%9B%96%20/" >
             
-                <span>RGB Coloring(组合数模板）</span>
+                <span>【模板】最小圆覆盖</span>
         </a>
         <div class="abstract-content">
              
 
-题目描述Takahashi has a tower which is divided into N layers. Initially, all the layers are uncolored. Takahashi is going to paint some of the layers in red, green or blue to make a beautiful tower. He defines the beauty of the tower as follows:The beauty of the tower is the sum of the scores of t...
+题目描述给出N个点，让你画一个最小的包含所有点的圆。
+输入先给出点的个数N,2&lt;=N&lt;=100000，再给出坐标Xi,Yi.(-10000.0&lt;=xi,yi&lt;=10000.0)
+输出输出圆的半径，及圆心的坐标，保留10位小数
+样例输入123456768.0 9.04.0 7.51.0 2.05.1 8.79.0 2.04.5 1.0
+样例输出125.00000000005.0000000000 5.0000000000
+思路随机数处理复杂度为O（n）
+第一个点定为圆心；
+第二个点和第一个点的连线的中点定位圆心，距离为直径；
+第三个点要和前两个点进行三点定圆；...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/27</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "数论">数论</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/03/07/STL%E7%AE%97%E6%B3%95:next_permutation%E6%B1%82%E5%85%A8%E6%8E%92%E5%88%97%20/" >
-            
-                <span>STL算法:next_permutation求全排列</span>
-        </a>
-        <div class="abstract-content">
-            <p>求全排列用</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/07</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "常识">常识</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/03/01/%E7%BA%BF%E6%AE%B5%E6%A0%91%E6%A8%A1%E6%9D%BF/" >
-            
-                <span>线段树模板</span>
-        </a>
-        <div class="abstract-content">
-            <p>来自zrd</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/01</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/03</span>
             </div>
             <!-- tags  -->
             
@@ -437,7 +387,7 @@ height:50vh;
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "模板">模板</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "数据结构">数据结构</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
     
 </div>
             
@@ -450,17 +400,119 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/01/24/%E7%BD%91%E7%BB%9C%E6%B5%81%E6%A8%A1%E6%9D%BF/" >
+        <a class="abstract-title" href = "/2019/10/03/%E6%9E%81%E8%A7%92%E6%8E%92%E5%BA%8F%20/" >
             
-                <span>网络流模板</span>
+                <span>极角排序</span>
         </a>
         <div class="abstract-content">
-            <p>dinic</p>
+             
+
+题目描述所谓极角，指的就是以x轴正半轴为始边，逆时针转过的角，这个角的范围是[0,2π][0,2π]。
+利用atan2函数atan2(y,x)，表示(x,y)这个点与原点连线，这条线与x轴正半轴的夹角，这里的这个极角的范围是[−π,π][−π,π]的，一二象限为正，三四象限为负。所以我们从小到大排完序后，实际上是第三象限→→第四象限→→第一象限→→第二象限。
+12345678910111213141516struct node &#123;    int x, y;    double angle;    bool operator&lt;(const node &amp;a) c...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/24</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/03</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "模板">模板</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/10/02/%E5%9C%88%E5%A5%B6%E7%89%9BFencing%20the%20Cows/" >
+            
+                <span>圈奶牛Fencing the Cows</span>
+        </a>
+        <div class="abstract-content">
+             
+
+题目描述农夫约翰想要建造一个围栏用来围住他的奶牛，可是他资金匮乏。他建造的围栏必须包括他的奶牛喜欢吃草的所有地点。对于给出的这些地点的坐标，计算最短的能够围住这些点的围栏的长度。
+输入输入数据的第一行包括一个整数 N。N（0 &lt;= N &lt;= 10,000）表示农夫约翰想要围住的放牧点的数目。接下来 N 行，每行由两个实数组成，Xi 和 Yi,对应平面上的放牧点坐标（-1,000,000 &lt;= Xi,Yi &lt;= 1,000,000）。数字用小数表示。
+输出输出必须包括一个实数，表示必须的围栏的长度。答案保留两位小数。
+样例输入1234544 84 125 9....
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/02</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "模板">模板</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/10/02/%E6%9C%80%E5%A4%A7%E7%A9%BA%E5%87%B8%E5%8C%85/" >
+            
+                <span>最大空凸包</span>
+        </a>
+        <div class="abstract-content">
+            <p>来源于红书</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/02</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "模板">模板</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/08/30/%E6%9C%80%E5%B0%8F%E8%B4%B9%E7%94%A8%E6%9C%80%E5%A4%A7%E6%B5%81%EF%BC%88%E6%A8%A1%E6%9D%BF%EF%BC%89/" >
+            
+                <span>最小费用最大流（模板）</span>
+        </a>
+        <div class="abstract-content">
+            <p>感谢phy（好像是）</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/08/30</span>
             </div>
             <!-- tags  -->
             
@@ -481,25 +533,25 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/01/22/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E5%AD%A6%E4%B9%A0%E4%BE%8B%E9%A2%98%EF%BC%88Sorting%20It%20All%20Out%EF%BC%89/" >
+        <a class="abstract-title" href = "/2019/08/27/%E4%B8%BB%E5%B8%AD%E6%A0%91%E5%AD%A6%E4%B9%A0/" >
             
-                <span>拓扑排序学习例题（Sorting It All Out）</span>
+                <span>主席树学习</span>
         </a>
         <div class="abstract-content">
-             
-
-题目描述An ascending sorted sequence of distinct values is one in which some form of a less-than operator is used to order the elements from smallest to largest. For example, the sorted sequence A, B, C, D implies that A &lt; B, B &lt; C and C &lt; D. in this problem, we will give you a set of rel...
+            <p>主席树学习笔记</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/22</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/08/27</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "图论">图论</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "模板">模板</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "数据结构">数据结构</a>
     
 </div>
             
@@ -512,47 +564,25 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/01/18/%E6%A0%91%E7%9A%84%E5%9F%BA%E7%A1%80%EF%BC%88%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86%EF%BC%89/" >
+        <a class="abstract-title" href = "/2019/08/02/BM%E9%80%92%E6%8E%A8%E7%AE%97%E6%B3%95%E6%9D%BF%E5%AD%90%EF%BC%88%E7%94%A8%E4%BA%8E%E7%BA%BF%E6%80%A7%E9%80%92%E6%8E%A8%EF%BC%89%20/" >
             
-                <span>树的基础（图的遍历）</span>
+                <span>BM递推算法板子（用于线性递推）</span>
         </a>
         <div class="abstract-content">
-             
-
-题目描述遍历即将树的所有结点访问且仅访问一次。按照根节点位置的不同分为前序遍历，中序遍历，后序遍历。
-前序遍历
-访问根结点；
-遍历 左子树；
-遍历右子树。
-
-中序遍历
-遍历左子树；
-访问根结点；
-遍历右子树。
-
-后续遍历
-遍历左子树；
-遍历右子树；
-访问根结点。
-
-求下图的三种遍历
-
-前序遍历：A B C D E F中序遍历：B C A E D F后序遍历：B C D E F A
-代码
-已知前序和中序遍历，求后序遍历：
-
-1234567891011121314151617181920212223242526272829303132333435363738#include &lt;b...
+            <p>感谢dls</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/18</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/08/02</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "图论">图论</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "模板">模板</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "数论">数论</a>
     
 </div>
             
@@ -565,27 +595,23 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/01/16/%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97/" >
+        <a class="abstract-title" href = "/2019/07/07/%E9%AB%98%E7%B2%BE%E5%BA%A6%E6%A8%A1%E6%9D%BF(2)/" >
             
-                <span>括号序列</span>
+                <span>高精度模板(2)</span>
         </a>
         <div class="abstract-content">
-             
-
-题目描述一个由小括号组成的字符串可以被称为一个括号序列。但一个括号序列可能并不满足括号匹配的要求。因此，我们可以进一步将满足括号匹配的括号序列成为“标准的括号序列。例如字符串”)((())”是一个括号序列但不是标准的括号序列，而字符串”()(())”是一个标准的括号序列。给定一个括号序列，你需要对求出：这个括号序列的所有不同的子串中，有多少个是标准的括号序列？一个括号序列的子串指的是这个序列从某个位置起始、到某个位置截止的子字符串。如果两个子串拥有不同的起始位置或截止位置，那么它们就被认为是括号序列的不同的子串。
-输入包括一行一个字符串，为给定的括号序列。
-输出输出一个整数，为标准...
+            <p>感谢zdl</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/16</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/07</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "STL">STL</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "模板">模板</a>
     
 </div>
             
@@ -598,31 +624,25 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/01/15/You%20Like%20Cake(%E8%83%8C%E5%8C%85%E5%AE%B9%E9%87%8F%E8%BF%87%E4%BA%8E%E5%A4%A7%E7%9A%84%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2%E6%B3%95)/" >
+        <a class="abstract-title" href = "/2019/04/27/Game%20of%20Stones/" >
             
-                <span>You Like Cake(背包容量过于大的折半搜索法)</span>
+                <span>Game of Stones</span>
         </a>
         <div class="abstract-content">
              
 
-题目描述双十一就要来啦！而Yuno刚刚获得了一笔X元的奖金。那么是不是应该清空下购物车呢？购物车总共有N个物品，每个物品的价格为Vi，Yuno想尽可能地把手头的奖金给花光，所以她要精心挑选一些商品，使得其价格总和最接近但又不会超过奖金的金额。那么Yuno最后最少可以剩下多少钱呢？
-输入第一行，两个正整数N和X。第二行，N个正整数Vi表示第i个物品的价格。
-输出输出一个整数，表示Yuno最后最少可以剩下的钱数。
-样例输入124 501 2 3 4
-样例输出140
-对于100的数据，N≤40，X,Vi≤109
-思路由于背包容量过大，所以用不了01背包，但是物品的数目只有40个，但如果依...
+题目描述Two players, Petyr and Varys, play a game in which players remove stones from N piles in alternating turns. Petyr, in his turn, can remove at most A stones from any pile. Varys, in his turn, can remove at most B stones from any pile. Each player has to remove at least one stone in his turn...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/15</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/04/27</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "分治">分治</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "博弈论">博弈论</a>
     
 </div>
             
@@ -635,59 +655,27 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2018/10/07/Princess%20Principal%EF%BC%88%E6%80%9D%E7%BB%B4%E9%A2%98%EF%BC%89/" >
+        <a class="abstract-title" href = "/2019/04/02/%E9%98%B6%E6%A2%AFNim%E9%97%AE%E9%A2%98%20/" >
             
-                <span>Princess Principal（思维题）</span>
+                <span>阶梯Nim问题</span>
         </a>
         <div class="abstract-content">
              
 
-题目描述阿尔比恩王国（the Albion Kingdom）潜伏着一群代号“白鸽队（Team White Pigeon）”的间谍。在没有任务的时候，她们会进行各种各样的训练，比如快速判断一个文档有没有语法错误，这有助于她们鉴别写文档的人受教育程度。这次用于训练的是一个含有n个括号的文档。括号一共有mm种，每种括号都有左括号和右括号两种形式。我们定义用如下的方式定义一个合法的文档:1.一个空的字符串是一个合法的文档。2.如果A,B都是合法的文档，那么AB也是合法的文档。3.如果S是合法的文档，那么aSb也是合法的文档，其中a,b是同一种括号，并且a是左括号，b是右括号。现在给出q个询...
+题目描述有n个位置1…n，每个位置上有ai个石子。有两个人轮流操作。操作步骤是：挑选1…n中任一一个存在石子的位置i，将至少1个石子移动至i−1位置（也就是最后所有石子都堆在在0这个位置）。谁不能操作谁输。求先手必胜还是必败。
+结论问题等价于，求位置为奇数的ai的异或和，若异或和等于0，则先手必败，否则先手必胜。你可能已经注意到这非常像Nim游戏。其实这个游戏恰好等价于：将每个奇数位置的数x看成一堆有x个石子的石子堆，然后玩Nim游戏。
+证明拿走某一堆石子的一部分，相当于将某个奇位置的石子移动到它左边的偶位置上。　　　　如果大家都只动奇位置的石子，那么这等价于两人在玩Nim游戏。　...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/10/07</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/04/02</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "瞎搞">瞎搞</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/09/21/%5BZJOI2007%5D%E6%A3%8B%E7%9B%98%E5%88%B6%E4%BD%9C%EF%BC%88%E6%82%AC%E7%BA%BF%E6%B3%95%EF%BC%89/" >
-            
-                <span>棋盘制作（悬线法）</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述国际象棋是世界上最古老的博弈游戏之一，和中国的围棋、象棋以及日本的将棋同享盛名。据说国际象棋起源于易经的思想，棋盘是一个8×8大小的黑白相间的方阵，对应八八六十四卦，黑白对应阴阳。
-而我们的主人公小Q，正是国际象棋的狂热爱好者。作为一个顶尖高手，他已不满足于普通的棋盘与规则，于是他跟他的好朋友小W决定将棋盘扩大以适应他们的新规则。
-小Q找到了一张由N×\M个正方形的格子组成的矩形纸片，每个格子被涂有黑白两种颜色之一。小Q想在这种纸中裁减一部分作为新棋盘，当然，他希望这个棋盘尽可能的大。**
-不过小Q还没有决定是找一个正方形的棋盘还是一个矩形的棋盘（当然，不管哪种，棋盘必须都...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/09/21</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "DP">DP</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "博弈论">博弈论</a>
     
 </div>
             
@@ -697,7 +685,7 @@ height:50vh;
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/page/11/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/13/">NEXT &gt;</a>
+        <a class="extend prev" rel="prev" href="/page/11/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/13/">NEXT &gt;</a>
     </nav>
     
 </main>
@@ -3294,9 +3282,192 @@ height:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 151
+        Total : 162
         </div>
         <!-- search  -->
         
@@ -3312,7 +3483,57 @@ height:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/14</span><a class="archive-post-title" href= "/2020/04/14/20200414-%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E4%BF%A1%E5%B0%81%E9%97%AE%E9%A2%98/" >俄罗斯套娃信封问题</a>
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/2020/04/21/20200421-%E5%88%A0%E6%95%B0%E9%97%AE%E9%A2%98/" >删数问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/2020/04/21/20200421-%E6%9C%80%E5%B0%8F%E6%A0%88/" >最小栈</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/2020/04/21/20200421-C++%E4%B8%AD%E6%8C%87%E9%92%88()%E3%80%81%E5%8F%96%E5%9C%B0%E5%9D%80(&)%E3%80%81%E8%A7%A3%E5%BC%95%E7%94%A8()%E4%B8%8E%E5%BC%95%E7%94%A8(&)%E7%9A%84%E5%8C%BA%E5%88%AB/" >C++中指针(*)、取地址(&)、解引用(*)与引用(&)的区别</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/20</span><a class="archive-post-title" href= "/2020/04/20/20200420-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" >数据库基础知识</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%AF%B9%E7%A7%B0%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91/" >对称的二叉树</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" >二叉树的镜像</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" >从上到下打印二叉树</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" >单例模式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span><a class="archive-post-title" href= "/2020/04/16/20200416-%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF/" >单源最短路</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/15</span><a class="archive-post-title" href= "/2020/04/15/20200415-C++%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" >C++基础知识</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/14</span><a class="archive-post-title" href= "/2020/04/14/20200414-%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E4%BF%A1%E5%B0%81%E9%97%AE%E9%A2%98/" >俄罗斯套娃信封问题（LIS）</a>
         </li>
     
     
@@ -3352,7 +3573,12 @@ height:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >进程和程序的区别</a>
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >进程的理解</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%90%86%E8%A7%A3/" >进程和程序的区别</a>
         </li>
     
     
@@ -3627,12 +3853,12 @@ height:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
         </li>
     
     
@@ -3667,7 +3893,7 @@ height:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/17</span><a class="archive-post-title" href= "/2020/03/17/%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8/" >虚函数和虚函数表（vtable）</a>
+            <span class="archive-post-date">03/17</span><a class="archive-post-title" href= "/2020/03/17/%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0/" >虚函数和纯虚函数</a>
         </li>
     
     
@@ -3722,7 +3948,7 @@ height:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/11</span><a class="archive-post-title" href= "/2020/03/11/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" >网络基础(上)</a>
+            <span class="archive-post-date">03/11</span><a class="archive-post-title" href= "/2020/03/11/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80(%E4%B8%8A)/" >网络基础(上)</a>
         </li>
     
     
@@ -4104,17 +4330,15 @@ height:50vh;
     
         <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
+        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
+    
+        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
+    
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
-        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
-    
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
-    
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
-    
-        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
@@ -4122,11 +4346,13 @@ height:50vh;
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
     
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
         <span class="sidebar-tag-name" data-tags="分治"><span class="iconfont-archer">&#xe606;</span>分治</span>
     
-        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
-    
         <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
+    
+        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
     
         <span class="sidebar-tag-name" data-tags="排序"><span class="iconfont-archer">&#xe606;</span>排序</span>
     

@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">3.2k</span>Reading time: <span class="post-count reading-time">11 min</span></span>
+                        <span>Word count: <span class="post-count word-count">4.7k</span>Reading time: <span class="post-count reading-time">16 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -417,66 +417,45 @@ height:50vh;
 <p><strong>页表基地址寄存器（PTBR）：</strong>CPU有一个专门的页表基地址寄存器，指向当前页表的基地址</p>
 <p><strong>翻译后备缓冲区（TLB）：</strong>一个用来缓存页表条目PTE的硬件设备</p>
 <p><strong>MMU(Memory Management Unit)：</strong>内存管理单元，CPU中含有的硬件，将虚拟地址转换为物理地址</p>
-<h2 id="传统存储管理方式："><a href="#传统存储管理方式：" class="headerlink" title="传统存储管理方式："></a>传统存储管理方式：</h2><p>​       进程必须一次全部加载到内存中，方可运行。当进程很大，就无法运行。而且多道进程运行时，内存不足容纳所有进程，导致多道程序性能下降。操作系统引入了虚拟内存的概念，利用计算机的空间局部性和时间局部性原理，将程序分的一部分装入内存运行，其余部分留在外存，等需要的时候再将外存的程序装入内存继续运行。</p>
+<h2 id="早期内存分配机制"><a href="#早期内存分配机制" class="headerlink" title="早期内存分配机制"></a>早期内存分配机制</h2><p>​       进程必须一次全部加载到内存中，方可运行。当进程很大，就无法运行。而且多道进程运行时，内存不足容纳所有进程，导致多道程序性能下降。</p>
+<p><img src="https://i.loli.net/2020/04/18/iM3SlrvEcPeqNg6.jpg" alt="1.jpg"></p>
 <p>​        例如一台计算机有128M内存，A进程需要10M内存，B进程需要100M内存；操作系统会先将内存中的前 10M 分配给程序 A ，接着再从内存中剩余的 118M 中划分出 110M 分配给程序 B ；如果这时候又运行了需要20M程序 C，系统只剩下 8M 的空间可供使用，此时系统必须在已运行的程序中选择一个将该程序的数据暂时拷贝到硬盘上，释放出部分空间来供程序 C 使用，然后再将程序 C 的数据全部装入内存中运行。</p>
-<p>虚拟内存好像给用户提供了一个比实际内存大得多的存储器。叫虚拟存储器，大小由计算机地址结构决定。</p>
+<p><strong>缺点</strong></p>
 <ul>
-<li><p>缺点：</p>
-<p>1、进程的内存地址空间不隔离，有安全隐患</p>
-<p>2、内存效率使用率低；当内存不够时，需要和磁盘进行交互</p>
-<p>3、程序运行地址不确定。我想这个会降低CPU cache命中率</p>
+<li><p><strong>进程地址空间不隔离。</strong>由于程序都是直接访问物理内存，所以恶意程序可以随意修改别的进程的内存数据，以达到破坏的目的。有些非恶意的，但是有bug的程序也可能不小心修改了其它程序的内存数据，就会导致其它程序的运行出现异常。这种情况对用户来说是无法容忍的，因为用户希望使用计算机的时候，其中一个任务失败了，至少不能影响其它的任务。</p>
+</li>
+<li><p><strong>内存使用效率低。</strong>在A和B都运行的情况下，如果用户又运行了程序C，而程序C需要20M大小的内存才能运行，而此时系统只剩下8M的空间可供使用，所以此时系统必须在已运行的程序中选择一个将该程序的数据暂时拷贝到硬盘上，释放出部分空间来供程序C使用，然后再将程序C的数据全部装入内存中运行。可以想象得到，在这个过程中，有大量的数据在装入装出，导致效率十分低下。</p>
+</li>
+<li><p><strong>程序运行的地址不确定。</strong>当内存中的剩余空间可以满足程序C的要求后，操作系统会在剩余空间中随机分配一段连续的20M大小的空间给程序C使用，因为是随机分配的，所以程序运行的地址是不确定的。</p>
 </li>
 </ul>
-<h2 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h2><h3 id="分段"><a href="#分段" class="headerlink" title="分段"></a>分段</h3><ul>
-<li>按照程序固有的段的大小来划分，每个程序有一个段表。</li>
+<h2 id="分段"><a href="#分段" class="headerlink" title="分段"></a>分段</h2><ul>
+<li>按照程序固有的段的大小来划分，每个程序有一个段表（存放着逻辑地址段号和物理地址段号的对应关系）。</li>
+<li>逻辑地址：段寄存器（段号）+地址寄存器（段内偏移量）</li>
 </ul>
-<p><strong>解决地址隔离和地址不确定问题，如何实现的？</strong></p>
-<p>所有计算机科学中的问题都能通过增加一个中间转换层来解决，虚拟内存就是中间层的存在；</p>
-<p>程序中访问的内存地址不再是实际的物理内存地址，而是一个虚拟地址；操作系统将这个虚拟地址映射到适当的物理内存地址上；然后把程序全部装入内存；通过映射机制，当程序访问虚拟地址空间上的某个地址值时，就相当于访问了物理地址空间中的另一个值</p>
-<p>当进程创建时，每个进程都会有一个自己的 4GB 虚拟地址空间。要注意的是这个 4GB 的地址空间是“虚拟”的，并不是真实存在的，而且<strong>每个进程只能访问自己虚拟地址空间中的数据，无法访问别的进程中的数据</strong>，通过这种方法实现了进程间的地址隔离</p>
-<h3 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h3><p><strong>解决内存效率使用问题，如何实现的？</strong></p>
-<p>每个进程都拥有4GB空间，很显然这会超过物理内存空间；而分页的思想是在分段的基础上，程序运行时用到哪页就为哪页分配内存，没用到的页暂时保留在硬盘上。当用到这些页时再在物理地址空间中为这些页分配内存，然后建立虚拟地址空间中的页和刚分配的物理内存页间的映射。</p>
-<p>而虚拟地址和物理地址之间的映射关系是存储在页表中的；页表类似路由表，里面包含一条条虚拟页与物理页的映射关系的条目，页表条目是个数组，索引号对应着虚拟页号，值对应着物理页号和有效位，权限控制位(控制可读，可写，是否需要root权限)</p>
-<p><img src="https://i.loli.net/2020/03/24/HPCqWFp9JIDn6MN.jpg" alt="v2-9cdb01e6e7737431fc3adf15d18881db_720w.jpg"></p>
-<p>如图：</p>
-<p>有效位为1的时候表示虚拟页已经缓存。</p>
-<p>有效位为0，数组值为null时，表示未分配的页。</p>
-<p>有效位为0，数组值不为null，表示已经分配了虚拟页，但是还未缓存到具体的物理页中（缺页）</p>
-<p>注意这里的缓存是代表内存中存有数据。</p>
-<ul>
-<li>在使用虚拟页式存储管理时需要在页表中增加一些内容：</li>
-</ul>
-<p><strong>页号、驻留位（中断位）、内存块号、外存地址、访问号、修改位</strong></p>
-<p><strong>驻留位：表示该页在外存还是内存；</strong></p>
-<p><strong>访问位：表示该页在内存期间是否被访问过，又称R位；</strong></p>
-<p><strong>修改位：表示该页在内存中是否被修改过，又称M位；</strong></p>
-<h3 id="页表缓存"><a href="#页表缓存" class="headerlink" title="页表缓存"></a>页表缓存</h3><p>页表是被缓存在内存中的，为了防止每次地址翻译操作都需要去访问内存，<strong>CPU</strong>使用了高速缓存与<strong>TLB</strong>来缓存<strong>PTE</strong>。<strong>TLB</strong>是<strong>MMU</strong>中的一个缓冲区，其中每一行都保存着一个由单个<strong>PTE</strong>组成的块</p>
-<p>页表由操作系统管理，并且MMU需要借助存放在内存中的页表来动态翻译虚拟地址</p>
-<h3 id="缺页"><a href="#缺页" class="headerlink" title="缺页"></a>缺页</h3><p><strong>虚拟页没有被缓存在物理内存中</strong>（缓存未命中）被称为缺页。</p>
-<p>当CPU遇见缺页时会触发一个缺页异常，缺页异常将控制权转向操作系统内核，然后调用内核中的缺页异常处理程序，该程序会选择一个牺牲页，如果牺牲页已被修改过，内核会先将它复制回硬盘（采用写回机制而不是直写也是为了尽量减少对硬盘的访问次数），然后再把该虚拟页覆盖到牺牲页的位置，并且更新PTE。</p>
+<p>​       为了解决上述问题，人们想到了一种变通的方法，就是增加一个中间层，利用一种间接的地址访问方法访问物理内存。按照这种方法，程序中访问的内存地址不再是实际的物理内存地址，而是一个虚拟地址，然后由操作系统将这个虚拟地址映射到适当的物理内存地址上。这样，只要操作系统处理好虚拟地址到物理内存地址的映射，就可以保证不同的程序最终访问的内存地址位于不同的区域，彼此没有重叠，就可以达到内存地址空间隔离的效果。</p>
+<p>​        当创建一个进程时，操作系统会为该进程分配一个4GB大小的虚拟进程地址空间。之所以是4GB，是因为在32位的操作系统中，一个指针长度是4字节，而4字节指针的寻址能力是从0x00000000~0xFFFFFFFF，最大值0xFFFFFFFF表示的即为4GB大小的容量。与虚拟地址空间相对的是一个物理地址空间，这个地址空间对应的是真实的物理内存。如果你的计算机上安装了512M大小的内存，那么这个物理地址空间表示的范围是0x00000000~0x1FFFFFFF。当操作系统做虚拟地址到物理地址映射时，只能映射到这一范围，操作系统也只会映射到这一范围。</p>
+<p>​      当进程创建时，每个进程都会有一个自己的4GB虚拟地址空间。要注意的是这个4GB的地址空间是“虚拟”的，并不是真实存在的，而且每个进程只能访问自己虚拟地址空间中的数据，无法访问别的进程中的数据，通过这种方法实现了进程间的地址隔离。那是不是这4GB的虚拟地址空间应用程序可以随意使用呢？很遗憾，在Windows系统下，这个虚拟地址空间被分成了4部分：NULL指针区、用户区、64KB禁入区、内核区。应用程序能使用的只是用户区而已，大约2GB左右(最大可以调整到3GB)。内核区为2GB，内核区保存的是系统线程调度、内存管理、设备驱动等数据，这部分数据供所有的进程共享，但应用程序是不能直接访问的。</p>
+<p>​        人们之所以要创建一个虚拟地址空间，目的是为了解决进程地址空间隔离的问题。但程序要想执行，必须运行在真实的内存上，所以，必须在虚拟地址与物理地址间建立一种映射关系。这样，通过映射机制，当程序访问虚拟地址空间上的某个地址值时，就相当于访问了物理地址空间中的另一个值。人们想到了一种分段(Sagmentation)的方法，它的思想是在虚拟地址空间和物理地址空间之间做一一映射。比如说虚拟地址空间中某个10M大小的空间映射到物理地址空间中某个10M大小的空间。这种思想理解起来并不难，操作系统保证不同进程的地址空间被映射到物理地址空间中不同的区域上，这样每个进程最终访问到的物理地址空间都是彼此分开的。通过这种方式，就实现了进程间的地址隔离。还是以实例说明，假设有两个进程A和B，进程A所需内存大小为10M，其虚拟地址空间分布在0x00000000到0x00A00000，进程B所需内存为100M，其虚拟地址空间分布为0x00000000到0x06400000。那么按照分段的映射方法，进程A在物理内存上映射区域为0x00100000到0x00B00000，，进程B在物理内存上映射区域为0x00C00000到0x07000000。于是进程A和进程B分别被映射到了不同的内存区间，彼此互不重叠，实现了地址隔离。从应用程序的角度看来，进程A的地址空间就是分布在0x00000000到0x00A00000，在做开发时，开发人员只需访问这段区间上的地址即可。应用程序并不关心进程A究竟被映射到物理内存的那块区域上了，所以程序的运行地址也就是相当于说是确定的了。 </p>
+<p><img src="https://i.loli.net/2020/04/18/9itzSlpmqOhGxa8.jpg" alt="2.jpg"></p>
+<p>​        这种分段的映射方法虽然解决了上述中的问题一和问题三，但并没能解决问题二，即内存的使用效率问题。在分段的映射方法中，每次换入换出内存的都是整个程序，这样会造成大量的磁盘访问操作，导致效率低下。所以这种映射方法还是稍显粗糙，粒度比较大。实际上，程序的运行有局部性特点，在某个时间段内，程序只是访问程序的一小部分数据，也就是说，程序的大部分数据在一个时间段内都不会被用到。</p>
+<h2 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h2><p>​      基于这种情况，人们想到了粒度更小的内存分割和映射方法，这种方法就是分页(Paging)。</p>
+<p>​        分页的基本方法是，将地址空间分成许多的页。每页的大小由CPU决定，然后由操作系统选择页的大小。目前Inter系列的CPU支持4KB或4MB的页大小，而PC上目前都选择使用4KB。按这种选择，4GB虚拟地址空间共可以分成1048576（1024*1024）个页，512M的物理内存可以分为131072个页。显然虚拟空间的页数要比物理空间的页数多得多。</p>
+<p>​        在分段的方法中，每次程序运行时总是把程序全部装入内存，而分页的方法则有所不同。分页的思想是<strong>程序运行时用到哪页就为哪页分配内存，没用到的页暂时保留在硬盘上</strong>。当用到这些页时再在物理地址空间中为这些页分配内存，然后建立虚拟地址空间中的页和刚分配的物理内存页间的映射。</p>
+<p>​       下面通过介绍一个可执行文件的装载过程来说明分页机制的实现方法。一个可执行文件(PE文件)其实就是一些<strong>编译链接好的数据和指令的集合</strong>，它也会被分成很多页，在PE文件执行的过程中，它往内存中装载的单位就是页。当一个PE文件被执行时，操作系统会先为该程序创建一个4GB的进程虚拟地址空间。前面介绍过，虚拟地址空间只是一个中间层而已，它的功能是利用一种映射机制将虚拟地址空间映射到物理地址空间，所以，创建4GB虚拟地址空间其实并不是要真的创建空间，只是要创建那种映射机制所需要的数据结构而已，这种数据结构就是页目和页表。</p>
+<p>​        当创建完虚拟地址空间所需要的数据结构后，进程开始读取PE文件的第一页。在PE文件的第一页包含了PE文件头和段表等信息，进程根据文件头和段表等信息，将PE文件中所有的段一一映射到虚拟地址空间中相应的页(PE文件中的段的长度都是页长的整数倍)。这时PE文件的真正指令和数据还没有被装入内存中，操作系统只是根据PE文件的头部等信息建立了PE文件和进程虚拟地址空间中页的映射关系而已。当CPU要访问程序中用到的某个虚拟地址时，当CPU发现该地址并没有相关联的物理地址时，CPU认为该虚拟地址所在的页面是个空页面，CPU会认为这是个页错误(Page Fault)，CPU也就知道了操作系统还未给该PE页面分配内存，CPU会将控制权交还给操作系统。操作系统于是为该PE页面在物理空间中分配一个页面，然后再将这个物理页面与虚拟空间中的虚拟页面映射起来，然后将控制权再还给进程，进程从刚才发生页错误的位置重新开始执行。由于此时已为PE文件的那个页面分配了内存，所以就不会发生页错误了。随着程序的执行，页错误会不断地产生，操作系统也会为进程分配相应的物理页面来满足进程执行的需求。</p>
+<p>​        分页方法的核心思想就是当可执行文件执行到第x页时，就为第x页分配一个内存页y，然后再将这个内存页添加到进程虚拟地址空间的映射表中,这个映射表就相当于一个y=f(x)函数。应用程序通过这个映射表就可以访问到x页关联的y页了。</p>
+<h3 id="缺页中断"><a href="#缺页中断" class="headerlink" title="缺页中断"></a>缺页中断</h3><p>​        <strong>虚拟页没有被缓存在物理内存中</strong>（缓存未命中）被称为缺页。</p>
+<p>​        当CPU遇见缺页时会触发一个缺页异常，缺页异常将控制权转向操作系统内核，然后调用内核中的缺页异常处理程序，该程序会选择一个牺牲页，如果牺牲页已被修改过，内核会先将它复制回硬盘（采用写回机制而不是直写也是为了尽量减少对硬盘的访问次数），然后再把该虚拟页覆盖到牺牲页的位置，并且更新PTE。</p>
 <p>缺页本身是一种中断，与一般的中断一样，需要经过4个处理步骤：</p>
-<p>1、保护CPU现场</p>
-<p>2、分析中断原因</p>
-<p>3、转入缺页中断处理程序进行处理</p>
-<p>4、恢复CPU现场，继续执行</p>
-<h3 id="地址翻译"><a href="#地址翻译" class="headerlink" title="地址翻译"></a>地址翻译</h3><p>地址翻译原理：</p>
-<p><img src="https://i.loli.net/2020/03/24/8eD1WsvRTxcuLHd.jpg" alt="2.jpg"></p>
-<p>n位的虚拟地址划分为p位的虚拟地址偏移量VPO和(n - p)位的虚拟页号VPN;</p>
-<p><strong>MMU</strong>根据<strong>VPN</strong>来选择对应的<strong>PTE</strong>，例如VPN 0代表PTE 0、VPN 1代表PTE 1….因为物理页与虚拟页的大小是一致的，所以物理页面偏移量（Physical Page Offset, PPO）与VPO是相同的，那么之后只要将<strong>PTE</strong>中的物理页号（<strong>Physical Page Number</strong>, <strong>PPN</strong>）与虚拟地址中的<strong>VPO</strong>串联起来，就能得到相应的物理地址。</p>
-<p>地址翻译过程：</p>
-<p><img src="https://i.loli.net/2020/03/24/4FkNh5PztXeMSqy.jpg" alt="3.jpg"></p>
 <ol>
-<li><p>CPU拿到一个虚拟地址，分为两步，先通过页表机制确定该地址所在虚拟页的内容是否从磁盘加载到物理内存页中，然后通过高速缓存机制从该物理地址中取到数据</p>
-</li>
-<li><p>地址翻译硬件要把这个虚拟地址翻译成一个物理地址，从而可以再根据高速缓存的映射关系，把这个物理地址对应的值找到</p>
-</li>
-<li><p>地址翻译硬件利用页表数据结构，TLB硬件缓存等技术，目的只是把一个虚拟地址映射到一个物理地址。要记住DRAM缓存是全相联的，所以一个虚拟地址和一个物理地址是动态关联的，不能直接根据虚拟地址推导出物理地址，必须根据DRAM从磁盘把数据缓存到DRAM时存到页表时存的实际物理页才能得到实际的物理地址，用物理页PPN + VPO就能算出实际的物理地址 (VPO = PPO，所以直接用VPO即可)。 PPN的值是存在页表条目PTE中的。地址翻译做了一堆工作，就是为了找到物理页PPN，然后根据VPO页面偏移量，就能定位到实际的物理地址。</p>
-</li>
-<li><p>得到实际物理地址后，根据高速缓存的原理，把一个物理地址映射到高速缓存具体的组，行，块中，找到实际存储的数据。</p>
-</li>
+<li>保护CPU现场</li>
+<li>分析中断原因</li>
+<li>转入缺页中断处理程序进行处理</li>
+<li>恢复CPU现场，继续执行</li>
 </ol>
 <h2 id="虚拟内存实现方式："><a href="#虚拟内存实现方式：" class="headerlink" title="虚拟内存实现方式："></a>虚拟内存实现方式：</h2><p>（请求分页，请求分段，请求段页式存储管理）</p>
-<h3 id="1-请求分页存储管理"><a href="#1-请求分页存储管理" class="headerlink" title="1.请求分页存储管理"></a>1.请求分页存储管理</h3><p>将虚拟地址内存空间划分位大小相等的页块，同时内存地址空间，也划分位等大小的页块。系统维持一个页表，存储这虚拟页号到物理快块号的映射。程序中的逻辑地址由两部分组成：页号P和页内位移量W。相邻的页面在内存中不一定相邻，即分配给程序的内存块之间不一定连续。逻辑地址转化为物理地址时，根据页表将页号转化为块号，块号乘块大小加上页内偏移得到物理地址。</p>
+<h3 id="请求分页存储管理"><a href="#请求分页存储管理" class="headerlink" title="请求分页存储管理"></a>请求分页存储管理</h3><p>​        将虚拟地址内存空间划分位大小相等的页块，同时内存地址空间，也划分位等大小的页块。系统维持一个页表，存储这虚拟页号到物理快块号的映射。程序中的逻辑地址由两部分组成：页号P和页内位移量W。相邻的页面在内存中不一定相邻，即分配给程序的内存块之间不一定连续。逻辑地址转化为物理地址时，根据页表将页号转化为块号，块号乘块大小加上页内偏移得到物理地址。</p>
 <p>如果程序执行时，调用到不在内存中的虚拟页面时，发生缺页中断，将页由外存调入内存。如果内存已满，采用页面置换算法将老的淘汰，载入新的。页面置换算法常见的有FIFO,LRU。</p>
 <ul>
 <li>优点：<ul>
@@ -492,7 +471,7 @@ height:50vh;
 </ul>
 </li>
 </ul>
-<h3 id="2-请求分段存储管理："><a href="#2-请求分段存储管理：" class="headerlink" title="2.请求分段存储管理："></a>2.请求分段存储管理：</h3><p>将用户程序地址空间分成若干个大小不等的段，每段能够定义一组相对完整的逻辑信息。存储分配时，以段为单位，段内地址连续，段间不连续。虚拟地址由段号和段内地址组成，虚拟地址到实存地址的变换通过段表来实现。 分页对程序猿而言是不可见的。而分段通常对程序猿而言是可见的，因而分段为组织程序和数据提供了方便。</p>
+<h3 id="请求分段存储管理："><a href="#请求分段存储管理：" class="headerlink" title="请求分段存储管理："></a>请求分段存储管理：</h3><p>​       将用户程序地址空间分成若干个大小不等的段，每段能够定义一组相对完整的逻辑信息。如代码段(主程序，子程序，代码库)，数据段（堆段，栈段，已初始化/未初始化对象段）。存储分配时，以段为单位，段内地址连续，段间不连续。虚拟地址由段号和段内地址组成，虚拟地址到实存地址的变换通过段表来实现。 分页对程序猿而言是不可见的。而分段通常对程序猿而言是可见的，因而分段为组织程序和数据提供了方便。</p>
 <ul>
 <li><p>优点：</p>
 <ul>
@@ -511,12 +490,22 @@ height:50vh;
 </ul>
 </li>
 </ul>
-<h3 id="3-段页式存储管理"><a href="#3-段页式存储管理" class="headerlink" title="3.段页式存储管理"></a>3.段页式存储管理</h3><p>段页式存储组织是分段式和分页式结合的存储组织方法。这样可充分利用分段管理和分页管理的长处。 程序的地址空间按逻辑单位分成基本独立的段，而每一段有自己的段名，再把每段分成固定大小的若干页。用分页方法来分配和管理实存。用分段方法来分配和管理虚拟存储器。</p>
+<h3 id="段页式存储管理"><a href="#段页式存储管理" class="headerlink" title="段页式存储管理"></a>段页式存储管理</h3><p>​       段页式存储组织是分段式和分页式结合的存储组织方法。这样可充分利用分段管理和分页管理的长处。 程序的地址空间按逻辑单位分成基本独立的段，而每一段有自己的段名，再把每段分成固定大小的若干页。用分页方法来分配和管理实存。用分段方法来分配和管理虚拟存储器。</p>
 <ul>
-<li><p>优点：段页式管理是段式管理和页式管理相结合而成，具有两者的优点。</p>
+<li>优点：<ul>
+<li>段页式管理是段式管理和页式管理相结合而成，具有两者的优点。</li>
+</ul>
 </li>
-<li><p>缺点：由于管理软件的增加，复杂性和开销也增加。另外需要的硬件以及占用的内存也有所增加，使得执行速度下降。</p>
+<li>缺点：<ul>
+<li>由于管理软件的增加，复杂性和开销也增加。另外需要的硬件以及占用的内存也有所增加，使得执行速度下降。</li>
+</ul>
 </li>
+</ul>
+<h2 id="虚拟内存的优点"><a href="#虚拟内存的优点" class="headerlink" title="虚拟内存的优点"></a>虚拟内存的优点</h2><ul>
+<li>1.在程序需要分配连续的内存空间时，只需要在虚拟内存空间分配连续空间，而不需要在物理内存分配连续的空间，可以利用碎片</li>
+<li>2.当不同的进程使用同样的代码时，不同的进程可以直接把自己的虚拟内存映射到物理内存即可，节约内存。</li>
+<li>3.一个系统如果同时运行着很多进程，为各进程分配的内存之和可能会大于实际可用的物理内存，虚拟内存管理使得这种情况下各进程仍然能够正常运行</li>
+<li>4.虚拟内存管理最主要的作用是让每个进程有独立的地址空间(进程间的安全)</li>
 </ul>
 <p>参考自：<a href="https://zhuanlan.zhihu.com/p/61238591" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/61238591</a></p>
 
@@ -660,7 +649,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#名词解释"><span class="toc-number">1.</span> <span class="toc-text">名词解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#传统存储管理方式："><span class="toc-number">2.</span> <span class="toc-text">传统存储管理方式：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟内存"><span class="toc-number">3.</span> <span class="toc-text">虚拟内存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分段"><span class="toc-number">3.1.</span> <span class="toc-text">分段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分页"><span class="toc-number">3.2.</span> <span class="toc-text">分页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#页表缓存"><span class="toc-number">3.3.</span> <span class="toc-text">页表缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺页"><span class="toc-number">3.4.</span> <span class="toc-text">缺页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#地址翻译"><span class="toc-number">3.5.</span> <span class="toc-text">地址翻译</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟内存实现方式："><span class="toc-number">4.</span> <span class="toc-text">虚拟内存实现方式：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-请求分页存储管理"><span class="toc-number">4.1.</span> <span class="toc-text">1.请求分页存储管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-请求分段存储管理："><span class="toc-number">4.2.</span> <span class="toc-text">2.请求分段存储管理：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-段页式存储管理"><span class="toc-number">4.3.</span> <span class="toc-text">3.段页式存储管理</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#名词解释"><span class="toc-number">1.</span> <span class="toc-text">名词解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#早期内存分配机制"><span class="toc-number">2.</span> <span class="toc-text">早期内存分配机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分段"><span class="toc-number">3.</span> <span class="toc-text">分段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分页"><span class="toc-number">4.</span> <span class="toc-text">分页</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#缺页中断"><span class="toc-number">4.1.</span> <span class="toc-text">缺页中断</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟内存实现方式："><span class="toc-number">5.</span> <span class="toc-text">虚拟内存实现方式：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#请求分页存储管理"><span class="toc-number">5.1.</span> <span class="toc-text">请求分页存储管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#请求分段存储管理："><span class="toc-number">5.2.</span> <span class="toc-text">请求分段存储管理：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#段页式存储管理"><span class="toc-number">5.3.</span> <span class="toc-text">段页式存储管理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟内存的优点"><span class="toc-number">6.</span> <span class="toc-text">虚拟内存的优点</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -3094,9 +3083,192 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 151
+        Total : 162
         </div>
         <!-- search  -->
         
@@ -3112,7 +3284,57 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/14</span><a class="archive-post-title" href= "/2020/04/14/20200414-%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E4%BF%A1%E5%B0%81%E9%97%AE%E9%A2%98/" >俄罗斯套娃信封问题</a>
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/2020/04/21/20200421-%E5%88%A0%E6%95%B0%E9%97%AE%E9%A2%98/" >删数问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/2020/04/21/20200421-%E6%9C%80%E5%B0%8F%E6%A0%88/" >最小栈</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/2020/04/21/20200421-C++%E4%B8%AD%E6%8C%87%E9%92%88()%E3%80%81%E5%8F%96%E5%9C%B0%E5%9D%80(&)%E3%80%81%E8%A7%A3%E5%BC%95%E7%94%A8()%E4%B8%8E%E5%BC%95%E7%94%A8(&)%E7%9A%84%E5%8C%BA%E5%88%AB/" >C++中指针(*)、取地址(&)、解引用(*)与引用(&)的区别</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/20</span><a class="archive-post-title" href= "/2020/04/20/20200420-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" >数据库基础知识</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%AF%B9%E7%A7%B0%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91/" >对称的二叉树</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" >二叉树的镜像</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" >从上到下打印二叉树</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" >单例模式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span><a class="archive-post-title" href= "/2020/04/16/20200416-%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF/" >单源最短路</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/15</span><a class="archive-post-title" href= "/2020/04/15/20200415-C++%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" >C++基础知识</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/14</span><a class="archive-post-title" href= "/2020/04/14/20200414-%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E4%BF%A1%E5%B0%81%E9%97%AE%E9%A2%98/" >俄罗斯套娃信封问题（LIS）</a>
         </li>
     
     
@@ -3152,7 +3374,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >进程和程序的区别</a>
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >进程的理解</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%90%86%E8%A7%A3/" >进程和程序的区别</a>
         </li>
     
     
@@ -3427,12 +3654,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
         </li>
     
     
@@ -3467,7 +3694,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/17</span><a class="archive-post-title" href= "/2020/03/17/%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8/" >虚函数和虚函数表（vtable）</a>
+            <span class="archive-post-date">03/17</span><a class="archive-post-title" href= "/2020/03/17/%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0/" >虚函数和纯虚函数</a>
         </li>
     
     
@@ -3522,7 +3749,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/11</span><a class="archive-post-title" href= "/2020/03/11/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" >网络基础(上)</a>
+            <span class="archive-post-date">03/11</span><a class="archive-post-title" href= "/2020/03/11/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80(%E4%B8%8A)/" >网络基础(上)</a>
         </li>
     
     
@@ -3904,17 +4131,15 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
+        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
+    
+        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
+    
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
-        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
-    
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
-    
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
-    
-        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
@@ -3922,11 +4147,13 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
     
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
         <span class="sidebar-tag-name" data-tags="分治"><span class="iconfont-archer">&#xe606;</span>分治</span>
     
-        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
-    
         <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
+    
+        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
     
         <span class="sidebar-tag-name" data-tags="排序"><span class="iconfont-archer">&#xe606;</span>排序</span>
     
