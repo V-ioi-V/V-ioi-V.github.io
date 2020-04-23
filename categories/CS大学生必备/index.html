@@ -346,6 +346,114 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/23/20200423-%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/" >
+            
+                <span>秒杀系统</span>
+        </a>
+        <div class="abstract-content">
+            <p>被面试官问到怎样优化一个网站，最后提出这个概念</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/23</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "操作系统">操作系统</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/23/20200423-i++%E5%9C%A8%E4%B8%A4%E4%B8%AA%E7%BA%BF%E7%A8%8B%E9%87%8C%E6%89%A7%E8%A1%8C/" >
+            
+                <span>i++在两个线程里执行</span>
+        </a>
+        <div class="abstract-content">
+            
+
+
+最后的值在[2,200]
+
+i++不是原子操作，也就是说，它不是单独一条指令，而是3条指令：
+1、从内存中把i的值取出来放到CPU的寄存器中
+2、CPU寄存器的值+1
+3、把CPU寄存器的值写回内存
+如果是单线程操作，i++毫无问题；但是在多核处理器上，用多线程来做i++会有什么问题呢？
+我再仔细地重复一遍问题：进程有一个全局变量i，还有有两个线程。每个线程的功能，就是循环100次，执行i++。问线程代码全部执行完毕后，i的值是否一定是200？如果不是，它的最大最小值是多少？
+=========分析=======
+i++是由3条指令构成的运算操作，两个线程在i变量上共计需要执行10...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/23</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "操作系统">操作系统</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/22/20200422-%E5%9F%BA%E7%A1%80sql%E8%AF%AD%E5%8F%A5/" >
+            
+                <span>基础sql语句</span>
+        </a>
+        <div class="abstract-content">
+            
+
+ALTERALTER TABLE 语句用于在已有的表中添加、修改或删除列。
+语法如需在表中添加列，请使用下列语法:
+12ALTER TABLE table_nameADD column_name datatype
+要删除表中的列，请使用下列语法：
+12ALTER TABLE table_name DROP COLUMN column_name
+注释：某些数据库系统不允许这种在数据库表中删除列的方式 (DROP COLUMN column_name)。
+要改变表中列的数据类型，请使用下列语法：
+12ALTER TABLE table_nameALTER COLUMN column_na...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/22</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "数据库">数据库</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/04/21/20200421-C++%E4%B8%AD%E6%8C%87%E9%92%88()%E3%80%81%E5%8F%96%E5%9C%B0%E5%9D%80(&)%E3%80%81%E8%A7%A3%E5%BC%95%E7%94%A8()%E4%B8%8E%E5%BC%95%E7%94%A8(&)%E7%9A%84%E5%8C%BA%E5%88%AB/" >
             
                 <span>C++中指针(*)、取地址(&amp;)、解引用(*)与引用(&amp;)的区别</span>
@@ -575,107 +683,10 @@ epoll_ctl可以...
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/10/20200410-%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84%E9%94%81/" >
-            
-                <span>数据库中的锁</span>
-        </a>
-        <div class="abstract-content">
-            转自:https://www.cnblogs.com/kexinxin/p/11620345.html
-
-
-锁分类按锁的粒度划分：表级锁、行级锁、页级锁
-按锁级别划分：共享锁、排它锁、意向锁
-按加锁方式划分：自动锁、显示锁
-按使用方式划分：乐观锁、悲观锁
-乐观锁和悲观锁先说乐观锁和悲观锁的机制：
-1.乐观锁是一种思想，具体实现是，表中有一个版本字段，第一次读的时候，获取到这个字段。处理完业务逻辑开始更新的时候，需要再次查看该字段的值是否和第一次的一样。如果一样更新，反之拒绝。之所以叫乐观，因为这个模式没有从数据库加锁。
-2.悲观锁是数据库层面加锁，都会阻塞去等待锁。
-乐观锁优点程序实现，...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/10</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "数据库">数据库</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >
-            
-                <span>进程的理解</span>
-        </a>
-        <div class="abstract-content">
-            <p><strong>进程：</strong>一个具有一定独立功能的程序在一个数据集合上的一次动态执行的过程。</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/10</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "操作系统">操作系统</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%90%86%E8%A7%A3/" >
-            
-                <span>进程和程序的区别</span>
-        </a>
-        <div class="abstract-content">
-            <p><strong>进程：</strong>一个具有一定独立功能的程序在一个数据集合上的一次动态执行的过程。</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/10</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "操作系统">操作系统</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/categories/CS%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%BF%85%E5%A4%87/page/2/">2</a><a class="page-number" href="/categories/CS%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%BF%85%E5%A4%87/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/categories/CS%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%BF%85%E5%A4%87/page/5/">5</a><a class="extend next" rel="next" href="/categories/CS%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%BF%85%E5%A4%87/page/2/">NEXT &gt;</a>
+        <span class="page-number current">1</span><a class="page-number" href="/categories/CS%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%BF%85%E5%A4%87/page/2/">2</a><a class="page-number" href="/categories/CS%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%BF%85%E5%A4%87/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/categories/CS%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%BF%85%E5%A4%87/page/6/">6</a><a class="extend next" rel="next" href="/categories/CS%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%BF%85%E5%A4%87/page/2/">NEXT &gt;</a>
     </nav>
     
 </main>
@@ -3377,9 +3388,63 @@ epoll_ctl可以...
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 162
+        Total : 168
         </div>
         <!-- search  -->
         
@@ -3392,6 +3457,36 @@ epoll_ctl可以...
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/23</span><a class="archive-post-title" href= "/2020/04/23/20200423-%E7%A1%AC%E5%B8%81/" >硬币</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/23</span><a class="archive-post-title" href= "/2020/04/23/20200423-%E8%83%8C%E5%8C%85%E6%80%BB%E7%BB%93/" >背包总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/23</span><a class="archive-post-title" href= "/2020/04/23/20200423-%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/" >秒杀系统</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/23</span><a class="archive-post-title" href= "/2020/04/23/20200423-i++%E5%9C%A8%E4%B8%A4%E4%B8%AA%E7%BA%BF%E7%A8%8B%E9%87%8C%E6%89%A7%E8%A1%8C/" >i++在两个线程里执行</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/22</span><a class="archive-post-title" href= "/2020/04/22/20200422-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2%EF%BC%88%E5%AD%90%E5%BA%8F%E5%88%97%EF%BC%89/" >最长公共子串（子序列）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/22</span><a class="archive-post-title" href= "/2020/04/22/20200422-%E5%9F%BA%E7%A1%80sql%E8%AF%AD%E5%8F%A5/" >基础sql语句</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -3610,12 +3705,12 @@ epoll_ctl可以...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
         </li>
     
     
@@ -3765,12 +3860,12 @@ epoll_ctl可以...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
         </li>
     
     
@@ -4234,9 +4329,9 @@ epoll_ctl可以...
     
         <span class="sidebar-tag-name" data-tags="图论"><span class="iconfont-archer">&#xe606;</span>图论</span>
     
-        <span class="sidebar-tag-name" data-tags="思维"><span class="iconfont-archer">&#xe606;</span>思维</span>
-    
         <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
+    
+        <span class="sidebar-tag-name" data-tags="思维"><span class="iconfont-archer">&#xe606;</span>思维</span>
     
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
@@ -4246,25 +4341,25 @@ epoll_ctl可以...
     
         <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     
-        <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
-    
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
+    
+        <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
         <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
     
-        <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
-    
         <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
+        <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
     
         <span class="sidebar-tag-name" data-tags="分治"><span class="iconfont-archer">&#xe606;</span>分治</span>
     
-        <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
-    
         <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
+    
+        <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
     
         <span class="sidebar-tag-name" data-tags="排序"><span class="iconfont-archer">&#xe606;</span>排序</span>
     

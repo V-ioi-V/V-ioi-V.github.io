@@ -346,6 +346,216 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/23/20200423-%E8%83%8C%E5%8C%85%E6%80%BB%E7%BB%93/" >
+            
+                <span>背包总结</span>
+        </a>
+        <div class="abstract-content">
+            <p>学的第一个动态规划是01背包</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/23</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "DP">DP</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/23/20200423-%E7%A1%AC%E5%B8%81/" >
+            
+                <span>硬币</span>
+        </a>
+        <div class="abstract-content">
+             
+
+硬币。给定数量不限的硬币，币值为25分、10分、5分和1分，编写代码计算n分有几种表示法。(结果可能会很大，你需要将结果模上1000000007)
+示例1:
+输入: n = 5输出：2解释: 有两种方式可以凑成总金额:5=55=1+1+1+1+1示例2:
+输入: n = 10输出：4解释: 有四种方式可以凑成总金额:10=1010=5+510=5+1+1+1+1+110=1+1+1+1+1+1+1+1+1+1
+注意:
+你可以假设：
+0 &lt;= n (总金额) &lt;= 1000000
+思路
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/23</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/23/20200423-%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/" >
+            
+                <span>秒杀系统</span>
+        </a>
+        <div class="abstract-content">
+            <p>被面试官问到怎样优化一个网站，最后提出这个概念</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/23</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "操作系统">操作系统</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/23/20200423-i++%E5%9C%A8%E4%B8%A4%E4%B8%AA%E7%BA%BF%E7%A8%8B%E9%87%8C%E6%89%A7%E8%A1%8C/" >
+            
+                <span>i++在两个线程里执行</span>
+        </a>
+        <div class="abstract-content">
+            
+
+
+最后的值在[2,200]
+
+i++不是原子操作，也就是说，它不是单独一条指令，而是3条指令：
+1、从内存中把i的值取出来放到CPU的寄存器中
+2、CPU寄存器的值+1
+3、把CPU寄存器的值写回内存
+如果是单线程操作，i++毫无问题；但是在多核处理器上，用多线程来做i++会有什么问题呢？
+我再仔细地重复一遍问题：进程有一个全局变量i，还有有两个线程。每个线程的功能，就是循环100次，执行i++。问线程代码全部执行完毕后，i的值是否一定是200？如果不是，它的最大最小值是多少？
+=========分析=======
+i++是由3条指令构成的运算操作，两个线程在i变量上共计需要执行10...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/23</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "操作系统">操作系统</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/22/20200422-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2%EF%BC%88%E5%AD%90%E5%BA%8F%E5%88%97%EF%BC%89/" >
+            
+                <span>最长公共子串（子序列）</span>
+        </a>
+        <div class="abstract-content">
+            最长公共子序列
+
+给定两个字符串 text1 和 text2，返回这两个字符串的最长公共子序列的长度。
+一个字符串的 子序列 是指这样一个新的字符串：它是由原字符串在不改变字符的相对顺序的情况下删除某些字符（也可以不删除任何字符）后组成的新字符串。例如，”ace” 是 “abcde” 的子序列，但 “aec” 不是 “abcde” 的子序列。两个字符串的「公共子序列」是这两个字符串所共同拥有的子序列。
+若这两个字符串没有公共子序列，则返回 0。
+示例
+123输入：text1 &#x3D; &quot;abcde&quot;, text2 &#x3D; &quot;ace&quot; 输出...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/22</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/22/20200422-%E5%9F%BA%E7%A1%80sql%E8%AF%AD%E5%8F%A5/" >
+            
+                <span>基础sql语句</span>
+        </a>
+        <div class="abstract-content">
+            
+
+ALTERALTER TABLE 语句用于在已有的表中添加、修改或删除列。
+语法如需在表中添加列，请使用下列语法:
+12ALTER TABLE table_nameADD column_name datatype
+要删除表中的列，请使用下列语法：
+12ALTER TABLE table_name DROP COLUMN column_name
+注释：某些数据库系统不允许这种在数据库表中删除列的方式 (DROP COLUMN column_name)。
+要改变表中列的数据类型，请使用下列语法：
+12ALTER TABLE table_nameALTER COLUMN column_na...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/22</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "数据库">数据库</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/04/21/20200421-%E5%88%A0%E6%95%B0%E9%97%AE%E9%A2%98/" >
             
                 <span>删数问题</span>
@@ -466,230 +676,6 @@ innoDB和MyISAM
             <div class= abstract-tags >
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "数据库">数据库</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/18/20200418-%E5%AF%B9%E7%A7%B0%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91/" >
-            
-                <span>对称的二叉树</span>
-        </a>
-        <div class="abstract-content">
-             
-
-请实现一个函数，用来判断一棵二叉树是不是对称的。如果一棵二叉树和它的镜像一样，那么它是对称的。
-例如，二叉树 [1,2,2,3,4,4,3] 是对称的。
-12345    1   &#x2F; \  2   2 &#x2F; \ &#x2F; \3  4 4  3
-但是下面这个 [1,2,2,null,3,null,3] 则不是镜像对称的:
-12345 1&#x2F; \ 2   2  \   \  3    3
-示例 1：
-输入：root = [1,2,2,3,4,4,3]输出：true示例 2：
-输入：root = [1,2,2,null,3,null,3]输出：false
-限...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/18</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/18/20200418-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" >
-            
-                <span>二叉树的镜像</span>
-        </a>
-        <div class="abstract-content">
-            
-
-请完成一个函数，输入一个二叉树，该函数输出它的镜像。
-例如输入：
-      4
-    /   \
-  2     7
- / \   / \
-1   3 6   9
-镜像输出：
-      4
-    /   \
-  7     2
- / \   / \
-9   6 3   1
-示例 1：
-输入：root = [4,2,7,1,3,6,9]输出：[4,7,2,9,6,3,1]
-限制：
-0 &lt;= 节点个数 &lt;= 1000
-递归版123456789101112131415161718struct TreeNode &#123;    int val;    TreeNode...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/18</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/18/20200418-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" >
-            
-                <span>从上到下打印二叉树</span>
-        </a>
-        <div class="abstract-content">
-            
-
-I从上到下打印出二叉树的每个节点，同一层的节点按照从左到右的顺序打印。
-例如:给定二叉树: [3,9,20,null,null,15,7],
-给定二叉树: [3,9,20,null,null,15,7],
-12345  3 &#x2F; \9  20  &#x2F;  \ 15   7
-返回：
-1[3,9,20,15,7]
-提示：
-节点总数 &lt;= 1000
-123456789101112131415161718192021222324struct TreeNode &#123;    int val;    TreeNode *left;    TreeNode *right;...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/18</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/18/20200418-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" >
-            
-                <span>单例模式</span>
-        </a>
-        <div class="abstract-content">
-            转自：https://www.cnblogs.com/sunchaothu/p/10389842.html
-C++ 单例模式总结与剖析单例可能是最常用的简单的一种设计模式，实现方法多样，根据不同的需求有不同的写法; 同时单例也有其局限性，因此有很多人是反对使用单例的。本文对C++ 单例的常见写法进行了一个总结, 包括懒汉式、线程安全、单例模板等； 按照从简单到复杂，最终回归简单的的方式循序渐进地介绍，并且对各种实现方法的局限进行了简单的阐述，大量用到了C++ 11的特性如智能指针, magic static，线程锁; 从头到尾理解下来，对于学习和巩固C++语言特性还是很有帮助的。本文的全...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/18</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "C++">C++</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/16/20200416-%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF/" >
-            
-                <span>单源最短路</span>
-        </a>
-        <div class="abstract-content">
-            题目描述如题，给出一个有向图，请输出从某一点出发到所有点的最短路径长度。
-输入格式第一行包含三个整数 n,m,s分别表示点的个数、有向边的个数、出发点的编号。
-接下来 m行每行包含三个整数 u,v,w，表示一条 u→v 的，长度为 w 的边。
-输出格式输出一行 n个整数，第 i 个表示 s 到第 i个点的最短路径，若不能到达则输出 2^{31}-1。
-输入输出样例输入 #1
-12345674 6 11 2 22 3 22 4 11 3 53 4 31 4 4
-输出 #1
-10 2 4 3
-spfa用dis数组记录源点到有向图上任意一点距离，其中源点到自身距离为0，到其他点距离为INF。将...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "图论">图论</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "模板">模板</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/15/20200415-C++%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" >
-            
-                <span>C++基础知识</span>
-        </a>
-        <div class="abstract-content">
-            <p>基础部分整理</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/15</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "C++">C++</a>
     
 </div>
             
@@ -3401,9 +3387,63 @@ spfa用dis数组记录源点到有向图上任意一点距离，其中源点到�
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 162
+        Total : 168
         </div>
         <!-- search  -->
         
@@ -3416,6 +3456,36 @@ spfa用dis数组记录源点到有向图上任意一点距离，其中源点到�
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/23</span><a class="archive-post-title" href= "/2020/04/23/20200423-%E7%A1%AC%E5%B8%81/" >硬币</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/23</span><a class="archive-post-title" href= "/2020/04/23/20200423-%E8%83%8C%E5%8C%85%E6%80%BB%E7%BB%93/" >背包总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/23</span><a class="archive-post-title" href= "/2020/04/23/20200423-%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/" >秒杀系统</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/23</span><a class="archive-post-title" href= "/2020/04/23/20200423-i++%E5%9C%A8%E4%B8%A4%E4%B8%AA%E7%BA%BF%E7%A8%8B%E9%87%8C%E6%89%A7%E8%A1%8C/" >i++在两个线程里执行</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/22</span><a class="archive-post-title" href= "/2020/04/22/20200422-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2%EF%BC%88%E5%AD%90%E5%BA%8F%E5%88%97%EF%BC%89/" >最长公共子串（子序列）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/22</span><a class="archive-post-title" href= "/2020/04/22/20200422-%E5%9F%BA%E7%A1%80sql%E8%AF%AD%E5%8F%A5/" >基础sql语句</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -3634,12 +3704,12 @@ spfa用dis数组记录源点到有向图上任意一点距离，其中源点到�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
         </li>
     
     
@@ -3789,12 +3859,12 @@ spfa用dis数组记录源点到有向图上任意一点距离，其中源点到�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
         </li>
     
     
@@ -4258,9 +4328,9 @@ spfa用dis数组记录源点到有向图上任意一点距离，其中源点到�
     
         <span class="sidebar-tag-name" data-tags="图论"><span class="iconfont-archer">&#xe606;</span>图论</span>
     
-        <span class="sidebar-tag-name" data-tags="思维"><span class="iconfont-archer">&#xe606;</span>思维</span>
-    
         <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
+    
+        <span class="sidebar-tag-name" data-tags="思维"><span class="iconfont-archer">&#xe606;</span>思维</span>
     
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
@@ -4270,25 +4340,25 @@ spfa用dis数组记录源点到有向图上任意一点距离，其中源点到�
     
         <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     
-        <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
-    
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
+    
+        <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
         <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
     
-        <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
-    
         <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
+        <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
     
         <span class="sidebar-tag-name" data-tags="分治"><span class="iconfont-archer">&#xe606;</span>分治</span>
     
-        <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
-    
         <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
+    
+        <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
     
         <span class="sidebar-tag-name" data-tags="排序"><span class="iconfont-archer">&#xe606;</span>排序</span>
     
