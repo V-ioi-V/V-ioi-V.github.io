@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">1.1k</span>Reading time: <span class="post-count reading-time">4 min</span></span>
+                        <span>Word count: <span class="post-count word-count">1.3k</span>Reading time: <span class="post-count reading-time">5 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -403,7 +403,7 @@ height:50vh;
     <article class="article-entry">
         <font size=4>
 
-<h2 id="二叉搜索树版本"><a href="#二叉搜索树版本" class="headerlink" title="二叉搜索树版本"></a>二叉搜索树版本</h2><p>给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。</p>
+<h1 id="二叉搜索树版本"><a href="#二叉搜索树版本" class="headerlink" title="二叉搜索树版本"></a>二叉搜索树版本</h1><p>给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。</p>
 <p>百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”</p>
 <p>例如，给定如下二叉搜索树:  root = [6,2,8,0,4,7,9,null,null,3,5]</p>
 <p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/14/binarysearchtree_improved.png" alt="img"></p>
@@ -423,9 +423,11 @@ height:50vh;
 <p>输入: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4<br>输出: 5<br>解释: 节点 5 和节点 4 的最近公共祖先是节点 5。因为根据定义最近公共祖先节点可以为节点本身。</p>
 <p><strong>说明:</strong></p>
 <p>所有节点的值都是唯一的。<br>p、q 为不同节点且均存在于给定的二叉树中。</p>
-<h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>1.如果一个节点的左子树和右子树中有p或q，那这个节点就是最近公共祖先的那个点</p>
+<h2 id="递归版"><a href="#递归版" class="headerlink" title="递归版"></a>递归版</h2><p>1.如果一个节点的左子树和右子树中有p或q，那这个节点就是最近公共祖先的那个点</p>
 <p>2.如果遍历到一个点是p或q，直接返回p或q，这时候分为两种情况，一种是p或q是左右子树里的，一种是p或q是最近公共祖先的根节点，如果是根节点的话无须继续遍历了，因为不会发生1的那种情况了，如果不是根节点，那直接返回就可以了，如果没找到另外一个子树，那这个节点就是答案，如果找到了另外的子树，那这两个子树的根就是答案。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    TreeNode *left;</span><br><span class="line">    TreeNode *right;</span><br><span class="line"></span><br><span class="line">    TreeNode(<span class="keyword">int</span> x) : val(x), left(<span class="literal">NULL</span>), right(<span class="literal">NULL</span>) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode *<span class="title">lowestCommonAncestor</span><span class="params">(TreeNode *root, TreeNode *p, TreeNode *q)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">NULL</span>)<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">if</span> (root == p || root == q)<span class="keyword">return</span> root;</span><br><span class="line">        TreeNode *left = lowestCommonAncestor(root-&gt;left, p, q);</span><br><span class="line">        TreeNode *right = lowestCommonAncestor(root-&gt;right, p, q);</span><br><span class="line">        <span class="keyword">if</span>(left&amp;&amp;right)<span class="keyword">return</span> root;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(left)<span class="keyword">return</span> left;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(right)<span class="keyword">return</span> right;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="非递归版"><a href="#非递归版" class="headerlink" title="非递归版"></a>非递归版</h2><p>把其中一个节点的祖先节点全部记录下来，然后找另一个节点的祖先节点，第一个相同的就是二者的最近公共祖先。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode *<span class="title">lowestCommonAncestor</span><span class="params">(TreeNode *root, TreeNode *p, TreeNode *q)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;TreeNode *, TreeNode *&gt; mp;<span class="comment">//用来记录每个节点的父亲节点</span></span><br><span class="line">        <span class="built_in">stack</span>&lt;TreeNode *&gt; s;<span class="comment">//用来遍历这棵树</span></span><br><span class="line">        s.push(root);</span><br><span class="line">        <span class="keyword">while</span> ((mp[p] == <span class="literal">NULL</span> || mp[q] == <span class="literal">NULL</span>)&amp;&amp;!s.empty()) &#123;</span><br><span class="line">            TreeNode *x = s.top();</span><br><span class="line">            s.pop();</span><br><span class="line">            TreeNode *l = x-&gt;left;</span><br><span class="line">            TreeNode *r = x-&gt;right;</span><br><span class="line">            <span class="keyword">if</span> (l != <span class="literal">NULL</span>) &#123;</span><br><span class="line">                mp[l] = x;</span><br><span class="line">                s.push(l);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (r != <span class="literal">NULL</span>) &#123;</span><br><span class="line">                mp[r] = x;</span><br><span class="line">                s.push(r);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;TreeNode *,<span class="keyword">int</span>&gt;book;<span class="comment">//记录某个节点的祖先节点</span></span><br><span class="line">        <span class="keyword">while</span>(p!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">            book[p]=<span class="number">1</span>;</span><br><span class="line">            p=mp[p];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(q!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(book[q])</span><br><span class="line">                <span class="keyword">return</span> q;</span><br><span class="line">            q=mp[q];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
     </article>
     <!-- license  -->
@@ -567,7 +569,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉搜索树版本"><span class="toc-number">1.</span> <span class="toc-text">二叉搜索树版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#思路"><span class="toc-number">2.</span> <span class="toc-text">思路</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二叉树版本"><span class="toc-number"></span> <span class="toc-text">二叉树版本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#思路-1"><span class="toc-number">0.1.</span> <span class="toc-text">思路</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#二叉搜索树版本"><span class="toc-number">1.</span> <span class="toc-text">二叉搜索树版本</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#思路"><span class="toc-number">1.1.</span> <span class="toc-text">思路</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二叉树版本"><span class="toc-number">2.</span> <span class="toc-text">二叉树版本</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#递归版"><span class="toc-number">2.1.</span> <span class="toc-text">递归版</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#非递归版"><span class="toc-number">2.2.</span> <span class="toc-text">非递归版</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -3238,9 +3240,159 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 168
+        Total : 176
         </div>
         <!-- search  -->
         
@@ -3253,6 +3405,46 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/26</span><a class="archive-post-title" href= "/2020/04/26/20200426-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%9D%9E%E9%80%92%E5%BD%92%E9%81%8D%E5%8E%86/" >二叉树的非递归遍历</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/26</span><a class="archive-post-title" href= "/2020/04/26/20200426-%E9%93%BE%E8%A1%A8%E6%8E%92%E5%BA%8F/" >链表排序</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/25</span><a class="archive-post-title" href= "/2020/04/25/20200425-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E4%B9%98/" >字符串相乘</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/25</span><a class="archive-post-title" href= "/2020/04/25/20200425-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" >字符串的排列</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/25</span><a class="archive-post-title" href= "/2020/04/25/20200425-%E6%9C%80%E5%B0%8F%E4%B8%8D%E9%87%8D%E5%A4%8D%E6%95%B0/" >最小不重复数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/25</span><a class="archive-post-title" href= "/2020/04/25/20200425-%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91/" >重建二叉树</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/24</span><a class="archive-post-title" href= "/2020/04/24/20200424-%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8A%A0%E8%BD%BD%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" >计算机加载操作系统</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/24</span><a class="archive-post-title" href= "/2020/04/24/20200424-%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E5%A4%A7%E4%BA%8ENk%E7%9A%84%E6%95%B0/" >数组中出现次数大于N/k的数</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -3501,12 +3693,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
         </li>
     
     
@@ -4125,9 +4317,9 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="图论"><span class="iconfont-archer">&#xe606;</span>图论</span>
     
-        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
-    
         <span class="sidebar-tag-name" data-tags="思维"><span class="iconfont-archer">&#xe606;</span>思维</span>
+    
+        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
@@ -4143,11 +4335,11 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
         <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
-    
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
     

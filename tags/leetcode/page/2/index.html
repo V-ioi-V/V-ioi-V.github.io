@@ -346,6 +346,312 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/21/20200421-%E5%88%A0%E6%95%B0%E9%97%AE%E9%A2%98/" >
+            
+                <span>删数问题</span>
+        </a>
+        <div class="abstract-content">
+            贪心算法 — 删数问题键盘输入一个高精度的正整数n（n&lt;=240位）,去掉其中任意s个数字后剩下的数字按照原来的次序将组成一个新的正整数。编程对给定的n和s,寻求一种方案,使得剩下组成的新数最小。
+Sample Input 178543 4Sample Output13
+解析由于正整数n的有效位数最大可达240位，所以可以采用字符串类型来存储n。那么，应如何来确定该删除哪s位呢？是不是只要删掉最大的s个数字就可以了呢？为了尽可能地逼近目标，我们选取的贪心策略为：每一步总是选择一个使剩下的数最小的数字删去，即按高位到低位的顺序搜索，若各位数字递增，则删除最后一个数字，否则删除第一个递...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/21</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/21/20200421-%E6%9C%80%E5%B0%8F%E6%A0%88/" >
+            
+                <span>最小栈</span>
+        </a>
+        <div class="abstract-content">
+            设计一个支持 push ，pop ，top 操作，并能在常数时间内检索到最小元素的栈。
+push(x) —— 将元素 x 推入栈中。pop() —— 删除栈顶的元素。top() —— 获取栈顶元素。getMin() —— 检索栈中的最小元素。示例:
+12345678MinStack minStack &#x3D; new MinStack();minStack.push(-2);minStack.push(0);minStack.push(-3);minStack.getMin();   --&gt; 返回 -3.minStack.pop();minStack.top();      -...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/21</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/18/20200418-%E5%AF%B9%E7%A7%B0%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91/" >
+            
+                <span>对称的二叉树</span>
+        </a>
+        <div class="abstract-content">
+             
+
+请实现一个函数，用来判断一棵二叉树是不是对称的。如果一棵二叉树和它的镜像一样，那么它是对称的。
+例如，二叉树 [1,2,2,3,4,4,3] 是对称的。
+12345    1   &#x2F; \  2   2 &#x2F; \ &#x2F; \3  4 4  3
+但是下面这个 [1,2,2,null,3,null,3] 则不是镜像对称的:
+12345 1&#x2F; \ 2   2  \   \  3    3
+示例 1：
+输入：root = [1,2,2,3,4,4,3]输出：true示例 2：
+输入：root = [1,2,2,null,3,null,3]输出：false
+限...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/18</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/18/20200418-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" >
+            
+                <span>二叉树的镜像</span>
+        </a>
+        <div class="abstract-content">
+            
+
+请完成一个函数，输入一个二叉树，该函数输出它的镜像。
+例如输入：
+      4
+    /   \
+  2     7
+ / \   / \
+1   3 6   9
+镜像输出：
+      4
+    /   \
+  7     2
+ / \   / \
+9   6 3   1
+示例 1：
+输入：root = [4,2,7,1,3,6,9]输出：[4,7,2,9,6,3,1]
+限制：
+0 &lt;= 节点个数 &lt;= 1000
+递归版123456789101112131415161718struct TreeNode &#123;    int val;    TreeNode...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/18</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/18/20200418-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" >
+            
+                <span>从上到下打印二叉树</span>
+        </a>
+        <div class="abstract-content">
+            
+
+I从上到下打印出二叉树的每个节点，同一层的节点按照从左到右的顺序打印。
+例如:给定二叉树: [3,9,20,null,null,15,7],
+给定二叉树: [3,9,20,null,null,15,7],
+12345  3 &#x2F; \9  20  &#x2F;  \ 15   7
+返回：
+1[3,9,20,15,7]
+提示：
+节点总数 &lt;= 1000
+123456789101112131415161718192021222324struct TreeNode &#123;    int val;    TreeNode *left;    TreeNode *right;...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/18</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/14/20200414-%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E4%BF%A1%E5%B0%81%E9%97%AE%E9%A2%98/" >
+            
+                <span>俄罗斯套娃信封问题（LIS）</span>
+        </a>
+        <div class="abstract-content">
+            
+
+给定一些标记了宽度和高度的信封，宽度和高度以整数对形式 (w, h) 出现。当另一个信封的宽度和高度都比这个信封大的时候，这个信封就可以放进另一个信封里，如同俄罗斯套娃一样。
+请计算最多能有多少个信封能组成一组“俄罗斯套娃”信封（即可以把一个信封放到另一个信封里面）。
+说明:不允许旋转信封。
+示例:
+输入: envelopes = [[5,4],[6,4],[6,7],[2,3]]输出: 3解释: 最多信封的个数为 3, 组合为: [2,3] =&gt; [5,4] =&gt; [6,7]。
+最长上升子序列（nlogn）n^2的算法很简单，设置一个数组，dp遍历一遍即可。
+12345...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/14</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "DP">DP</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/13/20200413-%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/" >
+            
+                <span>三角形最小路径和</span>
+        </a>
+        <div class="abstract-content">
+            
+
+给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。
+例如，给定三角形：
+[     [2],    [3,4],   [6,5,7],  [4,1,8,3]]自顶向下的最小路径和为 11（即，2 + 3 + 5 + 1 = 11）。
+说明：
+如果你可以只使用 O(n) 的额外空间（n 为三角形的总行数）来解决这个问题，那么你的算法会很加分。
+思路从底一直往上加，也不用开设额外的空间，用当前数组存就行了。
+12345678910111213class Solution &#123;public:    int minimumTotal(vector&lt;...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/13</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "DP">DP</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/12/20200412-%E5%89%8Dk%E4%B8%AA%E9%AB%98%E9%A2%91%E5%85%83%E7%B4%A0/" >
+            
+                <span>前k个高频元素</span>
+        </a>
+        <div class="abstract-content">
+            
+
+给定一个非空的整数数组，返回其中出现频率前 k 高的元素。
+示例 1:
+输入: nums = [1,1,1,2,2,3], k = 2输出: [1,2]示例 2:
+输入: nums = [1], k = 1输出: [1]说明：
+
+你可以假设给定的 k 总是合理的，且 1 ≤ k ≤ 数组中不相同的元素的个数。
+你的算法的时间复杂度必须优于 O(n log n) , n 是数组的大小。
+
+每一种思路都要用到哈希表
+暴力排序用哈希表统计以后，用一个vector
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/12</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/04/10/20200410-%E8%93%84%E6%B0%B4%E6%B1%A0%E6%8A%BD%E6%A0%B7%E7%AE%97%E6%B3%95/" >
             
                 <span>蓄水池抽样算法</span>
@@ -415,298 +721,6 @@
             <div class= abstract-tags >
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/10/20200410-%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3%E5%8F%8A%E5%85%AC%E5%85%B1%E8%8A%82%E7%82%B9/" >
-            
-                <span>链表中环的入口及公共节点</span>
-        </a>
-        <div class="abstract-content">
-            
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/10</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/09/20200409-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/" >
-            
-                <span>二叉树的前序遍历</span>
-        </a>
-        <div class="abstract-content">
-            
-
-给定一个二叉树，返回它的前序遍历。
-示例:
-输入: [1,null,2,3]   1    \     2    /   3 
-输出: [1,2,3]进阶: 递归算法很简单，你可以通过迭代算法完成吗？
-递归版无脑系列
-123456789101112131415161718192021222324struct TreeNode &#123;    int val;    TreeNode *left;    TreeNode *right;    TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;&#125;;c...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/09</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/09/20200409-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%80%86%E5%BA%8F%E5%AF%B9/" >
-            
-                <span>数组中的逆序对</span>
-        </a>
-        <div class="abstract-content">
-            
-
-在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组，求出这个数组中的逆序对的总数。
-示例 1:
-输入: [7,5,6,4]输出: 5
-　树状数组树状数组关键在于lowbit的应用，如果一个数的二进制只有１个１，那他只能求一个全部的前缀和，如果不只有一个１，可以用lowbit来把他的前缀和分摊到那几个１对应的数字上。
-123456789101112131415161718192021222324252627282930313233343536class Solution &#123;private:    int C[50010];    in...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/09</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/08/20200408-%E6%95%B0%E7%BB%84%E4%B8%AD%E6%95%B0%E5%AD%97%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0/" >
-            
-                <span>数组中数字出现的次数</span>
-        </a>
-        <div class="abstract-content">
-            普通版
-
-一个整型数组 nums 里除两个数字之外，其他数字都出现了两次。请写程序找出这两个只出现一次的数字。要求时间复杂度是O(n)，空间复杂度是O(1)。
-示例 1：
-输入：nums = [4,1,4,6]输出：[1,6] 或 [6,1]
-示例 2：
-输入：nums = [1,2,10,4,1,4,3,3]输出：[2,10] 或 [10,2]
-思路把所有的数字异或起来就可以得到只出现过一次的两个数字的异或值ans，然后从这个异或值的二进制中找一位是1的（说明两个数字在这一位上是不同的），然后从原数组中把这一位全是0或1的找出来与ans异或就能得到其中一个数字的值。然后再与ans异或就...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/08</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/08/20200408-%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/" >
-            
-                <span>调整数组顺序使奇数位于偶数前面</span>
-        </a>
-        <div class="abstract-content">
-            
-
-输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有奇数位于数组的前半部分，所有偶数位于数组的后半部分。
-示例：
-输入：nums = [1,2,3,4]输出：[1,3,2,4]注：[3,1,2,4] 也是正确的答案之一。
-思路
-双指针交换
-左边找一个偶数和右边的奇数互换，但是不保证奇数偶数的相对位置。
-
-
-1234567891011121314151617class Solution &#123;public:    vector&lt;int&gt; exchange(vector&lt;int&gt; &amp;nums) &#123;        if(nums....
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/08</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/04/20200404-%E5%AE%9E%E7%8E%B0Trie%EF%BC%88%E5%AD%97%E5%85%B8%E6%A0%91%EF%BC%89/" >
-            
-                <span>实现Trie（字典树）</span>
-        </a>
-        <div class="abstract-content">
-            
-
-实现一个 Trie (前缀树)，包含 insert, search, 和 startsWith 这三个操作。
-示例:
-Trie trie = new Trie();trie.insert(“apple”);trie.search(“apple”);   // 返回 truetrie.search(“app”);     // 返回 falsetrie.startsWith(“app”); // 返回 truetrie.insert(“app”);trie.search(“app”);     // 返回 true
-思路
-该图字符串插入顺序
-in、inn、int、tea、ten、to
-...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/04</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "字符串">字符串</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/01/20200401-%E6%8E%A5%E9%9B%A8%E6%B0%B4/" >
-            
-                <span>接雨水</span>
-        </a>
-        <div class="abstract-content">
-            题目描述给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
-
-上面是由数组 [0,1,0,2,1,0,1,3,2,1,2,1] 表示的高度图，在这种情况下，可以接 6 个单位的雨水（蓝色部分表示雨水）。 感谢 Marcos 贡献此图。
-示例:
-输入: [0,1,0,2,1,0,1,3,2,1,2,1]输出: 6
-暴力遍历每一个高度，算出装满雨水时这个高度达到了多高，就是往左边和右边进行遍历，记录两边的最大值，比较小的那个就是当前高度最终可达到的高度。
-复杂性分析
-
-时间复杂度:O(n^2)。数组中的每个元素都需要向左向右扫描。
-空间复杂度:...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/01</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/01/20200401-%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E5%BA%8F%E5%88%97/" >
-            
-                <span>最长递增子序列</span>
-        </a>
-        <div class="abstract-content">
-            题目描述
-
-给定一个未排序的整数数组，找出最长连续序列的长度。
-要求算法的时间复杂度为 O(n)。
-示例:
-输入: [100, 4, 200, 1, 3, 2]输出: 4解释: 最长连续序列是 [1, 2, 3, 4]。它的长度为 4。
-暴力O(n^3)枚举每个数字当做开头，第二层从这个数字一个个往后枚举，第三层从序列中找有没有这个数字的存在
-排序O(nlogn)排序完以后直接遍历一遍即可。
-哈希表O(n)的时间复杂度，O（n）的空间复杂度
-用hash表把全部的标记一遍，然后遍历一遍数组看是不是最小的，就是看mp[i-1]存不存在，确认最小的以后就从mp[i+1]往后遍历即可。要是怕最小...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/01</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "DP">DP</a>
     
 </div>
             
@@ -3472,9 +3486,159 @@ in、inn、int、tea、ten、to
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 168
+        Total : 176
         </div>
         <!-- search  -->
         
@@ -3487,6 +3651,46 @@ in、inn、int、tea、ten、to
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/26</span><a class="archive-post-title" href= "/2020/04/26/20200426-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%9D%9E%E9%80%92%E5%BD%92%E9%81%8D%E5%8E%86/" >二叉树的非递归遍历</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/26</span><a class="archive-post-title" href= "/2020/04/26/20200426-%E9%93%BE%E8%A1%A8%E6%8E%92%E5%BA%8F/" >链表排序</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/25</span><a class="archive-post-title" href= "/2020/04/25/20200425-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E4%B9%98/" >字符串相乘</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/25</span><a class="archive-post-title" href= "/2020/04/25/20200425-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" >字符串的排列</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/25</span><a class="archive-post-title" href= "/2020/04/25/20200425-%E6%9C%80%E5%B0%8F%E4%B8%8D%E9%87%8D%E5%A4%8D%E6%95%B0/" >最小不重复数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/25</span><a class="archive-post-title" href= "/2020/04/25/20200425-%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91/" >重建二叉树</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/24</span><a class="archive-post-title" href= "/2020/04/24/20200424-%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8A%A0%E8%BD%BD%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" >计算机加载操作系统</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/24</span><a class="archive-post-title" href= "/2020/04/24/20200424-%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E5%A4%A7%E4%BA%8ENk%E7%9A%84%E6%95%B0/" >数组中出现次数大于N/k的数</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -3735,12 +3939,12 @@ in、inn、int、tea、ten、to
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
         </li>
     
     
@@ -4359,9 +4563,9 @@ in、inn、int、tea、ten、to
     
         <span class="sidebar-tag-name" data-tags="图论"><span class="iconfont-archer">&#xe606;</span>图论</span>
     
-        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
-    
         <span class="sidebar-tag-name" data-tags="思维"><span class="iconfont-archer">&#xe606;</span>思维</span>
+    
+        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
@@ -4377,11 +4581,11 @@ in、inn、int、tea、ten、to
     
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
         <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
-    
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
     
