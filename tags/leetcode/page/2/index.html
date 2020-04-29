@@ -346,6 +346,113 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/24/20200424-%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E5%A4%A7%E4%BA%8ENk%E7%9A%84%E6%95%B0/" >
+            
+                <span>数组中出现次数大于N/k的数</span>
+        </a>
+        <div class="abstract-content">
+            
+
+给定一个整型数组arr，再给定一个整数k，打印所有出现次数大于 N/K 的数。如果没有这样的数，打印提示信息。要求时间复杂度为O（N*K）,额外空间复杂度为O（K）。
+思路每次删除 K 个不同的数，那么你有N 个数，最多能删除一个数 N/K次，所以大于 N / K 的数一定会留下来。
+123456789101112131415161718192021222324252627282930313233343536373839404142class Solution &#123;    vector&lt;int&gt; GetNumUpToNK(vector&lt;int&gt; a, ...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/24</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/23/20200423-%E7%A1%AC%E5%B8%81/" >
+            
+                <span>硬币</span>
+        </a>
+        <div class="abstract-content">
+             
+
+硬币。给定数量不限的硬币，币值为25分、10分、5分和1分，编写代码计算n分有几种表示法。(结果可能会很大，你需要将结果模上1000000007)
+示例1:
+输入: n = 5输出：2解释: 有两种方式可以凑成总金额:5=55=1+1+1+1+1示例2:
+输入: n = 10输出：4解释: 有四种方式可以凑成总金额:10=1010=5+510=5+1+1+1+1+110=1+1+1+1+1+1+1+1+1+1
+注意:
+你可以假设：
+0 &lt;= n (总金额) &lt;= 1000000
+思路完全背包求方案数问题。
+1234567891011121314class Solutio...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/23</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/22/20200422-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2%EF%BC%88%E5%AD%90%E5%BA%8F%E5%88%97%EF%BC%89/" >
+            
+                <span>最长公共子串（子序列）</span>
+        </a>
+        <div class="abstract-content">
+            最长公共子序列
+
+给定两个字符串 text1 和 text2，返回这两个字符串的最长公共子序列的长度。
+一个字符串的 子序列 是指这样一个新的字符串：它是由原字符串在不改变字符的相对顺序的情况下删除某些字符（也可以不删除任何字符）后组成的新字符串。例如，”ace” 是 “abcde” 的子序列，但 “aec” 不是 “abcde” 的子序列。两个字符串的「公共子序列」是这两个字符串所共同拥有的子序列。
+若这两个字符串没有公共子序列，则返回 0。
+示例
+123输入：text1 &#x3D; &quot;abcde&quot;, text2 &#x3D; &quot;ace&quot; 输出...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/22</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/04/21/20200421-%E5%88%A0%E6%95%B0%E9%97%AE%E9%A2%98/" >
             
                 <span>删数问题</span>
@@ -606,131 +713,10 @@ I从上到下打印出二叉树的每个节点，同一层的节点按照从左�
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/12/20200412-%E5%89%8Dk%E4%B8%AA%E9%AB%98%E9%A2%91%E5%85%83%E7%B4%A0/" >
-            
-                <span>前k个高频元素</span>
-        </a>
-        <div class="abstract-content">
-            
-
-给定一个非空的整数数组，返回其中出现频率前 k 高的元素。
-示例 1:
-输入: nums = [1,1,1,2,2,3], k = 2输出: [1,2]示例 2:
-输入: nums = [1], k = 1输出: [1]说明：
-
-你可以假设给定的 k 总是合理的，且 1 ≤ k ≤ 数组中不相同的元素的个数。
-你的算法的时间复杂度必须优于 O(n log n) , n 是数组的大小。
-
-每一种思路都要用到哈希表
-暴力排序用哈希表统计以后，用一个vector
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/12</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/10/20200410-%E8%93%84%E6%B0%B4%E6%B1%A0%E6%8A%BD%E6%A0%B7%E7%AE%97%E6%B3%95/" >
-            
-                <span>蓄水池抽样算法</span>
-        </a>
-        <div class="abstract-content">
-            
-
-问题描述给定一个数据流，数据流长度N很大，且N直到处理完所有数据之前都不可知，请问如何在只遍历一遍数据（O(N)）的情况下，能够随机选取出m个不重复的数据。
-这个场景强调了3件事：
-
-数据流长度N很大且不可知，所以不能一次性存入内存。
-
-时间复杂度为O(N)。
-
-随机选取m个数，每个数被选中的概率为m/N。
-
-
-核心代码及原理转自：https://www.jianshu.com/p/7a9ea6ece2af
-12345678910111213141516int a[100010];vector&lt;int&gt; reservoir(m);//reservoir为蓄水池// ini...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/10</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "思维">思维</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/10/20200410-%E7%BF%BB%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D/" >
-            
-                <span>翻转字符串里的单词</span>
-        </a>
-        <div class="abstract-content">
-            给定一个字符串，逐个翻转字符串中的每个单词。
-示例 1：
-输入: “the sky is blue”输出: “blue is sky the”示例 2：
-输入: “  hello world!  “输出: “world! hello”解释: 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。示例 3：
-输入: “a good   example”输出: “example good a”解释: 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。
-思路
-如何用O(1)的空间复杂度来实现
-
-现将原来的串倒转，然后在串里面实现reverse，但是字符串里要处理空...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/10</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/tags/leetcode/">&lt; PREV</a><a class="page-number" href="/tags/leetcode/">1</a><span class="page-number current">2</span><a class="page-number" href="/tags/leetcode/page/3/">3</a><a class="page-number" href="/tags/leetcode/page/4/">4</a><a class="page-number" href="/tags/leetcode/page/5/">5</a><a class="extend next" rel="next" href="/tags/leetcode/page/3/">NEXT &gt;</a>
+        <a class="extend prev" rel="prev" href="/tags/leetcode/">&lt; PREV</a><a class="page-number" href="/tags/leetcode/">1</a><span class="page-number current">2</span><a class="page-number" href="/tags/leetcode/page/3/">3</a><a class="page-number" href="/tags/leetcode/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/tags/leetcode/page/6/">6</a><a class="extend next" rel="next" href="/tags/leetcode/page/3/">NEXT &gt;</a>
     </nav>
     
 </main>
@@ -3636,9 +3622,71 @@ I从上到下打印出二叉树的每个节点，同一层的节点按照从左�
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 176
+        Total : 182
         </div>
         <!-- search  -->
         
@@ -3651,6 +3699,31 @@ I从上到下打印出二叉树的每个节点，同一层的节点按照从左�
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/29</span><a class="archive-post-title" href= "/2020/04/29/20200429-helloworld%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B/" >helloworld执行过程</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/29</span><a class="archive-post-title" href= "/2020/04/29/20200429-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/" >二叉搜索树与双向链表</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/29</span><a class="archive-post-title" href= "/2020/04/29/20200429-%E7%BC%BA%E5%A4%B1%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%AD%A3%E6%95%B0/" >缺失的第一个正数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/29</span><a class="archive-post-title" href= "/2020/04/29/20200429-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%8E%92%E5%88%97/" >下一个排列</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/27</span><a class="archive-post-title" href= "/2020/04/27/20200427-%E6%99%BA%E5%8A%9B%E9%A2%98/" >智力题</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -3839,6 +3912,11 @@ I从上到下打印出二叉树的每个节点，同一层的节点按照从左�
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">04/09</span><a class="archive-post-title" href= "/2020/04/09/20200409-%E5%BA%8F%E5%88%97%E5%8C%96%E4%BA%8C%E5%8F%89%E6%A0%91/" >序列化二叉树</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">04/09</span><a class="archive-post-title" href= "/2020/04/09/20200409-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%80%86%E5%BA%8F%E5%AF%B9/" >数组中的逆序对</a>
         </li>
     
@@ -3939,12 +4017,12 @@ I从上到下打印出二叉树的每个节点，同一层的节点按照从左�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
         </li>
     
     
@@ -4555,9 +4633,9 @@ I从上到下打印出二叉树的每个节点，同一层的节点按照从左�
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="leetcode"><span class="iconfont-archer">&#xe606;</span>leetcode</span>
-    
         <span class="sidebar-tag-name" data-tags="操作系统"><span class="iconfont-archer">&#xe606;</span>操作系统</span>
+    
+        <span class="sidebar-tag-name" data-tags="leetcode"><span class="iconfont-archer">&#xe606;</span>leetcode</span>
     
         <span class="sidebar-tag-name" data-tags="计算机网络原理"><span class="iconfont-archer">&#xe606;</span>计算机网络原理</span>
     
@@ -4575,17 +4653,19 @@ I从上到下打印出二叉树的每个节点，同一层的节点按照从左�
     
         <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     
-        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
+        <span class="sidebar-tag-name" data-tags="瞎搞，leetcode"><span class="iconfont-archer">&#xe606;</span>瞎搞，leetcode</span>
     
-        <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
+        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+        <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
     
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
         <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
     
@@ -4632,9 +4712,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="算法"><span class="iconfont-archer">&#xe60a;</span>算法</span>
-    
         <span class="sidebar-category-name" data-categories="CS大学生必备"><span class="iconfont-archer">&#xe60a;</span>CS大学生必备</span>
+    
+        <span class="sidebar-category-name" data-categories="算法"><span class="iconfont-archer">&#xe60a;</span>算法</span>
     
         <span class="sidebar-category-name" data-categories="总结"><span class="iconfont-archer">&#xe60a;</span>总结</span>
     

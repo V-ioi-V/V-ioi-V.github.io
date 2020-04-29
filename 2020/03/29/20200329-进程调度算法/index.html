@@ -442,8 +442,12 @@ height:50vh;
 </ul>
 <p>是不是第三点你很疑惑，万一放到最后一个清单，你事情岂不是一直完不成？你别忘了，优先级越低的清单时间片越长，你有更多的时间去集中攻克一个任务。</p>
 <p>基本上 MLFQ 算法是兼顾各种因素的较好的算法了，保证了短任务很快完成、重要任务优先完成、拖延的任务能集中精力完成，是不是很完美。不知道你有没有看过《无压工作的艺术》[5]这本书，这个算法和书中的内容几乎契合。这本书中说 5 分钟之内能做完的事，就赶紧做完，不让它占用大脑的“内存”，做完就可以完全置诸脑后。如果需要超过 5 分钟来完成，就把它列在清单里，之后抽专门的时间再统一分配。等等理念，我觉得还是很值得借鉴的。</p>
-<h2 id="尾"><a href="#尾" class="headerlink" title="尾"></a>尾</h2><p>调度算法有很多，这篇文章粗浅的介绍了一些操作系统常用的调度算法，还有很多其他方面的调度算法有待大家去探索（比如负载均衡之类的，就是你一个人实在忙不过来了怎么办）。最后的“多级反馈调度”算法目测是最符合我们人处理事情思维的，但还是要结合自己的习惯，变法很多很灵活，这里只是做个简介，具体的理解全看你了，当然只要你觉得有趣就好。另外，文章里面的例子与现实严重不符，迎娶白富美靠的是颜值，升职加薪靠的是运气，所以，提升颜值且积攒人品吧 :) 抖个机灵。</p>
-<p>其实很多算法的思想，都可以运用在生活中，无论大事小事，比如贪心算法，分治法等，敬请期待<strong>算法优化人生</strong>系列的下一篇。</p>
+<h2 id="进程调度算法的时机"><a href="#进程调度算法的时机" class="headerlink" title="进程调度算法的时机"></a>进程调度算法的时机</h2><ul>
+<li>中断处理过程（包括时钟中断、I/O中断、系统调用和异常）中，直接调用schedule()，或者返回用户态时根据need_resched标记调用schedule()；</li>
+<li>内核线程可以直接调用schedule()进行进程切换，也可以在中断处理过程中进行调度，也就是说内核线程作为一类的特殊的进程可以主动调度，也可以被动调度；</li>
+<li>用户态进程无法实现主动调度，仅能通过陷入内核态后的某个时机点进行调度，即在中断处理过程中进行调度。</li>
+</ul>
+<p>schedule()是一个内核函数，不是系统调用，没法直接调用，只能间接的调用schedule()。<br> 用户态进程只能被动调度。<br> 内核线程是只有内核态没有用户态的特殊进程。<br> 内核线程可以主动调度也可以被动调度。</p>
 
     </article>
     <!-- license  -->
@@ -585,7 +589,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是调度算法"><span class="toc-number">1.</span> <span class="toc-text">什么是调度算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调度算法和我们有什么关系"><span class="toc-number">2.</span> <span class="toc-text">调度算法和我们有什么关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作系统的调度算法"><span class="toc-number">3.</span> <span class="toc-text">操作系统的调度算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-先来先服务调度算法（FCFS）"><span class="toc-number">3.1.</span> <span class="toc-text">1. 先来先服务调度算法（FCFS）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-短作业优先调度算法（SJF）"><span class="toc-number">3.2.</span> <span class="toc-text">2. 短作业优先调度算法（SJF）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-优先权调度算法（FPF）"><span class="toc-number">3.3.</span> <span class="toc-text">3. 优先权调度算法（FPF）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-高响应比优先调度算法（HRRN）"><span class="toc-number">3.4.</span> <span class="toc-text">4. 高响应比优先调度算法（HRRN）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-时间片轮转调度算法（RR）"><span class="toc-number">3.5.</span> <span class="toc-text">5. 时间片轮转调度算法（RR）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-多级反馈队列调度算法（MLFQ）"><span class="toc-number">3.6.</span> <span class="toc-text">6. 多级反馈队列调度算法（MLFQ）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#尾"><span class="toc-number">4.</span> <span class="toc-text">尾</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是调度算法"><span class="toc-number">1.</span> <span class="toc-text">什么是调度算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调度算法和我们有什么关系"><span class="toc-number">2.</span> <span class="toc-text">调度算法和我们有什么关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作系统的调度算法"><span class="toc-number">3.</span> <span class="toc-text">操作系统的调度算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-先来先服务调度算法（FCFS）"><span class="toc-number">3.1.</span> <span class="toc-text">1. 先来先服务调度算法（FCFS）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-短作业优先调度算法（SJF）"><span class="toc-number">3.2.</span> <span class="toc-text">2. 短作业优先调度算法（SJF）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-优先权调度算法（FPF）"><span class="toc-number">3.3.</span> <span class="toc-text">3. 优先权调度算法（FPF）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-高响应比优先调度算法（HRRN）"><span class="toc-number">3.4.</span> <span class="toc-text">4. 高响应比优先调度算法（HRRN）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-时间片轮转调度算法（RR）"><span class="toc-number">3.5.</span> <span class="toc-text">5. 时间片轮转调度算法（RR）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-多级反馈队列调度算法（MLFQ）"><span class="toc-number">3.6.</span> <span class="toc-text">6. 多级反馈队列调度算法（MLFQ）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程调度算法的时机"><span class="toc-number">4.</span> <span class="toc-text">进程调度算法的时机</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -3406,9 +3410,71 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 176
+        Total : 182
         </div>
         <!-- search  -->
         
@@ -3421,6 +3487,31 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/29</span><a class="archive-post-title" href= "/2020/04/29/20200429-helloworld%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B/" >helloworld执行过程</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/29</span><a class="archive-post-title" href= "/2020/04/29/20200429-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/" >二叉搜索树与双向链表</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/29</span><a class="archive-post-title" href= "/2020/04/29/20200429-%E7%BC%BA%E5%A4%B1%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%AD%A3%E6%95%B0/" >缺失的第一个正数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/29</span><a class="archive-post-title" href= "/2020/04/29/20200429-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%8E%92%E5%88%97/" >下一个排列</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/27</span><a class="archive-post-title" href= "/2020/04/27/20200427-%E6%99%BA%E5%8A%9B%E9%A2%98/" >智力题</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -3609,6 +3700,11 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">04/09</span><a class="archive-post-title" href= "/2020/04/09/20200409-%E5%BA%8F%E5%88%97%E5%8C%96%E4%BA%8C%E5%8F%89%E6%A0%91/" >序列化二叉树</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">04/09</span><a class="archive-post-title" href= "/2020/04/09/20200409-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%80%86%E5%BA%8F%E5%AF%B9/" >数组中的逆序对</a>
         </li>
     
@@ -3709,12 +3805,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
         </li>
     
     
@@ -4325,9 +4421,9 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="leetcode"><span class="iconfont-archer">&#xe606;</span>leetcode</span>
-    
         <span class="sidebar-tag-name" data-tags="操作系统"><span class="iconfont-archer">&#xe606;</span>操作系统</span>
+    
+        <span class="sidebar-tag-name" data-tags="leetcode"><span class="iconfont-archer">&#xe606;</span>leetcode</span>
     
         <span class="sidebar-tag-name" data-tags="计算机网络原理"><span class="iconfont-archer">&#xe606;</span>计算机网络原理</span>
     
@@ -4345,17 +4441,19 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     
-        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
+        <span class="sidebar-tag-name" data-tags="瞎搞，leetcode"><span class="iconfont-archer">&#xe606;</span>瞎搞，leetcode</span>
     
-        <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
+        <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+        <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
     
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
         <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
     
@@ -4402,9 +4500,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="算法"><span class="iconfont-archer">&#xe60a;</span>算法</span>
-    
         <span class="sidebar-category-name" data-categories="CS大学生必备"><span class="iconfont-archer">&#xe60a;</span>CS大学生必备</span>
+    
+        <span class="sidebar-category-name" data-categories="算法"><span class="iconfont-archer">&#xe60a;</span>算法</span>
     
         <span class="sidebar-category-name" data-categories="总结"><span class="iconfont-archer">&#xe60a;</span>总结</span>
     
