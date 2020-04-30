@@ -114,3 +114,40 @@ aabaa b
 */
 ```
 
+- 封装版
+
+```c++
+//这个模板 字符串是从0开始的
+//Next数组是从1开始的
+class Solution {
+    int nex[100010];
+
+    void getnext(string t) {
+        nex[0] = -1;
+        int len = t.size();
+        int j = 0, k = -1;
+        while (j < len) {
+            if (k == -1 || t[j] == t[k])
+                nex[++j] = ++k;
+            else
+                k = nex[k];
+        }
+    }
+
+public:
+    int strStr(string s, string t) {
+        int i = 0, j = 0;
+        getnext(t);
+        int len1 = s.size(), len2 = t.size();
+        while (i < len1 && j < len2) {
+            if (j == -1 || s[i] == t[j])
+                i++, j++;
+            else
+                j = nex[j];
+        }
+        if (j == len2)return i - len2;
+        return -1;
+    }
+};
+```
+
