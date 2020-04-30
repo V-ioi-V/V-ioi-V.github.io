@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">979</span>Reading time: <span class="post-count reading-time">3 min</span></span>
+                        <span>Word count: <span class="post-count word-count">1.7k</span>Reading time: <span class="post-count reading-time">5 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -405,6 +405,16 @@ height:50vh;
 
 <h1 id="主键和外键"><a href="#主键和外键" class="headerlink" title="主键和外键"></a>主键和外键</h1><p><strong>主键：</strong>关系型数据库中的一条记录中有若干个属性，若其中某一个属性组(注意是组)能唯一标识一条记录，该属性组就可以成为一个主键。</p>
 <p><strong>外键：</strong>如果一个字段X在一张表（表一）中是主键，而在另外一张表（表二）中不是主键，则字段X称为表二的外键</p>
+<h1 id="为何不为所有属性建立索引"><a href="#为何不为所有属性建立索引" class="headerlink" title="为何不为所有属性建立索引"></a>为何不为所有属性建立索引</h1><p>1.不是每个属性都要必要建立索引，一般要看这个属性是不是比较重要或者用的比较多<br>2.建立索引需要耗费存储空间<br>3.索引需要定期维护，维护比较麻烦，有时候需要重建<br>4.某条件查询效率低下，而且数据量大的时候可以考虑建索引</p>
+<h1 id="什么时候建索引"><a href="#什么时候建索引" class="headerlink" title="什么时候建索引"></a>什么时候建索引</h1><p>索引可以提高数据的检索效率，也可以降低数据库的IO成本，并且索引还可以降低数据库的排序成本。排序分组操作主要消耗的就是CPU资源和内存，所以能够在排序分组操作中好好的利用索引将会极大地降低CPU资源的消耗。</p>
+<p><strong>如何判定是否需要创建索引？</strong></p>
+<p><strong>1、较频繁地作为查询条件的字段</strong></p>
+<p>这个都知道。什么是教频繁呢？分析你执行的所有SQL语句。最好将他们一个个都列出来。然后分析，发现其中有些字段在大部分的SQL语句查询时候都会用到，那么就果断为他建立索引。</p>
+<p><strong>2、唯一性太差的字段不适合建立索引</strong></p>
+<p>什么是唯一性太差的字段。如状态字段、类型字段。那些只存储固定几个值的字段，例如用户登录状态、消息的status等。这个涉及到了索引扫描的特性。例如：通过索引查找键值为A和B的某些数据，通过A找到某条相符合的数据，这条数据在X页上面，然后继续扫描，又发现符合A的数据出现在了Y页上面，那么存储引擎就会丢弃X页面的数据，然后存储Y页面上的数据，一直到查找完所有对应A的数据，然后查找B字段，发现X页面上面又有对应B字段的数据，那么他就会再次扫描X页面，等于X页面就会被扫描2次甚至多次。以此类推，所以同一个数据页可能会被多次重复的读取，丢弃，在读取，这无疑给存储引擎极大地增加了IO的负担。</p>
+<p><strong>3、更新太频繁地字段不适合创建索引</strong></p>
+<p>当你为这个字段创建索引时候，当你再次更新这个字段数据时，数据库会自动更新他的索引，所以当这个字段更新太频繁地时候那么就是不断的更新索引，性能的影响可想而知。大概被检索几十次会更新一次的字段才比较符合建立索引的规范。而如果一个字段同一个时间段内被更新多次，那么果断不能为他建立索引。</p>
+<p><strong>4、不会出现在where条件中的字段不该建立索引</strong></p>
 <h1 id="聚集索引和非聚集索引"><a href="#聚集索引和非聚集索引" class="headerlink" title="聚集索引和非聚集索引"></a>聚集索引和非聚集索引</h1><p><strong>聚集索引：</strong>该索引中键值的逻辑顺序决定了表中相应行的物理顺序。</p>
 <p><strong>非聚集索引：</strong>一种索引，该索引中索引的逻辑顺序与磁盘上行的物理存储顺序不同。</p>
 <p>索引是通过多路搜索树的数据结构来描述的，我们可以这么理解聚簇索引，索引的叶节点就是数据节点。而非聚簇索引的叶节点仍然是索引节点，只不过有一个指针指向对应的数据块。</p>
@@ -572,7 +582,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#主键和外键"><span class="toc-number">1.</span> <span class="toc-text">主键和外键</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#聚集索引和非聚集索引"><span class="toc-number">2.</span> <span class="toc-text">聚集索引和非聚集索引</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#innoDB和MyISAM"><span class="toc-number">3.</span> <span class="toc-text">innoDB和MyISAM</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三大范式"><span class="toc-number">4.</span> <span class="toc-text">三大范式</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#主键和外键"><span class="toc-number">1.</span> <span class="toc-text">主键和外键</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#为何不为所有属性建立索引"><span class="toc-number">2.</span> <span class="toc-text">为何不为所有属性建立索引</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#什么时候建索引"><span class="toc-number">3.</span> <span class="toc-text">什么时候建索引</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#聚集索引和非聚集索引"><span class="toc-number">4.</span> <span class="toc-text">聚集索引和非聚集索引</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#innoDB和MyISAM"><span class="toc-number">5.</span> <span class="toc-text">innoDB和MyISAM</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三大范式"><span class="toc-number">6.</span> <span class="toc-text">三大范式</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -3479,21 +3489,9 @@ top:50vh;
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 182
+        Total : 184
         </div>
         <!-- search  -->
         
@@ -3506,6 +3504,16 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/30</span><a class="archive-post-title" href= "/2020/04/30/20200430-%E7%AC%ACk%E4%B8%AA%E6%8E%92%E5%88%97/" >第k个排列</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/30</span><a class="archive-post-title" href= "/2020/04/30/20200430-%E9%A2%9C%E8%89%B2%E5%88%86%E7%B1%BB%EF%BC%88%E4%B8%89%E8%89%B2%E9%97%AE%E9%A2%98%EF%BC%89/" >颜色分类（三色问题）</a>
+        </li>
     
     
         <li class="archive-post-item">

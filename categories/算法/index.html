@@ -346,6 +346,82 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/30/20200430-%E7%AC%ACk%E4%B8%AA%E6%8E%92%E5%88%97/" >
+            
+                <span>第k个排列</span>
+        </a>
+        <div class="abstract-content">
+            
+
+给出集合 [1,2,3,…,n]，其所有元素共有 n! 种排列。
+按大小顺序列出所有排列情况，并一一标记，当 n = 3 时, 所有排列如下：
+“123”“132”“213”“231”“312”“321”给定 n 和 k，返回第 k 个排列。
+说明：
+给定 n 的范围是 [1, 9]。给定 k 的范围是[1,  n!]。示例 1:
+输入: n = 3, k = 3输出: “213”示例 2:
+输入: n = 4, k = 9输出: “2314”
+思路首先我们要知道当n = 3时，其排列组合共有3! = 6种，当n = 4时，其排列组合共有4! = 24种，我们就以n = 4, k =...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/30</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/30/20200430-%E9%A2%9C%E8%89%B2%E5%88%86%E7%B1%BB%EF%BC%88%E4%B8%89%E8%89%B2%E9%97%AE%E9%A2%98%EF%BC%89/" >
+            
+                <span>颜色分类（三色问题）</span>
+        </a>
+        <div class="abstract-content">
+            
+
+给定一个包含红色、白色和蓝色，一共 n 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。
+此题中，我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。
+注意:不能使用代码库中的排序函数来解决这道题。
+示例:
+输入: [2,0,2,1,1,0]输出: [0,0,1,1,2,2]进阶：
+一个直观的解决方案是使用计数排序的两趟扫描算法。首先，迭代计算出0、1 和 2 元素的个数，然后按照0、1、2的排序，重写当前数组。你能想出一个仅使用常数空间的一趟扫描算法吗？
+思路当前数是0的话，i和l都++。
+当前数是1的话，只有i++，可以保障每当遇到...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/30</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/04/29/20200429-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/" >
             
                 <span>二叉搜索树与双向链表</span>
@@ -632,80 +708,10 @@ num1 和 num2 的长度小于110。num1 和 num2 只包含数字 0-9。num1 和 
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/25/20200425-%E6%9C%80%E5%B0%8F%E4%B8%8D%E9%87%8D%E5%A4%8D%E6%95%B0/" >
-            
-                <span>最小不重复数</span>
-        </a>
-        <div class="abstract-content">
-            如果一个数字十进制表达时，不存在连续两位相同，则称之为“不重复数”。例如，105、164和198都是“不重复数”，而11、100和122不是。
-下面用一个long类型（ long类型数字A），实现返回大于A的最小“不重复数”。
-思路如1223445，从左往右找到第1个重复的数，将后面重复的那个数加1，然后将重复数后面的数设置为0101…,   1223445  -&gt; 1230101特殊的是重复的数是9的情况，如1099446，此时将重复之前的那位加1，如果认为重复数，循环。   1099446  -&gt; 1101010 -&gt; 1201010
-123456789101112...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/25</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/25/20200425-%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91/" >
-            
-                <span>重建二叉树</span>
-        </a>
-        <div class="abstract-content">
-            
-
-输入某二叉树的前序遍历和中序遍历的结果，请重建该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。
-例如，给出
-前序遍历 preorder = [3,9,20,15,7]中序遍历 inorder = [9,3,15,20,7]返回如下的二叉树：
-12345  3 &#x2F; \9  20  &#x2F;  \ 15   7
-限制：
-0 &lt;= 节点个数 &lt;= 5000
-思路直接在原数组操作，或者另外开新的数组也可以，那样更省事。
-1234567891011121314151617181920class Solution &#123;    TreeNode *...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/25</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/categories/%E7%AE%97%E6%B3%95/page/2/">2</a><a class="page-number" href="/categories/%E7%AE%97%E6%B3%95/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/categories/%E7%AE%97%E6%B3%95/page/12/">12</a><a class="extend next" rel="next" href="/categories/%E7%AE%97%E6%B3%95/page/2/">NEXT &gt;</a>
+        <span class="page-number current">1</span><a class="page-number" href="/categories/%E7%AE%97%E6%B3%95/page/2/">2</a><a class="page-number" href="/categories/%E7%AE%97%E6%B3%95/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/categories/%E7%AE%97%E6%B3%95/page/13/">13</a><a class="extend next" rel="next" href="/categories/%E7%AE%97%E6%B3%95/page/2/">NEXT &gt;</a>
     </nav>
     
 </main>
@@ -3697,21 +3703,9 @@ num1 和 num2 的长度小于110。num1 和 num2 只包含数字 0-9。num1 和 
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 182
+        Total : 184
         </div>
         <!-- search  -->
         
@@ -3724,6 +3718,16 @@ num1 和 num2 的长度小于110。num1 和 num2 只包含数字 0-9。num1 和 
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/30</span><a class="archive-post-title" href= "/2020/04/30/20200430-%E7%AC%ACk%E4%B8%AA%E6%8E%92%E5%88%97/" >第k个排列</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/30</span><a class="archive-post-title" href= "/2020/04/30/20200430-%E9%A2%9C%E8%89%B2%E5%88%86%E7%B1%BB%EF%BC%88%E4%B8%89%E8%89%B2%E9%97%AE%E9%A2%98%EF%BC%89/" >颜色分类（三色问题）</a>
+        </li>
     
     
         <li class="archive-post-item">

@@ -346,6 +346,82 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2019/10/03/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%9C%80%E5%B0%8F%E5%9C%86%E8%A6%86%E7%9B%96%20/" >
+            
+                <span>【模板】最小圆覆盖</span>
+        </a>
+        <div class="abstract-content">
+             
+
+题目描述给出N个点，让你画一个最小的包含所有点的圆。
+输入先给出点的个数N,2&lt;=N&lt;=100000，再给出坐标Xi,Yi.(-10000.0&lt;=xi,yi&lt;=10000.0)
+输出输出圆的半径，及圆心的坐标，保留10位小数
+样例输入123456768.0 9.04.0 7.51.0 2.05.1 8.79.0 2.04.5 1.0
+样例输出125.00000000005.0000000000 5.0000000000
+思路随机数处理复杂度为O（n）
+第一个点定为圆心；
+第二个点和第一个点的连线的中点定位圆心，距离为直径；
+第三个点要和前两个点进行三点定圆；...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/03</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "模板">模板</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/10/03/%E6%9E%81%E8%A7%92%E6%8E%92%E5%BA%8F%20/" >
+            
+                <span>极角排序</span>
+        </a>
+        <div class="abstract-content">
+             
+
+题目描述所谓极角，指的就是以x轴正半轴为始边，逆时针转过的角，这个角的范围是[0,2π][0,2π]。
+利用atan2函数atan2(y,x)，表示(x,y)这个点与原点连线，这条线与x轴正半轴的夹角，这里的这个极角的范围是[−π,π][−π,π]的，一二象限为正，三四象限为负。所以我们从小到大排完序后，实际上是第三象限→→第四象限→→第一象限→→第二象限。
+12345678910111213141516struct node &#123;    int x, y;    double angle;    bool operator&lt;(const node &amp;a) c...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/03</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "模板">模板</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算几何">计算几何</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2019/10/02/%E5%9C%88%E5%A5%B6%E7%89%9BFencing%20the%20Cows/" >
             
                 <span>圈奶牛Fencing the Cows</span>
@@ -593,70 +669,10 @@
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/04/01/SG%E5%87%BD%E6%95%B0/" >
-            
-                <span>SG函数</span>
-        </a>
-        <div class="abstract-content">
-            <p>SG(x)=mex({SG(y1),SG(y2),…SG(yk))})</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/04/01</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "博弈论">博弈论</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/03/27/RGB%20Coloring(%E7%BB%84%E5%90%88%E6%95%B0%E6%A8%A1%E6%9D%BF%EF%BC%89/" >
-            
-                <span>RGB Coloring(组合数模板）</span>
-        </a>
-        <div class="abstract-content">
-             
-
-题目描述Takahashi has a tower which is divided into N layers. Initially, all the layers are uncolored. Takahashi is going to paint some of the layers in red, green or blue to make a beautiful tower. He defines the beauty of the tower as follows:The beauty of the tower is the sum of the scores of t...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/27</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "数论">数论</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/categories/%E7%AE%97%E6%B3%95/page/7/">&lt; PREV</a><a class="page-number" href="/categories/%E7%AE%97%E6%B3%95/">1</a><span class="space">&hellip;</span><a class="page-number" href="/categories/%E7%AE%97%E6%B3%95/page/6/">6</a><a class="page-number" href="/categories/%E7%AE%97%E6%B3%95/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/categories/%E7%AE%97%E6%B3%95/page/9/">9</a><a class="page-number" href="/categories/%E7%AE%97%E6%B3%95/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/categories/%E7%AE%97%E6%B3%95/page/12/">12</a><a class="extend next" rel="next" href="/categories/%E7%AE%97%E6%B3%95/page/9/">NEXT &gt;</a>
+        <a class="extend prev" rel="prev" href="/categories/%E7%AE%97%E6%B3%95/page/7/">&lt; PREV</a><a class="page-number" href="/categories/%E7%AE%97%E6%B3%95/">1</a><span class="space">&hellip;</span><a class="page-number" href="/categories/%E7%AE%97%E6%B3%95/page/6/">6</a><a class="page-number" href="/categories/%E7%AE%97%E6%B3%95/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/categories/%E7%AE%97%E6%B3%95/page/9/">9</a><a class="page-number" href="/categories/%E7%AE%97%E6%B3%95/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/categories/%E7%AE%97%E6%B3%95/page/13/">13</a><a class="extend next" rel="next" href="/categories/%E7%AE%97%E6%B3%95/page/9/">NEXT &gt;</a>
     </nav>
     
 </main>
@@ -3648,21 +3664,9 @@
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 182
+        Total : 184
         </div>
         <!-- search  -->
         
@@ -3675,6 +3679,16 @@
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/30</span><a class="archive-post-title" href= "/2020/04/30/20200430-%E7%AC%ACk%E4%B8%AA%E6%8E%92%E5%88%97/" >第k个排列</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/30</span><a class="archive-post-title" href= "/2020/04/30/20200430-%E9%A2%9C%E8%89%B2%E5%88%86%E7%B1%BB%EF%BC%88%E4%B8%89%E8%89%B2%E9%97%AE%E9%A2%98%EF%BC%89/" >颜色分类（三色问题）</a>
+        </li>
     
     
         <li class="archive-post-item">

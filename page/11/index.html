@@ -359,6 +359,79 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/18/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/" >
+            
+                <span>最长回文子串(马拉车)</span>
+        </a>
+        <div class="abstract-content">
+            题目描述给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
+示例 1：
+12输入: &quot;babad&quot;输出: &quot;bab&quot;
+注意: “aba” 也是一个有效答案。示例 2：
+12输入: &quot;cbbd&quot;输出: &quot;bb&quot;
+DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2),枚举中心往两边找复杂度也是O（n^2）
+枚举:在求解过程中，基数的回文子串与偶数的回文子串是不一样的。比如最长回文子串为aba，对称中心就是b，如果最长回文子串为abba，则对称中心应该为两个...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/18</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "DP">DP</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "字符串">字符串</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/18/%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/" >
+            
+                <span>盛最多水的容器</span>
+        </a>
+        <div class="abstract-content">
+            题目描述给你 n 个非负整数 a1，a2，…，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
+说明：你不能倾斜容器，且 n 的值至少为 2。
+
+图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。
+示例：
+12输入：[1,8,6,2,5,4,8,3,7]输出：49
+思路双指针法，从两边遍历，由于每条线的距离都是1，所以移动短的那根一定会移动到最大距离。
+简...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/18</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/03/17/C++%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7/" >
             
                 <span>C++三大特性</span>
@@ -619,96 +692,6 @@ height:50vh;
             <div class= abstract-tags >
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "排序">排序</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/13/get%E5%92%8Cpost%E5%8C%BA%E5%88%AB/" >
-            
-                <span>get和post区别</span>
-        </a>
-        <div class="abstract-content">
-            
-
-
-
-后退按钮/刷新
-无害
-数据会被重新提交（浏览器应该告知用户数据会被重新提交）。
-
-
-
-
-书签
-可收藏为书签
-不可收藏为书签
-
-
-缓存
-能被缓存
-不能缓存
-
-
-编码类型
-application/x-www-form-urlencoded
-application/x-www-form-urlencoded 或 multipart/form-data。为二进制数据使用多重编码。
-
-
-历史
-参数保留在浏览器历史中。
-参数不会保存在浏览器历史中。
-
-
-对数据长度的限制
-有限制；当发送数据时，GET 方法向 URL 添加数据；URL 的长度是受限制的（URL 的最大长度是 2048 个字符）...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/13</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/13/http%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81/" >
-            
-                <span>http常见状态码</span>
-        </a>
-        <div class="abstract-content">
-            <p>每条HTTP响应报文返回时都会携带一个状态码。状态码是一个三位数字的代码，告知客户端请求是否成功，或者是否需要采取其他动作。</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/13</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
     
 </div>
             
@@ -3788,21 +3771,9 @@ application/x-www-form-urlencoded 或 multipart/form-data。为二进制数据�
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 182
+        Total : 184
         </div>
         <!-- search  -->
         
@@ -3815,6 +3786,16 @@ application/x-www-form-urlencoded 或 multipart/form-data。为二进制数据�
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/30</span><a class="archive-post-title" href= "/2020/04/30/20200430-%E7%AC%ACk%E4%B8%AA%E6%8E%92%E5%88%97/" >第k个排列</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/30</span><a class="archive-post-title" href= "/2020/04/30/20200430-%E9%A2%9C%E8%89%B2%E5%88%86%E7%B1%BB%EF%BC%88%E4%B8%89%E8%89%B2%E9%97%AE%E9%A2%98%EF%BC%89/" >颜色分类（三色问题）</a>
+        </li>
     
     
         <li class="archive-post-item">

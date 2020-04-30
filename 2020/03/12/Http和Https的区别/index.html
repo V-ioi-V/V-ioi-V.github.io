@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">855</span>Reading time: <span class="post-count reading-time">3 min</span></span>
+                        <span>Word count: <span class="post-count word-count">2.3k</span>Reading time: <span class="post-count reading-time">7 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -430,21 +430,47 @@ height:50vh;
 <li>头部压缩</li>
 <li>服务器推送</li>
 </ul>
+<h1 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h1><p>HTTPS即加密的HTTP，HTTPS并不是一个新协议，而是HTTP+SSL（TLS）。原本HTTP先和TCP（假定传输层是TCP协议）直接通信，而加了SSL后，就变成HTTP先和SSL通信，再由SSL和TCP通信，相当于SSL被嵌在了HTTP和TCP之间。</p>
+<p><img src="https://i.loli.net/2020/04/30/tU5BDzaPMjSvHCF.png" alt="5.png"></p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p><strong>对称密钥加密(共享密钥加密):</strong>加密和解密同用一个密钥。加密时就必须将密钥传送给对方，那么如何安全的传输呢？</p>
+<p><strong>非对称密钥加密(公开密钥加密):</strong>公开密钥加密使用一对非对称的密钥。一把叫做私有密钥，一把叫做公开密钥。私有密钥不能让其他任何人知道，而公开密钥则可以随意发布，任何人都可以获得。使用此加密方式，发送密文的一方使用公开密钥进行加密处理，对方收到被加密的信息后，再使用自己的私有密钥进行解密。利用这种方式，不需要发送用来解密的私有密钥，也不必担心密钥被攻击者窃听盗走。</p>
+<h2 id="HTTPS的做法"><a href="#HTTPS的做法" class="headerlink" title="HTTPS的做法"></a>HTTPS的做法</h2><p>但由于公开密钥比共享密钥要慢，所以我们就需要综合一下他们两者的优缺点，使他们共同使用，而这也是HTTPS采用的加密方式。<strong>在交换密钥阶段使用公开密钥加密方式，之后建立通信交换报文阶段则使用共享密钥加密方式。</strong></p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p> 这里就有一个问题，如何证明公开密钥本身是货真价实的公开密钥。如，正准备和某台服务器建立公开密钥加密方式下的通信时，如何证明收到的公开密钥就是原本预想的那台服务器发行的公开密钥。或许在公开密钥传输过程中，真正的公开密钥已经被攻击者替换掉了。为了解决这个问题，可以使用由数字证书认证机构（CA，Certificate Authority）和其他相关机关颁发的公开密钥证书。<br><strong>解决方法</strong></p>
+<p>接收到证书的客户端可以使用数字证书认证机构的公开密钥，对那张证书上的数字签名进行验证，一旦验证通过，客户端便可以明确两件事：</p>
+<p>一、认证服务器的公开密钥的是真实有效的数字证书认证机构。</p>
+<p>二、服务器的公开密钥是值得信赖的。</p>
+<p>此处认证机关的公开密钥必须安全地转交给客户端。使用通信方式时，如何安全转交是一件很困难的事，因此，多数浏览器开发商发布版本时，会事先在内部植入常用认证机关的公开密钥。</p>
+<ol>
+<li>服务器把自己的公开密钥登录至数字证书认证机构。</li>
+<li>数字证书认证机构用自己的私有密钥向服务器的公开密码署数字签名并颁发公钥证书。</li>
+<li>客户端拿到服务器的公钥证书后，使用数字签名认证机构的公开密钥，向数字证书认证机构验证公钥证书上的数字签名，以确认服务器的公开密钥的真实性。</li>
+<li>使用服务器的公开密钥对报文加密后发送。</li>
+<li>服务器用私有密钥对报文解密。</li>
+</ol>
+<h2 id="HTTPS的安全通信机制"><a href="#HTTPS的安全通信机制" class="headerlink" title="HTTPS的安全通信机制"></a>HTTPS的安全通信机制</h2><p><img src="https://i.loli.net/2020/04/30/yFImnjsiJcoHt1l.png" alt="6.png"></p>
+<p>可以看到工作流程，基本分为三个阶段：</p>
+<ol>
+<li>认证服务器。浏览器内置一个受信任的CA机构列表，并保存了这些CA机构的证书。第一阶段服务器会提供经CA机构认证颁发的服务器证书，如果认证该服务器证书的CA机构，存在于浏览器的受信任CA机构列表中，并且服务器证书中的信息与当前正在访问的网站（域名等）一致，那么浏览器就认为服务端是可信的，并从服务器证书中取得服务器公钥，用于后续流程。否则，浏览器将提示用户，根据用户的选择，决定是否继续。当然，我们可以管理这个受信任CA机构列表，添加我们想要信任的CA机构，或者移除我们不信任的CA机构。</li>
+<li>协商会话密钥。客户端在认证完服务器，获得服务器的公钥之后，利用该公钥与服务器进行加密通信，协商出两个会话密钥，分别是用于加密客户端往服务端发送数据的客户端会话密钥，用于加密服务端往客户端发送数据的服务端会话密钥。在已有服务器公钥，可以加密通讯的前提下，还要协商两个对称密钥的原因，是因为非对称加密相对复杂度更高，在数据传输过程中，使用对称加密，可以节省计算资源。另外，会话密钥是随机生成，每次协商都会有不一样的结果，所以安全性也比较高。</li>
+<li>加密通讯。此时客户端服务器双方都有了本次通讯的会话密钥，之后传输的所有HTTP数据，都通过会话密钥加密。这样网路上的其它用户，将很难窃取和篡改客户端和服务端之间传输的数据，从而保证了数据的私密性和完整性。</li>
+</ol>
+<h2 id="加密算法"><a href="#加密算法" class="headerlink" title="加密算法"></a>加密算法</h2><p><strong>非对称加密算法：</strong>RSA，DSA/DSS</p>
+<p><strong>对称加密算法：</strong>AES，RC4，3DES</p>
+<p><strong>HASH算法：</strong>MD5，SHA1，SHA256</p>
 <h1 id="HTTP与HTTPS的区别"><a href="#HTTP与HTTPS的区别" class="headerlink" title="HTTP与HTTPS的区别"></a>HTTP与HTTPS的区别</h1><p>1、https协议需要到CA  （Certificate Authority，证书颁发机构）申请证书，一般免费证书较少，因而需要一定费用。</p>
 <p>2、http是超文本传输协议，信息是明文传输，https则是具有安全性的SSL/TLS加密传输协议。</p>
 <p>3、http和https使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。</p>
 <p>4、http的连接很简单，是无状态的。Https协议是由SSL+Http协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。(无状态的意思是其数据包的发送、传输和接收都是相互独立的。无连接的意思是指通信双方都不长久的维持对方的任何信息。) </p>
 <h1 id="HTTP的缺点"><a href="#HTTP的缺点" class="headerlink" title="HTTP的缺点"></a>HTTP的缺点</h1><p>1、通信使用明文不加密，内容可能被窃听<br>2、不验证通信方身份，可能遭到伪装<br>3、无法验证报文完整性，可能被篡改</p>
-<h1 id="HTTPS的优点"><a href="#HTTPS的优点" class="headerlink" title="HTTPS的优点"></a>HTTPS的优点</h1><p>1、使用Https协议可认证用户和服务器，确保数据发送到正确的客户机和服务器。</p>
+<h1 id="HTTPS的优缺点"><a href="#HTTPS的优缺点" class="headerlink" title="HTTPS的优缺点"></a>HTTPS的优缺点</h1><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>1、使用Https协议可认证用户和服务器，确保数据发送到正确的客户机和服务器。</p>
 <p>2、Https协议是由SSL+Http协议构建的可进行加密传输、身份认证的网络协议，要比http协议安全，可防止数据在传输过程中不被窃取、修改，确保数据的完整性。</p>
 <p>3、Https是现行架构下最安全的解决方案，虽然不是绝对安全，但它大幅增加了中间人攻击的成本。 </p>
-<h1 id="HTTPS的缺点"><a href="#HTTPS的缺点" class="headerlink" title="HTTPS的缺点"></a>HTTPS的缺点</h1><p>1、Https协议握手阶段比较费时，会使页面的加载时间延长近。</p>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>1、Https协议握手阶段比较费时，会使页面的加载时间延长近。</p>
 <p>2、Https连接缓存不如Http高效，会增加数据开销，甚至已有的安全措施也会因此而受到影响。</p>
 <p>3、Https协议的安全是有范围的，在黑客攻击、拒绝服务攻击和服务器劫持等方面几乎起不到什么作用。</p>
 <p>4、SSL证书通常需要绑定IP，不能在同一IP上绑定多个域名，IPv4资源不可能支撑这个消耗。</p>
 <p>5、成本增加。部署 Https后，因为 Https协议的工作要增加额外的计算资源消耗，例如 SSL 协议加密算法和 SSL 交互次数将占用一定的计算资源和服务器成本。</p>
 <p>6、Https协议的加密范围也比较有限。最关键的，SSL证书的信用链体系并不安全，特别是在某些国家可以控制CA根证书的情况下，中间人攻击一样可行。</p>
-<p><del>待补充</del></p>
 
     </article>
     <!-- license  -->
@@ -586,7 +612,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP"><span class="toc-number">1.</span> <span class="toc-text">HTTP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP1-0-1-1-2-0"><span class="toc-number">2.</span> <span class="toc-text">HTTP1.0 &#x2F;1.1&#x2F;2.0</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP与HTTPS的区别"><span class="toc-number">3.</span> <span class="toc-text">HTTP与HTTPS的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP的缺点"><span class="toc-number">4.</span> <span class="toc-text">HTTP的缺点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTPS的优点"><span class="toc-number">5.</span> <span class="toc-text">HTTPS的优点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTPS的缺点"><span class="toc-number">6.</span> <span class="toc-text">HTTPS的缺点</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP"><span class="toc-number">1.</span> <span class="toc-text">HTTP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP1-0-1-1-2-0"><span class="toc-number">2.</span> <span class="toc-text">HTTP1.0 &#x2F;1.1&#x2F;2.0</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTPS"><span class="toc-number">3.</span> <span class="toc-text">HTTPS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-number">3.1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTPS的做法"><span class="toc-number">3.2.</span> <span class="toc-text">HTTPS的做法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-number">3.3.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTPS的安全通信机制"><span class="toc-number">3.4.</span> <span class="toc-text">HTTPS的安全通信机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加密算法"><span class="toc-number">3.5.</span> <span class="toc-text">加密算法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP与HTTPS的区别"><span class="toc-number">4.</span> <span class="toc-text">HTTP与HTTPS的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP的缺点"><span class="toc-number">5.</span> <span class="toc-text">HTTP的缺点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTPS的优缺点"><span class="toc-number">6.</span> <span class="toc-text">HTTPS的优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#优点"><span class="toc-number">6.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缺点"><span class="toc-number">6.2.</span> <span class="toc-text">缺点</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -3493,21 +3519,9 @@ top:50vh;
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 182
+        Total : 184
         </div>
         <!-- search  -->
         
@@ -3520,6 +3534,16 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/30</span><a class="archive-post-title" href= "/2020/04/30/20200430-%E7%AC%ACk%E4%B8%AA%E6%8E%92%E5%88%97/" >第k个排列</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/30</span><a class="archive-post-title" href= "/2020/04/30/20200430-%E9%A2%9C%E8%89%B2%E5%88%86%E7%B1%BB%EF%BC%88%E4%B8%89%E8%89%B2%E9%97%AE%E9%A2%98%EF%BC%89/" >颜色分类（三色问题）</a>
+        </li>
     
     
         <li class="archive-post-item">

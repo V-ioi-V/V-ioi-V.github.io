@@ -359,6 +359,75 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/22/20200422-%E5%9F%BA%E7%A1%80sql%E8%AF%AD%E5%8F%A5/" >
+            
+                <span>基础sql语句</span>
+        </a>
+        <div class="abstract-content">
+            
+
+ALTERALTER TABLE 语句用于在已有的表中添加、修改或删除列。
+语法如需在表中添加列，请使用下列语法:
+12ALTER TABLE table_nameADD column_name datatype
+要删除表中的列，请使用下列语法：
+12ALTER TABLE table_name DROP COLUMN column_name
+注释：某些数据库系统不允许这种在数据库表中删除列的方式 (DROP COLUMN column_name)。
+要改变表中列的数据类型，请使用下列语法：
+12ALTER TABLE table_nameALTER COLUMN column_na...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/22</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "数据库">数据库</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/21/20200421-%E5%88%A0%E6%95%B0%E9%97%AE%E9%A2%98/" >
+            
+                <span>删数问题</span>
+        </a>
+        <div class="abstract-content">
+            贪心算法 — 删数问题键盘输入一个高精度的正整数n（n&lt;=240位）,去掉其中任意s个数字后剩下的数字按照原来的次序将组成一个新的正整数。编程对给定的n和s,寻求一种方案,使得剩下组成的新数最小。
+Sample Input 178543 4Sample Output13
+解析由于正整数n的有效位数最大可达240位，所以可以采用字符串类型来存储n。那么，应如何来确定该删除哪s位呢？是不是只要删掉最大的s个数字就可以了呢？为了尽可能地逼近目标，我们选取的贪心策略为：每一步总是选择一个使剩下的数最小的数字删去，即按高位到低位的顺序搜索，若各位数字递增，则删除最后一个数字，否则删除第一个递...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/21</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/04/21/20200421-%E6%9C%80%E5%B0%8F%E6%A0%88/" >
             
                 <span>最小栈</span>
@@ -432,11 +501,8 @@ push(x) —— 将元素 x 推入栈中。pop() —— 删除栈顶的元素。t
 
 主键和外键主键：关系型数据库中的一条记录中有若干个属性，若其中某一个属性组(注意是组)能唯一标识一条记录，该属性组就可以成为一个主键。
 外键：如果一个字段X在一张表（表一）中是主键，而在另外一张表（表二）中不是主键，则字段X称为表二的外键
-聚集索引和非聚集索引聚集索引：该索引中键值的逻辑顺序决定了表中相应行的物理顺序。
-非聚集索引：一种索引，该索引中索引的逻辑顺序与磁盘上行的物理存储顺序不同。
-索引是通过多路搜索树的数据结构来描述的，我们可以这么理解聚簇索引，索引的叶节点就是数据节点。而非聚簇索引的叶节点仍然是索引节点，只不过有一个指针指向对应的数据块。
-innoDB和MyISAM
-...
+为何不为所有属性建立索引1.不是每个属性都要必要建立索引，一般要看这个属性是不是比较重要或者用的比较多2.建立索引需要耗费存储空间3.索引需要定期维护，维护比较麻烦，有时候需要重建4.某条件查询效率低下，而且数据量大的时候可以考虑建索引
+什么时候建索引索引可以提高数据的检索效率，也可以降低数据库的IO成本，并且索引还可以降低数据库的排序成本。排序分...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -643,74 +709,6 @@ spfa用dis数组记录源点到有向图上任意一点距离，其中源点到�
         <a class="post-tag" href="javascript:void(0);" data-tags = "图论">图论</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "模板">模板</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/15/20200415-C++%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" >
-            
-                <span>C++基础知识</span>
-        </a>
-        <div class="abstract-content">
-            <p>基础部分整理</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/15</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "C++">C++</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/14/20200414-%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E4%BF%A1%E5%B0%81%E9%97%AE%E9%A2%98/" >
-            
-                <span>俄罗斯套娃信封问题（LIS）</span>
-        </a>
-        <div class="abstract-content">
-            
-
-给定一些标记了宽度和高度的信封，宽度和高度以整数对形式 (w, h) 出现。当另一个信封的宽度和高度都比这个信封大的时候，这个信封就可以放进另一个信封里，如同俄罗斯套娃一样。
-请计算最多能有多少个信封能组成一组“俄罗斯套娃”信封（即可以把一个信封放到另一个信封里面）。
-说明:不允许旋转信封。
-示例:
-输入: envelopes = [[5,4],[6,4],[6,7],[2,3]]输出: 3解释: 最多信封的个数为 3, 组合为: [2,3] =&gt; [5,4] =&gt; [6,7]。
-最长上升子序列（nlogn）n^2的算法很简单，设置一个数组，dp遍历一遍即可。
-12345...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/14</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "DP">DP</a>
     
 </div>
             
@@ -3790,21 +3788,9 @@ spfa用dis数组记录源点到有向图上任意一点距离，其中源点到�
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 182
+        Total : 184
         </div>
         <!-- search  -->
         
@@ -3817,6 +3803,16 @@ spfa用dis数组记录源点到有向图上任意一点距离，其中源点到�
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/30</span><a class="archive-post-title" href= "/2020/04/30/20200430-%E7%AC%ACk%E4%B8%AA%E6%8E%92%E5%88%97/" >第k个排列</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/30</span><a class="archive-post-title" href= "/2020/04/30/20200430-%E9%A2%9C%E8%89%B2%E5%88%86%E7%B1%BB%EF%BC%88%E4%B8%89%E8%89%B2%E9%97%AE%E9%A2%98%EF%BC%89/" >颜色分类（三色问题）</a>
+        </li>
     
     
         <li class="archive-post-item">
