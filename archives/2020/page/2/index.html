@@ -346,30 +346,225 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/25/20200425-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" >
+        <a class="abstract-title" href = "/2020/05/03/20200503-%E6%95%B0%E5%AD%97%E5%BA%8F%E5%88%97%E4%B8%AD%E6%9F%90%E4%B8%80%E4%BD%8D%E7%9A%84%E6%95%B0%E5%AD%97/" >
             
-                <span>字符串的排列</span>
+                <span>数字序列中某一位的数字</span>
         </a>
         <div class="abstract-content">
             
 
-输入一个字符串，打印出该字符串中字符的所有排列。 
-你可以以任意顺序返回这个字符串数组，但里面不能有重复元素。 
+数字以0123456789101112131415…的格式序列化到一个字符序列中。在这个序列中，第5位（从下标0开始计数）是5，第13位是1，第19位是4，等等。
+请写一个函数，求任意第n位对应的数字。 
+示例 1：
+输入：n = 3输出：3示例 2：
+输入：n = 11输出：0
+限制：
+0 &lt;= n &lt; 2^31
+思路一位数有10个，两位数有90个，三位数有900个
+处理过程比较麻烦
+123456789101112131415161718192021222324252627class Solution &#123;public:    int findNthDigit(...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/03</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/05/03/20200503-1%EF%BD%9En%E6%95%B4%E6%95%B0%E4%B8%AD1%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0/" >
+            
+                <span>1～n整数中1出现的次数</span>
+        </a>
+        <div class="abstract-content">
+            
+
+输入一个整数 n ，求1～n这n个整数的十进制表示中1出现的次数。
+例如，输入12，1～12这些整数中包含1 的数字有1、10、11和12，1一共出现了5次。 
+示例 1：
+输入：n = 12输出：5示例 2：
+输入：n = 13输出：6
+限制：
+1 &lt;= n &lt; 2^31
+思路设N = abcde ,其中abcde分别为十进制中各位上的数字。 如果要计算百位上1出现的次数，它要受到3方面的影响：百位上的数字，百位以下（低位）的数字，百位以上（高位）的数字。
+ ① 如果百位上数字为0，百位上可能出现1的次数由更高位决定。比如：12013，则可以知道百位出现1的情况可能是：...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/03</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/05/03/20200502-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" >
+            
+                <span>二叉搜索树的后序遍历</span>
+        </a>
+        <div class="abstract-content">
+            
+
+输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历结果。如果是则返回 true，否则返回 false。假设输入的数组的任意两个数字都互不相同。
+参考以下这颗二叉搜索树：
+     5
+    / \
+   2   6
+  / \
+ 1   3
+示例 1：
+输入: [1,6,3,2,5]输出: false示例 2：
+输入: [1,3,2,6,5]输出: true
+提示：
+数组长度 &lt;= 1000
+暴力递归后序遍历就是 左-右-中，从后往前看的话，中一定所有的右子树的节点小，比左子树的节点大，确定了左右子树以后，依次递归，判断结构是否合法。
+12345678910111213...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/03</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/05/03/20200503-%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" >
+            
+                <span>树的子结构</span>
+        </a>
+        <div class="abstract-content">
+            
+
+输入两棵二叉树A和B，判断B是不是A的子结构。(约定空树不是任意一个树的子结构)
+B是A的子结构， 即 A中有出现和B相同的结构和节点值。
+例如:给定的树 A:
+12345    3   &#x2F; \  4   5 &#x2F; \1   2
+给定的树 B：
+123  4  &#x2F;1
+返回 true，因为 B 与 A 的一个子树拥有相同的结构和节点值。
+示例 1：
+输入：A = [1,2,3], B = [3,1]输出：false示例 2：
+输入：A = [3,4,5,1,2], B = [4,1]输出：true限制：
+0 &lt;= 节点个数 &lt;= 10000
+思路...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/03</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/05/03/20200503-%E5%89%AA%E7%BB%B3%E5%AD%90/" >
+            
+                <span>剪绳子</span>
+        </a>
+        <div class="abstract-content">
+            
+
+剪绳子I给你一根长度为 n 的绳子，请把绳子剪成整数长度的 m 段（m、n都是整数，n&gt;1并且m&gt;1），每段绳子的长度记为 k[0],k[1]…k[m] 。请问 k[0]k[1]…*k[m] 可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。
+示例 1：
+输入: 2输出: 1解释: 2 = 1 + 1, 1 × 1 = 1示例 2:
+输入: 10输出: 36解释: 10 = 3 + 3 + 4, 3 × 3 × 4 = 36提示：
+2 &lt;= n &lt;= 58
+思路优先分成3，如果最后一段是4，则不分...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/03</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/05/03/20200503-%E4%B8%91%E6%95%B0/" >
+            
+                <span>丑数</span>
+        </a>
+        <div class="abstract-content">
+            
+
+我们把只包含因子 2、3 和 5 的数称作丑数（Ugly Number）。求按从小到大的顺序的第 n 个丑数。
 示例:
-输入：s = “abc”输出：[“abc”,”acb”,”bac”,”bca”,”cab”,”cba”]
-限制：
-1 &lt;= s 的长度 &lt;= 8
-思路因为不能有重复的，因此就需要在全排列的时候剪枝，每个数递归的每一层只出现一次，用map记录一下即可。
-
-交换版
-
-如果每次交换的位置是随机的，那么可以实现等概论将每一个字符放入其中
-1234567891011121314151617181920212223242526class Solution &#12...
+输入: n = 10输出: 12解释: 1, 2, 3, 4, 5, 6, 8, 9, 10, 12 是前 10 个丑数。说明:  
+1 是丑数。n 不超过1690。
+思路丑数的递推性质： 丑数只包含因子 2, 3, 5，因此有 “丑数 == 某较小丑数 × 某因子” （例如：10 = 5 × 2 ）
+定义三个指针a,b,c,表示因子2,3,5,每次乘出来一个最小的,就是每次给一个丑数的×2，×3，×5，找到它合适的位置。这个丑数乘完2了，就轮到比它大一点的丑数乘了...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/25</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/03</span>
             </div>
             <!-- tags  -->
             
@@ -388,26 +583,26 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/25/20200425-%E6%9C%80%E5%B0%8F%E4%B8%8D%E9%87%8D%E5%A4%8D%E6%95%B0/" >
+        <a class="abstract-title" href = "/2020/05/02/20200502-%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" >
             
-                <span>最小不重复数</span>
+                <span>内网穿透</span>
         </a>
         <div class="abstract-content">
-            如果一个数字十进制表达时，不存在连续两位相同，则称之为“不重复数”。例如，105、164和198都是“不重复数”，而11、100和122不是。
-下面用一个long类型（ long类型数字A），实现返回大于A的最小“不重复数”。
-思路如1223445，从左往右找到第1个重复的数，将后面重复的那个数加1，然后将重复数后面的数设置为0101…,   1223445  -&gt; 1230101特殊的是重复的数是9的情况，如1099446，此时将重复之前的那位加1，如果认为重复数，循环。   1099446  -&gt; 1101010 -&gt; 1201010
-123456789101112...
+            <font size=4>
+
+<p>在终端敲 ifconfig -a 出来的那个ip地址就是私有ip。</p>
+<p>百度ip地址出来的那个ip地址就是公有ip</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/25</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/02</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
     
 </div>
             
@@ -420,261 +615,84 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/25/20200425-%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91/" >
+        <a class="abstract-title" href = "/2020/05/02/20200502-HTTP%E5%8A%AB%E6%8C%81%E5%92%8CDNS%E5%8A%AB%E6%8C%81/" >
             
-                <span>重建二叉树</span>
+                <span>HTTP劫持和DNS劫持</span>
+        </a>
+        <div class="abstract-content">
+            <p>   简单介绍一下HTTP劫持和DNS劫持的概念，也就是运营商通过某些方式篡改了用户正常访问的网页，插入广告或者其他一些杂七杂八的东西。</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/02</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/05/02/20200502-%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%AC%94%E8%AE%B0/" >
+            
+                <span>字符编码笔记</span>
+        </a>
+        <div class="abstract-content">
+            <p>被字节的二面面试官问到，完全不会，许愿三面</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/02</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "C++">C++</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/30/20200430-%E7%AC%ACk%E4%B8%AA%E6%8E%92%E5%88%97/" >
+            
+                <span>第k个排列</span>
         </a>
         <div class="abstract-content">
             
 
-输入某二叉树的前序遍历和中序遍历的结果，请重建该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。
-例如，给出
-前序遍历 preorder = [3,9,20,15,7]中序遍历 inorder = [9,3,15,20,7]返回如下的二叉树：
-12345  3 &#x2F; \9  20  &#x2F;  \ 15   7
-限制：
-0 &lt;= 节点个数 &lt;= 5000
-思路直接在原数组操作，或者另外开新的数组也可以，那样更省事。
-1234567891011121314151617181920class Solution &#123;    TreeNode *...
+给出集合 [1,2,3,…,n]，其所有元素共有 n! 种排列。
+按大小顺序列出所有排列情况，并一一标记，当 n = 3 时, 所有排列如下：
+“123”“132”“213”“231”“312”“321”给定 n 和 k，返回第 k 个排列。
+说明：
+给定 n 的范围是 [1, 9]。给定 k 的范围是[1,  n!]。示例 1:
+输入: n = 3, k = 3输出: “213”示例 2:
+输入: n = 4, k = 9输出: “2314”
+思路首先我们要知道当n = 3时，其排列组合共有3! = 6种，当n = 4时，其排列组合共有4! = 24种，我们就以n = 4, k =...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/25</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/24/20200424-%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8A%A0%E8%BD%BD%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" >
-            
-                <span>计算机加载操作系统</span>
-        </a>
-        <div class="abstract-content">
-            
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/24</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/24/20200424-%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E5%A4%A7%E4%BA%8ENk%E7%9A%84%E6%95%B0/" >
-            
-                <span>数组中出现次数大于N/k的数</span>
-        </a>
-        <div class="abstract-content">
-            
-
-给定一个整型数组arr，再给定一个整数k，打印所有出现次数大于 N/K 的数。如果没有这样的数，打印提示信息。要求时间复杂度为O（N*K）,额外空间复杂度为O（K）。
-思路每次删除 K 个不同的数，那么你有N 个数，最多能删除一个数 N/K次，所以大于 N / K 的数一定会留下来。
-123456789101112131415161718192021222324252627282930313233343536373839404142class Solution &#123;    vector&lt;int&gt; GetNumUpToNK(vector&lt;int&gt; a, ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/24</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/23/20200423-%E8%83%8C%E5%8C%85%E6%80%BB%E7%BB%93/" >
-            
-                <span>背包总结</span>
-        </a>
-        <div class="abstract-content">
-            <p>学的第一个动态规划是01背包</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/23</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "DP">DP</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/23/20200423-%E7%A1%AC%E5%B8%81/" >
-            
-                <span>硬币</span>
-        </a>
-        <div class="abstract-content">
-             
-
-硬币。给定数量不限的硬币，币值为25分、10分、5分和1分，编写代码计算n分有几种表示法。(结果可能会很大，你需要将结果模上1000000007)
-示例1:
-输入: n = 5输出：2解释: 有两种方式可以凑成总金额:5=55=1+1+1+1+1示例2:
-输入: n = 10输出：4解释: 有四种方式可以凑成总金额:10=1010=5+510=5+1+1+1+1+110=1+1+1+1+1+1+1+1+1+1
-注意:
-你可以假设：
-0 &lt;= n (总金额) &lt;= 1000000
-思路完全背包求方案数问题。
-1234567891011121314class Solutio...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/23</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/23/20200423-%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/" >
-            
-                <span>秒杀系统</span>
-        </a>
-        <div class="abstract-content">
-            <p>被面试官问到怎样优化一个网站，最后提出这个概念</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/23</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "操作系统">操作系统</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/23/20200423-i++%E5%9C%A8%E4%B8%A4%E4%B8%AA%E7%BA%BF%E7%A8%8B%E9%87%8C%E6%89%A7%E8%A1%8C/" >
-            
-                <span>i++在两个线程里执行</span>
-        </a>
-        <div class="abstract-content">
-            
-
-
-最后的值在[2,200]
-
-i++不是原子操作，也就是说，它不是单独一条指令，而是3条指令：
-1、从内存中把i的值取出来放到CPU的寄存器中
-2、CPU寄存器的值+1
-3、把CPU寄存器的值写回内存
-如果是单线程操作，i++毫无问题；但是在多核处理器上，用多线程来做i++会有什么问题呢？
-我再仔细地重复一遍问题：进程有一个全局变量i，还有有两个线程。每个线程的功能，就是循环100次，执行i++。问线程代码全部执行完毕后，i的值是否一定是200？如果不是，它的最大最小值是多少？
-=========分析=======
-i++是由3条指令构成的运算操作，两个线程在i变量上共计需要执行10...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/23</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "操作系统">操作系统</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/22/20200422-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2%EF%BC%88%E5%AD%90%E5%BA%8F%E5%88%97%EF%BC%89/" >
-            
-                <span>最长公共子串（子序列）</span>
-        </a>
-        <div class="abstract-content">
-            最长公共子序列
-
-给定两个字符串 text1 和 text2，返回这两个字符串的最长公共子序列的长度。
-一个字符串的 子序列 是指这样一个新的字符串：它是由原字符串在不改变字符的相对顺序的情况下删除某些字符（也可以不删除任何字符）后组成的新字符串。例如，”ace” 是 “abcde” 的子序列，但 “aec” 不是 “abcde” 的子序列。两个字符串的「公共子序列」是这两个字符串所共同拥有的子序列。
-若这两个字符串没有公共子序列，则返回 0。
-示例
-123输入：text1 &#x3D; &quot;abcde&quot;, text2 &#x3D; &quot;ace&quot; 输出...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/22</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/30</span>
             </div>
             <!-- tags  -->
             
@@ -690,7 +708,7 @@ i++是由3条指令构成的运算操作，两个线程在i变量上共计需要
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/archives/2020/">&lt; PREV</a><a class="page-number" href="/archives/2020/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2020/page/3/">3</a><a class="page-number" href="/archives/2020/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2020/page/13/">13</a><a class="extend next" rel="next" href="/archives/2020/page/3/">NEXT &gt;</a>
+        <a class="extend prev" rel="prev" href="/archives/2020/">&lt; PREV</a><a class="page-number" href="/archives/2020/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2020/page/3/">3</a><a class="page-number" href="/archives/2020/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2020/page/14/">14</a><a class="extend next" rel="next" href="/archives/2020/page/3/">NEXT &gt;</a>
     </nav>
     
 </main>
@@ -3682,9 +3700,243 @@ i++是由3条指令构成的运算操作，两个线程在i变量上共计需要
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 184
+        Total : 200
         </div>
         <!-- search  -->
         
@@ -3697,6 +3949,101 @@ i++是由3条指令构成的运算操作，两个线程在i变量上共计需要
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/05</span><a class="archive-post-title" href= "/2020/05/05/20200505-%E7%A7%BB%E6%8E%89k%E4%BD%8D%E6%95%B0%E5%AD%97/" >移掉k位数字</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/05</span><a class="archive-post-title" href= "/2020/05/05/20200322-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F/" >进程和线程间的通信方式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/05</span><a class="archive-post-title" href= "/2020/05/05/20200505-Linux-0%E5%8F%B7%E5%92%8C1%E5%8F%B7%E8%BF%9B%E7%A8%8B/" >Linux 0号和1号进程</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/05</span><a class="archive-post-title" href= "/2020/05/05/20200505-%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E9%80%89%E5%8F%96%E9%87%8D%E5%A4%8D%E6%AC%A1%E6%95%B0%E6%9C%80%E5%A4%9A%E7%9A%84n%E4%B8%AA/" >海量数据选取重复次数最多的n个</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span><a class="archive-post-title" href= "/2020/05/04/20200503-%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2/" >最小覆盖子串</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-n%E4%B8%AA%E9%AA%B0%E5%AD%90%E7%9A%84%E7%82%B9%E6%95%B0/" >n个骰子的点数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/" >滑动窗口的最大值</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-%E5%92%8C%E4%B8%BAs%E7%9A%84%E8%BF%9E%E7%BB%AD%E6%AD%A3%E6%95%B0%E5%BA%8F%E5%88%97/" >和为s的连续正数序列</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-%E6%8A%8A%E6%95%B0%E7%BB%84%E6%8E%92%E6%88%90%E6%9C%80%E5%B0%8F%E7%9A%84%E6%95%B0/" >把数组排成最小的数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E6%95%B0%E5%AD%97/" >在排序数组中查找数字</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-%E6%95%B0%E5%AD%97%E5%BA%8F%E5%88%97%E4%B8%AD%E6%9F%90%E4%B8%80%E4%BD%8D%E7%9A%84%E6%95%B0%E5%AD%97/" >数字序列中某一位的数字</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-1%EF%BD%9En%E6%95%B4%E6%95%B0%E4%B8%AD1%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0/" >1～n整数中1出现的次数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200502-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" >二叉搜索树的后序遍历</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-%E5%89%AA%E7%BB%B3%E5%AD%90/" >剪绳子</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" >树的子结构</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-%E4%B8%91%E6%95%B0/" >丑数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/02</span><a class="archive-post-title" href= "/2020/05/02/20200502-%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" >内网穿透</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/02</span><a class="archive-post-title" href= "/2020/05/02/20200502-HTTP%E5%8A%AB%E6%8C%81%E5%92%8CDNS%E5%8A%AB%E6%8C%81/" >HTTP劫持和DNS劫持</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/02</span><a class="archive-post-title" href= "/2020/05/02/20200502-%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%AC%94%E8%AE%B0/" >字符编码笔记</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -3726,11 +4073,6 @@ i++是由3条指令构成的运算操作，两个线程在i变量上共计需要
     
         <li class="archive-post-item">
             <span class="archive-post-date">04/29</span><a class="archive-post-title" href= "/2020/04/29/20200429-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%8E%92%E5%88%97/" >下一个排列</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/27</span><a class="archive-post-title" href= "/2020/04/27/20200427-%E6%99%BA%E5%8A%9B%E9%A2%98/" >智力题</a>
         </li>
     
     
@@ -3885,7 +4227,7 @@ i++是由3条指令构成的运算操作，两个线程在i变量上共计需要
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%93%84%E6%B0%B4%E6%B1%A0%E6%8A%BD%E6%A0%B7%E7%AE%97%E6%B3%95/" >蓄水池抽样算法</a>
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95/" >随机算法</a>
         </li>
     
     
@@ -3895,12 +4237,7 @@ i++是由3条指令构成的运算操作，两个线程在i变量上共计需要
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >进程的理解</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%90%86%E8%A7%A3/" >进程和程序的区别</a>
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >进程和程序</a>
         </li>
     
     
@@ -4025,12 +4362,12 @@ i++是由3条指令构成的运算操作，两个线程在i变量上共计需要
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
         </li>
     
     
@@ -4101,11 +4438,6 @@ i++是由3条指令构成的运算操作，两个线程在i变量上共计需要
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/23</span><a class="archive-post-title" href= "/2020/03/23/20200323-linux%E4%B8%8B%E7%9A%84fork%EF%BC%88%EF%BC%89%E5%87%BD%E6%95%B0/" >linux下的fork（）函数</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/22</span><a class="archive-post-title" href= "/2020/03/22/20200322-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F/" >进程和线程间的通信方式</a>
         </li>
     
     
@@ -4641,9 +4973,9 @@ i++是由3条指令构成的运算操作，两个线程在i变量上共计需要
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="leetcode"><span class="iconfont-archer">&#xe606;</span>leetcode</span>
-    
         <span class="sidebar-tag-name" data-tags="操作系统"><span class="iconfont-archer">&#xe606;</span>操作系统</span>
+    
+        <span class="sidebar-tag-name" data-tags="leetcode"><span class="iconfont-archer">&#xe606;</span>leetcode</span>
     
         <span class="sidebar-tag-name" data-tags="计算机网络原理"><span class="iconfont-archer">&#xe606;</span>计算机网络原理</span>
     
@@ -4655,21 +4987,21 @@ i++是由3条指令构成的运算操作，两个线程在i变量上共计需要
     
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
-        <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
+        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     
         <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
-        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
-    
-        <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
-    
-        <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
+        <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
+    
+        <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
     
         <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
+        <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
         <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
     
@@ -4718,13 +5050,13 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="算法"><span class="iconfont-archer">&#xe60a;</span>算法</span>
-    
         <span class="sidebar-category-name" data-categories="CS大学生必备"><span class="iconfont-archer">&#xe60a;</span>CS大学生必备</span>
     
-        <span class="sidebar-category-name" data-categories="总结"><span class="iconfont-archer">&#xe60a;</span>总结</span>
+        <span class="sidebar-category-name" data-categories="算法"><span class="iconfont-archer">&#xe60a;</span>算法</span>
     
         <span class="sidebar-category-name" data-categories="算法短板"><span class="iconfont-archer">&#xe60a;</span>算法短板</span>
+    
+        <span class="sidebar-category-name" data-categories="总结"><span class="iconfont-archer">&#xe60a;</span>总结</span>
     
         <span class="sidebar-category-name" data-categories="工程"><span class="iconfont-archer">&#xe60a;</span>工程</span>
     

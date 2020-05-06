@@ -346,23 +346,32 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/15/20200415-C++%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" >
+        <a class="abstract-title" href = "/2020/04/25/20200425-%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91/" >
             
-                <span>C++基础知识</span>
+                <span>重建二叉树</span>
         </a>
         <div class="abstract-content">
-            <p>基础部分整理</p>
+            
+
+输入某二叉树的前序遍历和中序遍历的结果，请重建该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。
+例如，给出
+前序遍历 preorder = [3,9,20,15,7]中序遍历 inorder = [9,3,15,20,7]返回如下的二叉树：
+12345  3 &#x2F; \9  20  &#x2F;  \ 15   7
+限制：
+0 &lt;= 节点个数 &lt;= 5000
+思路直接在原数组操作，或者另外开新的数组也可以，那样更省事。
+1234567891011121314151617181920class Solution &#123;    TreeNode *...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/15</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/25</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "C++">C++</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
     
 </div>
             
@@ -375,31 +384,83 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/14/20200414-%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E4%BF%A1%E5%B0%81%E9%97%AE%E9%A2%98/" >
+        <a class="abstract-title" href = "/2020/04/24/20200424-%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8A%A0%E8%BD%BD%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" >
             
-                <span>俄罗斯套娃信封问题（LIS）</span>
+                <span>计算机加载操作系统</span>
         </a>
         <div class="abstract-content">
             
-
-给定一些标记了宽度和高度的信封，宽度和高度以整数对形式 (w, h) 出现。当另一个信封的宽度和高度都比这个信封大的时候，这个信封就可以放进另一个信封里，如同俄罗斯套娃一样。
-请计算最多能有多少个信封能组成一组“俄罗斯套娃”信封（即可以把一个信封放到另一个信封里面）。
-说明:不允许旋转信封。
-示例:
-输入: envelopes = [[5,4],[6,4],[6,7],[2,3]]输出: 3解释: 最多信封的个数为 3, 组合为: [2,3] =&gt; [5,4] =&gt; [6,7]。
-最长上升子序列（nlogn）n^2的算法很简单，设置一个数组，dp遍历一遍即可。
-12345...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/14</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/24</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/24/20200424-%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E5%A4%A7%E4%BA%8ENk%E7%9A%84%E6%95%B0/" >
+            
+                <span>数组中出现次数大于N/k的数</span>
+        </a>
+        <div class="abstract-content">
+            
+
+给定一个整型数组arr，再给定一个整数k，打印所有出现次数大于 N/K 的数。如果没有这样的数，打印提示信息。要求时间复杂度为O（N*K）,额外空间复杂度为O（K）。
+思路每次删除 K 个不同的数，那么你有N 个数，最多能删除一个数 N/K次，所以大于 N / K 的数一定会留下来。
+123456789101112131415161718192021222324252627282930313233343536373839404142class Solution &#123;    vector&lt;int&gt; GetNumUpToNK(vector&lt;int&gt; a, ...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/24</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/23/20200423-%E8%83%8C%E5%8C%85%E6%80%BB%E7%BB%93/" >
+            
+                <span>背包总结</span>
+        </a>
+        <div class="abstract-content">
+            <p>学的第一个动态规划是01背包</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/23</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "DP">DP</a>
     
@@ -414,98 +475,27 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/13/20200413-%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/" >
+        <a class="abstract-title" href = "/2020/04/23/20200423-%E7%A1%AC%E5%B8%81/" >
             
-                <span>三角形最小路径和</span>
+                <span>硬币</span>
         </a>
         <div class="abstract-content">
-            
+             
 
-给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。
-例如，给定三角形：
-[     [2],    [3,4],   [6,5,7],  [4,1,8,3]]自顶向下的最小路径和为 11（即，2 + 3 + 5 + 1 = 11）。
-说明：
-如果你可以只使用 O(n) 的额外空间（n 为三角形的总行数）来解决这个问题，那么你的算法会很加分。
-思路从底一直往上加，也不用开设额外的空间，用当前数组存就行了。
-12345678910111213class Solution &#123;public:    int minimumTotal(vector&lt;...
+硬币。给定数量不限的硬币，币值为25分、10分、5分和1分，编写代码计算n分有几种表示法。(结果可能会很大，你需要将结果模上1000000007)
+示例1:
+输入: n = 5输出：2解释: 有两种方式可以凑成总金额:5=55=1+1+1+1+1示例2:
+输入: n = 10输出：4解释: 有四种方式可以凑成总金额:10=1010=5+510=5+1+1+1+1+110=1+1+1+1+1+1+1+1+1+1
+注意:
+你可以假设：
+0 &lt;= n (总金额) &lt;= 1000000
+思路完全背包求方案数问题。
+1234567891011121314class Solutio...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/13</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "DP">DP</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/13/20200413-%E9%80%BB%E8%BE%91%E5%9C%B0%E5%9D%80%E3%80%81%E7%BA%BF%E6%80%A7%E5%9C%B0%E5%9D%80%E3%80%81%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80/" >
-            
-                <span>逻辑地址、线性地址、物理地址</span>
-        </a>
-        <div class="abstract-content">
-            <font size=4>
-
-<p>机器语言指令中出现的内存地址都是逻辑地址，需要转换成线性地址，再经过MMU(CPU中的内存管理单元)转换成物理地址才能够被访问到。</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/13</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "操作系统">操作系统</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/12/20200412-%E5%89%8Dk%E4%B8%AA%E9%AB%98%E9%A2%91%E5%85%83%E7%B4%A0/" >
-            
-                <span>前k个高频元素</span>
-        </a>
-        <div class="abstract-content">
-            
-
-给定一个非空的整数数组，返回其中出现频率前 k 高的元素。
-示例 1:
-输入: nums = [1,1,1,2,2,3], k = 2输出: [1,2]示例 2:
-输入: nums = [1], k = 1输出: [1]说明：
-
-你可以假设给定的 k 总是合理的，且 1 ≤ k ≤ 数组中不相同的元素的个数。
-你的算法的时间复杂度必须优于 O(n log n) , n 是数组的大小。
-
-每一种思路都要用到哈希表
-暴力排序用哈希表统计以后，用一个vector
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/12</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/23</span>
             </div>
             <!-- tags  -->
             
@@ -524,26 +514,17 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/12/20200412-%E5%8D%95%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E5%88%86%E6%9E%90/" >
+        <a class="abstract-title" href = "/2020/04/23/20200423-%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/" >
             
-                <span>单线程与多线程的优缺点分析</span>
+                <span>秒杀系统</span>
         </a>
         <div class="abstract-content">
-            
-
-思考多线程一定能提高CPU利用率吗？
-CPU运行时，将运行时间分片，通过调度来分配给各个进程线程来执行。因为时间片非常短，所以常常让人误以为是多个线程是同时并行执行。
-使用多线程来提高程序处理速度，其本质是提高对CPU的利用率。主要是两个方面
-
-阻塞等待时充分利用CPU当程序发生阻塞的操作时候，例如IO等待，CPU将就空闲下来了。而使用多线程，当一些线程发生阻塞的时候，另一些线程则仍能利用CPU，而不至于让CPU一直空闲。
-利用CPU的多核并行计算能力 现在的CPU基本上都是多核的。使用多线程，可以利用多核同时执行多个线程，而不至于单线程时一个核心满载，而其他核心空闲。
-
-多线程就一...
+            <p>被面试官问到怎样优化一个网站，最后提出这个概念</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/12</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/23</span>
             </div>
             <!-- tags  -->
             
@@ -562,25 +543,29 @@ CPU运行时，将运行时间分片，通过调度来分配给各个进程线�
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/11/20200411-epoll%E7%9A%84%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/" >
+        <a class="abstract-title" href = "/2020/04/23/20200423-i++%E5%9C%A8%E4%B8%A4%E4%B8%AA%E7%BA%BF%E7%A8%8B%E9%87%8C%E6%89%A7%E8%A1%8C/" >
             
-                <span>epoll的底层实现原理</span>
+                <span>i++在两个线程里执行</span>
         </a>
         <div class="abstract-content">
-            内核（kernel）利用文件描述符（file descriptor）fd来访问文件。文件描述符是非负整数。打开现存文件或新建文件时，内核会返回一个文件描述符。读写文件也需要使用文件描述符来指定待读写的文件。
+            
 
 
-epoll的主要机制epoll主要解决的问题：I/O多路复用
-epoll三大关键要素：mmap、红黑树、链表
-epoll三大主要函数：epoll_create，epoll_ctl，epoll_wait
-epoll实现过程：整体流程：
-首先epoll_create建立一个epoll对象。参数是内核保证能够正确处理的最大句柄数，多余这个最大数时内核不保证效果。
-epoll_ctl可以...
+最后的值在[2,200]
+
+i++不是原子操作，也就是说，它不是单独一条指令，而是3条指令：
+1、从内存中把i的值取出来放到CPU的寄存器中
+2、CPU寄存器的值+1
+3、把CPU寄存器的值写回内存
+如果是单线程操作，i++毫无问题；但是在多核处理器上，用多线程来做i++会有什么问题呢？
+我再仔细地重复一遍问题：进程有一个全局变量i，还有有两个线程。每个线程的功能，就是循环100次，执行i++。问线程代码全部执行完毕后，i的值是否一定是200？如果不是，它的最大最小值是多少？
+=========分析=======
+i++是由3条指令构成的运算操作，两个线程在i变量上共计需要执行10...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/11</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/23</span>
             </div>
             <!-- tags  -->
             
@@ -599,30 +584,23 @@ epoll_ctl可以...
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/10/20200410-%E8%93%84%E6%B0%B4%E6%B1%A0%E6%8A%BD%E6%A0%B7%E7%AE%97%E6%B3%95/" >
+        <a class="abstract-title" href = "/2020/04/22/20200422-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2%EF%BC%88%E5%AD%90%E5%BA%8F%E5%88%97%EF%BC%89/" >
             
-                <span>蓄水池抽样算法</span>
+                <span>最长公共子串（子序列）</span>
         </a>
         <div class="abstract-content">
-            
+            最长公共子序列
 
-问题描述给定一个数据流，数据流长度N很大，且N直到处理完所有数据之前都不可知，请问如何在只遍历一遍数据（O(N)）的情况下，能够随机选取出m个不重复的数据。
-这个场景强调了3件事：
-
-数据流长度N很大且不可知，所以不能一次性存入内存。
-
-时间复杂度为O(N)。
-
-随机选取m个数，每个数被选中的概率为m/N。
-
-
-核心代码及原理转自：https://www.jianshu.com/p/7a9ea6ece2af
-12345678910111213141516int a[100010];vector&lt;int&gt; reservoir(m);//reservoir为蓄水池// ini...
+给定两个字符串 text1 和 text2，返回这两个字符串的最长公共子序列的长度。
+一个字符串的 子序列 是指这样一个新的字符串：它是由原字符串在不改变字符的相对顺序的情况下删除某些字符（也可以不删除任何字符）后组成的新字符串。例如，”ace” 是 “abcde” 的子序列，但 “aec” 不是 “abcde” 的子序列。两个字符串的「公共子序列」是这两个字符串所共同拥有的子序列。
+若这两个字符串没有公共子序列，则返回 0。
+示例
+123输入：text1 &#x3D; &quot;abcde&quot;, text2 &#x3D; &quot;ace&quot; 输出...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/10</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/22</span>
             </div>
             <!-- tags  -->
             
@@ -630,8 +608,6 @@ epoll_ctl可以...
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "思维">思维</a>
-    
 </div>
             
         </div>
@@ -643,27 +619,26 @@ epoll_ctl可以...
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/10/20200410-%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84%E9%94%81/" >
+        <a class="abstract-title" href = "/2020/04/22/20200422-%E5%9F%BA%E7%A1%80sql%E8%AF%AD%E5%8F%A5/" >
             
-                <span>数据库中的锁</span>
+                <span>基础sql语句</span>
         </a>
         <div class="abstract-content">
-            转自:https://www.cnblogs.com/kexinxin/p/11620345.html
+            
 
-
-锁分类按锁的粒度划分：表级锁、行级锁、页级锁
-按锁级别划分：共享锁、排它锁、意向锁
-按加锁方式划分：自动锁、显示锁
-按使用方式划分：乐观锁、悲观锁
-乐观锁和悲观锁先说乐观锁和悲观锁的机制：
-1.乐观锁是一种思想，具体实现是，表中有一个版本字段，第一次读的时候，获取到这个字段。处理完业务逻辑开始更新的时候，需要再次查看该字段的值是否和第一次的一样。如果一样更新，反之拒绝。之所以叫乐观，因为这个模式没有从数据库加锁。
-2.悲观锁是数据库层面加锁，都会阻塞去等待锁。
-乐观锁优点程序实现，...
+ALTERALTER TABLE 语句用于在已有的表中添加、修改或删除列。
+语法如需在表中添加列，请使用下列语法:
+12ALTER TABLE table_nameADD column_name datatype
+要删除表中的列，请使用下列语法：
+12ALTER TABLE table_name DROP COLUMN column_name
+注释：某些数据库系统不允许这种在数据库表中删除列的方式 (DROP COLUMN column_name)。
+要改变表中列的数据类型，请使用下列语法：
+12ALTER TABLE table_nameALTER COLUMN column_na...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/10</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/22</span>
             </div>
             <!-- tags  -->
             
@@ -682,23 +657,25 @@ epoll_ctl可以...
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >
+        <a class="abstract-title" href = "/2020/04/21/20200421-%E5%88%A0%E6%95%B0%E9%97%AE%E9%A2%98/" >
             
-                <span>进程的理解</span>
+                <span>删数问题</span>
         </a>
         <div class="abstract-content">
-            <p><strong>进程：</strong>一个具有一定独立功能的程序在一个数据集合上的一次动态执行的过程。</p>
+            贪心算法 — 删数问题键盘输入一个高精度的正整数n（n&lt;=240位）,去掉其中任意s个数字后剩下的数字按照原来的次序将组成一个新的正整数。编程对给定的n和s,寻求一种方案,使得剩下组成的新数最小。
+Sample Input 178543 4Sample Output13
+解析由于正整数n的有效位数最大可达240位，所以可以采用字符串类型来存储n。那么，应如何来确定该删除哪s位呢？是不是只要删掉最大的s个数字就可以了呢？为了尽可能地逼近目标，我们选取的贪心策略为：每一步总是选择一个使剩下的数最小的数字删去，即按高位到低位的顺序搜索，若各位数字递增，则删除最后一个数字，否则删除第一个递...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/10</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/21</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "操作系统">操作系统</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
     
 </div>
             
@@ -708,7 +685,7 @@ epoll_ctl可以...
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/archives/page/3/">&lt; PREV</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/page/5/">5</a><a class="page-number" href="/archives/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/19/">19</a><a class="extend next" rel="next" href="/archives/page/5/">NEXT &gt;</a>
+        <a class="extend prev" rel="prev" href="/archives/page/3/">&lt; PREV</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/page/5/">5</a><a class="page-number" href="/archives/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/20/">20</a><a class="extend next" rel="next" href="/archives/page/5/">NEXT &gt;</a>
     </nav>
     
 </main>
@@ -3700,9 +3677,243 @@ epoll_ctl可以...
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 184
+        Total : 200
         </div>
         <!-- search  -->
         
@@ -3715,6 +3926,101 @@ epoll_ctl可以...
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/05</span><a class="archive-post-title" href= "/2020/05/05/20200505-%E7%A7%BB%E6%8E%89k%E4%BD%8D%E6%95%B0%E5%AD%97/" >移掉k位数字</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/05</span><a class="archive-post-title" href= "/2020/05/05/20200322-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F/" >进程和线程间的通信方式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/05</span><a class="archive-post-title" href= "/2020/05/05/20200505-Linux-0%E5%8F%B7%E5%92%8C1%E5%8F%B7%E8%BF%9B%E7%A8%8B/" >Linux 0号和1号进程</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/05</span><a class="archive-post-title" href= "/2020/05/05/20200505-%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E9%80%89%E5%8F%96%E9%87%8D%E5%A4%8D%E6%AC%A1%E6%95%B0%E6%9C%80%E5%A4%9A%E7%9A%84n%E4%B8%AA/" >海量数据选取重复次数最多的n个</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span><a class="archive-post-title" href= "/2020/05/04/20200503-%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2/" >最小覆盖子串</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-n%E4%B8%AA%E9%AA%B0%E5%AD%90%E7%9A%84%E7%82%B9%E6%95%B0/" >n个骰子的点数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/" >滑动窗口的最大值</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-%E5%92%8C%E4%B8%BAs%E7%9A%84%E8%BF%9E%E7%BB%AD%E6%AD%A3%E6%95%B0%E5%BA%8F%E5%88%97/" >和为s的连续正数序列</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-%E6%8A%8A%E6%95%B0%E7%BB%84%E6%8E%92%E6%88%90%E6%9C%80%E5%B0%8F%E7%9A%84%E6%95%B0/" >把数组排成最小的数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E6%95%B0%E5%AD%97/" >在排序数组中查找数字</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-%E6%95%B0%E5%AD%97%E5%BA%8F%E5%88%97%E4%B8%AD%E6%9F%90%E4%B8%80%E4%BD%8D%E7%9A%84%E6%95%B0%E5%AD%97/" >数字序列中某一位的数字</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-1%EF%BD%9En%E6%95%B4%E6%95%B0%E4%B8%AD1%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0/" >1～n整数中1出现的次数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200502-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" >二叉搜索树的后序遍历</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-%E5%89%AA%E7%BB%B3%E5%AD%90/" >剪绳子</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" >树的子结构</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-%E4%B8%91%E6%95%B0/" >丑数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/02</span><a class="archive-post-title" href= "/2020/05/02/20200502-%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" >内网穿透</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/02</span><a class="archive-post-title" href= "/2020/05/02/20200502-HTTP%E5%8A%AB%E6%8C%81%E5%92%8CDNS%E5%8A%AB%E6%8C%81/" >HTTP劫持和DNS劫持</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/02</span><a class="archive-post-title" href= "/2020/05/02/20200502-%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%AC%94%E8%AE%B0/" >字符编码笔记</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -3744,11 +4050,6 @@ epoll_ctl可以...
     
         <li class="archive-post-item">
             <span class="archive-post-date">04/29</span><a class="archive-post-title" href= "/2020/04/29/20200429-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%8E%92%E5%88%97/" >下一个排列</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/27</span><a class="archive-post-title" href= "/2020/04/27/20200427-%E6%99%BA%E5%8A%9B%E9%A2%98/" >智力题</a>
         </li>
     
     
@@ -3903,7 +4204,7 @@ epoll_ctl可以...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%93%84%E6%B0%B4%E6%B1%A0%E6%8A%BD%E6%A0%B7%E7%AE%97%E6%B3%95/" >蓄水池抽样算法</a>
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95/" >随机算法</a>
         </li>
     
     
@@ -3913,12 +4214,7 @@ epoll_ctl可以...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >进程的理解</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%90%86%E8%A7%A3/" >进程和程序的区别</a>
+            <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >进程和程序</a>
         </li>
     
     
@@ -4043,12 +4339,12 @@ epoll_ctl可以...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
         </li>
     
     
@@ -4119,11 +4415,6 @@ epoll_ctl可以...
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/23</span><a class="archive-post-title" href= "/2020/03/23/20200323-linux%E4%B8%8B%E7%9A%84fork%EF%BC%88%EF%BC%89%E5%87%BD%E6%95%B0/" >linux下的fork（）函数</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/22</span><a class="archive-post-title" href= "/2020/03/22/20200322-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F/" >进程和线程间的通信方式</a>
         </li>
     
     
@@ -4659,9 +4950,9 @@ epoll_ctl可以...
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="leetcode"><span class="iconfont-archer">&#xe606;</span>leetcode</span>
-    
         <span class="sidebar-tag-name" data-tags="操作系统"><span class="iconfont-archer">&#xe606;</span>操作系统</span>
+    
+        <span class="sidebar-tag-name" data-tags="leetcode"><span class="iconfont-archer">&#xe606;</span>leetcode</span>
     
         <span class="sidebar-tag-name" data-tags="计算机网络原理"><span class="iconfont-archer">&#xe606;</span>计算机网络原理</span>
     
@@ -4673,21 +4964,21 @@ epoll_ctl可以...
     
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
-        <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
+        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     
         <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
-        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
-    
-        <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
-    
-        <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
+        <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
+    
+        <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
     
         <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
+        <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
         <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
     
@@ -4736,13 +5027,13 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="算法"><span class="iconfont-archer">&#xe60a;</span>算法</span>
-    
         <span class="sidebar-category-name" data-categories="CS大学生必备"><span class="iconfont-archer">&#xe60a;</span>CS大学生必备</span>
     
-        <span class="sidebar-category-name" data-categories="总结"><span class="iconfont-archer">&#xe60a;</span>总结</span>
+        <span class="sidebar-category-name" data-categories="算法"><span class="iconfont-archer">&#xe60a;</span>算法</span>
     
         <span class="sidebar-category-name" data-categories="算法短板"><span class="iconfont-archer">&#xe60a;</span>算法短板</span>
+    
+        <span class="sidebar-category-name" data-categories="总结"><span class="iconfont-archer">&#xe60a;</span>总结</span>
     
         <span class="sidebar-category-name" data-categories="工程"><span class="iconfont-archer">&#xe60a;</span>工程</span>
     
