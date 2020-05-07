@@ -429,7 +429,7 @@ height:50vh;
 <p>在mysql中有表锁，读锁锁表，会阻塞其他事务修改表数据。写锁锁表，会阻塞其他事务读和写。</p>
 <ol>
 <li>Innodb引擎又支持行锁，行锁分为共享锁，一个事务对一行的共享只读锁。排它锁，一个事务对一行的排他读写锁。</li>
-<li>这两中类型的锁共存的问题考虑这个例子：事务A锁住了表中的一行，让这一行只能读，不能写。之后，事务B申请整个表的写锁。如果事务B申请成功，那么理论上它就能修改表中的任意一行，这与A持有的行锁是冲突的。数据库需要避免这种冲突，就是说要让B的申请被阻塞，直到A释放了行锁。</li>
+<li>这两种类型的锁共存的问题考虑这个例子：事务A锁住了表中的一行，让这一行只能读，不能写。之后，事务B申请整个表的写锁。如果事务B申请成功，那么理论上它就能修改表中的任意一行，这与A持有的行锁是冲突的。数据库需要避免这种冲突，就是说要让B的申请被阻塞，直到A释放了行锁。</li>
 </ol>
 <p>数据库要怎么判断这个冲突呢？</p>
 <ul>
@@ -452,11 +452,11 @@ height:50vh;
 <p><strong>Read committed</strong>，使用写锁，但是读会出现不一致，不可重复度</p>
 <p><strong>Repeatable Read</strong>，使用读锁和写锁，解决不可重复读的问题，但会有幻读</p>
 <p><strong>Serializable</strong>，使用事务串行化调度，避免出现因为插入数据没法加锁导致的不一致的情况</p>
-<p><strong>读不提交，造成脏读（Read Uncommitted）</strong></p>
+<p><strong>读未提交，造成脏读（Read Uncommitted）</strong></p>
 <p>一个事务中的读操作可能读到另一个事务中未提交修改的数据，如果事务发生回滚就可能造成错误。</p>
 <p>例子：A打100块给B，B看账户，这是两个操作，针对同一个数据库，两个事物，如果B读到了A事务中的100块，认为钱打过来了，但是A的事务最后回滚了，造成损失。</p>
 <p>避免这些事情的发生就需要我们在写操作的时候加锁，使读写分离，保证读数据的时候，数据不被修改，写数据的时候，数据不被读取。从而保证写的同时不能被另个事务写和读。</p>
-<p><strong>读提交（Read Committed）</strong></p>
+<p><strong>读已提交（Read Committed）</strong></p>
 <p>我们加了写锁，就可以保证不出现脏读，也就是保证读的都是提交之后的数据，但是会造成不可重读，即读的时候不加锁，一个读的事务过程中，如果读取数据两次，在两次之间有写事务修改了数据，将会导致两次读取的结果不一致，从而导致逻辑错误。</p>
 <p><strong>可重复读（Repeatable Read）</strong></p>
 <p>解决不可重复读问题，一个事务中如果有多次读取操作，读取结果需要一致（指的是固定一条数据的一致，幻读指的是查询出的数量不一致）。 这就牵涉到事务中是否加读锁，并且读操作加锁后是否在事务commit之前持有锁的问题，如果不加读锁，必然出现不可重复读，如果加锁读完立即释放，不持有，那么就可能在其他事务中被修改，若其他事务已经执行完成，此时该事务中再次读取就会出现不可重复读，</p>
@@ -465,7 +465,7 @@ height:50vh;
 <p><strong>这是最高的隔离级别，它通过强制事务排序，使之不可能相互冲突，从而解决幻读问题。简言之，它是在每个读的数据行上加上共享锁。在这个级别，可能导致大量的超时现象和锁竞争</strong></p>
 <p><img src="https://i.loli.net/2020/04/22/5ucUdPZAmjLlHiN.png" alt="3.png"></p>
 <p><strong>MySQL默认的事务隔离级别为可重复读</strong></p>
-<h2 id="间隙锁（Next-Key锁）"><a href="#间隙锁（Next-Key锁）" class="headerlink" title="间隙锁（Next-Key锁）"></a>间隙锁（Next-Key锁）</h2><p>​    <strong>MySQL InnoDB默认支持可重复读，但使用了Next-Key Lock算法避免了幻读的发生。完全达到了保保证事务的隔离要求。</strong>但在分布式事务下，一般可串行化。</p>
+<h2 id="间隙锁（Next-Key锁）"><a href="#间隙锁（Next-Key锁）" class="headerlink" title="间隙锁（Next-Key锁）"></a>间隙锁（Next-Key锁）</h2><p>​    <strong>MySQL InnoDB默认支持可重复读，但使用了Next-Key Lock算法避免了幻读的发生。完全达到了保证事务的隔离要求。</strong>但在分布式事务下，一般可串行化。</p>
 <p>当我们用范围条件而不是相等条件检索数据，并请求共享或排他锁时，InnoDB会给符合条件的已有数据记录的 索引项加锁；对于键值在条件范围内但并不存在的记录，叫做”间隙（GAP)”，InnoDB也会对这个”间隙”加锁，这种锁机制就是所谓的间隙锁 （Next-Key锁）。<br>举例来说，假如emp表中只有101条记录，其empid的值分别是 1,2,…,100,101，下面的SQL：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> empid &gt; <span class="number">100</span> <span class="keyword">for</span> <span class="keyword">update</span>;</span><br></pre></td></tr></table></figure>
 <p>是一个范围条件的检索，InnoDB不仅会对符合条件的empid值为101的记录加锁，也会对empid大于101（这些记录并不存在）的”间隙”加锁。</p>
@@ -672,6 +672,10 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
     
     
     
@@ -4043,12 +4047,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" >从上到下打印二叉树</a>
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" >单例模式</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" >单例模式</a>
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" >从上到下打印二叉树</a>
         </li>
     
     
@@ -4463,12 +4467,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/12</span><a class="archive-post-title" href= "/2020/03/12/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80(%E4%B8%8B)/" >网络基础(下)</a>
+            <span class="archive-post-date">03/12</span><a class="archive-post-title" href= "/2020/03/12/Http%E5%92%8CHttps%E7%9A%84%E5%8C%BA%E5%88%AB/" >HTTP和HTTPS的区别</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/12</span><a class="archive-post-title" href= "/2020/03/12/Http%E5%92%8CHttps%E7%9A%84%E5%8C%BA%E5%88%AB/" >HTTP和HTTPS的区别</a>
+            <span class="archive-post-date">03/11</span><a class="archive-post-title" href= "/2020/03/11/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80(%E4%B8%8B)/" >网络基础(下)</a>
         </li>
     
     
@@ -4839,29 +4843,29 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="操作系统"><span class="iconfont-archer">&#xe606;</span>操作系统</span>
-    
         <span class="sidebar-tag-name" data-tags="leetcode"><span class="iconfont-archer">&#xe606;</span>leetcode</span>
+    
+        <span class="sidebar-tag-name" data-tags="操作系统"><span class="iconfont-archer">&#xe606;</span>操作系统</span>
     
         <span class="sidebar-tag-name" data-tags="计算机网络原理"><span class="iconfont-archer">&#xe606;</span>计算机网络原理</span>
     
         <span class="sidebar-tag-name" data-tags="图论"><span class="iconfont-archer">&#xe606;</span>图论</span>
     
-        <span class="sidebar-tag-name" data-tags="思维"><span class="iconfont-archer">&#xe606;</span>思维</span>
-    
         <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
+        <span class="sidebar-tag-name" data-tags="思维"><span class="iconfont-archer">&#xe606;</span>思维</span>
+    
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
         <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     
         <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
-        <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
+        <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
-    
-        <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
     
@@ -4916,13 +4920,13 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="CS大学生必备"><span class="iconfont-archer">&#xe60a;</span>CS大学生必备</span>
-    
         <span class="sidebar-category-name" data-categories="算法"><span class="iconfont-archer">&#xe60a;</span>算法</span>
     
-        <span class="sidebar-category-name" data-categories="算法短板"><span class="iconfont-archer">&#xe60a;</span>算法短板</span>
+        <span class="sidebar-category-name" data-categories="CS大学生必备"><span class="iconfont-archer">&#xe60a;</span>CS大学生必备</span>
     
         <span class="sidebar-category-name" data-categories="总结"><span class="iconfont-archer">&#xe60a;</span>总结</span>
+    
+        <span class="sidebar-category-name" data-categories="算法短板"><span class="iconfont-archer">&#xe60a;</span>算法短板</span>
     
         <span class="sidebar-category-name" data-categories="工程"><span class="iconfont-archer">&#xe60a;</span>工程</span>
     
