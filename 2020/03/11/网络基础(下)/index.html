@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">3.5k</span>Reading time: <span class="post-count reading-time">12 min</span></span>
+                        <span>Word count: <span class="post-count word-count">3.7k</span>Reading time: <span class="post-count reading-time">12 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -453,6 +453,8 @@ height:50vh;
 </ul>
 </li>
 </ul>
+<h1 id="UDP的可靠传输"><a href="#UDP的可靠传输" class="headerlink" title="UDP的可靠传输"></a>UDP的可靠传输</h1><p>UDP要想可靠，就要接收方收到UDP之后回复个确认包，发送方有个机制，收不到确认包就要重新发送，每个包有递增的序号，接收方发现中间丢了包就要发重传请求，当网络太差时候频繁丢包，防止越丢包越重传的恶性循环，要有个发送窗口的限制，发送窗口的大小根据网络传输情况调整，调整算法要有一定自适应性。</p>
+<p>现在好多使用这种UDP的，好像是为了避免TCP的拥塞控制。</p>
 <h1 id="IP分片（UDP使用）"><a href="#IP分片（UDP使用）" class="headerlink" title="IP分片（UDP使用）"></a>IP分片（UDP使用）</h1><p><strong>基本概念：</strong></p>
 <ul>
 <li>IP把MTU[46,1500(byte)]与数据报长度进行比较（在出接口的时候分片）</li>
@@ -635,7 +637,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP三次握手和四次挥手的全过程"><span class="toc-number">1.</span> <span class="toc-text">TCP三次握手和四次挥手的全过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#三次握手："><span class="toc-number">1.1.</span> <span class="toc-text">三次握手：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四次挥手"><span class="toc-number">1.2.</span> <span class="toc-text">四次挥手</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP和UDP的区别"><span class="toc-number">2.</span> <span class="toc-text">TCP和UDP的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IP分片（UDP使用）"><span class="toc-number">3.</span> <span class="toc-text">IP分片（UDP使用）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DNS域名系统"><span class="toc-number">4.</span> <span class="toc-text">DNS域名系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS寻址："><span class="toc-number">4.1.</span> <span class="toc-text">DNS寻址：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP的三次握手过程？为何三次，二次可以吗？"><span class="toc-number">5.</span> <span class="toc-text">TCP的三次握手过程？为何三次，二次可以吗？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#交换机、路由器、网关"><span class="toc-number">6.</span> <span class="toc-text">交换机、路由器、网关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#交换机"><span class="toc-number">6.1.</span> <span class="toc-text">交换机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#路由器"><span class="toc-number">6.2.</span> <span class="toc-text">路由器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网关"><span class="toc-number">6.3.</span> <span class="toc-text">网关</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP三次握手和四次挥手的全过程"><span class="toc-number">1.</span> <span class="toc-text">TCP三次握手和四次挥手的全过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#三次握手："><span class="toc-number">1.1.</span> <span class="toc-text">三次握手：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四次挥手"><span class="toc-number">1.2.</span> <span class="toc-text">四次挥手</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP和UDP的区别"><span class="toc-number">2.</span> <span class="toc-text">TCP和UDP的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UDP的可靠传输"><span class="toc-number">3.</span> <span class="toc-text">UDP的可靠传输</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IP分片（UDP使用）"><span class="toc-number">4.</span> <span class="toc-text">IP分片（UDP使用）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DNS域名系统"><span class="toc-number">5.</span> <span class="toc-text">DNS域名系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS寻址："><span class="toc-number">5.1.</span> <span class="toc-text">DNS寻址：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP的三次握手过程？为何三次，二次可以吗？"><span class="toc-number">6.</span> <span class="toc-text">TCP的三次握手过程？为何三次，二次可以吗？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#交换机、路由器、网关"><span class="toc-number">7.</span> <span class="toc-text">交换机、路由器、网关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#交换机"><span class="toc-number">7.1.</span> <span class="toc-text">交换机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#路由器"><span class="toc-number">7.2.</span> <span class="toc-text">路由器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网关"><span class="toc-number">7.3.</span> <span class="toc-text">网关</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -3772,9 +3774,90 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 200
+        Total : 205
         </div>
         <!-- search  -->
         
@@ -3787,6 +3870,31 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span><a class="archive-post-title" href= "/2020/05/12/20200512-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" >设计模式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span><a class="archive-post-title" href= "/2020/05/12/20200512-%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E4%B8%B2/" >最长重复子串</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/10</span><a class="archive-post-title" href= "/2020/05/10/20200510-C++%E9%87%8D%E8%BD%BD%E8%BF%90%E7%AE%97%E7%AC%A6/" >C++重载运算符</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/10</span><a class="archive-post-title" href= "/2020/05/10/20200510-C++-this%E6%8C%87%E9%92%88/" >C++ this指针</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/10</span><a class="archive-post-title" href= "/2020/05/10/20200510-C++%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90/" >C++内存对齐</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -4200,12 +4308,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
         </li>
     
     
@@ -4350,12 +4458,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
         </li>
     
     
@@ -4819,9 +4927,9 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="图论"><span class="iconfont-archer">&#xe606;</span>图论</span>
     
-        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
-    
         <span class="sidebar-tag-name" data-tags="思维"><span class="iconfont-archer">&#xe606;</span>思维</span>
+    
+        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     

@@ -346,6 +346,168 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/05/12/20200512-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" >
+            
+                <span>设计模式</span>
+        </a>
+        <div class="abstract-content">
+            
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/12</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "C++">C++</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/05/12/20200512-%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E4%B8%B2/" >
+            
+                <span>最长重复子串</span>
+        </a>
+        <div class="abstract-content">
+            给出一个字符串 S，考虑其所有重复子串（S 的连续子串，出现两次或多次，可能会有重叠）。
+返回任何具有最长可能长度的重复子串。（如果 S 不含重复子串，那么答案为 “”。） 
+示例 1：
+输入：”banana”输出：”ana”示例 2：
+输入：”abcd”输出：””
+提示：
+2 &lt;= S.length &lt;= 10^5S 由小写英文字母组成。
+二分+hash二分长度，用滑动窗口枚举每个长度为mid的子串，然后存在hashtable里，比较即可。
+最初的做法，直接hash，会超时
+12345678910111213141516171819202122232425262728293...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/12</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/05/10/20200510-C++%E9%87%8D%E8%BD%BD%E8%BF%90%E7%AE%97%E7%AC%A6/" >
+            
+                <span>C++重载运算符</span>
+        </a>
+        <div class="abstract-content">
+            引言普通的运算符功能单一，只能执行一些基础的运算，但是重载运算符可以使两个向量直接增加（class或者struct里的内容），与其他函数一样，重载运算符有一个返回类型和一个参数列表。
+实例重载四则运算两个结构体的加法（向量的加法）
+12345678910111213141516171819struct node &#123;    int cnt1, cnt2;    node operator+(node a) &#123;        node b;        b.cnt1 = this-&gt;cnt1 + a.cnt1;        b.cnt2 = this-&gt;c...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/10</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "C++">C++</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/05/10/20200510-C++-this%E6%8C%87%E9%92%88/" >
+            
+                <span>C++ this指针</span>
+        </a>
+        <div class="abstract-content">
+            
+
+this指针的用处　　一个对象的this指针并不是对象本身的一部分，不会影响sizeof(对象)的结果。this作用域是在类内部，当在类的非静态成员函数中访问类的非静态成员的时候，编译器会自动将对象本身的地址作为一个隐含参数传递给函数。也就是说，即使你没有写上this指针，编译器在编译的时候也是加上this的，它作为非静态成员函数的隐含形参，对各成员的访问均通过this进行。 例如，调用date.SetMonth(9) &lt;==&gt; SetMonth(&amp;date, 9)，this帮助完成了这一转换 .
+this指针的使用
+在类的非静态成员函数中返回类对象本身的时候，直...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/10</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "C++">C++</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/05/10/20200510-C++%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90/" >
+            
+                <span>C++内存对齐</span>
+        </a>
+        <div class="abstract-content">
+            <font size=4>
+
+<p>简单地说就是每次在内存中存放的偏移地址都必须是变量大小的倍数，不是倍数就在前面补充字节让偏移量成为倍数，作用是方便存取。</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/10</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "C++">C++</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/05/05/20200505-%E7%A7%BB%E6%8E%89k%E4%BD%8D%E6%95%B0%E5%AD%97/" >
             
                 <span>移掉k位数字</span>
@@ -510,193 +672,10 @@ init进程由idle通过kernel_thread创建，在内核空间完成初始化后, 
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/05/03/20200503-n%E4%B8%AA%E9%AA%B0%E5%AD%90%E7%9A%84%E7%82%B9%E6%95%B0/" >
-            
-                <span>n个骰子的点数</span>
-        </a>
-        <div class="abstract-content">
-            
-
-把n个骰子扔在地上，所有骰子朝上一面的点数之和为s。输入n，打印出s的所有可能的值出现的概率。
-你需要用一个浮点数数组返回答案，其中第 i 个元素代表这 n 个骰子所能掷出的点数集合中第 i 小的那个的概率。
-示例 1:
-输入: 1输出: [0.16667,0.16667,0.16667,0.16667,0.16667,0.16667]示例 2:
-输入: 2输出: [0.02778,0.05556,0.08333,0.11111,0.13889,0.16667,0.13889,0.11111,0.08333,0.05556,0.02778]
-限制：
-1 &lt;= n &lt;= 1...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/03</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/05/03/20200503-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/" >
-            
-                <span>滑动窗口的最大值</span>
-        </a>
-        <div class="abstract-content">
-            
-
-给定一个数组 nums 和滑动窗口的大小 k，请找出所有滑动窗口里的最大值。
-示例:
-输入: nums = [1,3,-1,-3,5,3,6,7], 和 k = 3输出: [3,3,5,5,6,7]解释: 
-  滑动窗口的位置                最大值
-
-[1  3  -1] -3  5  3  6  7       3 1 [3  -1  -3] 5  3  6  7       3 1  3 [-1  -3  5] 3  6  7       5 1  3  -1 [-3  5  3] 6  7       5 1  3  -1  -3 [5  3  6] 7    ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/03</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/05/03/20200503-%E5%92%8C%E4%B8%BAs%E7%9A%84%E8%BF%9E%E7%BB%AD%E6%AD%A3%E6%95%B0%E5%BA%8F%E5%88%97/" >
-            
-                <span>和为s的连续正数序列</span>
-        </a>
-        <div class="abstract-content">
-            
-
-输入一个正整数 target ，输出所有和为 target 的连续正整数序列（至少含有两个数）。
-序列内的数字由小到大排列，不同序列按照首个数字从小到大排列。 
-示例 1：
-输入：target = 9输出：[[2,3,4],[4,5]]示例 2：
-输入：target = 15输出：[[1,2,3,4,5],[4,5,6],[7,8]]
-限制：
-1 &lt;= target &lt;= 10^5
-双指针用两个数字begin和end分别表示序列的最大值和最小值，首先将begin初始化为1，end初始化为2.如果从begin到end的和大于s，我们就从序列中去掉较小的值(即增大begin)...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/03</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/05/03/20200503-%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E6%95%B0%E5%AD%97/" >
-            
-                <span>在排序数组中查找数字</span>
-        </a>
-        <div class="abstract-content">
-            
-
-统计一个数字在排序数组中出现的次数。
-思路引申出两种二分的方法
-123456789101112131415161718192021222324252627282930class Solution &#123;public:    int search(vector&lt;int&gt; &amp;nums, int target) &#123;        if(nums.empty())return 0;        int l = 0, r = nums.size() - 1;        //在递增序列中查找&gt;=x的数中最小的一个        while (l &...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/03</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/05/03/20200503-%E6%8A%8A%E6%95%B0%E7%BB%84%E6%8E%92%E6%88%90%E6%9C%80%E5%B0%8F%E7%9A%84%E6%95%B0/" >
-            
-                <span>把数组排成最小的数</span>
-        </a>
-        <div class="abstract-content">
-            
-
-输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。
-示例 1:
-输入: [10,2]输出: “102”示例 2:
-输入: [3,30,34,5,9]输出: “3033459”
-提示:
-0 &lt; nums.length &lt;= 100说明:
-输出结果可能非常大，所以你需要返回一个字符串而不是整数拼接起来的数字可能会有前导 0，最后结果不需要去掉前导 0
-思路自定义一个排序方法，两个字符串组成的数字较小的放在前面。
-123456789101112131415161718class Solution &#123;    bool stati...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/03</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/archives/2020/05/page/2/">2</a><a class="extend next" rel="next" href="/archives/2020/05/page/2/">NEXT &gt;</a>
+        <span class="page-number current">1</span><a class="page-number" href="/archives/2020/05/page/2/">2</a><a class="page-number" href="/archives/2020/05/page/3/">3</a><a class="extend next" rel="next" href="/archives/2020/05/page/2/">NEXT &gt;</a>
     </nav>
     
 </main>
@@ -3918,9 +3897,90 @@ init进程由idle通过kernel_thread创建，在内核空间完成初始化后, 
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 200
+        Total : 205
         </div>
         <!-- search  -->
         
@@ -3933,6 +3993,31 @@ init进程由idle通过kernel_thread创建，在内核空间完成初始化后, 
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span><a class="archive-post-title" href= "/2020/05/12/20200512-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" >设计模式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span><a class="archive-post-title" href= "/2020/05/12/20200512-%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E4%B8%B2/" >最长重复子串</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/10</span><a class="archive-post-title" href= "/2020/05/10/20200510-C++%E9%87%8D%E8%BD%BD%E8%BF%90%E7%AE%97%E7%AC%A6/" >C++重载运算符</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/10</span><a class="archive-post-title" href= "/2020/05/10/20200510-C++-this%E6%8C%87%E9%92%88/" >C++ this指针</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/10</span><a class="archive-post-title" href= "/2020/05/10/20200510-C++%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90/" >C++内存对齐</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -4346,12 +4431,12 @@ init进程由idle通过kernel_thread创建，在内核空间完成初始化后, 
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
         </li>
     
     
@@ -4496,12 +4581,12 @@ init进程由idle通过kernel_thread创建，在内核空间完成初始化后, 
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
         </li>
     
     
@@ -4965,9 +5050,9 @@ init进程由idle通过kernel_thread创建，在内核空间完成初始化后, 
     
         <span class="sidebar-tag-name" data-tags="图论"><span class="iconfont-archer">&#xe606;</span>图论</span>
     
-        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
-    
         <span class="sidebar-tag-name" data-tags="思维"><span class="iconfont-archer">&#xe606;</span>思维</span>
+    
+        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     

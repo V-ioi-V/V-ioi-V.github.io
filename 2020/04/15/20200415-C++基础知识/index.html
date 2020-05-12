@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">7.2k</span>Reading time: <span class="post-count reading-time">26 min</span></span>
+                        <span>Word count: <span class="post-count word-count">7.6k</span>Reading time: <span class="post-count reading-time">28 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -742,14 +742,14 @@ height:50vh;
 <p>​    2、在查询，访问方式上：数组可以随机访问其中的元素，查找速度相对较快，链表则必须是顺序访问，不能随机访问。</p>
 <p>​    3、空间的使用上：链表对内存空间的利用率较高，可扩展性高；数组则不能，数组的空间大小是固定的，不适合动态存储，不方便动态添加。</p>
 <p>​    4、添加或删除元素时，数组比链表慢，因为数组要移动大量的元素，而链表只需修改指针即可。</p>
-<h1 id="堆和栈的区别"><a href="#堆和栈的区别" class="headerlink" title="堆和栈的区别"></a>堆和栈的区别</h1><p>1、申请方式：栈：由系统自动分配。 堆：需要程序员自己申请，并指明大小。</p>
-<p>2、申请效率的比较：栈:由系统自动分配，速度较快。</p>
-<p>堆:是由new分配的内存，一般速度比较慢，而且容易产生内存碎片,不过用起来最方便.</p>
-<p>3、申请大小的限制：栈顶的地址和栈的最大容量是系统预先规定好的，在WINDOWS下，栈的大小是2M，超出剩余空间会溢出。</p>
-<p>堆的大小受限于计算机系统中有效的虚拟内存。</p>
-<p>4、数据结构区别：堆可以被看成是一棵树，如：堆排序。栈：一种先进后出的数据结构。</p>
-<p>5、缓存方式区别：栈使用的是一级缓存，它们通常都是被调用时处于存储空间中，调用完毕立即释放。</p>
-<p>堆则是存放在二级缓存中，生命周期由虚拟机的垃圾回收算法来决定。</p>
+<h1 id="堆和栈的区别"><a href="#堆和栈的区别" class="headerlink" title="堆和栈的区别"></a>堆和栈的区别</h1><ul>
+<li><strong>管理方式不同：</strong>栈是由编译器自动申请和释放空间，堆是需要程序员手动申请和释放，且自己定申请内存的大小。</li>
+<li><strong>空间大小不同：</strong>栈的空间是有限的，在32位平台下，Windows下默认为1M，组大为2M，堆最大可以到4G；</li>
+<li><strong>能否产生碎片：</strong>栈和数据结构中的栈原理相同，在弹出一个元素之前，上一个已经弹出了，不会产生碎片，如果不停地调用malloc、free对造成内存碎片很多。</li>
+<li><strong>生长方向不同：</strong>堆生长方向是向上的，也就是向着内存地址增加的方向，栈刚好相反，向着内存减小的方向生长。</li>
+<li><strong>分配方式不同：</strong>堆都是动态分配的，没有静态分配的堆。栈有静态分配和动态分配。静态分配是编译器完成的，比如局部变量的分配。动态分配由 malloc 函数进行分配，但是栈的动态分配和堆是不同的，它的动态分配是由编译器进行释放，无需我们手工实现。</li>
+<li><strong>分配效率不同：</strong>栈的效率比堆高很多。栈是机器系统提供的数据结构，计算机在底层提供栈的支持，分配专门的寄存器来存放栈的地址，压栈出栈都有相应的指令，因此比较快。堆是由库函数提供的，机制很复杂，库函数会按照一定的算法进行搜索内存，因此比较慢。</li>
+</ul>
 <h1 id="浅拷贝和深拷贝"><a href="#浅拷贝和深拷贝" class="headerlink" title="浅拷贝和深拷贝"></a>浅拷贝和深拷贝</h1><p><strong>转自：</strong><a href="https://www.cnblogs.com/mikeCao/p/8710837.html" target="_blank" rel="noopener">https://www.cnblogs.com/mikeCao/p/8710837.html</a></p>
 <ul>
 <li>深拷贝和浅拷贝最根本的区别在于是否真正获取一个对象的复制实体，而不是引用。</li>
@@ -764,6 +764,25 @@ height:50vh;
 <p>浅复制：仅仅是指向被复制的内存地址，如果原地址发生改变，那么浅复制出来的对象也会相应的改变。</p>
 <p>深复制：在计算机中开辟一块<strong>新的内存地址</strong>用于存放复制的对象。</p>
 <h1 id="友元"><a href="#友元" class="headerlink" title="友元"></a>友元</h1><p><a href="https://blog.csdn.net/weixin_42513339/article/details/81101644" target="_blank" rel="noopener">https://blog.csdn.net/weixin_42513339/article/details/81101644</a></p>
+<h1 id="大端小端"><a href="#大端小端" class="headerlink" title="大端小端"></a>大端小端</h1><ul>
+<li>大端与小端是用来描述多字节数据在内存中的存放顺序，即字节序。<strong>大端（Big Endian）</strong>指低地址端存放高位字节，<strong>小端（Little Endian）</strong>是指低地址端存放低位字节。</li>
+<li>需要记住计算机是<strong>以字节为存储单位</strong>。</li>
+<li>为了方便记忆可把大端和小端称作高尾端和低尾端，eg：如果是高尾端模式一个字符串“11223344”把尾部“44”放在地址的高位，如果是低尾端模式，把“44”放在地址的低位。</li>
+</ul>
+<p>各自优势：</p>
+<ul>
+<li><strong>Big Endian</strong>：符号位的判定固定为第一个字节，容易判断正负。</li>
+<li><strong>Little Endian</strong>：长度为1，2，4字节的数，排列方式都是一样的，数据类型转换非常方便。</li>
+</ul>
+<p><strong>举一个例子，比如数字0x12 34 56 78在内存中的表示形式为：</strong></p>
+<ul>
+<li>1)大端模式：</li>
+</ul>
+<p>低地址 ————————-&gt; 高地址<br><strong>0x12 | 0x34 | 0x56 | 0x78</strong></p>
+<ul>
+<li>2)小端模式：</li>
+</ul>
+<p>低地址 —————————&gt; 高地址<br><strong>0x78 | 0x56 | 0x34 | 0x12</strong></p>
 
     </article>
     <!-- license  -->
@@ -905,7 +924,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#左值右值"><span class="toc-number">1.</span> <span class="toc-text">左值右值</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#static"><span class="toc-number">2.</span> <span class="toc-text">static</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#this"><span class="toc-number">3.</span> <span class="toc-text">this</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#const"><span class="toc-number">4.</span> <span class="toc-text">const</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#extern（外部变量）"><span class="toc-number">5.</span> <span class="toc-text">extern（外部变量）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#new和malloc"><span class="toc-number">6.</span> <span class="toc-text">new和malloc</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#指针"><span class="toc-number">7.</span> <span class="toc-text">指针</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#内存泄露和内存溢出"><span class="toc-number">8.</span> <span class="toc-text">内存泄露和内存溢出</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数模板"><span class="toc-number">9.</span> <span class="toc-text">函数模板</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#class和struct"><span class="toc-number">10.</span> <span class="toc-text">class和struct</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数组和链表"><span class="toc-number">11.</span> <span class="toc-text">数组和链表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#堆和栈的区别"><span class="toc-number">12.</span> <span class="toc-text">堆和栈的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#浅拷贝和深拷贝"><span class="toc-number">13.</span> <span class="toc-text">浅拷贝和深拷贝</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#友元"><span class="toc-number">14.</span> <span class="toc-text">友元</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#左值右值"><span class="toc-number">1.</span> <span class="toc-text">左值右值</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#static"><span class="toc-number">2.</span> <span class="toc-text">static</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#this"><span class="toc-number">3.</span> <span class="toc-text">this</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#const"><span class="toc-number">4.</span> <span class="toc-text">const</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#extern（外部变量）"><span class="toc-number">5.</span> <span class="toc-text">extern（外部变量）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#new和malloc"><span class="toc-number">6.</span> <span class="toc-text">new和malloc</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#指针"><span class="toc-number">7.</span> <span class="toc-text">指针</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#内存泄露和内存溢出"><span class="toc-number">8.</span> <span class="toc-text">内存泄露和内存溢出</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数模板"><span class="toc-number">9.</span> <span class="toc-text">函数模板</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#class和struct"><span class="toc-number">10.</span> <span class="toc-text">class和struct</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数组和链表"><span class="toc-number">11.</span> <span class="toc-text">数组和链表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#堆和栈的区别"><span class="toc-number">12.</span> <span class="toc-text">堆和栈的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#浅拷贝和深拷贝"><span class="toc-number">13.</span> <span class="toc-text">浅拷贝和深拷贝</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#友元"><span class="toc-number">14.</span> <span class="toc-text">友元</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#大端小端"><span class="toc-number">15.</span> <span class="toc-text">大端小端</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -4042,9 +4061,90 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 200
+        Total : 205
         </div>
         <!-- search  -->
         
@@ -4057,6 +4157,31 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span><a class="archive-post-title" href= "/2020/05/12/20200512-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" >设计模式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span><a class="archive-post-title" href= "/2020/05/12/20200512-%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E4%B8%B2/" >最长重复子串</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/10</span><a class="archive-post-title" href= "/2020/05/10/20200510-C++%E9%87%8D%E8%BD%BD%E8%BF%90%E7%AE%97%E7%AC%A6/" >C++重载运算符</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/10</span><a class="archive-post-title" href= "/2020/05/10/20200510-C++-this%E6%8C%87%E9%92%88/" >C++ this指针</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/10</span><a class="archive-post-title" href= "/2020/05/10/20200510-C++%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90/" >C++内存对齐</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -4470,12 +4595,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
         </li>
     
     
@@ -4620,12 +4745,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
         </li>
     
     
@@ -5089,9 +5214,9 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="图论"><span class="iconfont-archer">&#xe606;</span>图论</span>
     
-        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
-    
         <span class="sidebar-tag-name" data-tags="思维"><span class="iconfont-archer">&#xe606;</span>思维</span>
+    
+        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     

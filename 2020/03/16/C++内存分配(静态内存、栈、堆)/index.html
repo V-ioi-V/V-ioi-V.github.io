@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">478</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                        <span>Word count: <span class="post-count word-count">659</span>Reading time: <span class="post-count reading-time">2 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -401,19 +401,21 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>内存分为三种：静态内存、栈内存、堆内存。</p>
+        <p>内存数据存放区域分为三种：静态内存、栈内存、堆内存。</p>
 <a id="more"></a>
 <font size=4>
 
+<h2 id="内存分配布局"><a href="#内存分配布局" class="headerlink" title="内存分配布局"></a>内存分配布局</h2><p><img src="https://i.loli.net/2020/05/10/GFkz5AiatTe6Ho2.png" alt="6.png"></p>
 <h2 id="静态内存"><a href="#静态内存" class="headerlink" title="静态内存"></a>静态内存</h2><p><strong>保存的对象：</strong></p>
 <p>1.局部static变量</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> a;    <span class="comment">//局部static对象</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>2.类static数据成员变量</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">class <span class="title">Function</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span>;    <span class="comment">//类中static函数</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> i_func;    <span class="comment">//类中static变量</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>3.全局变量</p>
+<p>3.全局static变量</p>
+<p>4.全局变量</p>
 <p><strong>生命周期：</strong></p>
 <ul>
-<li>从被定义开始，一直存在于程序的整个生命周期中。</li>
+<li>内存在程序编译的时候已经分配好，这块内存在程序的整个运行期间都存在。</li>
 </ul>
 <h2 id="栈内存"><a href="#栈内存" class="headerlink" title="栈内存"></a>栈内存</h2><ul>
 <li>大小一般是 1M 或者 2M 。</li>
@@ -427,6 +429,7 @@ height:50vh;
 <ul>
 <li>仅在其定义的程序块运行时才存在。</li>
 </ul>
+<p>在执行函数时，函数内局部变量的存储单元可以在栈上创建，函数执行结束时，这些内存单元会自动被释放。<br>栈内存分配运算内置于处理器的指令集，效率高，但是分配的内存容量有限。</p>
 <h2 id="堆（动态内存）"><a href="#堆（动态内存）" class="headerlink" title="堆（动态内存）"></a>堆（动态内存）</h2><p><strong>保存的对象：</strong></p>
 <ol>
 <li>动态分配的对象（程序运行时分配的对象）</li>
@@ -454,10 +457,9 @@ height:50vh;
 </ol>
 <p><strong>初始化动态分配对象：</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *pi = <span class="keyword">new</span> <span class="keyword">int</span>(<span class="number">10</span>);    		    <span class="comment">//动态分配一个int对象，初始值为10</span></span><br><span class="line"><span class="built_in">string</span> *ps = <span class="keyword">new</span> <span class="built_in">string</span>(<span class="number">2</span>, <span class="string">'9'</span>);    <span class="comment">//动态分配一个string对象，初始值为"99"</span></span><br><span class="line"><span class="keyword">int</span> *pa = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>]();              <span class="comment">//动态分配一个int数组，大小为10，初始值为0</span></span><br></pre></td></tr></table></figure>
-<p><strong>自由存储区</strong></p>
-<p>那些由new分配的内存块，由应用程序去控制，一般一个new就要对应一个delete。如果程序员没有释放掉，那么在程序结束后，操作系统会自动回收。</p>
-<p><strong>常量存储区</strong></p>
-<p>这是一块比较特殊的存储区，他们里面存放的是常量，不允许修改。</p>
+<p>动态内存的生命周期有程序员决定，使用非常灵活，但如果在堆上分配了空间，既有责任回收它，否则运行的程序会出现内存泄漏，频繁的分配和释放不同大小的堆空间将会产生内存碎片。</p>
+<h2 id="自由存储区"><a href="#自由存储区" class="headerlink" title="自由存储区"></a>自由存储区</h2><p>那些由new分配的内存块，由应用程序去控制，一般一个new就要对应一个delete。如果程序员没有释放掉，那么在程序结束后，操作系统会自动回收。</p>
+<h2 id="常量存储区"><a href="#常量存储区" class="headerlink" title="常量存储区"></a>常量存储区</h2><p>这是一块比较特殊的存储区，他们里面存放的是常量，不允许修改。</p>
 <ul>
 <li>转自<a href="https://blog.csdn.net/weixin_41316331/article/details/89033197" target="_blank" rel="noopener">https://blog.csdn.net/weixin_41316331/article/details/89033197</a></li>
 </ul>
@@ -602,7 +604,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#静态内存"><span class="toc-number">1.</span> <span class="toc-text">静态内存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#栈内存"><span class="toc-number">2.</span> <span class="toc-text">栈内存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆（动态内存）"><span class="toc-number">3.</span> <span class="toc-text">堆（动态内存）</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#内存分配布局"><span class="toc-number">1.</span> <span class="toc-text">内存分配布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态内存"><span class="toc-number">2.</span> <span class="toc-text">静态内存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#栈内存"><span class="toc-number">3.</span> <span class="toc-text">栈内存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆（动态内存）"><span class="toc-number">4.</span> <span class="toc-text">堆（动态内存）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自由存储区"><span class="toc-number">5.</span> <span class="toc-text">自由存储区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常量存储区"><span class="toc-number">6.</span> <span class="toc-text">常量存储区</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -3739,9 +3741,90 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 200
+        Total : 205
         </div>
         <!-- search  -->
         
@@ -3754,6 +3837,31 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span><a class="archive-post-title" href= "/2020/05/12/20200512-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" >设计模式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span><a class="archive-post-title" href= "/2020/05/12/20200512-%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E4%B8%B2/" >最长重复子串</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/10</span><a class="archive-post-title" href= "/2020/05/10/20200510-C++%E9%87%8D%E8%BD%BD%E8%BF%90%E7%AE%97%E7%AC%A6/" >C++重载运算符</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/10</span><a class="archive-post-title" href= "/2020/05/10/20200510-C++-this%E6%8C%87%E9%92%88/" >C++ this指针</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/10</span><a class="archive-post-title" href= "/2020/05/10/20200510-C++%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90/" >C++内存对齐</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -4167,12 +4275,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
         </li>
     
     
@@ -4317,12 +4425,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
         </li>
     
     
@@ -4786,9 +4894,9 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="图论"><span class="iconfont-archer">&#xe606;</span>图论</span>
     
-        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
-    
         <span class="sidebar-tag-name" data-tags="思维"><span class="iconfont-archer">&#xe606;</span>思维</span>
+    
+        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     

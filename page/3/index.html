@@ -359,6 +359,170 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/05/03/20200503-%E4%B8%91%E6%95%B0/" >
+            
+                <span>丑数</span>
+        </a>
+        <div class="abstract-content">
+            
+
+我们把只包含因子 2、3 和 5 的数称作丑数（Ugly Number）。求按从小到大的顺序的第 n 个丑数。
+示例:
+输入: n = 10输出: 12解释: 1, 2, 3, 4, 5, 6, 8, 9, 10, 12 是前 10 个丑数。说明:  
+1 是丑数。n 不超过1690。
+思路丑数的递推性质： 丑数只包含因子 2, 3, 5，因此有 “丑数 == 某较小丑数 × 某因子” （例如：10 = 5 × 2 ）
+定义三个指针a,b,c,表示因子2,3,5,每次乘出来一个最小的,就是每次给一个丑数的×2，×3，×5，找到它合适的位置。这个丑数乘完2了，就轮到比它大一点的丑数乘了...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/03</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/05/02/20200502-%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" >
+            
+                <span>内网穿透</span>
+        </a>
+        <div class="abstract-content">
+            <font size=4>
+
+<p>在终端敲 ifconfig -a 出来的那个ip地址就是私有ip。</p>
+<p>百度ip地址出来的那个ip地址就是公有ip</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/02</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/05/02/20200502-HTTP%E5%8A%AB%E6%8C%81%E5%92%8CDNS%E5%8A%AB%E6%8C%81/" >
+            
+                <span>HTTP劫持和DNS劫持</span>
+        </a>
+        <div class="abstract-content">
+            <p>   简单介绍一下HTTP劫持和DNS劫持的概念，也就是运营商通过某些方式篡改了用户正常访问的网页，插入广告或者其他一些杂七杂八的东西。</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/02</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/05/02/20200502-%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E7%AC%94%E8%AE%B0/" >
+            
+                <span>字符编码笔记</span>
+        </a>
+        <div class="abstract-content">
+            <p>被字节的二面面试官问到，完全不会，许愿三面</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/02</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "C++">C++</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/30/20200430-%E7%AC%ACk%E4%B8%AA%E6%8E%92%E5%88%97/" >
+            
+                <span>第k个排列</span>
+        </a>
+        <div class="abstract-content">
+            
+
+给出集合 [1,2,3,…,n]，其所有元素共有 n! 种排列。
+按大小顺序列出所有排列情况，并一一标记，当 n = 3 时, 所有排列如下：
+“123”“132”“213”“231”“312”“321”给定 n 和 k，返回第 k 个排列。
+说明：
+给定 n 的范围是 [1, 9]。给定 k 的范围是[1,  n!]。示例 1:
+输入: n = 3, k = 3输出: “213”示例 2:
+输入: n = 4, k = 9输出: “2314”
+思路首先我们要知道当n = 3时，其排列组合共有3! = 6种，当n = 4时，其排列组合共有4! = 24种，我们就以n = 4, k =...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/30</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/04/30/20200430-%E9%A2%9C%E8%89%B2%E5%88%86%E7%B1%BB%EF%BC%88%E4%B8%89%E8%89%B2%E9%97%AE%E9%A2%98%EF%BC%89/" >
             
                 <span>颜色分类（三色问题）</span>
@@ -531,182 +695,10 @@ height:50vh;
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/26/20200426-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%9D%9E%E9%80%92%E5%BD%92%E9%81%8D%E5%8E%86/" >
-            
-                <span>二叉树的非递归遍历</span>
-        </a>
-        <div class="abstract-content">
-            
-
-前序遍历遍历顺序：根节点—&gt;左孩子—&gt;右孩子
-非递归里最简单的遍历，用一个栈保存即可，先推右节点，再推左节点，每次取栈顶处理
-123456789101112131415161718class Solution &#123;public:    vector&lt;int&gt; preorderTraversal(TreeNode *root) &#123;        stack&lt;TreeNode *&gt; s;        vector&lt;int&gt; ans;        if(root==NULL)return ans;        s.pu...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/26</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/26/20200426-%E9%93%BE%E8%A1%A8%E6%8E%92%E5%BA%8F/" >
-            
-                <span>链表排序</span>
-        </a>
-        <div class="abstract-content">
-            
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/26</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/25/20200425-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E4%B9%98/" >
-            
-                <span>字符串相乘</span>
-        </a>
-        <div class="abstract-content">
-            
-
-给定两个以字符串形式表示的非负整数 num1 和 num2，返回 num1 和 num2 的乘积，它们的乘积也表示为字符串形式。
-示例 1:
-输入: num1 = “2”, num2 = “3”输出: “6”示例 2:
-输入: num1 = “123”, num2 = “456”输出: “56088”说明：
-num1 和 num2 的长度小于110。num1 和 num2 只包含数字 0-9。num1 和 num2 均不以零开头，除非是数字 0 本身。不能使用任何标准库的大数类型（比如 BigInteger）或直接将输入转换为整数来处理。
-思路模拟乘法的进位，乘出来以后直接给这一位和...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/25</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/25/20200425-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" >
-            
-                <span>字符串的排列</span>
-        </a>
-        <div class="abstract-content">
-            
-
-输入一个字符串，打印出该字符串中字符的所有排列。 
-你可以以任意顺序返回这个字符串数组，但里面不能有重复元素。 
-示例:
-输入：s = “abc”输出：[“abc”,”acb”,”bac”,”bca”,”cab”,”cba”]
-限制：
-1 &lt;= s 的长度 &lt;= 8
-思路因为不能有重复的，因此就需要在全排列的时候剪枝，每个数递归的每一层只出现一次，用map记录一下即可。
-
-交换版
-
-如果每次交换的位置是随机的，那么可以实现等概论将每一个字符放入其中
-1234567891011121314151617181920212223242526class Solution &#12...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/25</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/25/20200425-%E6%9C%80%E5%B0%8F%E4%B8%8D%E9%87%8D%E5%A4%8D%E6%95%B0/" >
-            
-                <span>最小不重复数</span>
-        </a>
-        <div class="abstract-content">
-            如果一个数字十进制表达时，不存在连续两位相同，则称之为“不重复数”。例如，105、164和198都是“不重复数”，而11、100和122不是。
-下面用一个long类型（ long类型数字A），实现返回大于A的最小“不重复数”。
-思路如1223445，从左往右找到第1个重复的数，将后面重复的那个数加1，然后将重复数后面的数设置为0101…,   1223445  -&gt; 1230101特殊的是重复的数是9的情况，如1099446，此时将重复之前的那位加1，如果认为重复数，循环。   1099446  -&gt; 1101010 -&gt; 1201010
-123456789101112...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/25</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/page/2/">&lt; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/4/">NEXT &gt;</a>
+        <a class="extend prev" rel="prev" href="/page/2/">&lt; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/4/">NEXT &gt;</a>
     </nav>
     
 </main>
@@ -4006,9 +3998,90 @@ num1 和 num2 的长度小于110。num1 和 num2 只包含数字 0-9。num1 和 
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 200
+        Total : 205
         </div>
         <!-- search  -->
         
@@ -4021,6 +4094,31 @@ num1 和 num2 的长度小于110。num1 和 num2 只包含数字 0-9。num1 和 
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span><a class="archive-post-title" href= "/2020/05/12/20200512-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" >设计模式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span><a class="archive-post-title" href= "/2020/05/12/20200512-%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E4%B8%B2/" >最长重复子串</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/10</span><a class="archive-post-title" href= "/2020/05/10/20200510-C++%E9%87%8D%E8%BD%BD%E8%BF%90%E7%AE%97%E7%AC%A6/" >C++重载运算符</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/10</span><a class="archive-post-title" href= "/2020/05/10/20200510-C++-this%E6%8C%87%E9%92%88/" >C++ this指针</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/10</span><a class="archive-post-title" href= "/2020/05/10/20200510-C++%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90/" >C++内存对齐</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -4434,12 +4532,12 @@ num1 和 num2 的长度小于110。num1 和 num2 只包含数字 0-9。num1 和 
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
         </li>
     
     
@@ -4584,12 +4682,12 @@ num1 和 num2 的长度小于110。num1 和 num2 只包含数字 0-9。num1 和 
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/IO%E5%A4%8D%E7%94%A8/" >IO复用</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2020/03/19/Linux%E4%B8%8B5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%8C%BA%E5%88%AB/" >Linux下5种IO模型以及阻塞/非阻塞/同步/异步区别</a>
         </li>
     
     
@@ -5053,9 +5151,9 @@ num1 和 num2 的长度小于110。num1 和 num2 只包含数字 0-9。num1 和 
     
         <span class="sidebar-tag-name" data-tags="图论"><span class="iconfont-archer">&#xe606;</span>图论</span>
     
-        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
-    
         <span class="sidebar-tag-name" data-tags="思维"><span class="iconfont-archer">&#xe606;</span>思维</span>
+    
+        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
     
