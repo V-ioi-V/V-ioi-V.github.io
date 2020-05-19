@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">2.8k</span>Reading time: <span class="post-count reading-time">10 min</span></span>
+                        <span>Word count: <span class="post-count word-count">2.7k</span>Reading time: <span class="post-count reading-time">9 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -401,110 +401,67 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <font size=4>
-
-# B-树
-
-## 定义
-
-B树（B-树），是一种多路搜索树（并非二叉的）：
-
-- 定义任意非叶子节点最多可以有M个儿子节点；且M>2；
-- 则根节点（非叶子节点前提下）的儿子数为：[2，M]；
-- 除根节点外的非叶子节点的儿子数为[M/2，M]；
-- 每个结点存放至少M/2 - 1 （向上取整）且至多M -1 个关键字（至少为2）；
-- 非叶子结点的关键字个数 = 指向子节点的指针数-1；
-- 非叶子节点的关键字：K[1],K[2],K[3],…,K[M-1;且K[i] < K[i +1];
-- 非叶子结点的指针：P[1], P[2], …, P[M]；其中P[1]指向关键字小于K[1]的子树，P[M]指向关键字大于K[M-1]的子树，其它P[i]指向关键字属于(K[i-1], K[i])的子树；
-- 所有叶子结点位于同一层；
-
-如(M = 3)
-
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190815211241789.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Ffemhhbmdx,size_16,color_FFFFFF,t_70)
-
-​          B-树的搜索，从根结点开始，对结点内的关键字（有序）序列进行二分查找，如果命中则结束，否则进入查询关键字所属范围的儿子结点（每两个关键字之间会对应一个指向子节点的指针）；重复，直到所对应的儿子指针为空，或已经是叶子结点；
-
-## 特性
-
-- 关键字集合分布在整颗树中；
-- 任何一个关键字出现且只出现在一个结点中；
-- 搜索有可能在非叶子结点结束；
-- 其搜索性能等价于在关键字全集内做一次二分查找；
-- 自动层次控制；
-
-# B+树
-
-## 定义
-
-B+树是B-树的变体，也是一种多路搜索树，主要为磁盘或其他直接存取辅助设备而设计的一种平衡查找树，其定义基本与B-树同，除了：
-
-- 非叶子结点的子树指针与关键字个数相同；
-
-- **非叶子结点的子树指针P[i]，指向关键字值属于[K[i], K[i+1])的子树（B-树是开区间）；**
-
-- 为所有叶子结点增加一个链指针；
-
-- 所有关键字都在叶子结点出现；
-
-如：（M=3）
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190817142029576.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Ffemhhbmdx,size_16,color_FFFFFF,t_70)
-
-B+的搜索与B-树也基本相同，区别是B+树只有达到叶子结点才命中（B-树可以在
-
-非叶子结点命中），其性能也等价于在关键字全集做一次二分查找；
-
-## 特性
-
-- 所有关键字都出现在叶子结点的链表中（稠密索引），且链表中的关键字恰好是有序的；
-
-- 不可能在非叶子结点命中；
-
-- 非叶子结点相当于是叶子结点的索引（稀疏索引），叶子结点相当于是存储（关键字）数据的数据层；
-
-### B+树的插入操作
-
-B+树的插入必须保证插入后叶节点中的记录依然排序，同时需要考虑插入B+树的三种情况，每种情况都可能会导致不同的插入算法，如表5-1所示。 
-
-![1.png](https://i.loli.net/2020/03/10/T4rz2o7Qgu5aVNk.png)
-
-我们用实例来分析B+树的插入，我们插入28这个键值，发现当前Leaf Page和Index Page都没有满，我们直接插入就可以了。
-
-![2.png](https://i.loli.net/2020/03/10/1l76vxQewYhSPg2.png)
-
-这次我们再插入一条70这个键值，这时原先的Leaf Page已经满了，但是Index Page还没有满，符合表5-1的第二种情况，这时插入Leaf Page后的情况为50、55、60、65、70。我们根据中间的值60拆分叶节点。
-
-![4.png](https://i.loli.net/2020/03/10/itmFSBUC7ATjJxz.png)
-
-
-
-因为图片显示的关系，这次我没有能在各叶节点加上双向链表指针。最后我们来插入记录95，这时符合表5-1讨论的第三种情况，即Leaf Page和Index Page都满了，这时需要做两次拆分。
-
-![5.png](https://i.loli.net/2020/03/10/aCx1kRVJYDZsIrz.png)
-
-可以看到，不管怎么变化，B+树总是会保持平衡。但是为了保持平衡，对于新插入的键值可能需要做大量的拆分页（split）操作，而B+树主要用于磁盘，因此页的拆分意味着磁盘的操作，应该在可能的情况下尽量减少页的拆分。因此，B+树提供了旋转（rotation）的功能。
-
-*旋转发生在Leaf Page已经满了、但是其左右兄弟节点没有满的情况下。*这时B+树并不会急于去做拆分页的操作，而是将记录移到所在页的兄弟节点上。通常情况下，左兄弟被首先检查用来做旋转操作，这时我们插入键值70，其实B+树并不会急于去拆分叶节点，而是做旋转50，55旋转。
-
-![6.png](https://i.loli.net/2020/03/10/7ZxohQlCzUVacHr.png)
-
-可以看到，采用旋转操作使B+树减少了一次页的拆分操作，而这时B+树的高度依然还是2。
-
-
-
-### B+树的删除操作
-
-B+树使用填充因子（fill factor）来控制树的删除变化，50%是填充因子可设的最小值。B+树的删除操作同样必须保证删除后叶节点中的记录依然排序，同插入一样，B+树的删除操作同样需要考虑如表5-2所示的三种情况，与插入不同的是，删除根据填充因子的变化来衡量。 
-
-![7.png](https://i.loli.net/2020/03/10/R3YilsqErS1aMnK.png)
-
-首先，删除键值为70的这条记录，该记录符合表5-2讨论的第一种情况，删除后。
-
-![8.png](https://i.loli.net/2020/03/10/MNG54mWaf3gQu7C.png)
-
-接着我们删除键值为25的记录，这也是表5-2讨论的第一种情况，但是该值还是Index Page中的值，因此在删除Leaf Page中25的值后，还应将25的右兄弟节点的28更新到Page Index中，最后可得到图。
-
-![9.png](https://i.loli.net/2020/03/10/OI67SZvkEYFz9J1.png)
-
+        <h1 id="B-树"><a href="#B-树" class="headerlink" title="B-树"></a>B-树</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>B树（B-树），是一种多路搜索树（并非二叉的）：</p>
+<ul>
+<li>定义任意非叶子节点最多可以有M个儿子节点；且M&gt;2；</li>
+<li>则根节点（非叶子节点前提下）的儿子数为：[2，M]；</li>
+<li>除根节点外的非叶子节点的儿子数为[M/2，M]；</li>
+<li>每个结点存放至少M/2 - 1 （向上取整）且至多M -1 个关键字（至少为2）；</li>
+<li>非叶子结点的关键字个数 = 指向子节点的指针数-1；</li>
+<li>非叶子节点的关键字：K[1],K[2],K[3],…,K[M-1;且K[i] &lt; K[i +1];</li>
+<li>非叶子结点的指针：P[1], P[2], …, P[M]；其中P[1]指向关键字小于K[1]的子树，P[M]指向关键字大于K[M-1]的子树，其它P[i]指向关键字属于(K[i-1], K[i])的子树；</li>
+<li>所有叶子结点位于同一层；</li>
+</ul>
+<p>如(M = 3)</p>
+<p><img src="https://img-blog.csdnimg.cn/20190815211241789.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Ffemhhbmdx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>​          B-树的搜索，从根结点开始，对结点内的关键字（有序）序列进行二分查找，如果命中则结束，否则进入查询关键字所属范围的儿子结点（每两个关键字之间会对应一个指向子节点的指针）；重复，直到所对应的儿子指针为空，或已经是叶子结点；</p>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
+<li>关键字集合分布在整颗树中；</li>
+<li>任何一个关键字出现且只出现在一个结点中；</li>
+<li>搜索有可能在非叶子结点结束；</li>
+<li>其搜索性能等价于在关键字全集内做一次二分查找；</li>
+<li>自动层次控制；</li>
+</ul>
+<h1 id="B-树-1"><a href="#B-树-1" class="headerlink" title="B+树"></a>B+树</h1><h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><p>B+树是B-树的变体，也是一种多路搜索树，主要为磁盘或其他直接存取辅助设备而设计的一种平衡查找树，其定义基本与B-树同，除了：</p>
+<ul>
+<li><p>非叶子结点的子树指针与关键字个数相同；</p>
+</li>
+<li><p><strong>非叶子结点的子树指针P[i]，指向关键字值属于[K[i], K[i+1])的子树（B-树是开区间）；</strong></p>
+</li>
+<li><p>为所有叶子结点增加一个链指针；</p>
+</li>
+<li><p>所有关键字都在叶子结点出现；</p>
+</li>
+</ul>
+<p>如：（M=3）<br><img src="https://img-blog.csdnimg.cn/20190817142029576.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Ffemhhbmdx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>B+的搜索与B-树也基本相同，区别是B+树只有达到叶子结点才命中（B-树可以在</p>
+<p>非叶子结点命中），其性能也等价于在关键字全集做一次二分查找；</p>
+<h2 id="特性-1"><a href="#特性-1" class="headerlink" title="特性"></a>特性</h2><ul>
+<li><p>所有关键字都出现在叶子结点的链表中（稠密索引），且链表中的关键字恰好是有序的；</p>
+</li>
+<li><p>不可能在非叶子结点命中；</p>
+</li>
+<li><p>非叶子结点相当于是叶子结点的索引（稀疏索引），叶子结点相当于是存储（关键字）数据的数据层；</p>
+</li>
+</ul>
+<h3 id="B-树的插入操作"><a href="#B-树的插入操作" class="headerlink" title="B+树的插入操作"></a>B+树的插入操作</h3><p>B+树的插入必须保证插入后叶节点中的记录依然排序，同时需要考虑插入B+树的三种情况，每种情况都可能会导致不同的插入算法，如表5-1所示。 </p>
+<p><img src="https://i.loli.net/2020/03/10/T4rz2o7Qgu5aVNk.png" alt="1.png"></p>
+<p>我们用实例来分析B+树的插入，我们插入28这个键值，发现当前Leaf Page和Index Page都没有满，我们直接插入就可以了。</p>
+<p><img src="https://i.loli.net/2020/03/10/1l76vxQewYhSPg2.png" alt="2.png"></p>
+<p>这次我们再插入一条70这个键值，这时原先的Leaf Page已经满了，但是Index Page还没有满，符合表5-1的第二种情况，这时插入Leaf Page后的情况为50、55、60、65、70。我们根据中间的值60拆分叶节点。</p>
+<p><img src="https://i.loli.net/2020/03/10/itmFSBUC7ATjJxz.png" alt="4.png"></p>
+<p>因为图片显示的关系，这次我没有能在各叶节点加上双向链表指针。最后我们来插入记录95，这时符合表5-1讨论的第三种情况，即Leaf Page和Index Page都满了，这时需要做两次拆分。</p>
+<p><img src="https://i.loli.net/2020/03/10/aCx1kRVJYDZsIrz.png" alt="5.png"></p>
+<p>可以看到，不管怎么变化，B+树总是会保持平衡。但是为了保持平衡，对于新插入的键值可能需要做大量的拆分页（split）操作，而B+树主要用于磁盘，因此页的拆分意味着磁盘的操作，应该在可能的情况下尽量减少页的拆分。因此，B+树提供了旋转（rotation）的功能。</p>
+<p><em>旋转发生在Leaf Page已经满了、但是其左右兄弟节点没有满的情况下。</em>这时B+树并不会急于去做拆分页的操作，而是将记录移到所在页的兄弟节点上。通常情况下，左兄弟被首先检查用来做旋转操作，这时我们插入键值70，其实B+树并不会急于去拆分叶节点，而是做旋转50，55旋转。</p>
+<p><img src="https://i.loli.net/2020/03/10/7ZxohQlCzUVacHr.png" alt="6.png"></p>
+<p>可以看到，采用旋转操作使B+树减少了一次页的拆分操作，而这时B+树的高度依然还是2。</p>
+<h3 id="B-树的删除操作"><a href="#B-树的删除操作" class="headerlink" title="B+树的删除操作"></a>B+树的删除操作</h3><p>B+树使用填充因子（fill factor）来控制树的删除变化，50%是填充因子可设的最小值。B+树的删除操作同样必须保证删除后叶节点中的记录依然排序，同插入一样，B+树的删除操作同样需要考虑如表5-2所示的三种情况，与插入不同的是，删除根据填充因子的变化来衡量。 </p>
+<p><img src="https://i.loli.net/2020/03/10/R3YilsqErS1aMnK.png" alt="7.png"></p>
+<p>首先，删除键值为70的这条记录，该记录符合表5-2讨论的第一种情况，删除后。</p>
+<p><img src="https://i.loli.net/2020/03/10/MNG54mWaf3gQu7C.png" alt="8.png"></p>
+<p>接着我们删除键值为25的记录，这也是表5-2讨论的第一种情况，但是该值还是Index Page中的值，因此在删除Leaf Page中25的值后，还应将25的右兄弟节点的28更新到Page Index中，最后可得到图。</p>
+<p><img src="https://i.loli.net/2020/03/10/OI67SZvkEYFz9J1.png" alt="9.png"></p>
 <font color="red">图片错误，应该为28</font>
 
 <p>最后我们来看删除键值为60的情况，删除Leaf Page中键值为60的记录后，填充因子小于50%，这时需要做合并操作，同样，在删除Index Page中相关记录后需要做Index Page的合并操作，最后得到图。</p>
@@ -554,7 +511,7 @@ B+树使用填充因子（fill factor）来控制树的删除变化，50%是填�
 <li><p><strong>范围查询方便。B-树只能依靠繁琐的中序遍历，而B+树只需要在链表上遍历即可</strong></p>
 </li>
 </ul>
-<h1 id="B-树"><a href="#B-树" class="headerlink" title="B*树"></a>B*树</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
+<h1 id="B-树-2"><a href="#B-树-2" class="headerlink" title="B*树"></a>B*树</h1><h2 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h2><ul>
 <li>B*树是B+树一种变形，它是在B+树的基础上，将索引层以指针连接起来，使搜索取值更加快捷。</li>
 </ul>
 <p><em>如下图（M = 3）<br><img src="https://img-blog.csdnimg.cn/20190817142644325.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Ffemhhbmdx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></em></p>
@@ -717,7 +674,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#B-树比B树的优势"><span class="toc-number">1.</span> <span class="toc-text">B+树比B树的优势</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#B-树"><span class="toc-number">2.</span> <span class="toc-text">B*树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义"><span class="toc-number">2.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">2.2.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#B-树"><span class="toc-number">1.</span> <span class="toc-text">B-树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义"><span class="toc-number">1.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特性"><span class="toc-number">1.2.</span> <span class="toc-text">特性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#B-树-1"><span class="toc-number">2.</span> <span class="toc-text">B+树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义-1"><span class="toc-number">2.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特性-1"><span class="toc-number">2.2.</span> <span class="toc-text">特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#B-树的插入操作"><span class="toc-number">2.2.1.</span> <span class="toc-text">B+树的插入操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-树的删除操作"><span class="toc-number">2.2.2.</span> <span class="toc-text">B+树的删除操作</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#B-树比B树的优势"><span class="toc-number">3.</span> <span class="toc-text">B+树比B树的优势</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#B-树-2"><span class="toc-number">4.</span> <span class="toc-text">B*树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义-2"><span class="toc-number">4.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">4.2.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -3935,9 +3892,72 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 205
+        Total : 206
         </div>
         <!-- search  -->
         
@@ -3950,6 +3970,11 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/16</span><a class="archive-post-title" href= "/2020/05/16/20200516-%E4%B8%AD%E4%BD%8D%E6%95%B0%E5%A4%84%E7%90%86/" >中位数处理</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -4203,12 +4228,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" >单例模式</a>
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" >从上到下打印二叉树</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" >从上到下打印二叉树</a>
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" >单例模式</a>
         </li>
     
     
@@ -5009,27 +5034,27 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="思维"><span class="iconfont-archer">&#xe606;</span>思维</span>
     
-        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
-    
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
+    
+        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
         <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
-        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
-    
         <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
+    
+        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
-        <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
-    
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
-    
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
+        <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
+    
         <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
     
@@ -5080,9 +5105,9 @@ jsonContent:
     
         <span class="sidebar-category-name" data-categories="CS大学生必备"><span class="iconfont-archer">&#xe60a;</span>CS大学生必备</span>
     
-        <span class="sidebar-category-name" data-categories="总结"><span class="iconfont-archer">&#xe60a;</span>总结</span>
-    
         <span class="sidebar-category-name" data-categories="算法短板"><span class="iconfont-archer">&#xe60a;</span>算法短板</span>
+    
+        <span class="sidebar-category-name" data-categories="总结"><span class="iconfont-archer">&#xe60a;</span>总结</span>
     
         <span class="sidebar-category-name" data-categories="工程"><span class="iconfont-archer">&#xe60a;</span>工程</span>
     

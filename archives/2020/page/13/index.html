@@ -346,6 +346,48 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/19/TCP%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93/" >
+            
+                <span>TCP可靠传输</span>
+        </a>
+        <div class="abstract-content">
+            
+
+TCP结构
+
+TCP，控制传输协议，和UDP的差别很大，它充分实现了数据传输时的各种控制功能：
+针对发送端发出的数据包的确认应答信号ACK
+针对数据包丢失或者出现定时器超时的重传机制
+针对数据包到达接收端主机顺序乱掉的顺序控制
+针对高效传输数据包的滑动窗口控制
+针对避免网络拥堵时候的拥塞控制
+针对刚开始启动的时候避免一下子发送大量数据包而导致网络瘫痪的慢启动算法和拥塞控制。
+
+而这些在UDP中都是没有的！此外，TCP作为一种面向有连接的控制传输协议，只有在确认对端主机存在时才会发送数据，从而可以控制通信流量的浪费。
+TCP通过序列号、检验和、确认应答信号、重发控制、连接管理、窗口控制...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/19</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/03/18/%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0/" >
             
                 <span>寻找两个有序数组的中位数</span>
@@ -405,9 +447,9 @@ DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2)
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "DP">DP</a>
-    
         <a class="post-tag" href="javascript:void(0);" data-tags = "字符串">字符串</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "DP">DP</a>
     
 </div>
             
@@ -461,7 +503,7 @@ DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2)
                 <span>C++三大特性</span>
         </a>
         <div class="abstract-content">
-            <p><strong>C++ 三大特性 封装，继承，多态</strong></p>
+            <p><strong>C++ 三大特性 继承，封装，多态</strong></p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -527,9 +569,10 @@ DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2)
 虚函数表属于类，类的所有对象共享这个类的虚函数表。
 不同对象虚函数表是一样的（虚函数表的第一个函数地址相同）；
 每个对象内部都保存一个指向该类虚函数表的指针vptr，每个对象的vptr的存放地址都不一样，但是都指向同一虚函数表。
+虚函数表针对一个类来说的，有点像一个类里面的static成员变量，即它是属于一个类所有对象的，不是属于某一个对象特有的，是一个类所有对象共有的。因此它存放在静态存储区。
 
 概述为了实现C++的多态，C++使用了一种动态绑定的技术。这个技术的核心是虚函数表（下文简称虚表）。本文介绍虚函数表是如何实现动态绑定的。
-类的虚表每个包含了虚函数的类都包含一个虚表。我们知道，当一个类（A）继承另一个类（B）时，类A会继承类B的函数的调用权。所以如果一个基类包含了虚函数，那么其继承类也可调用这些虚函数，换句话说，一个类继承了包含虚...
+类的虚表每个包含了虚函数的类都包含一个虚...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -633,49 +676,6 @@ DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2)
 
 额外空间复杂度：O(1)
 12345678910111213void insertsort(int l, int r) &#123;    for (int i = l + 1; i &lt;= r; i++) &#123;        if (a[i] &lt; a[i - 1]) &#123;     ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/15</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "排序">排序</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/15/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" >
-            
-                <span>归并排序</span>
-        </a>
-        <div class="abstract-content">
-            原理盖算法采用分治法，将已有的有序子序列合并，得到有序的序列
-复杂度
-最差时间复杂度：O(nlogn)
-平均时间复杂度：O(nlogn)
-最差空间复杂度：O(n)
-稳定性：稳定
-
-快排和归并都是log，并且归并稳定，为啥实际应用快排?
-
-
-他们都是分治思想，代码都通过递归来实现，过程十分相似
-归并排序是一种在任何情况下时间复杂度都比较稳定的排序算法，这也使它存在致命的缺点，即归并排序不是原地排序算法，空间复杂度较高，是是O（n），也正因如此，它没有快排应用广泛
-快排虽然最坏情况下是O（n^2），但是平均情况下复杂度都是O(nlogn)。而且快排退化到O（n^2）的概率非常小。
-
-递归版1...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -3999,9 +3999,72 @@ DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2)
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 205
+        Total : 206
         </div>
         <!-- search  -->
         
@@ -4014,6 +4077,11 @@ DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2)
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/16</span><a class="archive-post-title" href= "/2020/05/16/20200516-%E4%B8%AD%E4%BD%8D%E6%95%B0%E5%A4%84%E7%90%86/" >中位数处理</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -4267,12 +4335,12 @@ DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2)
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" >单例模式</a>
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" >从上到下打印二叉树</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" >从上到下打印二叉树</a>
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" >单例模式</a>
         </li>
     
     
@@ -5073,27 +5141,27 @@ DP直接枚举复杂度过高为O（n^3），用DP可以将复杂度降到O(n^2)
     
         <span class="sidebar-tag-name" data-tags="思维"><span class="iconfont-archer">&#xe606;</span>思维</span>
     
-        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
-    
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
+    
+        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
         <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
-        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
-    
         <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
+    
+        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
-        <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
-    
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
-    
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
+        <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
+    
         <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
     
@@ -5144,9 +5212,9 @@ jsonContent:
     
         <span class="sidebar-category-name" data-categories="CS大学生必备"><span class="iconfont-archer">&#xe60a;</span>CS大学生必备</span>
     
-        <span class="sidebar-category-name" data-categories="总结"><span class="iconfont-archer">&#xe60a;</span>总结</span>
-    
         <span class="sidebar-category-name" data-categories="算法短板"><span class="iconfont-archer">&#xe60a;</span>算法短板</span>
+    
+        <span class="sidebar-category-name" data-categories="总结"><span class="iconfont-archer">&#xe60a;</span>总结</span>
     
         <span class="sidebar-category-name" data-categories="工程"><span class="iconfont-archer">&#xe60a;</span>工程</span>
     

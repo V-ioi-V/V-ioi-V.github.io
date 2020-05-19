@@ -359,6 +359,42 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/05/03/20200503-%E5%89%AA%E7%BB%B3%E5%AD%90/" >
+            
+                <span>剪绳子</span>
+        </a>
+        <div class="abstract-content">
+            
+
+剪绳子I给你一根长度为 n 的绳子，请把绳子剪成整数长度的 m 段（m、n都是整数，n&gt;1并且m&gt;1），每段绳子的长度记为 k[0],k[1]…k[m] 。请问 k[0]k[1]…*k[m] 可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。
+示例 1：
+输入: 2输出: 1解释: 2 = 1 + 1, 1 × 1 = 1示例 2:
+输入: 10输出: 36解释: 10 = 3 + 3 + 4, 3 × 3 × 4 = 36提示：
+2 &lt;= n &lt;= 58
+思路优先分成3，如果最后一段是4，则不分...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/03</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/05/03/20200503-%E4%B8%91%E6%95%B0/" >
             
                 <span>丑数</span>
@@ -536,8 +572,8 @@ height:50vh;
 示例:
 输入: [2,0,2,1,1,0]输出: [0,0,1,1,2,2]进阶：
 一个直观的解决方案是使用计数排序的两趟扫描算法。首先，迭代计算出0、1 和 2 元素的个数，然后按照0、1、2的排序，重写当前数组。你能想出一个仅使用常数空间的一趟扫描算法吗？
-思路当前数是0的话，i和l都++。
-当前数是1的话，只有i++，可以保障每当遇到...
+思路开头到l的数全是0，l到i之间的数全都是1，r到结尾之间的数全是2。
+当前数...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -642,42 +678,6 @@ height:50vh;
 你的算法的时间复杂度应为O(n)，并且只能使用常数级别的额外空间。
 思路将每个数字在原数组中变换位置，变换到以这个数字为下标 的位置，最后从头到尾遍历一遍原数组，数组的值和下标的值不一样的即为缺失的正数。
 123456789101112131415class Solution &#123;public:    int firstMissingPositive(ve...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/29</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/29/20200429-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%8E%92%E5%88%97/" >
-            
-                <span>下一个排列</span>
-        </a>
-        <div class="abstract-content">
-            
-
-实现获取下一个排列的函数，算法需要将给定数字序列重新排列成字典序中下一个更大的排列。
-如果不存在下一个更大的排列，则将数字重新排列成最小的排列（即升序排列）。
-必须原地修改，只允许使用额外常数空间。
-以下是一些例子，输入位于左侧列，其相应输出位于右侧列。1,2,3 → 1,3,23,2,1 → 1,2,31,1,5 → 1,5,1
-思路下一个排列的定义是：给定数字序列的字典序中下一个更大的排列。如果不存在下一个更大的排列，则将数字重新排列成最小的排列（即升序排列）。
-我们可以将该问题形式化地描述为：给定若干个数字，将其组合为一个整数。如何将这些数字重新排列，以得到下一个更大的整数。如...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -4079,9 +4079,72 @@ height:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 205
+        Total : 206
         </div>
         <!-- search  -->
         
@@ -4094,6 +4157,11 @@ height:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/16</span><a class="archive-post-title" href= "/2020/05/16/20200516-%E4%B8%AD%E4%BD%8D%E6%95%B0%E5%A4%84%E7%90%86/" >中位数处理</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -4347,12 +4415,12 @@ height:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" >单例模式</a>
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" >从上到下打印二叉树</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" >从上到下打印二叉树</a>
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" >单例模式</a>
         </li>
     
     
@@ -5153,27 +5221,27 @@ height:50vh;
     
         <span class="sidebar-tag-name" data-tags="思维"><span class="iconfont-archer">&#xe606;</span>思维</span>
     
-        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
-    
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
+    
+        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
         <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
-        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
-    
         <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
+    
+        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
-        <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
-    
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
-    
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
+        <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
+    
         <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
     
@@ -5224,9 +5292,9 @@ jsonContent:
     
         <span class="sidebar-category-name" data-categories="CS大学生必备"><span class="iconfont-archer">&#xe60a;</span>CS大学生必备</span>
     
-        <span class="sidebar-category-name" data-categories="总结"><span class="iconfont-archer">&#xe60a;</span>总结</span>
-    
         <span class="sidebar-category-name" data-categories="算法短板"><span class="iconfont-archer">&#xe60a;</span>算法短板</span>
+    
+        <span class="sidebar-category-name" data-categories="总结"><span class="iconfont-archer">&#xe60a;</span>总结</span>
     
         <span class="sidebar-category-name" data-categories="工程"><span class="iconfont-archer">&#xe60a;</span>工程</span>
     

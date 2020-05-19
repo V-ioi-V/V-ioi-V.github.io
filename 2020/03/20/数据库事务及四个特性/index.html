@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">6.5k</span>Reading time: <span class="post-count reading-time">22 min</span></span>
+                        <span>Word count: <span class="post-count word-count">5.3k</span>Reading time: <span class="post-count reading-time">18 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -439,10 +439,10 @@ height:50vh;
 <li>2.当有多个用户同时操作数据库时,数据库能够以事务为单位进行并发控制,使多个用户对B账户的转账操作相互隔离。</li>
 </ul>
 <p>事务使系统能够更方便的进行故障恢复以及并发控制,从而保证数据库状态的一致性。</p>
-<h3 id="4-事务的ACID特性以及实现原理概述"><a href="#4-事务的ACID特性以及实现原理概述" class="headerlink" title="4 事务的ACID特性以及实现原理概述"></a>4 事务的ACID特性以及实现原理概述</h3><p>原子性(Atomicity):事务中的所有操作作为一个整体像原子一样不可分割，要么全部成功,要么全部失败。</p>
-<p>一致性(Consistency):事务的执行结果必须使数据库从一个一致性状态到另一个一致性状态。一致性状态是指:1.系统的状态满足数据的完整性约束(主码,参照完整性,check约束等) 2.系统的状态反应数据库本应描述的现实世界的真实状态,比如转账前后两个账户的金额总和应该保持不变。</p>
-<p>隔离性(Isolation):并发执行的事务不会相互影响,其对数据库的影响和它们串行执行时一样。比如多个用户同时往一个账户转账,最后账户的结果应该和他们按先后次序转账的结果一样。</p>
-<p>持久性(Durability):事务一旦提交,其对数据库的更新就是持久的。任何事务或系统故障都不会导致数据丢失。</p>
+<h3 id="4-事务的ACID特性以及实现原理概述"><a href="#4-事务的ACID特性以及实现原理概述" class="headerlink" title="4 事务的ACID特性以及实现原理概述"></a>4 事务的ACID特性以及实现原理概述</h3><p><strong>原子性(Atomicity):</strong>事务中的所有操作作为一个整体像原子一样不可分割，要么全部成功,要么全部失败。</p>
+<p><strong>一致性(Consistency):</strong>事务的执行结果必须使数据库从一个一致性状态到另一个一致性状态。一致性状态是指:1.系统的状态满足数据的完整性约束(主码,参照完整性,check约束等) 2.系统的状态反应数据库本应描述的现实世界的真实状态,比如转账前后两个账户的金额总和应该保持不变。</p>
+<p><strong>隔离性(Isolation):</strong>并发执行的事务不会相互影响,其对数据库的影响和它们串行执行时一样。比如多个用户同时往一个账户转账,最后账户的结果应该和他们按先后次序转账的结果一样。</p>
+<p><strong>持久性(Durability):</strong>事务一旦提交,其对数据库的更新就是持久的。任何事务或系统故障都不会导致数据丢失。</p>
 <p>在事务的ACID特性中,C即一致性是事务的根本追求,而对数据一致性的破坏主要来自两个方面</p>
 <ul>
 <li>1.事务的并发执行</li>
@@ -450,6 +450,7 @@ height:50vh;
 </ul>
 <p>数据库系统是通过<strong>并发控制技术</strong>和<strong>日志恢复技术</strong>来避免这种情况发生的。</p>
 <p>并发控制技术保证了事务的隔离性,使数据库的一致性状态不会因为并发执行的操作被破坏。<br>日志恢复技术保证了事务的原子性,使一致性状态不会因事务或系统故障被破坏。同时使已提交的对数据库的修改不会因系统崩溃而丢失,保证了事务的持久性。<br><img src="https://img2018.cnblogs.com/blog/1422237/201811/1422237-20181122103102223-1059881337.png" alt="img"></p>
+<h3 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h3><p>为了实现原子性，需要通过日志：将所有对数据的更新操作都写入日志，如果一个事务中的一部分操作已经成功，但以后的操作，由于断电/系统崩溃/其它的软硬件错误而无法继续，则通过回溯日志，将已经执行成功的操作撤销，从而达到“全部操作失败”的目的。最常见的场景是，数据库系统崩溃后重启，此时数据库处于不一致的状态，必须先执行一个crash recovery的过程：<strong>读取日志进行REDO（重演将所有已经执行成功但尚未写入到磁盘的操作，保证持久性），再对所有到崩溃时尚未成功提交的事务进行UNDO（撤销所有执行了一部分但尚未提交的操作，保证原子性</strong>。crash recovery结束后，数据库恢复到一致性状态，可以继续被使用。</p>
 <h2 id="2-并发异常与并发控制技术"><a href="#2-并发异常与并发控制技术" class="headerlink" title="2.并发异常与并发控制技术"></a>2.并发异常与并发控制技术</h2><h3 id="1-常见的并发异常"><a href="#1-常见的并发异常" class="headerlink" title="1 常见的并发异常"></a>1 常见的并发异常</h3><p>在讲解并发控制技术前,先简单介绍下数据库常见的并发异常。</p>
 <h4 id="脏写"><a href="#脏写" class="headerlink" title="脏写"></a>脏写</h4><p>脏写是指事务回滚了其他事务对数据项的已提交修改,比如下面这种情况<br><img src="https://img2018.cnblogs.com/blog/1422237/201811/1422237-20181122103114390-240225061.png" alt="img"></p>
 <p>在事务1对数据A的回滚,导致事务2对A的已提交修改也被回滚了。</p>
@@ -533,72 +534,6 @@ b.若TS(T)>=W-timestamp(Q),则执行read操作,同时把<br>R-timestamp(Q)设置
 </ul>
 <p>事务间可能冲突的操作通过数据项的不同版本的快照相互隔离,到真正要写入数据库时才进行冲突检测。因而这也是一种乐观并发控制。</p>
 <h4 id="5-关于并发控制技术的总结"><a href="#5-关于并发控制技术的总结" class="headerlink" title="5 关于并发控制技术的总结"></a>5 关于并发控制技术的总结</h4><p>以上只是对常见的几种并发控制技术进行了介绍,不涉及特别复杂的原理的讲解。之所以这么做一是要真的把原理和实现细节讲清楚需要涉及的东西太多,篇幅太长,从作者和读者角度而言都不是一件轻松的事,所以只对其实现的核心思想和实现要点进行了简单的介绍,其他部分就一笔带过了。二是并发控制的实现的方式太过多样,基于封锁的实现就有很多变体,mvcc多版本并发控制的实现方式就更是多样,而且很多时候会和其他并发控制方式比如封锁的方式结合起来使用。</p>
-<h2 id="故障与故障恢复技术"><a href="#故障与故障恢复技术" class="headerlink" title="故障与故障恢复技术"></a>故障与故障恢复技术</h2><h3 id="1-为什么需要故障恢复技术"><a href="#1-为什么需要故障恢复技术" class="headerlink" title="1 为什么需要故障恢复技术"></a>1 为什么需要故障恢复技术</h3><p>数据库运行过程中可能会出现故障,这些故障包括事务故障和系统故障两大类</p>
-<ul>
-<li>事务故障:比如非法输入,系统出现死锁,导致事务无法继续执行。</li>
-<li>系统故障:比如由于软件漏洞或硬件错误导致系统崩溃或中止。</li>
-</ul>
-<p>这些故障可能会对事务和数据库状态造成破坏,因而必须提供一种技术来对各种故障进行恢复,保证数据库一致性,事务的原子性以及持久性。数据库通常以日志的方式记录数据库的操作从而在故障时进行恢复,因而可以称之为日志恢复技术。</p>
-<h3 id="2-事务的执行过程以及可能产生的问题"><a href="#2-事务的执行过程以及可能产生的问题" class="headerlink" title="2 事务的执行过程以及可能产生的问题"></a>2 事务的执行过程以及可能产生的问题</h3><p><img src="https://img2018.cnblogs.com/blog/1422237/201811/1422237-20181122103254113-1342077140.png" alt="img"></p>
-<p>事务的执行过程可以简化如下:</p>
-<ol>
-<li>系统会为每个事务开辟一个私有工作区</li>
-<li>事务读操作将从磁盘中拷贝数据项到工作区中,在执行写操作前所有的更新都作用于工作区中的拷贝.</li>
-<li>事务的写操作将把数据输出到内存的缓冲区中,等到合适的时间再由缓冲区管理器将数据写入到磁盘。</li>
-</ol>
-<p>由于数据库存在立即修改和延迟修改,所以在事务执行过程中可能存在以下情况:</p>
-<ul>
-<li>在事务提交前出现故障,但是事务对数据库的部分修改已经写入磁盘数据库中。这导致了事务的原子性被破坏。</li>
-<li>在系统崩溃前事务已经提交,但数据还在内存缓冲区中,没有写入磁盘。系统恢复时将丢失此次已提交的修改。这是对事务持久性的破坏。</li>
-</ul>
-<h3 id="3-日志的种类和格式"><a href="#3-日志的种类和格式" class="headerlink" title="3 日志的种类和格式"></a>3 日志的种类和格式</h3><ul>
-<li>描述一次数据库写操作,T是执行写操作的事务的唯一标识,X是要写的数据项,V1是数据项的旧值,V2是数据项的新值。</li>
-<li>对数据库写操作的撤销操作,将事务T的X数据项恢复为旧值V1。在事务恢复阶段插入。</li>
-<li>事务T开始</li>
-<li>事务T提交</li>
-<li>事务T中止</li>
-</ul>
-<p>关于日志,有以下两条规则</p>
-<ul>
-<li>1.系统在对数据库进行修改前会在日志文件末尾追加相应的日志记录。</li>
-<li>2.当一个事务的commit日志记录写入到磁盘成功后,称这个事务已提交,但事务所做的修改可能并未写入磁盘</li>
-</ul>
-<h3 id="4-日志恢复的核心思想"><a href="#4-日志恢复的核心思想" class="headerlink" title="4 日志恢复的核心思想"></a>4 日志恢复的核心思想</h3><ul>
-<li>撤销事务undo:将事务更新的所有数据项恢复为日志中的旧值,事务撤销完毕时将插入一条``记录。</li>
-<li>重做事务redo:将事务更新的所有数据项恢复为日志中的新值。</li>
-</ul>
-<p>事务正常回滚/因事务故障中止将进行redo<br>系统从崩溃中恢复时将先进行redo再进行undo。</p>
-<p>以下事务将进行undo:日志中只包括<code>记录,但既不包括</code>记录也不包括``记录.</p>
-<p>以下事务将进行redo:日志中包括<code>记录,也包括</code>记录或``记录。</p>
-<p>假设系统从崩溃中恢复时日志记录如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;T0 start&gt;</span><br><span class="line">&lt;T0,A,1000,950&gt;</span><br><span class="line">&lt;T0,B,2000,2050&gt;</span><br><span class="line">&lt;T0 commit&gt;</span><br><span class="line">&lt;T1 start&gt;</span><br><span class="line">&lt;T1,C,700,600&gt;</span><br></pre></td></tr></table></figure>
-<p>由于T0既有start记录又有commit记录,将会对事务T0进行重做,执行相应的redo操作。<br>由于T1只有start记录,将会对T1进行撤销,执行相应的undo操作,撤销完毕将写入一条abort记录。</p>
-<h3 id="5-事务故障中止-正常回滚的恢复流程"><a href="#5-事务故障中止-正常回滚的恢复流程" class="headerlink" title="5 事务故障中止/正常回滚的恢复流程"></a>5 事务故障中止/正常回滚的恢复流程</h3><ol>
-<li>从后往前扫描日志,对于事务T的每个形如``的记录,将旧值V1写入数据项X中。</li>
-<li>往日志中写一个特殊的只读记录``,表示将数据项恢复成旧值V1,<br>这是一个只读的补偿记录,不需要根据它进行undo。</li>
-<li>一旦发现了<code>日志记录,就停止继续扫描,并往日志中写一个</code>日志记录。<br><img src="https://img2018.cnblogs.com/blog/1422237/201811/1422237-20181122103326981-1784817664.png" alt="img"></li>
-</ol>
-<h3 id="6-系统崩溃时的恢复过程-带检查点"><a href="#6-系统崩溃时的恢复过程-带检查点" class="headerlink" title="6 系统崩溃时的恢复过程(带检查点)"></a>6 系统崩溃时的恢复过程(带检查点)</h3><p>检查点是形如``的特殊的日志记录,L是写入检查点记录时还未提交的事务的集合,系统保证在检查点之前已经提交的事务对数据库的修改已经写入磁盘,不需要进行redo。检查点可以加快恢复的过程。</p>
-<p>系统奔溃时的恢复过程分为两个阶段:重做阶段和撤销阶段。</p>
-<p>重做阶段:</p>
-<ol>
-<li>系统从最后一个检查点开始正向的扫描日志,将要重做的事务的列表undo-list设置为检查点日志记录中的L列表。</li>
-<li>发现<code>的更新记录或</code>的补偿撤销记录,就重做该操作。</li>
-<li>发现``记录,就把T加入到undo-list中。</li>
-<li>发现<code>或</code>记录,就把T从undo-list中去除。</li>
-</ol>
-<p>撤销阶段:</p>
-<ol>
-<li>系统从尾部开始反向扫描日志</li>
-<li>发现属于undo-list中的事务的日志记录,就执行undo操作</li>
-<li><p>发现undo-list中事务的T的<code>记录,就写入一条</code>记录,<br>并把T从undo-list中去除。</p>
-<p>4.undo-list为空,则撤销阶段结束</p>
-</li>
-</ol>
-<p>总结:先将日志记录中所有事务的更新按顺序重做一遍,在针对需要撤销的事务按相反的顺序执行其更新操作的撤销操作。</p>
-<h4 id="1-一个系统崩溃恢复的例子"><a href="#1-一个系统崩溃恢复的例子" class="headerlink" title="1 一个系统崩溃恢复的例子"></a>1 一个系统崩溃恢复的例子</h4><p>恢复前的日志如下,写入最后一条日志记录后系统崩溃</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;T0 start&gt;</span><br><span class="line">&lt;T0,B,2000,2050&gt;</span><br><span class="line">&lt;T2 commit&gt;</span><br><span class="line">&lt;T1 start&gt;</span><br><span class="line">&lt;checkpoint &#123;T0,T1&#125;&gt;   &#x2F;&#x2F;之前T2已经commit,故不用重做</span><br><span class="line">&lt;T1,C,700,600&gt;</span><br><span class="line">&lt;T1 commit&gt;</span><br><span class="line">&lt;T2 start&gt;</span><br><span class="line">&lt;T2,A,500,400&gt;</span><br><span class="line">&lt;T0,B,2000&gt;</span><br><span class="line">&lt;T0 abort&gt;   &#x2F;&#x2F;T0回滚完成,插入该记录后系统崩溃</span><br></pre></td></tr></table></figure>
-<p><img src="https://img2018.cnblogs.com/blog/1422237/201811/1422237-20181122103354765-998135148.png" alt="img"></p>
 <h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a>4. 总结</h2><p>事务是数据库系统进行并发控制的基本单位,是数据库系统进行故障恢复的基本单位,从而也是保持数据库状态一致性的基本单位。ACID是事务的基本特性,数据库系统是通过并发控制技术和日志恢复技术来对事务的ACID进行保证的,从而可以得到如下的关于数据库事务的概念体系结构。</p>
 <p><img src="https://img2018.cnblogs.com/blog/1422237/201811/1422237-20181122103402725-726722235.png" alt="img"></p>
 
@@ -742,7 +677,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#认识事务"><span class="toc-number">2.</span> <span class="toc-text">认识事务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-为什么需要数据库事务"><span class="toc-number">2.1.</span> <span class="toc-text">1 为什么需要数据库事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-什么是数据库事务"><span class="toc-number">2.2.</span> <span class="toc-text">2 什么是数据库事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-事务如何解决问题"><span class="toc-number">2.3.</span> <span class="toc-text">3 事务如何解决问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-事务的ACID特性以及实现原理概述"><span class="toc-number">2.4.</span> <span class="toc-text">4 事务的ACID特性以及实现原理概述</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-并发异常与并发控制技术"><span class="toc-number">3.</span> <span class="toc-text">2.并发异常与并发控制技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-常见的并发异常"><span class="toc-number">3.1.</span> <span class="toc-text">1 常见的并发异常</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#脏写"><span class="toc-number">3.1.1.</span> <span class="toc-text">脏写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#丢失更新"><span class="toc-number">3.1.2.</span> <span class="toc-text">丢失更新</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#脏读"><span class="toc-number">3.1.3.</span> <span class="toc-text">脏读</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#不可重复读-修改"><span class="toc-number">3.1.4.</span> <span class="toc-text">不可重复读(修改)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#幻读（新增或删除（数据条目的变化））"><span class="toc-number">3.1.5.</span> <span class="toc-text">幻读（新增或删除（数据条目的变化））</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-事务的隔离级别"><span class="toc-number">3.2.</span> <span class="toc-text">2 事务的隔离级别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Read-Uncommitted（读取未提交内容）"><span class="toc-number">3.2.1.</span> <span class="toc-text">Read Uncommitted（读取未提交内容）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Read-Committed（读取提交内容）"><span class="toc-number">3.2.2.</span> <span class="toc-text">Read Committed（读取提交内容）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Repeatable-Read（可重复读）"><span class="toc-number">3.2.3.</span> <span class="toc-text">Repeatable Read（可重复读）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Serializable（可串行化）"><span class="toc-number">3.2.4.</span> <span class="toc-text">Serializable（可串行化）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-事务隔离性的实现——常见的并发控制技术"><span class="toc-number">3.3.</span> <span class="toc-text">3 事务隔离性的实现——常见的并发控制技术</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-基于封锁的并发控制"><span class="toc-number">3.3.1.</span> <span class="toc-text">1 基于封锁的并发控制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-基于时间戳的并发控制"><span class="toc-number">3.3.2.</span> <span class="toc-text">2 基于时间戳的并发控制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-基于有效性检查的并发控制"><span class="toc-number">3.3.3.</span> <span class="toc-text">3 基于有效性检查的并发控制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-基于快照隔离的并发控制"><span class="toc-number">3.3.4.</span> <span class="toc-text">4 基于快照隔离的并发控制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-关于并发控制技术的总结"><span class="toc-number">3.3.5.</span> <span class="toc-text">5 关于并发控制技术的总结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#故障与故障恢复技术"><span class="toc-number">4.</span> <span class="toc-text">故障与故障恢复技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-为什么需要故障恢复技术"><span class="toc-number">4.1.</span> <span class="toc-text">1 为什么需要故障恢复技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-事务的执行过程以及可能产生的问题"><span class="toc-number">4.2.</span> <span class="toc-text">2 事务的执行过程以及可能产生的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-日志的种类和格式"><span class="toc-number">4.3.</span> <span class="toc-text">3 日志的种类和格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-日志恢复的核心思想"><span class="toc-number">4.4.</span> <span class="toc-text">4 日志恢复的核心思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-事务故障中止-正常回滚的恢复流程"><span class="toc-number">4.5.</span> <span class="toc-text">5 事务故障中止&#x2F;正常回滚的恢复流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-系统崩溃时的恢复过程-带检查点"><span class="toc-number">4.6.</span> <span class="toc-text">6 系统崩溃时的恢复过程(带检查点)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-一个系统崩溃恢复的例子"><span class="toc-number">4.6.1.</span> <span class="toc-text">1 一个系统崩溃恢复的例子</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-总结"><span class="toc-number">5.</span> <span class="toc-text">4. 总结</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#认识事务"><span class="toc-number">2.</span> <span class="toc-text">认识事务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-为什么需要数据库事务"><span class="toc-number">2.1.</span> <span class="toc-text">1 为什么需要数据库事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-什么是数据库事务"><span class="toc-number">2.2.</span> <span class="toc-text">2 什么是数据库事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-事务如何解决问题"><span class="toc-number">2.3.</span> <span class="toc-text">3 事务如何解决问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-事务的ACID特性以及实现原理概述"><span class="toc-number">2.4.</span> <span class="toc-text">4 事务的ACID特性以及实现原理概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#题外话"><span class="toc-number">2.5.</span> <span class="toc-text">题外话</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-并发异常与并发控制技术"><span class="toc-number">3.</span> <span class="toc-text">2.并发异常与并发控制技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-常见的并发异常"><span class="toc-number">3.1.</span> <span class="toc-text">1 常见的并发异常</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#脏写"><span class="toc-number">3.1.1.</span> <span class="toc-text">脏写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#丢失更新"><span class="toc-number">3.1.2.</span> <span class="toc-text">丢失更新</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#脏读"><span class="toc-number">3.1.3.</span> <span class="toc-text">脏读</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#不可重复读-修改"><span class="toc-number">3.1.4.</span> <span class="toc-text">不可重复读(修改)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#幻读（新增或删除（数据条目的变化））"><span class="toc-number">3.1.5.</span> <span class="toc-text">幻读（新增或删除（数据条目的变化））</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-事务的隔离级别"><span class="toc-number">3.2.</span> <span class="toc-text">2 事务的隔离级别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Read-Uncommitted（读取未提交内容）"><span class="toc-number">3.2.1.</span> <span class="toc-text">Read Uncommitted（读取未提交内容）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Read-Committed（读取提交内容）"><span class="toc-number">3.2.2.</span> <span class="toc-text">Read Committed（读取提交内容）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Repeatable-Read（可重复读）"><span class="toc-number">3.2.3.</span> <span class="toc-text">Repeatable Read（可重复读）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Serializable（可串行化）"><span class="toc-number">3.2.4.</span> <span class="toc-text">Serializable（可串行化）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-事务隔离性的实现——常见的并发控制技术"><span class="toc-number">3.3.</span> <span class="toc-text">3 事务隔离性的实现——常见的并发控制技术</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-基于封锁的并发控制"><span class="toc-number">3.3.1.</span> <span class="toc-text">1 基于封锁的并发控制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-基于时间戳的并发控制"><span class="toc-number">3.3.2.</span> <span class="toc-text">2 基于时间戳的并发控制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-基于有效性检查的并发控制"><span class="toc-number">3.3.3.</span> <span class="toc-text">3 基于有效性检查的并发控制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-基于快照隔离的并发控制"><span class="toc-number">3.3.4.</span> <span class="toc-text">4 基于快照隔离的并发控制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-关于并发控制技术的总结"><span class="toc-number">3.3.5.</span> <span class="toc-text">5 关于并发控制技术的总结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-总结"><span class="toc-number">4.</span> <span class="toc-text">4. 总结</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -3960,9 +3895,72 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 205
+        Total : 206
         </div>
         <!-- search  -->
         
@@ -3975,6 +3973,11 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/16</span><a class="archive-post-title" href= "/2020/05/16/20200516-%E4%B8%AD%E4%BD%8D%E6%95%B0%E5%A4%84%E7%90%86/" >中位数处理</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -4228,12 +4231,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" >单例模式</a>
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" >从上到下打印二叉树</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" >从上到下打印二叉树</a>
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" >单例模式</a>
         </li>
     
     
@@ -5034,27 +5037,27 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="思维"><span class="iconfont-archer">&#xe606;</span>思维</span>
     
-        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
-    
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
+    
+        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
         <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
-        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
-    
         <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
+    
+        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
-        <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
-    
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
-    
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
+        <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
+    
         <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
     
@@ -5105,9 +5108,9 @@ jsonContent:
     
         <span class="sidebar-category-name" data-categories="CS大学生必备"><span class="iconfont-archer">&#xe60a;</span>CS大学生必备</span>
     
-        <span class="sidebar-category-name" data-categories="总结"><span class="iconfont-archer">&#xe60a;</span>总结</span>
-    
         <span class="sidebar-category-name" data-categories="算法短板"><span class="iconfont-archer">&#xe60a;</span>算法短板</span>
+    
+        <span class="sidebar-category-name" data-categories="总结"><span class="iconfont-archer">&#xe60a;</span>总结</span>
     
         <span class="sidebar-category-name" data-categories="工程"><span class="iconfont-archer">&#xe60a;</span>工程</span>
     

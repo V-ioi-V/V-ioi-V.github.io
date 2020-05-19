@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">7.6k</span>Reading time: <span class="post-count reading-time">28 min</span></span>
+                        <span>Word count: <span class="post-count word-count">9k</span>Reading time: <span class="post-count reading-time">32 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -405,7 +405,8 @@ height:50vh;
 <a id="more"></a>
 <font size=4>
 
-<h1 id="左值右值"><a href="#左值右值" class="headerlink" title="左值右值"></a>左值右值</h1><p>左值与右值这两概念是从 c 中传承而来的，在 c 中，左值指的是既能够出现在等号左边也能出现在等号右边的变量(或表达式)，右值指的则是只能出现在等号右边的变量(或表达式).</p>
+<h1 id="左值右值"><a href="#左值右值" class="headerlink" title="左值右值"></a>左值右值</h1><p>左值指的是既能够出现在等号左边也能出现在等号右边的变量(或表达式)，右值指的则是只能出现在等号右边的变量(或表达式).</p>
+<p>左值是对应内存中有确定存储地址的对象的表达式的值，而右值是所有不是左值的表达式的值</p>
 <ul>
 <li>待补充…</li>
 </ul>
@@ -515,13 +516,20 @@ height:50vh;
 </ul>
 <p><strong>const 常量和define的区别</strong></p>
 <ul>
-<li>const常量有数据类型，而宏定义没有数据类型。编译器可以对前者进行类型安全检查，而对后者只进行字符替换，没有类型安全检查，并且在字符替换中可能会产生意想不到的错误（边际效应）。</li>
-<li>有些集成化的调试工具可以对const常量进行调试，但是不能对宏定义进行调试。</li>
-<li>在C++程序中只使用const常量而不使用宏常量，即const常量完全取代宏常量。</li>
-<li>内存空间的分配上。define进行宏定义的时候，不会分配内存空间，编译时会在main函数里进行替换，只是单纯的替换，不会进行任何检查,比如类型，语句结构等，即宏定义常量只是纯粹的置放关系，如#define null 0；编译器在遇到null时总是用0代替null它没有数据类型，而const定义的常量具有数据类型，定义数据类型的常量便于编译器进行数据检查，使程序可能出现错误进行排查,所以const与define之间的区别在于<strong>const定义常量排除了程序之间的不安全性。</strong></li>
-<li>const常量存在于程序的<strong>数据段</strong>，#define常量存在于程序的<strong>代码段</strong></li>
-<li>const常量存在“常量折叠”，在编译器进行语法分析的时候，将常量表达式计算求值，并用求得的值来替换表达式，放入常量表，可以算作一种编译优化。因为编译器在优化的过程中，会把碰见的const全部以内容替换掉，类似宏。</li>
+<li><p>作用的阶段： #define是在编译的预处理阶段起作用，而const是在编译、运行的时候起作用。</p>
+</li>
+<li><p>作用的方式： #define只是简单的字符串替换，没有类型检查。而const有对应的数据类型，是要进行判断的，可以避免一些低级的错误。 </p>
+</li>
+<li><p>存储方式：#define只是进行展开，有多少地方使用，就替换多少次，它定义的宏常量在内存中有若干个备份；const定义的只读变量在程序运行过程中只有一份备份。</p>
+</li>
+<li><p>代码调试的方便程度： const常量可以进行调试的，define是不能进行调试的，因为在预编译阶段就已经替换掉了。</p>
+</li>
+<li><p>const常量存在于程序的<strong>数据段</strong>，#define常量存在于程序的<strong>代码段</strong></p>
+</li>
 </ul>
+<p><strong>用宏写一个max？</strong></p>
+<p>被字节面试官问到，没明白啥意思所以没写出来，原来是这个意思</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX(a,b)  (((a)&gt;(b))?(a):(b))</span></span><br></pre></td></tr></table></figure>
 <h1 id="extern（外部变量）"><a href="#extern（外部变量）" class="headerlink" title="extern（外部变量）"></a>extern（外部变量）</h1><p>转自：<a href="http://blog.csdn.net/xingjiarong/article/details/47656339" target="_blank" rel="noopener">http://blog.csdn.net/xingjiarong/article/details/47656339</a></p>
 <p>利用关键字extern，可以在一个文件中引用另一个文件中定义的变量或者函数。</p>
 <p><strong>一、引用同一个文件中的变量</strong></p>
@@ -682,7 +690,7 @@ height:50vh;
 </li>
 <li><p>指针可以有多级，但是引用只能是一级（int **p合法但是int &amp;&amp;a是不合法的）</p>
 </li>
-<li><p>指针有const指针，即int* const ptr；而引用没有const，即int&amp; const a 没有；</p>
+<li><p>指针有const指针，即int* const ptr；而引用没有const，即int&amp; const a 没有,但是有常引用，如果既要利用引用提高程序的效率，又要保护传递给函数的数据不在函数中被改变，就应使用常引用。常引用声明方式：const 类型标识符 &amp;引用名=目标变量名；</p>
 </li>
 <li><p>指针变量需要分配栈空间；而引用不需要，仅仅是个别名</p>
 </li>
@@ -693,6 +701,8 @@ height:50vh;
 <li><p>引用不需要释放内存空间，在编译时就会优化掉</p>
 </li>
 </ol>
+<p><strong>多级指针的用处？</strong></p>
+<p>用于组织打包数据，方便描述和传递。比如一位数组，二维数组。 </p>
 <p><strong>指针与数组名的区别?</strong></p>
 <ol>
 <li>数组名不是指针，对数组名取地址，得到整个数组的地址</li>
@@ -720,15 +730,17 @@ height:50vh;
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T1</span>, <span class="title">class</span> <span class="title">T2</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">T2</span> <span class="title">MyFun</span>(<span class="title">T1</span> <span class="title">arg1</span>, <span class="title">T2</span> <span class="title">arg2</span>)</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt; arg1 &lt;&lt; <span class="string">" "</span>&lt;&lt; arg2&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> arg2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>T1 是传入的第一种任意变量类型，T2 是传入的第二种任意变量类型。</p>
-<h1 id="class和struct"><a href="#class和struct" class="headerlink" title="class和struct"></a>class和struct</h1><p>如果没有<strong>多态</strong>和<strong>虚拟继承</strong>，在C++中，struct和class的存取效率完全相同，存取class的数据成员与非虚函数效率和struct完全相同，不管该数据成员是定义在基类还是派生类。</p>
-<ul>
-<li>class的数据成员在内存中的布局不一定是数据成员的声明顺序，C++只保证处于同一个access section的数据成员按照声明顺序排列</li>
+<h1 id="union和struct"><a href="#union和struct" class="headerlink" title="union和struct"></a>union和struct</h1><ul>
+<li>struct（结构体）和union（共用体）都是由多个不同的数据类型成员组成, 但在任何同一时刻, union中只存放了一个被选中的成员; 而struct的所有成员都存在。在struct中，各成员都占有自己的内存空间，它们是同时存在的,<strong>一个struct变量的总长度等于所有成员长度之和，遵从字节对其原则</strong>; 在Union中，所有成员不能同时占用它的内存空间，它们不能同时存在 , <strong>Union变量的长度等于最长的成员的长度</strong>。</li>
+<li>对于union的不同成员赋值, 将会对其它成员重写, 原来成员的值就不存在了,所以，共同体变量中起作用的成员是最后一次存放的成员; 而对于struct的不同成员赋值是互不影响的。</li>
 </ul>
-<p>在C++中，class和struct做类型定义是只有两点区别：</p>
-<ul>
-<li>默认继承和访问权限不同，class继承默认和访问是private，而struct默认继承和访问是public</li>
+<h1 id="class和struct"><a href="#class和struct" class="headerlink" title="class和struct"></a>class和struct</h1><ul>
+<li><p>结构是实值类型，而类则是引用类型。把一个对象赋给；另一个对象时，class复制过去的是地址，struct复制过去的是值，因此class中的两个对象会同时改变值，struct不会同时改变。</p>
+</li>
+<li><p>默认继承和访问权限不同，class继承默认和访问是private，而struct默认继承和访问是public，struct不能被声明位Protected，而class可以。</p>
+</li>
 <li>class还可用于定义模板函数参数，像typename，但是关键字struct不能同于定义模板h函数参数</li>
-<li>class有默认的无参构造函数，有析构函数，struct没有默认的无参构造函数，且只能声明有参的构造函数，没有析构函数</li>
+<li>class有<strong>默认的</strong>无参构造函数，有析构函数，struct没有默认的无参构造函数，且只能声明构造函数，没有析构函数</li>
 <li>class必须使用new初始化，而结构体可以不用new初始化</li>
 <li>class实例由垃圾回收机制来保证内存的回收处理，而struct变量容使用完后立即自动解除内存分配</li>
 </ul>
@@ -750,6 +762,28 @@ height:50vh;
 <li><strong>分配方式不同：</strong>堆都是动态分配的，没有静态分配的堆。栈有静态分配和动态分配。静态分配是编译器完成的，比如局部变量的分配。动态分配由 malloc 函数进行分配，但是栈的动态分配和堆是不同的，它的动态分配是由编译器进行释放，无需我们手工实现。</li>
 <li><strong>分配效率不同：</strong>栈的效率比堆高很多。栈是机器系统提供的数据结构，计算机在底层提供栈的支持，分配专门的寄存器来存放栈的地址，压栈出栈都有相应的指令，因此比较快。堆是由库函数提供的，机制很复杂，库函数会按照一定的算法进行搜索内存，因此比较慢。</li>
 </ul>
+<p><strong>为什么要区分堆和栈</strong></p>
+<p>在我们学习 C/C++ 和 Java 等编程语言的时候经常要学习一个概念就是堆和栈，对于大部分经验丰富的工程师来说，堆和栈是再熟悉不过的东西了，堆和栈都是存储程序运行时变量的地方。但这个时候问题来了，既然两个都是存储<strong>临时变量</strong>的地方，那么为什么那么多编程语言既需要栈也需要堆呢。</p>
+<ul>
+<li>栈和堆结构的特性</li>
+</ul>
+<p>栈一般来说都是一个 “后进先出” 队列，后进入的数据，会先被释放掉。而堆一般是个链表或者树结构，不同语言有不同实现，相对而言复杂的多。</p>
+<ul>
+<li>为什么既需要栈又需要堆</li>
+</ul>
+<p>在数学中，我们经常使用反证法来证明问题，在这里我们也可以按照反证的思路去思考这个问题。</p>
+<ul>
+<li>仅使用栈</li>
+</ul>
+<p>假设我们的程序代码仅仅使用栈，那么我们的代码会变得非常的简单，程序在执行函数的时候，只需要依次的将变量压入堆栈就好了，当要释放的时候取出来就好了，针对实现的时候，只需要让指针上下移动就好。这么一看栈似乎很完美，它性能优越快速，而且不会产生内存碎片。但是假设我们现在有这么一个操作现在有两个变量 A,B 我们先依次把他们入栈，入栈后的后续操作我们主要是围绕 B 进行的，与 A 已经没有关系了，但是 A 依旧占用着空间，如果我们希望释放 A 的内存空间，那么根据后进先出的原则，那么我们必须先释放 B 才能释放 A，但是后续的计算又需要 B 这就导致我们无法释放 A，在后续的过程中 A 已经没有价值了，但是它还是必须驻留在内存中。而这个时候如果将 A 放入堆中，那么当 A 不在使用的时候，我们可以很容易的在堆中释放 A 所占用的空间，提高内存的有效使用率。这就是堆出现的初衷。</p>
+<ul>
+<li>仅使用堆</li>
+</ul>
+<p>堆之所以能与比栈更好的动态分配的性能是因为堆往往使用了较为复杂的数据结构，这就会导致操作堆的成本要远远大于栈的成本，所以如果仅仅使用堆会使的程序整体效率变慢。</p>
+<ul>
+<li>总结</li>
+</ul>
+<p>类似计算机科学中的很多场景，我们在选择技术方案的时候往往根据不同的场景选择更为合适的策略，而不是选择单一策略。在编程语言中由于堆和栈不同的特性，他们被分别设计用于做动态内存分配和静态快速内存分配，在这样的划分中一起提高了整体系统的效率。</p>
 <h1 id="浅拷贝和深拷贝"><a href="#浅拷贝和深拷贝" class="headerlink" title="浅拷贝和深拷贝"></a>浅拷贝和深拷贝</h1><p><strong>转自：</strong><a href="https://www.cnblogs.com/mikeCao/p/8710837.html" target="_blank" rel="noopener">https://www.cnblogs.com/mikeCao/p/8710837.html</a></p>
 <ul>
 <li>深拷贝和浅拷贝最根本的区别在于是否真正获取一个对象的复制实体，而不是引用。</li>
@@ -783,6 +817,13 @@ height:50vh;
 <li>2)小端模式：</li>
 </ul>
 <p>低地址 —————————&gt; 高地址<br><strong>0x78 | 0x56 | 0x34 | 0x12</strong></p>
+<p>还可以借助union来判断</p>
+<p>在c中，union存放字节都是从低地址开始存放。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">checkCPU</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">　　<span class="keyword">union</span> w</span><br><span class="line">　　&#123;</span><br><span class="line"> 　　　<span class="keyword">int</span> a;</span><br><span class="line"> 　　　<span class="keyword">char</span> b;</span><br><span class="line">　　&#125;c;</span><br><span class="line">　　c.a = <span class="number">1</span>;</span><br><span class="line">　　<span class="keyword">return</span> (c.b == <span class="number">1</span>);  <span class="comment">// 小端返回TRUE,大端返回FALSE</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="内联函数（inline）"><a href="#内联函数（inline）" class="headerlink" title="内联函数（inline）"></a>内联函数（inline）</h1><p>内联函数的基本思想在于将每个函数调用以它的代码体来替换，很可能会增加整个目标代码的体积过分地使用内联所产生的程序会因为有太大的体积而导致可用空间不够。</p>
+<p><strong>内联函数和宏定义的区别</strong></p>
+<p>​    内联函数和宏的区别在于，宏是由预处理器对宏进行替代，而内联函数是通过编译器控制来实现的。而且内联函数是真正的函数，只是在需要用到的时候，内联函数像宏一样的展开，所以取消了函数的参数压栈，减少了调用的开销。你可以象调用函数一样来调用内联函数，而不必担心会产生于处理宏的一些问题。内联函数与带参数的宏定义进行下比较，它们的代码效率是一样，但是内联欢函数要优于宏定义，因为内联函数遵循的类型和作用域规则，它与一般函数更相近，在一些编译器中，一旦关联上内联扩展，将与一般函数一样进行调用，比较方便。 </p>
+<p>​    另外，宏定义在使用时只是简单的文本替换，并没有做严格的参数检查，也就不能享受C++编译器严格类型检查的好处，另外它的返回值也不能被强制转换为可转换的合适的类型，这样，它的使用就存在着一系列的隐患和局限性。</p>
 
     </article>
     <!-- license  -->
@@ -924,7 +965,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#左值右值"><span class="toc-number">1.</span> <span class="toc-text">左值右值</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#static"><span class="toc-number">2.</span> <span class="toc-text">static</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#this"><span class="toc-number">3.</span> <span class="toc-text">this</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#const"><span class="toc-number">4.</span> <span class="toc-text">const</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#extern（外部变量）"><span class="toc-number">5.</span> <span class="toc-text">extern（外部变量）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#new和malloc"><span class="toc-number">6.</span> <span class="toc-text">new和malloc</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#指针"><span class="toc-number">7.</span> <span class="toc-text">指针</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#内存泄露和内存溢出"><span class="toc-number">8.</span> <span class="toc-text">内存泄露和内存溢出</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数模板"><span class="toc-number">9.</span> <span class="toc-text">函数模板</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#class和struct"><span class="toc-number">10.</span> <span class="toc-text">class和struct</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数组和链表"><span class="toc-number">11.</span> <span class="toc-text">数组和链表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#堆和栈的区别"><span class="toc-number">12.</span> <span class="toc-text">堆和栈的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#浅拷贝和深拷贝"><span class="toc-number">13.</span> <span class="toc-text">浅拷贝和深拷贝</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#友元"><span class="toc-number">14.</span> <span class="toc-text">友元</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#大端小端"><span class="toc-number">15.</span> <span class="toc-text">大端小端</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#左值右值"><span class="toc-number">1.</span> <span class="toc-text">左值右值</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#static"><span class="toc-number">2.</span> <span class="toc-text">static</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#this"><span class="toc-number">3.</span> <span class="toc-text">this</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#const"><span class="toc-number">4.</span> <span class="toc-text">const</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#extern（外部变量）"><span class="toc-number">5.</span> <span class="toc-text">extern（外部变量）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#new和malloc"><span class="toc-number">6.</span> <span class="toc-text">new和malloc</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#指针"><span class="toc-number">7.</span> <span class="toc-text">指针</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#内存泄露和内存溢出"><span class="toc-number">8.</span> <span class="toc-text">内存泄露和内存溢出</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数模板"><span class="toc-number">9.</span> <span class="toc-text">函数模板</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#union和struct"><span class="toc-number">10.</span> <span class="toc-text">union和struct</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#class和struct"><span class="toc-number">11.</span> <span class="toc-text">class和struct</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数组和链表"><span class="toc-number">12.</span> <span class="toc-text">数组和链表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#堆和栈的区别"><span class="toc-number">13.</span> <span class="toc-text">堆和栈的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#浅拷贝和深拷贝"><span class="toc-number">14.</span> <span class="toc-text">浅拷贝和深拷贝</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#友元"><span class="toc-number">15.</span> <span class="toc-text">友元</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#大端小端"><span class="toc-number">16.</span> <span class="toc-text">大端小端</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#内联函数（inline）"><span class="toc-number">17.</span> <span class="toc-text">内联函数（inline）</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -4142,9 +4183,72 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 205
+        Total : 206
         </div>
         <!-- search  -->
         
@@ -4157,6 +4261,11 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/16</span><a class="archive-post-title" href= "/2020/05/16/20200516-%E4%B8%AD%E4%BD%8D%E6%95%B0%E5%A4%84%E7%90%86/" >中位数处理</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -4410,12 +4519,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" >单例模式</a>
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" >从上到下打印二叉树</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" >从上到下打印二叉树</a>
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" >单例模式</a>
         </li>
     
     
@@ -5216,27 +5325,27 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="思维"><span class="iconfont-archer">&#xe606;</span>思维</span>
     
-        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
-    
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
+    
+        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
         <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
-        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
-    
         <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
+    
+        <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     
         <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
-        <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
-    
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
-    
         <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
     
+        <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
+    
         <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
     
@@ -5287,9 +5396,9 @@ jsonContent:
     
         <span class="sidebar-category-name" data-categories="CS大学生必备"><span class="iconfont-archer">&#xe60a;</span>CS大学生必备</span>
     
-        <span class="sidebar-category-name" data-categories="总结"><span class="iconfont-archer">&#xe60a;</span>总结</span>
-    
         <span class="sidebar-category-name" data-categories="算法短板"><span class="iconfont-archer">&#xe60a;</span>算法短板</span>
+    
+        <span class="sidebar-category-name" data-categories="总结"><span class="iconfont-archer">&#xe60a;</span>总结</span>
     
         <span class="sidebar-category-name" data-categories="工程"><span class="iconfont-archer">&#xe60a;</span>工程</span>
     
