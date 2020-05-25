@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">9k</span>Reading time: <span class="post-count reading-time">32 min</span></span>
+                        <span>Word count: <span class="post-count word-count">9.3k</span>Reading time: <span class="post-count reading-time">33 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -717,6 +717,9 @@ height:50vh;
 <li>访问一个已销毁或者访问受限的内存区域的指针（无效内存），野指针不能判断是否为NULL来避免，不能对野指针取内容。</li>
 <li>空指针是指置为0\NULL\nullptr的指针，可以对空指针delete多次。</li>
 </ol>
+<p><strong>char *p和 char p[]的区别？</strong></p>
+<p><a href="https://blog.csdn.net/ngcl_blog/article/details/30508265" target="_blank" rel="noopener">https://blog.csdn.net/ngcl_blog/article/details/30508265</a></p>
+<p>char* p是一个指针，根本没分配内存，他指向的”abc123ABC” 是只读的，不能改变，给他赋值肯定是错的而char p[]是一个数组，已经分配内存，是将”abc123ABC” 复制到该内存里面，这个内存是可读写的</p>
 <h1 id="内存泄露和内存溢出"><a href="#内存泄露和内存溢出" class="headerlink" title="内存泄露和内存溢出"></a>内存泄露和内存溢出</h1><ul>
 <li><p>内存泄漏就是内存申请后，用完没有释放，造成可用内存越来越少。</p>
 </li>
@@ -735,13 +738,13 @@ height:50vh;
 <li>对于union的不同成员赋值, 将会对其它成员重写, 原来成员的值就不存在了,所以，共同体变量中起作用的成员是最后一次存放的成员; 而对于struct的不同成员赋值是互不影响的。</li>
 </ul>
 <h1 id="class和struct"><a href="#class和struct" class="headerlink" title="class和struct"></a>class和struct</h1><ul>
-<li><p>结构是实值类型，而类则是引用类型。把一个对象赋给；另一个对象时，class复制过去的是地址，struct复制过去的是值，因此class中的两个对象会同时改变值，struct不会同时改变。</p>
+<li><p>结构是实值类型，而类则是引用类型。把一个对象赋给另一个对象时，class复制过去的是地址，struct复制过去的是值，因此class中的两个对象会同时改变值，struct不会同时改变。</p>
 </li>
 <li><p>默认继承和访问权限不同，class继承默认和访问是private，而struct默认继承和访问是public，struct不能被声明位Protected，而class可以。</p>
 </li>
 <li>class还可用于定义模板函数参数，像typename，但是关键字struct不能同于定义模板h函数参数</li>
 <li>class有<strong>默认的</strong>无参构造函数，有析构函数，struct没有默认的无参构造函数，且只能声明构造函数，没有析构函数</li>
-<li>class必须使用new初始化，而结构体可以不用new初始化</li>
+<li>class必须使用new初始化(A s=new A(10);)，而结构体可以不用new初始化</li>
 <li>class实例由垃圾回收机制来保证内存的回收处理，而struct变量容使用完后立即自动解除内存分配</li>
 </ul>
 <p>C++保留struct关键字，原因</p>
@@ -750,6 +753,11 @@ height:50vh;
 <li>C++中的struct定义必须百分百地保证与C语言中的struct的向下兼容性，把C++中的最基本的对象单元规定为class而不是struct，就是为了避免各种兼容性要求的限制</li>
 <li>对struct定义的扩展使C语言的代码能够更容易的被移植到C++中</li>
 </ul>
+<h1 id="new对象和直接声明对象区别"><a href="#new对象和直接声明对象区别" class="headerlink" title="new对象和直接声明对象区别"></a>new对象和直接声明对象区别</h1><p>1 .new创建类对象需要进行初始化，多处使用  A<em> a=new A() 在<strong>堆</strong>(heap)上分配空间，堆上空间需要手动回收 （delete）,声明对象直接 声明即可A a 在<em>*栈</em></em>(stack)上分配空间，栈上空间自动回收。</p>
+<p>2 .new出来的对象类似于申请空间，因此需要delete销毁，并且要把指针置为NULL；而直接声明的对象则在使用完直接销毁，理论上不会存在<strong>内存泄漏</strong>。</p>
+<p>3 .new对象指针用途广泛，比如作为函数返回值、函数参数等</p>
+<p>4 .频繁调用场合并不适合new，就像new申请和释放内存一样。</p>
+<p>5 .new对象调用其方法以及变量需要用箭头指向其地址 a-&gt;，直接声明只需要点调用他的方法以及变量a.</p>
 <h1 id="数组和链表"><a href="#数组和链表" class="headerlink" title="数组和链表"></a>数组和链表</h1><p>​    1、存储空间上：数组在内存中是连续的，从栈中分配空间；链表是可以不连续的，从堆中分配空间。</p>
 <p>​    2、在查询，访问方式上：数组可以随机访问其中的元素，查找速度相对较快，链表则必须是顺序访问，不能随机访问。</p>
 <p>​    3、空间的使用上：链表对内存空间的利用率较高，可扩展性高；数组则不能，数组的空间大小是固定的，不适合动态存储，不方便动态添加。</p>
@@ -965,7 +973,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#左值右值"><span class="toc-number">1.</span> <span class="toc-text">左值右值</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#static"><span class="toc-number">2.</span> <span class="toc-text">static</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#this"><span class="toc-number">3.</span> <span class="toc-text">this</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#const"><span class="toc-number">4.</span> <span class="toc-text">const</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#extern（外部变量）"><span class="toc-number">5.</span> <span class="toc-text">extern（外部变量）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#new和malloc"><span class="toc-number">6.</span> <span class="toc-text">new和malloc</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#指针"><span class="toc-number">7.</span> <span class="toc-text">指针</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#内存泄露和内存溢出"><span class="toc-number">8.</span> <span class="toc-text">内存泄露和内存溢出</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数模板"><span class="toc-number">9.</span> <span class="toc-text">函数模板</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#union和struct"><span class="toc-number">10.</span> <span class="toc-text">union和struct</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#class和struct"><span class="toc-number">11.</span> <span class="toc-text">class和struct</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数组和链表"><span class="toc-number">12.</span> <span class="toc-text">数组和链表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#堆和栈的区别"><span class="toc-number">13.</span> <span class="toc-text">堆和栈的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#浅拷贝和深拷贝"><span class="toc-number">14.</span> <span class="toc-text">浅拷贝和深拷贝</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#友元"><span class="toc-number">15.</span> <span class="toc-text">友元</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#大端小端"><span class="toc-number">16.</span> <span class="toc-text">大端小端</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#内联函数（inline）"><span class="toc-number">17.</span> <span class="toc-text">内联函数（inline）</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#左值右值"><span class="toc-number">1.</span> <span class="toc-text">左值右值</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#static"><span class="toc-number">2.</span> <span class="toc-text">static</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#this"><span class="toc-number">3.</span> <span class="toc-text">this</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#const"><span class="toc-number">4.</span> <span class="toc-text">const</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#extern（外部变量）"><span class="toc-number">5.</span> <span class="toc-text">extern（外部变量）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#new和malloc"><span class="toc-number">6.</span> <span class="toc-text">new和malloc</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#指针"><span class="toc-number">7.</span> <span class="toc-text">指针</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#内存泄露和内存溢出"><span class="toc-number">8.</span> <span class="toc-text">内存泄露和内存溢出</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数模板"><span class="toc-number">9.</span> <span class="toc-text">函数模板</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#union和struct"><span class="toc-number">10.</span> <span class="toc-text">union和struct</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#class和struct"><span class="toc-number">11.</span> <span class="toc-text">class和struct</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#new对象和直接声明对象区别"><span class="toc-number">12.</span> <span class="toc-text">new对象和直接声明对象区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数组和链表"><span class="toc-number">13.</span> <span class="toc-text">数组和链表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#堆和栈的区别"><span class="toc-number">14.</span> <span class="toc-text">堆和栈的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#浅拷贝和深拷贝"><span class="toc-number">15.</span> <span class="toc-text">浅拷贝和深拷贝</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#友元"><span class="toc-number">16.</span> <span class="toc-text">友元</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#大端小端"><span class="toc-number">17.</span> <span class="toc-text">大端小端</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#内联函数（inline）"><span class="toc-number">18.</span> <span class="toc-text">内联函数（inline）</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -4246,9 +4254,136 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 206
+        Total : 215
         </div>
         <!-- search  -->
         
@@ -4261,6 +4396,51 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/24</span><a class="archive-post-title" href= "/2020/05/24/20200524-%E9%9D%92%E8%9B%99%E8%BF%87%E6%B2%B3/" >青蛙过河</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/24</span><a class="archive-post-title" href= "/2020/05/24/20200524-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%B3%E7%A7%BB/" >字符串右移</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/24</span><a class="archive-post-title" href= "/2020/05/24/20200524-%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E8%B7%AF%E5%BE%84%E5%92%8C/" >二叉树中的最大路径和</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/23</span><a class="archive-post-title" href= "/2020/05/23/20200523-%E9%A2%98%E7%9B%AE%E5%B0%8F%E6%80%BB%E7%BB%93/" >题目小总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/23</span><a class="archive-post-title" href= "/2020/05/23/20200523-DP%E4%B8%93%E9%A2%98/" >DP专题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/22</span><a class="archive-post-title" href= "/2020/05/22/20200522-%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97%C3%97%E5%8C%BA%E9%97%B4%E5%92%8C%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/" >最小数字×区间和的最大值</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/22</span><a class="archive-post-title" href= "/2020/05/22/20200522-%E5%8D%95%E8%AF%8D%E6%8B%86%E5%88%86/" >单词拆分</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/22</span><a class="archive-post-title" href= "/2020/05/22/20200522-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%E7%B3%BB%E5%88%97/" >跳跃游戏系列</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/20</span><a class="archive-post-title" href= "/2020/05/20/20200520-%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D%E7%B3%BB%E5%88%97/" >打家劫舍系列</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -4704,12 +4884,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
         </li>
     
     
@@ -5323,11 +5503,11 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="图论"><span class="iconfont-archer">&#xe606;</span>图论</span>
     
+        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
+    
         <span class="sidebar-tag-name" data-tags="思维"><span class="iconfont-archer">&#xe606;</span>思维</span>
     
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
-    
-        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
         <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
@@ -5339,13 +5519,13 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
-        <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
-    
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
     
-        <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
-    
         <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
+        <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
+    
+        <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
     

@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">4.1k</span>Reading time: <span class="post-count reading-time">14 min</span></span>
+                        <span>Word count: <span class="post-count word-count">4.4k</span>Reading time: <span class="post-count reading-time">15 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -432,6 +432,10 @@ height:50vh;
 <li>TCP提供的确认机制，可以在通信过程中可以不对每一个TCP数据包发出单独的确认包，而是在传送数据时，顺便把确认信息传出，这样可以大大提高网络的利用率和传输效率。同时，TCP的确认机制，也可以一次确认多个数据报，例如，接收方收到了201，301，401的数据报，则只需要对401的数据包进行确认即可，对401的数据包的确认也意味着401之前的所有数据包都已经确认，这样也可以提高系统的效率。</li>
 </ul>
 <p>UDP 包的最大值就应该是 1500 - IP头(20) - UDP头(8) = 1472(Bytes)<br>TCP 包的最大值就应该是 1500 - IP头(20) - TCP头(20) = 1460 (Bytes)</p>
+<h1 id="滑动窗口和拥塞窗口的关系和区别"><a href="#滑动窗口和拥塞窗口的关系和区别" class="headerlink" title="滑动窗口和拥塞窗口的关系和区别"></a>滑动窗口和拥塞窗口的关系和区别</h1><ol>
+<li>滑动窗口解决的是发送方和接收方接收数据速率不一致的问题,通过设置滑动窗口(可以通俗的理解为接收方的缓存)可以缓解这一个问题。具体的操作是接收方会向发送方通知自己可以接受数据的大小，而发送方会根据这个数值，发送数据。</li>
+<li>拥塞窗口用控制全局网络的拥塞情况。通过控制发送方每次发送的流量的多少，用来逐渐试探整体网络的拥塞程度。如果没有拥塞控制，发送方每次发送的数据大小为滑动窗口，在只有2台主机的时候确实是没有问题的，但是如果放到现实的网络大环境中来说是行不通的。因为如果每台主机都发送的窗口大小的数据，那么整个网络系统必然会瘫痪。所以通过在发送方设置拥塞窗口，可以有效缓解网络压力。</li>
+</ol>
 <h1 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h1><ul>
 <li>TCP协议的使用</li>
 <li>每次由接收方传来的大小是按照<strong>字节</strong>来计算的。</li>
@@ -477,7 +481,7 @@ height:50vh;
 <p>7.报文3的重传定时器到期，没有收到ACK，进行重传</p>
 <p>8.这个时候Client已经收到报文4，存放在缓冲区中，也不会发送ACK【累计通知，发送ACK就表示3也收到了】，等待报文3，报文3收到之后，一块对3,4进行确认</p>
 <p>9.Server收到确认之后，将报文3,4移除窗口，所有数据发送完成</p>
-<h1 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h1><p>在某段时间，若对网络中某一资源的需求超过了该资源所能提供的可用部分，网络的性能就要变换，叫做拥塞。</p>
+<h1 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h1><p>在某段时间，若对网络中某一资源的需求超过了该资源所能提供的可用部分，网络的性能就要变换，叫做拥塞。拥塞窗口的单位是mss（一个报文段的大小）。</p>
 <h2 id="必背"><a href="#必背" class="headerlink" title="必背"></a>必背</h2><ul>
 <li>流量控制是在一条TCP连接中的<strong>接收端</strong>采用的措施,用来限制发送端发送报文段的速率,以免在接收端来不及接受,流量控制只控制一个发送端。</li>
 <li>拥塞控制是用来控制TCP连接中发送端发送报文段的速率,以免过多的数据注入到网络,导致网络奔溃,超过负荷.当发送方发送数据大量的数据会注入到网络,如果没有限制,网络就会超负荷变卡。拥塞控制可能会同时控制多个发送端,限制他们的发送速率。拥塞控制是全局性的。</li>
@@ -671,7 +675,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP结构"><span class="toc-number">1.</span> <span class="toc-text">TCP结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP-协议如何保证可靠传输"><span class="toc-number">2.</span> <span class="toc-text">TCP 协议如何保证可靠传输</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP数据包的大小以及编号"><span class="toc-number">3.</span> <span class="toc-text">TCP数据包的大小以及编号</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#滑动窗口"><span class="toc-number">4.</span> <span class="toc-text">滑动窗口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#实现最优解"><span class="toc-number">4.1.</span> <span class="toc-text">实现最优解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#正常情况"><span class="toc-number">4.1.1.</span> <span class="toc-text">正常情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#丢包情况"><span class="toc-number">4.1.2.</span> <span class="toc-text">丢包情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#超时重发"><span class="toc-number">4.1.3.</span> <span class="toc-text">超时重发</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#面试问题"><span class="toc-number">4.2.</span> <span class="toc-text">面试问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#拥塞控制"><span class="toc-number">5.</span> <span class="toc-text">拥塞控制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#必背"><span class="toc-number">5.1.</span> <span class="toc-text">必背</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拥塞控制和流量控制的区别："><span class="toc-number">5.2.</span> <span class="toc-text">拥塞控制和流量控制的区别：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拥塞控制可以分为开环控制和闭环控制"><span class="toc-number">5.3.</span> <span class="toc-text">拥塞控制可以分为开环控制和闭环控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拥塞控制方法"><span class="toc-number">5.4.</span> <span class="toc-text">拥塞控制方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-慢开始和拥塞避免"><span class="toc-number">5.4.1.</span> <span class="toc-text">1.慢开始和拥塞避免</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-快重传和快恢复"><span class="toc-number">5.4.2.</span> <span class="toc-text">2.快重传和快恢复</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP结构"><span class="toc-number">1.</span> <span class="toc-text">TCP结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP-协议如何保证可靠传输"><span class="toc-number">2.</span> <span class="toc-text">TCP 协议如何保证可靠传输</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP数据包的大小以及编号"><span class="toc-number">3.</span> <span class="toc-text">TCP数据包的大小以及编号</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#滑动窗口和拥塞窗口的关系和区别"><span class="toc-number">4.</span> <span class="toc-text">滑动窗口和拥塞窗口的关系和区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#滑动窗口"><span class="toc-number">5.</span> <span class="toc-text">滑动窗口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#实现最优解"><span class="toc-number">5.1.</span> <span class="toc-text">实现最优解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#正常情况"><span class="toc-number">5.1.1.</span> <span class="toc-text">正常情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#丢包情况"><span class="toc-number">5.1.2.</span> <span class="toc-text">丢包情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#超时重发"><span class="toc-number">5.1.3.</span> <span class="toc-text">超时重发</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#面试问题"><span class="toc-number">5.2.</span> <span class="toc-text">面试问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#拥塞控制"><span class="toc-number">6.</span> <span class="toc-text">拥塞控制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#必背"><span class="toc-number">6.1.</span> <span class="toc-text">必背</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拥塞控制和流量控制的区别："><span class="toc-number">6.2.</span> <span class="toc-text">拥塞控制和流量控制的区别：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拥塞控制可以分为开环控制和闭环控制"><span class="toc-number">6.3.</span> <span class="toc-text">拥塞控制可以分为开环控制和闭环控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拥塞控制方法"><span class="toc-number">6.4.</span> <span class="toc-text">拥塞控制方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-慢开始和拥塞避免"><span class="toc-number">6.4.1.</span> <span class="toc-text">1.慢开始和拥塞避免</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-快重传和快恢复"><span class="toc-number">6.4.2.</span> <span class="toc-text">2.快重传和快恢复</span></a></li></ol></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -3952,9 +3956,136 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 206
+        Total : 215
         </div>
         <!-- search  -->
         
@@ -3967,6 +4098,51 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/24</span><a class="archive-post-title" href= "/2020/05/24/20200524-%E9%9D%92%E8%9B%99%E8%BF%87%E6%B2%B3/" >青蛙过河</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/24</span><a class="archive-post-title" href= "/2020/05/24/20200524-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%B3%E7%A7%BB/" >字符串右移</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/24</span><a class="archive-post-title" href= "/2020/05/24/20200524-%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E8%B7%AF%E5%BE%84%E5%92%8C/" >二叉树中的最大路径和</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/23</span><a class="archive-post-title" href= "/2020/05/23/20200523-%E9%A2%98%E7%9B%AE%E5%B0%8F%E6%80%BB%E7%BB%93/" >题目小总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/23</span><a class="archive-post-title" href= "/2020/05/23/20200523-DP%E4%B8%93%E9%A2%98/" >DP专题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/22</span><a class="archive-post-title" href= "/2020/05/22/20200522-%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97%C3%97%E5%8C%BA%E9%97%B4%E5%92%8C%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/" >最小数字×区间和的最大值</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/22</span><a class="archive-post-title" href= "/2020/05/22/20200522-%E5%8D%95%E8%AF%8D%E6%8B%86%E5%88%86/" >单词拆分</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/22</span><a class="archive-post-title" href= "/2020/05/22/20200522-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%E7%B3%BB%E5%88%97/" >跳跃游戏系列</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/20</span><a class="archive-post-title" href= "/2020/05/20/20200520-%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D%E7%B3%BB%E5%88%97/" >打家劫舍系列</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -4410,12 +4586,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
         </li>
     
     
@@ -5029,11 +5205,11 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="图论"><span class="iconfont-archer">&#xe606;</span>图论</span>
     
+        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
+    
         <span class="sidebar-tag-name" data-tags="思维"><span class="iconfont-archer">&#xe606;</span>思维</span>
     
         <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
-    
-        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
         <span class="sidebar-tag-name" data-tags="数据库"><span class="iconfont-archer">&#xe606;</span>数据库</span>
     
@@ -5045,13 +5221,13 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
-        <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
-    
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
     
-        <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
-    
         <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
+        <span class="sidebar-tag-name" data-tags="瞎搞"><span class="iconfont-archer">&#xe606;</span>瞎搞</span>
+    
+        <span class="sidebar-tag-name" data-tags="博弈论"><span class="iconfont-archer">&#xe606;</span>博弈论</span>
     
         <span class="sidebar-tag-name" data-tags="常识"><span class="iconfont-archer">&#xe606;</span>常识</span>
     
