@@ -346,87 +346,6 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/10/20200410-%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95/" >
-            
-                <span>随机算法</span>
-        </a>
-        <div class="abstract-content">
-            
-
-蓄水池算法问题描述给定一个数据流，数据流长度N很大，且N直到处理完所有数据之前都不可知，请问如何在只遍历一遍数据（O(N)）的情况下，能够随机选取出m个不重复的数据。
-这个场景强调了3件事：
-
-数据流长度N很大且不可知，所以不能一次性存入内存。
-
-时间复杂度为O(N)。
-
-随机选取m个数，每个数被选中的概率为m/N。
-
-
-核心代码及原理转自：https://www.jianshu.com/p/7a9ea6ece2af
-12345678910111213141516int a[100010];vector&lt;int&gt; reservoir(m);//reservoir为蓄水池/...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/10</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "思维">思维</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/10/20200410-%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84%E9%94%81/" >
-            
-                <span>数据库中的锁</span>
-        </a>
-        <div class="abstract-content">
-            转自:https://www.cnblogs.com/kexinxin/p/11620345.html
-
-
-锁分类按锁的粒度划分：表级锁、行级锁、页级锁
-按锁级别划分：共享锁、排它锁、意向锁
-按加锁方式划分：自动锁、显示锁
-按使用方式划分：乐观锁、悲观锁
-乐观锁和悲观锁先说乐观锁和悲观锁的机制：
-1.乐观锁是一种思想，每次访问数据的时候都认为其他线程不会修改数据，所以直接访问数据，更新的时候再判断在此期间其他线程是否修改数据,具体实现是，表中有一个版本字段，第一次读的时候，获取到这个字段。处理完业务逻辑开始更新的时候，需要再次查看该字段的值是否和第一次的一样。如果一样更新，反之拒绝。之所...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/10</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "数据库">数据库</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
         <a class="abstract-title" href = "/2020/04/10/20200410-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%9A%84%E5%8C%BA%E5%88%AB/" >
             
                 <span>进程和程序</span>
@@ -698,6 +617,65 @@
             <div class= abstract-tags >
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/05/20200406-Http%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/" >
+            
+                <span>HTTP报文格式</span>
+        </a>
+        <div class="abstract-content">
+            <p>HTTP报文是面向文本的，报文中的每一个字段都是一些ASCII码串，各个字段的长度是不确定的。HTTP有两类报文：请求报文和响应报文。</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/05</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "计算机网络原理">计算机网络原理</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/04/05/20200405-select%E3%80%81poll%E3%80%81epoll/" >
+            
+                <span>select、poll、epoll</span>
+        </a>
+        <div class="abstract-content">
+            select，poll，epoll都是IO多路复用的机制。I/O多路复用就通过一种机制，可以监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），能够通知程序进行相应的读写操作。但select，poll，epoll本质上都是同步I/O，因为他们都需要在读写事件就绪后自己负责进行读写，也就是说这个读写过程是阻塞的，而异步I/O则无需自己负责进行读写，异步I/O的实现会负责把数据从内核拷贝到用户空间。 
+epoll跟select都能提供多路I/O复用的解决方案。在现在的Linux内核里有都能够支持，其中epoll是Linux所特有，而select则应该是POSIX所规定，一般操作系统...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/05</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "操作系统">操作系统</a>
     
 </div>
             
@@ -4188,21 +4166,9 @@
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 215
+        Total : 213
         </div>
         <!-- search  -->
         
@@ -4328,12 +4294,12 @@
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-%E5%92%8C%E4%B8%BAs%E7%9A%84%E8%BF%9E%E7%BB%AD%E6%AD%A3%E6%95%B0%E5%BA%8F%E5%88%97/" >和为s的连续正数序列</a>
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-%E6%8A%8A%E6%95%B0%E7%BB%84%E6%8E%92%E6%88%90%E6%9C%80%E5%B0%8F%E7%9A%84%E6%95%B0/" >把数组排成最小的数</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-%E6%8A%8A%E6%95%B0%E7%BB%84%E6%8E%92%E6%88%90%E6%9C%80%E5%B0%8F%E7%9A%84%E6%95%B0/" >把数组排成最小的数</a>
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-%E5%92%8C%E4%B8%BAs%E7%9A%84%E8%BF%9E%E7%BB%AD%E6%AD%A3%E6%95%B0%E5%BA%8F%E5%88%97/" >和为s的连续正数序列</a>
         </li>
     
     
@@ -4468,11 +4434,6 @@
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/23</span><a class="archive-post-title" href= "/2020/04/23/20200423-%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/" >秒杀系统</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">04/23</span><a class="archive-post-title" href= "/2020/04/23/20200423-i++%E5%9C%A8%E4%B8%A4%E4%B8%AA%E7%BA%BF%E7%A8%8B%E9%87%8C%E6%89%A7%E8%A1%8C/" >i++在两个线程里执行</a>
         </li>
     
@@ -4519,11 +4480,6 @@
     
         <li class="archive-post-item">
             <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" >从上到下打印二叉树</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2020/04/18/20200418-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" >单例模式</a>
         </li>
     
     
@@ -5314,9 +5270,9 @@
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="leetcode"><span class="iconfont-archer">&#xe606;</span>leetcode</span>
-    
         <span class="sidebar-tag-name" data-tags="操作系统"><span class="iconfont-archer">&#xe606;</span>操作系统</span>
+    
+        <span class="sidebar-tag-name" data-tags="leetcode"><span class="iconfont-archer">&#xe606;</span>leetcode</span>
     
         <span class="sidebar-tag-name" data-tags="计算机网络原理"><span class="iconfont-archer">&#xe606;</span>计算机网络原理</span>
     
@@ -5334,9 +5290,9 @@
     
         <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     
-        <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
-    
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
+    
+        <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
     
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
     
@@ -5391,9 +5347,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="算法"><span class="iconfont-archer">&#xe60a;</span>算法</span>
-    
         <span class="sidebar-category-name" data-categories="CS大学生必备"><span class="iconfont-archer">&#xe60a;</span>CS大学生必备</span>
+    
+        <span class="sidebar-category-name" data-categories="算法"><span class="iconfont-archer">&#xe60a;</span>算法</span>
     
         <span class="sidebar-category-name" data-categories="算法短板"><span class="iconfont-archer">&#xe60a;</span>算法短板</span>
     
