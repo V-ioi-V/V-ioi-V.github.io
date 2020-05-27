@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>epoll的底层实现原理 · occo&#39;s blog</title>
+    <title>occo&#39;s blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -203,23 +203,12 @@
 <meta name="generator" content="Hexo 4.2.0"></head>
 
     
-        <body class="post-body">
-    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
-    
-    <div class="banner">
-            <div class="blog-title">
-                <a href="/" >occo&#39;s blog.</a>
-            </div>
-            <div class="post-title">
-                <a href="#" class="post-name">epoll的底层实现原理</a>
-            </div>
-    </div>
     
     <a class="home-link" href=/>occo's blog.</a>
 </header>
@@ -231,74 +220,24 @@
 
 
 
-
-height:50vh;
 ">
     
     <!-- 主页  -->
-    
-    
-    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
-            
-            epoll的底层实现原理
-            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
-            
-            <!-- 404 -->
-            
         </p>
         <!-- 文章页meta -->
-        
-            <div class="post-intros">
-                <!-- 文章页标签  -->
-                
-                    <div class= post-intro-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "操作系统">操作系统</a>
-    
-</div>
-                
-                
-                    <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">1.3k</span>Reading time: <span class="post-count reading-time">4 min</span></span>
-                    </div>
-                
-                <div class="post-intro-meta">
-                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2020/04/11</span>
-                    
-                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
-                        <span class="iconfont-archer">&#xe602;</span>
-                        <span id="busuanzi_value_page_pv"></span>
-                    </span>
-                    
-                    <span class="shareWrapper">
-                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
-                        <span class="shareText">Share</span>
-                        <ul class="shareList">
-                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
-                                <div class="share-qrcode"></div>
-                            </li>
-                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
-                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
-                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
-                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
-                        </ul>
-                    </span>
-                </div>
-            </div>
         
     </div>
 </div>
@@ -399,75 +338,49 @@ height:50vh;
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main post-page">
-    <article class="article-entry">
-        <p>内核（kernel）利用文件描述符（file descriptor）fd来访问文件。文件描述符是非负整数。打开现存文件或新建文件时，内核会返回一个文件描述符。读写文件也需要使用文件描述符来指定待读写的文件。</p>
-<font size=4>
+            <main class="main index-page">
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/05/25/20200524-%E5%88%86%E5%8F%91%E7%B3%96%E6%9E%9C/" >
+            
+                <span>分发糖果</span>
+        </a>
+        <div class="abstract-content">
+            
 
-<h2 id="epoll的主要机制"><a href="#epoll的主要机制" class="headerlink" title="epoll的主要机制"></a>epoll的主要机制</h2><p>epoll主要解决的问题：I/O多路复用</p>
-<p>epoll三大关键要素：mmap、红黑树、链表</p>
-<p>epoll三大主要函数：epoll_create，epoll_ctl，epoll_wait</p>
-<h2 id="epoll实现过程："><a href="#epoll实现过程：" class="headerlink" title="epoll实现过程："></a>epoll实现过程：</h2><p>整体流程：</p>
-<p>首先epoll_create建立一个epoll对象。参数是内核保证能够正确处理的最大句柄数，多余这个最大数时内核不保证效果。</p>
-<p>epoll_ctl可以操作上面建立的epoll，例如，将刚建立的socket加入到epoll中让其监控，或者把epoll正在监控的某个socket句柄移出epoll。</p>
-<p>epoll_wait在调用时，在给定的timeout内，当在监控的所有句柄有事件发生时，返回用户态的进程。</p>
-<p>详细过程：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 创建并初始化epoll</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">epoll_create</span><span class="params">(<span class="keyword">int</span> <span class="built_in">size</span>)</span></span>; </span><br><span class="line"></span><br><span class="line"># 处理epoll内socket</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">epoll_ctl</span><span class="params">(<span class="keyword">int</span> epfd, <span class="keyword">int</span> op, <span class="keyword">int</span> fd, struct epoll_event *event)</span></span>;</span><br><span class="line"></span><br><span class="line"># 从epoll内取出事件</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">epoll_wait</span><span class="params">(<span class="keyword">int</span> epfd, struct epoll_event *events,<span class="keyword">int</span> maxevents, <span class="keyword">int</span> timeout)</span></span>;</span><br></pre></td></tr></table></figure>
-<p>1.首先在epoll_create建立后，内核在内核态开始存储要监控的句柄，在内核里，一切皆文件，所以epoll向内核注册了一个文件系统，用于存储被监控的socket。当调用epoll_create时，就会在这个虚拟的epoll文件系统里创建一个file结点，并且只服务于epoll。</p>
-<p>2.epoll在被内核初始化时，同时会开辟epoll自己的告诉内核cache区，用于安置每一个想要监控的socket，这些socket会以红黑树的形式保存在内核cache里。在这个内核高速cache区，就是建立连续的物理内存页，然后在之上建立slab层。简单说，就是物理上分配好想要的size的内存对象，每次使用时都是使用空闲的已经分配好的对象。</p>
-<p>3.每次调用epoll_ctl只是在往内核的数据结构里塞入新的socket句柄。如果增加socket句柄，则检查红黑树中是否存在，存在立即返回，不存在则添加，然后想内核注册回调函数，用于当中断事件来临时向准备就绪链表中插入数据。</p>
-<p>4.epoll的高效在于，当调用epoll_ctl往里面塞入百万个句柄时，epoll_wait仍然可以飞快的返回，并有效的将发生事件的句柄给用户。由于在调用epoll_create时，内核处理在epoll文件系统里建立了file节点，在内核cache里建立红黑树用于存储epoll_ctl传来的socket外，还会建立一个list链表，用于存储准备就绪的事件。</p>
-<p>5.当执行epoll_ctl时，除了把socket放到epoll文件系统的file对象对应的红黑树之外，还会给内核中断处理程序注册一个回调函数，告诉内核，如果这个句柄的中断到了，放到准备就绪list链表里。所以，当一个socket上有数据了，内核把网卡上数据copy到内核中后就把socket插入到准备就绪链表中。</p>
-<p>6.当epoll_wait调用时，仅仅观察这个list链表里有没有数据即可，有数据返回，没有就sleep，等到timeout时间到后即使链表没有数据也返回。</p>
-<p>7.通常情况下要监控百万计的句柄，但是一次只返回少量准备就绪的句柄，所以epoll_wait仅需要从内核态copy少量的句柄到用户态而已。</p>
-<h2 id="epoll中的数据结构："><a href="#epoll中的数据结构：" class="headerlink" title="epoll中的数据结构："></a>epoll中的数据结构：</h2><p>1.mmap：</p>
-<p>epoll通过内核与用户空间mmap同一块内存。mmap将用户空间的一块地址和内核空间的一块地址同时映射到相同的一块物理内存地址，使得这块物理内存对内核和用户均可见，减少用户和内核态之间的数据交换。内核可以直接看到epoll监听的句柄，效率更高。</p>
-<p>2.红黑树：</p>
-<p>红黑树将存储epoll所监听的所有套接字。mmap出来的内存在epoll上采用红黑树去存储所有的套接字，当添加或者删除一个套接字时(epoll_ctl），都在红黑树上处理，时间复杂度O(logN)</p>
-<p>3.rdlist链表：</p>
-<p>通过epoll_ctl函数添加进来的事件都会被放到红黑树的某个节点内。当事件添加进来的时候，该事件都会与相应的设备（网卡）驱动程序建立回调关系，当相应的事件发生后，就会调用这个回调函数(ep_poll_callbac)，这个回调函数其实就是把这个事件添加到rdlist这个双向链表中。一旦有事件发生，epoll就会将该事件添加到双向链表中。当调用epoll_wait时，epoll_wait只需要检查rdlist双向链表中是否存在注册事件。</p>
-<p>学习链接：<a href="https://baijiahao.baidu.com/s?id=1641172494287388070&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">https://baijiahao.baidu.com/s?id=1641172494287388070&amp;wfr=spider&amp;for=pc</a></p>
-
+老师想给孩子们分发糖果，有 N 个孩子站成了一条直线，老师会根据每个孩子的表现，预先给他们评分。
+你需要按照以下要求，帮助老师给这些孩子分发糖果：
+每个孩子至少分配到 1 个糖果。相邻的孩子中，评分高的孩子必须获得更多的糖果。那么这样下来，老师至少需要准备多少颗糖果呢？
+示例 1:
+输入: [1,0,2]输出: 5解释: 你可以分别给这三个孩子分发 2、1、2 颗糖果。示例 2:
+输入: [1,2,2]输出: 4解释: 你可以分别给这三个孩子分发 1、2、1 颗糖果。         第三个孩子只得到 1 颗糖果，这已满足上述两个条件。
+思路难点在于极大值时值的选取，一个极大值应该是...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/25</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "leetcode">leetcode</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "贪心">贪心</a>
+    
+</div>
+            
+        </div>
     </article>
-    <!-- license  -->
     
     <!-- paginator  -->
-    <ul class="post-paginator">
-        <li class="next">
-            
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2020/04/12/20200412-%E5%8D%95%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E5%88%86%E6%9E%90/" title= "单线程与多线程的优缺点分析">
-                    <div class="nextTitle">单线程与多线程的优缺点分析</div>
-                </a>
-            
-        </li>
-        <li class="previous">
-            
-                <div class="prevSlogan">Previous Post</div>
-                <a href= "/2020/04/10/20200410-%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95/" title= "随机算法">
-                    <div class="prevTitle">随机算法</div>
-                </a>
-            
-        </li>
-    </ul>
-    <!-- 评论插件 -->
-    <!-- 来必力City版安装代码 -->
-
-<!-- City版安装代码已完成 -->
     
-    
-    <!-- gitalk评论 -->
-
-    <!-- utteranc评论 -->
-
-    <!-- partial('_partial/comment/changyan') -->
-    <!--PC版-->
-
-
-    
-    
-
-    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -552,24 +465,6 @@ height:50vh;
 </footer>
     </div>
     <!-- toc -->
-    
-    <div class="toc-wrapper" style=
-    
-
-
-
-
-
-
-
-top:50vh;
-
-    >
-        <div class="toc-catalog">
-            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
-        </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#epoll的主要机制"><span class="toc-number">1.</span> <span class="toc-text">epoll的主要机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#epoll实现过程："><span class="toc-number">2.</span> <span class="toc-text">epoll实现过程：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#epoll中的数据结构："><span class="toc-number">3.</span> <span class="toc-text">epoll中的数据结构：</span></a></li></ol>
-    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -3914,59 +3809,9 @@ top:50vh;
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 213
+        Total : 211
         </div>
         <!-- search  -->
         
@@ -3979,6 +3824,11 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/25</span><a class="archive-post-title" href= "/2020/05/25/20200524-%E5%88%86%E5%8F%91%E7%B3%96%E6%9E%9C/" >分发糖果</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -4092,12 +3942,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-%E6%8A%8A%E6%95%B0%E7%BB%84%E6%8E%92%E6%88%90%E6%9C%80%E5%B0%8F%E7%9A%84%E6%95%B0/" >把数组排成最小的数</a>
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-%E5%92%8C%E4%B8%BAs%E7%9A%84%E8%BF%9E%E7%BB%AD%E6%AD%A3%E6%95%B0%E5%BA%8F%E5%88%97/" >和为s的连续正数序列</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-%E5%92%8C%E4%B8%BAs%E7%9A%84%E8%BF%9E%E7%BB%AD%E6%AD%A3%E6%95%B0%E5%BA%8F%E5%88%97/" >和为s的连续正数序列</a>
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/2020/05/03/20200503-%E6%8A%8A%E6%95%B0%E7%BB%84%E6%8E%92%E6%88%90%E6%9C%80%E5%B0%8F%E7%9A%84%E6%95%B0/" >把数组排成最小的数</a>
         </li>
     
     
@@ -4317,11 +4167,6 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/11</span><a class="archive-post-title" href= "/2020/04/11/20200411-epoll%E7%9A%84%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/" >epoll的底层实现原理</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">04/10</span><a class="archive-post-title" href= "/2020/04/10/20200410-%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95/" >随机算法</a>
         </li>
     
@@ -4392,22 +4237,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/04</span><a class="archive-post-title" href= "/2020/04/04/20200404-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/" >操作系统内存管理功能</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">04/04</span><a class="archive-post-title" href= "/2020/04/04/20200404-TCP%E7%B2%98%E5%8C%85%E3%80%81%E6%8B%86%E5%8C%85/" >TCP粘包、拆包</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">04/03</span><a class="archive-post-title" href= "/2020/04/03/20200403-%E4%BB%A5%E5%A4%AA%E7%BD%91%E3%80%81IP%E3%80%81TCP%E3%80%81UDP%E5%A4%B4%E9%83%A8%E6%A0%BC%E5%BC%8F/" >以太网、IP、TCP、UDP头部格式</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/2020/04/02/20200402-%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%90%8C%E6%AD%A5/" >进程的同步</a>
         </li>
     
     
@@ -4457,12 +4292,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E6%AD%BB%E9%94%81/" >操作系统中的死锁</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2020/03/29/20200329-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" >进程调度算法</a>
         </li>
     
     
@@ -5068,9 +4903,9 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="操作系统"><span class="iconfont-archer">&#xe606;</span>操作系统</span>
-    
         <span class="sidebar-tag-name" data-tags="leetcode"><span class="iconfont-archer">&#xe606;</span>leetcode</span>
+    
+        <span class="sidebar-tag-name" data-tags="操作系统"><span class="iconfont-archer">&#xe606;</span>操作系统</span>
     
         <span class="sidebar-tag-name" data-tags="计算机网络原理"><span class="iconfont-archer">&#xe606;</span>计算机网络原理</span>
     
@@ -5088,9 +4923,11 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="模板"><span class="iconfont-archer">&#xe606;</span>模板</span>
     
+        <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
+    
         <span class="sidebar-tag-name" data-tags="ACM"><span class="iconfont-archer">&#xe606;</span>ACM</span>
     
-        <span class="sidebar-tag-name" data-tags="数论"><span class="iconfont-archer">&#xe606;</span>数论</span>
+        <span class="sidebar-tag-name" data-tags="贪心"><span class="iconfont-archer">&#xe606;</span>贪心</span>
     
         <span class="sidebar-tag-name" data-tags="计算几何"><span class="iconfont-archer">&#xe606;</span>计算几何</span>
     
@@ -5145,9 +4982,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="CS大学生必备"><span class="iconfont-archer">&#xe60a;</span>CS大学生必备</span>
-    
         <span class="sidebar-category-name" data-categories="算法"><span class="iconfont-archer">&#xe60a;</span>算法</span>
+    
+        <span class="sidebar-category-name" data-categories="CS大学生必备"><span class="iconfont-archer">&#xe60a;</span>CS大学生必备</span>
     
         <span class="sidebar-category-name" data-categories="算法短板"><span class="iconfont-archer">&#xe60a;</span>算法短板</span>
     
@@ -5187,8 +5024,6 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
-    
-        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>
