@@ -55,7 +55,78 @@ epoll支持水平触发和边缘触发，最大的特点在于边缘触发，它
 （2）效率提升，不是轮询的方式，不会随着fd数目的增加效率下降。只有活跃可用的fd才会调用callback函数，即epoll最大的优点就在于它只管你“活跃”的连接，而跟连接总数无关，因此在实际的网络环境中，epoll的效率就会远远高于select和poll。
 （3）内存拷贝，利用mmap()文件映射内存加速与内核空间的消息传递，即epoll使用mmap减少复制开销。
 
+ 内核（kernel）利用文件描述符（file descriptor）fd来访问文件。文件描述符是非负整数。打开现存文件或新建文件时，内核会返回一个文件描述符。读写文件也需要使用文件描述符来指定待读写的文件。
+
+<font size=4>
+
+## epoll的主要机制
+
+epoll主要解决的问题：I/O多路复用
+
+epoll三大关键要素：mmap、红黑树、链表
+
+epoll三大主要函数：epoll_create，epoll_ctl，epoll_wait
+
+## epoll实现过程：
+
+整体流程：
+
+首先epoll_create建立一个epoll对象。参数是内核保证能够正确处理的最大句柄数，多余这个最大数时内核不保证效果。
+
+epoll_ctl可以操作上面建立的epoll，例如，将刚建立的socket加入到epoll中让其监控，或者把epoll正在监控的某个socket句柄移出epoll。
+
+epoll_wait在调用时，在给定的timeout内，当在监控的所有句柄有事件发生时，返回用户态的进程。
+
+详细过程：
+
+```c++
+# 创建并初始化epoll
+
+int epoll_create(int size); 
+
+# 处理epoll内socket
+
+int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);
+
+# 从epoll内取出事件
+
+int epoll_wait(int epfd, struct epoll_event *events,int maxevents, int timeout);
+```
+
+
+
+1.首先在epoll_create建立后，内核在内核态开始存储要监控的句柄，在内核里，一切皆文件，所以epoll向内核注册了一个文件系统，用于存储被监控的socket。当调用epoll_create时，就会在这个虚拟的epoll文件系统里创建一个file结点，并且只服务于epoll。
+
+2.epoll在被内核初始化时，同时会开辟epoll自己的告诉内核cache区，用于安置每一个想要监控的socket，这些socket会以红黑树的形式保存在内核cache里。在这个内核高速cache区，就是建立连续的物理内存页，然后在之上建立slab层。简单说，就是物理上分配好想要的size的内存对象，每次使用时都是使用空闲的已经分配好的对象。
+
+3.每次调用epoll_ctl只是在往内核的数据结构里塞入新的socket句柄。如果增加socket句柄，则检查红黑树中是否存在，存在立即返回，不存在则添加，然后想内核注册回调函数，用于当中断事件来临时向准备就绪链表中插入数据。
+
+4.epoll的高效在于，当调用epoll_ctl往里面塞入百万个句柄时，epoll_wait仍然可以飞快的返回，并有效的将发生事件的句柄给用户。由于在调用epoll_create时，内核处理在epoll文件系统里建立了file节点，在内核cache里建立红黑树用于存储epoll_ctl传来的socket外，还会建立一个list链表，用于存储准备就绪的事件。
+
+5.当执行epoll_ctl时，除了把socket放到epoll文件系统的file对象对应的红黑树之外，还会给内核中断处理程序注册一个回调函数，告诉内核，如果这个句柄的中断到了，放到准备就绪list链表里。所以，当一个socket上有数据了，内核把网卡上数据copy到内核中后就把socket插入到准备就绪链表中。
+
+6.当epoll_wait调用时，仅仅观察这个list链表里有没有数据即可，有数据返回，没有就sleep，等到timeout时间到后即使链表没有数据也返回。
+
+7.通常情况下要监控百万计的句柄，但是一次只返回少量准备就绪的句柄，所以epoll_wait仅需要从内核态copy少量的句柄到用户态而已。
+
  
+
+## epoll中的数据结构：
+
+1.mmap：
+
+epoll通过内核与用户空间mmap同一块内存。mmap将用户空间的一块地址和内核空间的一块地址同时映射到相同的一块物理内存地址，使得这块物理内存对内核和用户均可见，减少用户和内核态之间的数据交换。内核可以直接看到epoll监听的句柄，效率更高。
+
+2.红黑树：
+
+红黑树将存储epoll所监听的所有套接字。mmap出来的内存在epoll上采用红黑树去存储所有的套接字，当添加或者删除一个套接字时(epoll_ctl），都在红黑树上处理，时间复杂度O(logN)
+
+3.rdlist链表：
+
+通过epoll_ctl函数添加进来的事件都会被放到红黑树的某个节点内。当事件添加进来的时候，该事件都会与相应的设备（网卡）驱动程序建立回调关系，当相应的事件发生后，就会调用这个回调函数(ep_poll_callbac)，这个回调函数其实就是把这个事件添加到rdlist这个双向链表中。一旦有事件发生，epoll就会将该事件添加到双向链表中。当调用epoll_wait时，epoll_wait只需要检查rdlist双向链表中是否存在注册事件。
+
+
+学习链接：https://baijiahao.baidu.com/s?id=1641172494287388070&wfr=spider&for=pc
 
 # 区别总结
 
